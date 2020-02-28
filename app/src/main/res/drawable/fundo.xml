@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- drawable/fundo.xml -->
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="416dp"
+    android:height="785dp"
+    android:viewportWidth="416"
+    android:viewportHeight="785"
+    >
+
+    <group>
+
+<!--        <clip-path-->
+<!--            android:pathData="M0 0H416V785H0V0Z"-->
+<!--            />-->
+
+        <path
+            android:pathData="M0 0V785H416V0"
+            android:fillColor="#87A03DB3"
+            />
+
+        <group
+            android:translateX="1.714"
+            android:translateY="0.023"
+            android:pivotX="208"
+            android:pivotY="392.5"
+            android:scaleX="3.458"
+            android:scaleY="3.158"
+            android:rotation="116.424"
+            >
+
+            <path
+                android:pathData="M0 0V785H416V0"
+                >
+
+                <aapt:attr name="android:fillColor">
+
+                    <gradient
+                        android:type="linear"
+                        android:startX="104"
+                        android:startY="392.5"
+                        android:endX="312"
+                        android:endY="392.5"
+                        >
+
+                        <item
+                            android:color="#34CA9A"
+                            android:offset="0"
+                            />
+
+                        <item
+                            android:color="#47000000"
+                            android:offset="1"
+                            />
+
+                    </gradient>
+
+                </aapt:attr>
+
+            </path>
+
+        </group>
+
+    </group>
+
+</vector>
+
