@@ -11,4 +11,10 @@
     <string name="login_failed">"Login failed"</string>
     <string name="finfamily">FinFamily</string>
     <string name="buttonLogin">Login</string>
+    <string name="need_help_">
+        <a href="http://clubedosgeeks.com.br/">Need help?</a>
+    </string>
+    <string name="titleinicio">FinFamily</string>
+    <string name="title_activity_cadastro">Cadastro</string>
+    <string name="create_acco">Create Account</string>
 </resources>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.bandtec.finfamily">
 
     <application
@@ -9,13 +10,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".CreateAccount"></activity>
+        <activity
+            android:name=".Cadastro"
+            android:exported="true" />
+        <activity android:name=".CadastroActivity" />
+        <activity
+            android:name=".Login"
+            android:exported="true" />
+        <activity
+            android:name=".Inicio"
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"/>
-        <activity
-            android:name=".ui.login.LoginActivity"
-            android:label="@string/title_activity_login"
-            android:exported="true"/>
+            android:exported="true" />
     </application>
 
 </manifest>
