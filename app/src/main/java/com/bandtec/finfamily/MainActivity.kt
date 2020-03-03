@@ -2,7 +2,6 @@ package com.bandtec.finfamily
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
 
