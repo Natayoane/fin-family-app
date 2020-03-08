@@ -2,6 +2,7 @@ package com.bandtec.finfamily
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_inicio.*
 
@@ -17,13 +18,11 @@ class Inicio : AppCompatActivity() {
             // start your next activity
             startActivity(intent)
         }
-//        cadastroinicio.setOnClickListener {
-//            val intent = Intent(this, MainActivity::class.java)
-//            // start your next activity
-//            startActivity(intent)
-//        }
-
-
+        cadastroinicio.setOnClickListener {
+            val intent = Intent(this, Extract::class.java)
+            // start your next activity
+            startActivity(intent)
+        }
     }
 
 

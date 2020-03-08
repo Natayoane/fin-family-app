@@ -9,18 +9,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CreateAccount"></activity>
-<!--        <activity-->
-<!--            android:name=".Cadastro"-->
-<!--            android:exported="true" />-->
-<!--        <activity android:name=".CadastroActivity" />-->
+        <activity
+            android:name=".Profile"
+            android:label="Profile"
+            android:theme="@style/navbar" />
+        <activity
+            android:name=".Extract"
+            android:label="Extract"
+            android:theme="@style/navbar" />
+        <activity
+            android:name=".Panel"
+            android:label="Panel"
+            android:theme="@style/navbar" />
+        <activity
+            android:name=".Group"
+            android:label="Groups"
+            android:theme="@style/navbar" />
+        <activity android:name=".CreateAccount" />
         <activity
             android:name=".Login"
             android:exported="true" />
         <activity
             android:name=".Inicio"
             android:exported="true" />
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
