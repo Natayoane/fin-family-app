@@ -17,4 +17,10 @@
     <string name="titleinicio">FinFamily</string>
     <string name="title_activity_cadastro">Cadastro</string>
     <string name="create_acco">Create Account</string>
+    <string name="members">Members</string>
+    <string name="title_activity_buttom_navigation">buttomNavigation</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
 </resources>

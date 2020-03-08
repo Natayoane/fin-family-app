@@ -7,7 +7,8 @@
     android:layout_height="fill_parent"
     android:orientation="vertical"
     android:gravity="bottom"
-    android:background="@drawable/fundoinicio"
+    android:background="@drawable/fundo"
+
 
     tools:context=".Inicio">
 
@@ -34,7 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:layout_marginBottom="250dp"
+        android:layout_marginBottom="225dp"
         android:text="@string/finfamily"
         android:textAppearance="@style/finfamily" />
 
