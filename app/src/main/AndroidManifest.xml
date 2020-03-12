@@ -16,6 +16,7 @@
         <activity
             android:name=".Extract"
             android:label="Extract"
+            android:colorMode="default"
             android:theme="@style/navbar" />
         <activity
             android:name=".Panel"
