@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- drawable/navbar.xml -->
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="418dp"
+    android:height="55.7dp"
+    android:viewportWidth="418"
+    android:viewportHeight="55.7"
+    >
+
+    <group>
+
+        <clip-path
+            android:pathData="M0 0H418V55.7031H0V0Z"
+            />
+
+        <path
+            android:pathData="M0 0V55.7031H418V0"
+            android:fillColor="#3ED4AF"
+            />
+
+    </group>
+
+</vector>
