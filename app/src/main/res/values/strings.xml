@@ -22,5 +22,9 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="name">Name</string>
+    <string name="cpf">CPF</string>
+    <string name="Date">Date of birth</string>
+    <string name="Next">Next</string>
 
 </resources>
