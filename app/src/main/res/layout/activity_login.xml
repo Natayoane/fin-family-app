@@ -8,26 +8,6 @@
     android:background="@drawable/fundo"
     tools:context=".Login">
 
-    <!--    <View-->
-    <!--        android:id="@+id/fundo"-->
-    <!--        android:layout_width="416dp"-->
-    <!--        android:layout_height="809dp"-->
-    <!--        android:layout_alignParentLeft="true"-->
-    <!--        android:layout_alignParentTop="true"-->
-    <!--        android:layout_marginStart="1dp"-->
-    <!--        android:layout_marginTop="1dp"-->
-    <!--        android:layout_marginEnd="1dp"-->
-    <!--        android:layout_marginBottom="1dp"-->
-    <!--        android:background="@drawable/fundo"-->
-    <!--        android:elevation="4dp"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent" />-->
-
-    <!-- FinFamily -->
-
-
     <TextView
         android:id="@+id/finfamily"
         android:layout_width="match_parent"
@@ -85,17 +65,5 @@
             android:text="@string/need_help_"
             android:textAppearance="@style/need_help_" />
     </LinearLayout>
-
-
-    <!--    <ProgressBar-->
-    <!--        android:id="@+id/loading"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_gravity="center"-->
-    <!--        android:layout_marginStart="32dp"-->
-    <!--        android:layout_marginTop="64dp"-->
-    <!--        android:layout_marginEnd="32dp"-->
-    <!--        android:layout_marginBottom="64dp"-->
-    <!--        android:visibility="gone" />-->
 
 </LinearLayout>
