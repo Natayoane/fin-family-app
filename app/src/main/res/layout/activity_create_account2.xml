@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fundo"
-    tools:context=".CreateAccount">
+    tools:context=".CreateAccount2">
 
 
     <TextView
@@ -24,49 +24,47 @@
 
 
     <EditText
-        android:id="@+id/inputname"
+        android:id="@+id/cadastroemail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
         android:background="@drawable/inputemail"
-        android:hint="@string/name"
+        android:hint="E-mail for acess"
         android:inputType="text"
         android:paddingLeft="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/inputcpf"
-        app:layout_constraintEnd_toEndOf="@+id/inputdatebirth"
-        app:layout_constraintStart_toStartOf="@+id/inputdatebirth"
+        app:layout_constraintBottom_toTopOf="@+id/cadastropassword"
+        app:layout_constraintEnd_toEndOf="@+id/verificapassword"
+        app:layout_constraintStart_toStartOf="@+id/verificapassword"
         app:layout_constraintTop_toBottomOf="@+id/finfamily"
         app:layout_constraintVertical_bias="0.932" />
 
     <EditText
-        android:id="@+id/inputdatebirth"
+        android:id="@+id/verificapassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
         android:background="@drawable/inputpassword"
         android:baselineAligned="false"
-        android:hint="@string/Date"
+        android:hint="Confirm password"
         android:inputType="number"
         android:paddingLeft="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonnext"
+        app:layout_constraintBottom_toTopOf="@+id/buttonnext2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputcpf"
+        app:layout_constraintTop_toBottomOf="@+id/cadastropassword"
         app:layout_constraintVertical_bias="0.13"
         tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/inputcpf"
+        android:id="@+id/cadastropassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
         android:background="@drawable/inputpassword"
         android:baselineAligned="false"
-        android:hint="@string/cpf"
+        android:hint="Password"
         android:inputType="number"
         android:paddingLeft="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -77,17 +75,17 @@
         app:layout_constraintVertical_bias="0.499" />
 
     <Button
-        android:id="@+id/buttonnext"
+        android:id="@+id/buttonnext2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/buttoncadastro"
         android:text="@string/Next"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/inputcpf"
+        app:layout_constraintEnd_toEndOf="@+id/cadastropassword"
         app:layout_constraintHorizontal_bias="0.75"
-        app:layout_constraintStart_toStartOf="@+id/inputcpf"
-        app:layout_constraintTop_toBottomOf="@+id/inputcpf"
+        app:layout_constraintStart_toStartOf="@+id/cadastropassword"
+        app:layout_constraintTop_toBottomOf="@+id/cadastropassword"
         app:layout_constraintVertical_bias="0.559" />
 
     <TextView
@@ -100,15 +98,15 @@
         android:textAppearance="@style/need_help_"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonnext" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonnext2" />
 
     <TextView
-        android:id="@+id/textPersonalInformation"
+        android:id="@+id/textAccessInformation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Personal Information"
+        android:text="Access Information"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/inputname"
+        app:layout_constraintBottom_toTopOf="@+id/cadastroemail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"

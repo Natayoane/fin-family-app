@@ -24,5 +24,9 @@
     <string name="title_notifications">Notifications</string>
     <string name="api_here">API HERE</string>
     <string name="string_api_here" />
+    <string name="name">Name</string>
+    <string name="cpf">CPF</string>
+    <string name="Date">Date of birth</string>
+    <string name="Next">Next</string>
 
 </resources>

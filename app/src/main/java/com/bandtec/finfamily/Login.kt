@@ -1,38 +1,70 @@
 package com.bandtec.finfamily
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.bandtec.finfamily.model.Users
-import com.bandtec.finfamily.repository.UserEndpoint
-import com.bandtec.finfamily.utils.NetworkUtils
-import kotlinx.android.synthetic.main.activity_retrofit_test.*
+import com.bandtec.finfamily.api.RetrofitClient
+import com.bandtec.finfamily.model.LoginResponse
+import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.io.BufferedInputStream
-import java.io.InputStream
-import java.net.HttpURLConnection
-import java.net.URL
 
 class Login : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-    }
+        inputemail.requestFocus()
 
-    fun loginUser(v: View){
-        getData()
+        val sp : SharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
 
-    }
+        buttonlogin.setOnClickListener {
 
-    fun getData() {
-        val retrofitClient = NetworkUtils
-            .getRetrofitInstance("http://ec2-54-82-171-69.compute-1.amazonaws.com/fin-family/")
+            val email = inputemail.text.toString()
+            val password = inputpassword.text.toString()
+
+            if (email.isEmpty()) {
+                inputemail.error = "Email is required!"
+                inputemail.requestFocus()
+                return@setOnClickListener
+            }
+
+            if (password.isEmpty()) {
+                inputpassword.error = "Password is required!"
+                inputpassword.requestFocus()
+                return@setOnClickListener
+            }
 
 
+            RetrofitClient.instance.loginUser(email, password)
+                .enqueue(object : Callback<LoginResponse> {
+                    override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                        Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                    }
 
+                    override fun onResponse(
+                        call: Call<LoginResponse>,
+                        response: Response<LoginResponse>
+                    ) {
+                        if(response.code().toString() == "200"){
+                            Toast.makeText(applicationContext, response.body()?.fullName, Toast.LENGTH_LONG).show()
+                            sp.edit().putBoolean("logged", true).apply()
+                            sp.edit().putString("full_name", response.body()?.fullName).apply()
+
+                            println(sp.getString("full_name", "null"))
+
+                        }
+                        else {
+                            Toast.makeText(applicationContext, "User and/or password are incorrect!", Toast.LENGTH_LONG).show()
+                        }
+
+
+                    }
+
+                })
+        }
     }
 }
