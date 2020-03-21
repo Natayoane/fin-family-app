@@ -1,69 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout5"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/fundo"
     tools:context=".Login">
 
     <TextView
         android:id="@+id/finfamily"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_marginTop="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:gravity="center_horizontal|top"
         android:text="@string/finfamily"
-        android:textAppearance="@style/finfamily" />
+        android:textAppearance="@style/finfamily"
+        app:layout_constraintBottom_toTopOf="@+id/inputemail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout1"
-        android:layout_width="fill_parent"
+
+    <EditText
+        android:id="@+id/inputemail"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="20dp"
-        >
+        android:background="@drawable/inputemail"
+        android:hint="@string/prompt_email"
+        android:inputType="text"
+        android:paddingLeft="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonlogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/finfamily" />
 
-        <EditText
-            android:id="@+id/inputemail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/inputemail"
-            android:hint="@string/prompt_email"
-            android:inputType="text"
-            android:paddingLeft="10dp" />
+    <EditText
+        android:id="@+id/inputpassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/inputpassword"
+        android:baselineAligned="false"
+        android:hint="@string/prompt_password"
+        android:inputType="textPassword"
+        android:paddingLeft="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputemail" />
 
-        <EditText
-            android:id="@+id/inputpassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/inputpassword"
-            android:baselineAligned="false"
-            android:hint="@string/prompt_password"
-            android:inputType="textPassword"
-            android:paddingLeft="10dp" />
+    <Button
+        android:id="@+id/buttonlogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/buttonlogininicio"
+        android:text="@string/buttonLogin"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
-            android:id="@+id/buttonlogin"
-            android:background="@drawable/buttonlogininicio"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:textStyle="bold"
-            android:text="@string/buttonLogin" />
+    <TextView
+        android:id="@+id/need_help_"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="25dp"
+        android:gravity="right|top"
+        android:text="@string/need_help_"
+        android:textAppearance="@style/need_help_"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonlogin" />
 
-        <TextView
-            android:id="@+id/need_help_"
-            android:gravity="right|top"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/need_help_"
-            android:textAppearance="@style/need_help_" />
-    </LinearLayout>
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -26,5 +26,6 @@
     <string name="cpf">CPF</string>
     <string name="Date">Date of birth</string>
     <string name="Next">Next</string>
+    <string name="Finish">Finish</string>
 
 </resources>

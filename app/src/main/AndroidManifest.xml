@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CreateAccount3"></activity>
+        <activity
+            android:name=".MembersGroup"
+            android:label="Members"
+            android:theme="@style/navbar"></activity>
+        <activity android:name=".CreateAccount3" />
         <activity android:name=".CreateAccount2" />
         <activity
             android:name=".Profile"
@@ -35,6 +39,7 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
