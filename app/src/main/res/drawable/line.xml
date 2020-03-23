@@ -19,13 +19,13 @@
     <path
         android:pathData="M0.5 0.5H422.5H0.5Z"
         android:strokeWidth="1"
-        android:strokeColor="#000000"
+        android:strokeColor="#3B000000"
         />
 
     <path
         android:pathData="M0.5 0.5H422.5H0.5Z"
         android:strokeWidth="1"
-        android:strokeColor="#000000"
+        android:strokeColor="#3B000000"
         />
 
 </vector>
