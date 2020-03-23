@@ -1,32 +1,22 @@
 package com.bandtec.finfamily.api
 
 import okhttp3.OkHttpClient
-import okhttp3.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 object RetrofitClient {
 
-    private const val baseUrl = "http://ec2-54-82-171-69.compute-1.amazonaws.com/fin-family/api/v1/user/"
-    private const val contentType = "application/json"
+    private const val baseUrl = "http://192.168.0.9:8080/api/v1/"
 
-    private val okHttpClient = OkHttpClient.Builder()
-        .addInterceptor { chain ->
-            val original = chain.request()
-
-            val requestBuilder = original.newBuilder()
-                .method(original.method(), original.body())
-
-
-            val request = requestBuilder.build()
-            val response: Response = chain.proceed(chain.request())
-            chain.proceed(request)
-        }.build()
-
+    private val okHttpClient: OkHttpClient = OkHttpClient.Builder()
+        .connectTimeout(5, TimeUnit.MINUTES)
+        .readTimeout(30, TimeUnit.SECONDS)
+        .writeTimeout(15, TimeUnit.SECONDS)
+        .build()
     val instance: Api by lazy {
         val retrofit = Retrofit.Builder()
             .baseUrl(baseUrl)
-//            .addConverterFactory(GsonConverterFactory.create(GsonBuilder().serializeNulls().create()))
             .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpClient)
             .build()

@@ -24,21 +24,21 @@
 
 
     <EditText
-        android:id="@+id/cadastroemail"
+        android:id="@+id/inputcadastroemail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/inputemail"
         android:hint="E-mail for acess"
         android:inputType="text"
         android:paddingLeft="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/cadastropassword"
-        app:layout_constraintEnd_toEndOf="@+id/verificapassword"
-        app:layout_constraintStart_toStartOf="@+id/verificapassword"
+        app:layout_constraintBottom_toTopOf="@+id/inputpassword"
+        app:layout_constraintEnd_toEndOf="@+id/inputverificapassword"
+        app:layout_constraintStart_toStartOf="@+id/inputverificapassword"
         app:layout_constraintTop_toBottomOf="@+id/finfamily"
         app:layout_constraintVertical_bias="0.932" />
 
     <EditText
-        android:id="@+id/verificapassword"
+        android:id="@+id/inputverificapassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
@@ -46,18 +46,18 @@
         android:background="@drawable/inputpassword"
         android:baselineAligned="false"
         android:hint="Confirm password"
-        android:inputType="number"
+        android:inputType="textPassword"
         android:paddingLeft="10dp"
         app:layout_constraintBottom_toTopOf="@+id/buttonnext2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cadastropassword"
+        app:layout_constraintTop_toBottomOf="@+id/inputpassword"
         app:layout_constraintVertical_bias="0.13"
         tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/cadastropassword"
+        android:id="@+id/inputpassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
@@ -65,7 +65,7 @@
         android:background="@drawable/inputpassword"
         android:baselineAligned="false"
         android:hint="Password"
-        android:inputType="number"
+        android:inputType="textPassword"
         android:paddingLeft="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -82,10 +82,10 @@
         android:text="@string/Next"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/cadastropassword"
+        app:layout_constraintEnd_toEndOf="@+id/inputpassword"
         app:layout_constraintHorizontal_bias="0.75"
-        app:layout_constraintStart_toStartOf="@+id/cadastropassword"
-        app:layout_constraintTop_toBottomOf="@+id/cadastropassword"
+        app:layout_constraintStart_toStartOf="@+id/inputpassword"
+        app:layout_constraintTop_toBottomOf="@+id/inputpassword"
         app:layout_constraintVertical_bias="0.559" />
 
     <TextView
