@@ -12,10 +12,10 @@
         android:id="@+id/finfamily"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
         android:gravity="center_horizontal|top"
         android:text="@string/finfamily"
         android:textAppearance="@style/finfamily"
-        app:layout_constraintBottom_toTopOf="@+id/inputemail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,28 +25,29 @@
         android:id="@+id/inputemail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/inputemail"
         android:hint="@string/prompt_email"
         android:inputType="text"
         android:paddingLeft="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonlogin"
+        app:layout_constraintBottom_toTopOf="@+id/inputpassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/finfamily" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/inputpassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:background="@drawable/inputpassword"
         android:baselineAligned="false"
         android:hint="@string/prompt_password"
         android:inputType="textPassword"
         android:paddingLeft="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonlogin"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputemail" />
+        app:layout_constraintTop_toBottomOf="@+id/finfamily" />
 
     <Button
         android:id="@+id/buttonlogin"

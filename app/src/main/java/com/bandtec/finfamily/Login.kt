@@ -6,12 +6,9 @@ import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_login.*
 import android.content.Context
 import android.content.SharedPreferences
-import android.os.Bundle
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import com.bandtec.finfamily.api.RetrofitClient
 import com.bandtec.finfamily.model.LoginResponse
-import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -76,8 +73,7 @@ class Login : AppCompatActivity() {
                     }
 
                 })
+            }
         }
     }
-
-
 }

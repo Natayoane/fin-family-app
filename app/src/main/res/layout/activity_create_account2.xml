@@ -36,7 +36,7 @@
         app:layout_constraintEnd_toEndOf="@+id/inputverificapassword"
         app:layout_constraintStart_toStartOf="@+id/inputverificapassword"
         app:layout_constraintTop_toBottomOf="@+id/finfamily"
-        app:layout_constraintVertical_bias="0.932" />
+        app:layout_constraintVertical_bias="1.0" />
         app:layout_constraintBottom_toTopOf="@+id/cadastropassword"
         app:layout_constraintEnd_toEndOf="@+id/verificapassword"
         app:layout_constraintStart_toStartOf="@+id/verificapassword" />
@@ -45,28 +45,21 @@
         android:id="@+id/inputverificapassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="5dp"
         android:background="@drawable/inputpassword"
         android:baselineAligned="false"
         android:hint="Confirm password"
         android:inputType="textPassword"
         android:paddingLeft="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inputpassword"
-        app:layout_constraintVertical_bias="0.13"
-        app:layout_constraintTop_toBottomOf="@+id/cadastropassword"
         tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/inputpassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
         android:background="@drawable/inputpassword"
         android:baselineAligned="false"
         android:hint="Password"
@@ -75,7 +68,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/buttonnext2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/finfamily" />
 
@@ -90,9 +82,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/inputpassword"
         app:layout_constraintHorizontal_bias="0.75"
-        app:layout_constraintStart_toStartOf="@+id/inputpassword"
-        app:layout_constraintTop_toBottomOf="@+id/inputpassword"
-        app:layout_constraintVertical_bias="0.559" />
+        app:layout_constraintStart_toStartOf="@+id/inputpassword" />
         app:layout_constraintStart_toStartOf="@+id/cadastropassword" />
 
     <TextView
