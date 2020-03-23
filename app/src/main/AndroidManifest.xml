@@ -14,12 +14,11 @@
         <activity
             android:name=".MembersGroup"
             android:label="Members"
-            android:theme="@style/navbar"></activity>
-        <activity android:name=".CreateAccount3" />
-        android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true"
-        >
-        <activity android:name=".CreateAccount3"/>
+            android:theme="@style/navbar"/>
+        <activity
+            android:name=".CreateAccount3"
+          android:theme="@style/AppTheme"
+          android:usesCleartextTraffic="true"/>
 
         <activity android:name=".CreateAccount2" />
 

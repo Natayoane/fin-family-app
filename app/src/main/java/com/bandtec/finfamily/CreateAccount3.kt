@@ -22,67 +22,67 @@ class CreateAccount3 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_account3)
 
-        val spCreate3 : SharedPreferences = getSharedPreferences("spCreate1", Context.MODE_PRIVATE)
-
-
-        buttonnext3.setOnClickListener {
-
-            val fullName = spCreate3.getString("full_name", "")
-            val cpf = spCreate3.getString("cpf", "")
-            val birthday = spCreate3.getString("birthday", "")
-            val email = spCreate3.getString("email", "")
-            val password = spCreate3.getString("password", "")
-            val nickname = inputcadastronick.text.toString()
-            val phoneAreaCode = inputcode.text.toString()
-            val phoneAreaNumber = inputnumber.text.toString()
-
-            if (nickname.isEmpty()) {
-                inputcadastronick.error = "Nickname is required!"
-                inputcadastronick.requestFocus()
-                return@setOnClickListener
-            }
-
-            if (phoneAreaCode.isEmpty()) {
-                inputcode.error = "Area code is required!"
-                inputcode.requestFocus()
-                return@setOnClickListener
-            }
-
-            if (phoneAreaNumber.isEmpty()) {
-                inputnumber.error = "Number is required!"
-                inputnumber.requestFocus()
-                return@setOnClickListener
-            }
-
-            val user = Users(fullName, cpf, birthday, email, password, nickname, phoneAreaCode, phoneAreaNumber)
-
-            RetrofitClient.instance.signupUser(fullName!!, cpf!!, birthday!!, email!!, password!!, nickname, phoneAreaCode, phoneAreaNumber)
-                .enqueue(object : Callback<LoginResponse> {
-                    override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                        Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
-                    }
-
-                    override fun onResponse(
-                        call: Call<LoginResponse>,
-                        response: Response<LoginResponse>
-                    ) {
-                        if(response.code().toString() == "201"){
-                            Toast.makeText(applicationContext, response.body()?.email, Toast.LENGTH_LONG).show()
-//                            sp.edit().putBoolean("logged", true).apply()
-//                            sp.edit().putInt("id", response.body()?.id!!).apply()
-//                            sp.edit().putString("full_name", response.body()?.fullName).apply()
-//                            sp.edit().putString("email", response.body()?.email).apply()
-//                            sp.edit().putString("nickname", response.body()?.nickname).apply()
-
-                        }
-                        else {
-                            Toast.makeText(applicationContext, "ERROR!", Toast.LENGTH_LONG).show()
-                        }
-
-
-                    }
-
-                })
-        }
+//        val spCreate3 : SharedPreferences = getSharedPreferences("spCreate1", Context.MODE_PRIVATE)
+//
+//
+//        buttonnext3.setOnClickListener {
+//
+//            val fullName = spCreate3.getString("full_name", "")
+//            val cpf = spCreate3.getString("cpf", "")
+//            val birthday = spCreate3.getString("birthday", "")
+//            val email = spCreate3.getString("email", "")
+//            val password = spCreate3.getString("password", "")
+//            val nickname = inputcadastronick.text.toString()
+//            val phoneAreaCode = inputcode.text.toString()
+//            val phoneAreaNumber = inputnumber.text.toString()
+//
+//            if (nickname.isEmpty()) {
+//                inputcadastronick.error = "Nickname is required!"
+//                inputcadastronick.requestFocus()
+//                return@setOnClickListener
+//            }
+//
+//            if (phoneAreaCode.isEmpty()) {
+//                inputcode.error = "Area code is required!"
+//                inputcode.requestFocus()
+//                return@setOnClickListener
+//            }
+//
+//            if (phoneAreaNumber.isEmpty()) {
+//                inputnumber.error = "Number is required!"
+//                inputnumber.requestFocus()
+//                return@setOnClickListener
+//            }
+//
+//            val user = Users(fullName, cpf, birthday, email, password, nickname, phoneAreaCode, phoneAreaNumber)
+//
+//            RetrofitClient.instance.signupUser(fullName!!, cpf!!, birthday!!, email!!, password!!, nickname, phoneAreaCode, phoneAreaNumber)
+//                .enqueue(object : Callback<LoginResponse> {
+//                    override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+//                        Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+//                    }
+//
+//                    override fun onResponse(
+//                        call: Call<LoginResponse>,
+//                        response: Response<LoginResponse>
+//                    ) {
+//                        if(response.code().toString() == "201"){
+//                            Toast.makeText(applicationContext, response.body()?.email, Toast.LENGTH_LONG).show()
+////                            sp.edit().putBoolean("logged", true).apply()
+////                            sp.edit().putInt("id", response.body()?.id!!).apply()
+////                            sp.edit().putString("full_name", response.body()?.fullName).apply()
+////                            sp.edit().putString("email", response.body()?.email).apply()
+////                            sp.edit().putString("nickname", response.body()?.nickname).apply()
+//
+//                        }
+//                        else {
+//                            Toast.makeText(applicationContext, "ERROR!", Toast.LENGTH_LONG).show()
+//                        }
+//
+//
+//                    }
+//
+//                })
+        //}
     }
 }

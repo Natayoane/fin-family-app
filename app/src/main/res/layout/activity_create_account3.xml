@@ -2,11 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/linearLayout5"
+    android:id="@+id/linearLayout4"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fundo"
     tools:context=".CreateAccount3">
+
+
     <TextView
         android:id="@+id/finfamily"
         android:layout_width="0dp"
@@ -15,15 +17,70 @@
         android:gravity="center_horizontal|top"
         android:text="Create Account"
         android:textAppearance="@style/finfamily"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+    <EditText
+        android:id="@+id/cadastronick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/inputemail"
+        android:hint="Nickname"
+        android:inputType="text"
+        android:paddingLeft="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/cadastronumber"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/cadastronumber"
+        android:layout_width="244dp"
+        android:layout_height="44dp"
+        android:background="@drawable/inputnumber"
+        android:baselineAligned="false"
+        android:hint="Number"
+        android:inputType="number"
+        android:paddingLeft="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cadastrocdg"
+        app:layout_constraintTop_toBottomOf="@+id/finfamily" />
+
+    <EditText
+        android:id="@+id/cadastrocdg"
+        android:layout_width="90dp"
+        android:layout_height="47dp"
+        android:background="@drawable/inputcdg"
+        android:baselineAligned="false"
+        android:hint="+55"
+        android:inputType="number"
+        android:paddingLeft="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/cadastronumber"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/finfamily" />
+
+    <Button
+        android:id="@+id/buttonnext2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/buttoncadastro"
+        android:text="@string/Next"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/need_help_"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_marginEnd="25dp"
         android:gravity="right|top"
         android:text="@string/need_help_"
@@ -32,15 +89,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonnext2" />
 
-    <EditText
-        android:id="@+id/inputcadastronick"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/inputemail"
-        android:hint="Nickname"
-        android:inputType="text"
-        android:paddingLeft="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/inputnumber"
     <TextView
         android:id="@+id/textAccessInformation"
         android:layout_width="wrap_content"
@@ -52,96 +100,6 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/finfamily" />
-
-    <EditText
-
-        android:id="@+id/inputnumber"
-        android:layout_width="244dp"
-        android:layout_height="44dp"
-        android:background="@drawable/inputnumber"
-        android:baselineAligned="false"
-        android:hint="Number"
-        android:id="@+id/editText"
-        android:layout_width="wrap_content"
-        android:layout_height="46dp"
-        android:background="@drawable/inputemail"
-        android:ems="10"
-        android:hint="(__) _____-____"
-        android:inputType="number"
-        android:paddingLeft="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonnext2"
-        app:layout_constraintEnd_toEndOf="parent"
-
-        app:layout_constraintStart_toEndOf="@+id/inputcode"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/inputcode"
-        android:layout_width="90dp"
-        android:layout_height="47dp"
-        android:background="@drawable/inputcdg"
-        android:baselineAligned="false"
-        android:hint="+55"
-        android:inputType="number"
-        android:paddingLeft="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/inputnumber"
-
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textAccessInformation"
-        app:layout_constraintVertical_bias="0.379" />
-
-    <EditText
-        android:id="@+id/editText4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/inputemail"
-        android:ems="10"
-        android:hint="Nickname"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
-
-    <Button
-        android:id="@+id/buttonnext3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
-        android:background="@drawable/buttoncadastro"
-        android:text="@string/Finish"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputnumber"
-        app:layout_constraintVertical_bias="0.55" />
-
-    <TextView
-        android:id="@+id/need_help_"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="25dp"
-        android:gravity="right|top"
-        android:text="@string/need_help_"
-        android:textAppearance="@style/need_help_"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonnext2" />
-
-    <TextView
-        android:id="@+id/textAccessInformation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Access Information"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/inputcadastronick"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/finfamily"
-        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
