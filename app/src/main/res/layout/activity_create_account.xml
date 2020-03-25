@@ -32,6 +32,8 @@
         android:hint="@string/name"
         android:inputType="text"
         android:paddingLeft="10dp"
+        android:maxLength="80"
+        android:digits="abcdefghijklmnopqrstuvwxyzáéíóúâêôàçñãõ ABCDEFGHIJKLMNOPQRSTUVWXYZÁÉÍÓÚÂÊÔÀÜÇÑÃÕ"
         app:layout_constraintBottom_toTopOf="@+id/inputcpf"
         app:layout_constraintEnd_toEndOf="@+id/inputdatebirth"
         app:layout_constraintStart_toStartOf="@+id/inputdatebirth" />

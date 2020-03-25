@@ -18,11 +18,10 @@ class Login : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        val intent = Intent(this, Group::class.java)
 
         buttonlogin.setOnClickListener {
-            val intent = Intent(this, Group::class.java)
             // start your next activity
-            startActivity(intent)
         inputemail.requestFocus()
 
         val sp : SharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
@@ -58,11 +57,12 @@ class Login : AppCompatActivity() {
                         if(response.code().toString() == "200"){
 //                            Toast.makeText(applicationContext, response.body()?.fullName, Toast.LENGTH_LONG).show()
                             Toast.makeText(applicationContext, response.code().toString(), Toast.LENGTH_LONG).show()
-//                            sp.edit().putBoolean("logged", true).apply()
-//                            sp.edit().putInt("id", response.body()?.id!!).apply()
-//                            sp.edit().putString("full_name", response.body()?.fullName).apply()
-//                            sp.edit().putString("email", response.body()?.email).apply()
-//                            sp.edit().putString("nickname", response.body()?.nickname).apply()
+                            startActivity(intent)
+                            sp.edit().putBoolean("logged", true).apply()
+                            sp.edit().putInt("id", response.body()?.id!!).apply()
+                            sp.edit().putString("full_name", response.body()?.fullName).apply()
+                            sp.edit().putString("email", response.body()?.email).apply()
+                            sp.edit().putString("nickname", response.body()?.nickname).apply()
 
                         }
                         else {

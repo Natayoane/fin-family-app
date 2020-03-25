@@ -9,6 +9,7 @@ import com.bandtec.finfamily.api.RetrofitClient
 import com.bandtec.finfamily.model.LoginResponse
 import com.bandtec.finfamily.model.SignupResponse
 import com.bandtec.finfamily.model.Users
+import com.bandtec.finfamily.utils.MaskEditUtil
 import kotlinx.android.synthetic.main.activity_create_account3.*
 import org.json.JSONObject
 import retrofit2.Call
@@ -23,6 +24,9 @@ class CreateAccount3 : AppCompatActivity() {
         setContentView(R.layout.activity_create_account3)
 
         val spCreate3 : SharedPreferences = getSharedPreferences("spCreate1", Context.MODE_PRIVATE)
+
+        inputcode.addTextChangedListener(MaskEditUtil.mask(inputcode, MaskEditUtil.FORMAT_FONE_AREA_CODE))
+        inputnumber.addTextChangedListener(MaskEditUtil.mask(inputnumber, MaskEditUtil.FORMAT_FONE_AREA_NUMBER))
 
 
         buttonnext3.setOnClickListener {
