@@ -77,13 +77,12 @@ class Login : AppCompatActivity() {
                         if(response.code().toString() == "200"){
 //                            Toast.makeText(applicationContext, response.body()?.fullName, Toast.LENGTH_LONG).show()
                             Toast.makeText(applicationContext, response.code().toString(), Toast.LENGTH_LONG).show()
-                            startActivity(intent)
                             sp.edit().putBoolean("logged", true).apply()
                             sp.edit().putInt("id", response.body()?.id!!).apply()
                             sp.edit().putString("full_name", response.body()?.fullName).apply()
                             sp.edit().putString("email", response.body()?.email).apply()
                             sp.edit().putString("nickname", response.body()?.nickname).apply()
-
+                            startActivity(intent)
                         }
                         else {
                             Toast.makeText(applicationContext, "User and/or password are incorrect!", Toast.LENGTH_LONG).show()

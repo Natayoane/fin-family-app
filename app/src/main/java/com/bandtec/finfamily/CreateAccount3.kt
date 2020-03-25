@@ -37,8 +37,8 @@ class CreateAccount3 : AppCompatActivity() {
             val email = spCreate3.getString("email", "")
             val password = spCreate3.getString("password", "")
             val nickname = inputcadastronick.text.toString()
-            val phoneAreaCode = inputcode.text.toString()
-            val phoneAreaNumber = inputnumber.text.toString()
+            val phoneAreaCode = MaskEditUtil.unmask(inputcode.text.toString())
+            val phoneAreaNumber = MaskEditUtil.unmask(inputnumber.text.toString())
 
             if (nickname.isEmpty()) {
                 inputcadastronick.error = "Nickname is required!"
