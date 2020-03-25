@@ -16,8 +16,9 @@ object MaskEditUtil {
     private const val EMAIL_ADDRESS_PATTERN = "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
             "\\@" + "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" + "(" + "\\." +
             "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" + ")+"
-    private const val FULL_NAME_PATTERN = "(^[A-Za-z]{3,16})([ ]{0,1})([A-Za-z]{3,16})?([ ]{0,1})?" +
-            "([A-Za-z]{3,16})?([ ]{0,1})?([A-Za-z]{3,16})"
+    private const val FULL_NAME_PATTERN = "(^[\\wÀ-ú]{3,16})([ ]{0,1})([\\wÀ-ú]{3,16})?([ ]{0,1})?" +
+            "([\\wÀ-ú]{3,16})?([ ]{0,1})?([\\wÀ-ú]{3,16})([\\wÀ-ú]{3,16})?([ ]{0,1})?([\\wÀ-ú]{3,16})" +
+            "([\\wÀ-ú]{3,16})?([ ]{0,1})?([\\wÀ-ú]{3,16})([\\wÀ-ú]{3,16})?([ ]{0,1})?([\\wÀ-ú]{3,16})"
 
     fun validatePassword(password : String) : Boolean{
         val pattern : Pattern = Pattern.compile(PASSWORD_PATTERN)
