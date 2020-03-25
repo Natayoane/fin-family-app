@@ -9,6 +9,7 @@ import android.content.SharedPreferences
 import android.widget.Toast
 import com.bandtec.finfamily.api.RetrofitClient
 import com.bandtec.finfamily.model.LoginResponse
+import com.bandtec.finfamily.utils.MaskEditUtil
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -35,12 +36,31 @@ class Login : AppCompatActivity() {
                 inputemail.error = "Email is required!"
                 inputemail.requestFocus()
                 return@setOnClickListener
+            }else {
+                if (!MaskEditUtil.validateEmail(email)) {
+                    inputemail.error = "This email is not a valid email!"
+                    inputemail.requestFocus()
+                    return@setOnClickListener
+                }
             }
 
             if (password.isEmpty()) {
                 inputpassword.error = "Password is required!"
                 inputpassword.requestFocus()
                 return@setOnClickListener
+            }else{
+                if(password.length < 8){
+                    inputpassword.error = "A senha deve conter entre 8 e 60 caracteres contendo ao " +
+                            "menos uma letra maiúscula, um número e um caracter especial!"
+                    inputpassword.requestFocus()
+                    return@setOnClickListener
+                }
+                if(!MaskEditUtil.validatePassword(password)){
+                    inputpassword.error = "A senha deve conter entre 8 e 60 caracteres contendo ao " +
+                            "menos uma letra maiúscula, um número e um caracter especial!"
+                    inputpassword.requestFocus()
+                    return@setOnClickListener
+                }
             }
 
 
