@@ -9,6 +9,7 @@ import com.bandtec.finfamily.api.RetrofitClient
 import com.bandtec.finfamily.model.LoginResponse
 import com.bandtec.finfamily.model.SignupResponse
 import com.bandtec.finfamily.model.Users
+import com.bandtec.finfamily.utils.MaskEditUtil
 import kotlinx.android.synthetic.main.activity_create_account3.*
 import org.json.JSONObject
 import retrofit2.Call
@@ -24,6 +25,9 @@ class CreateAccount3 : AppCompatActivity() {
 
         val spCreate3 : SharedPreferences = getSharedPreferences("spCreate1", Context.MODE_PRIVATE)
 
+        inputcode.addTextChangedListener(MaskEditUtil.mask(inputcode, MaskEditUtil.FORMAT_FONE_AREA_CODE))
+        inputnumber.addTextChangedListener(MaskEditUtil.mask(inputnumber, MaskEditUtil.FORMAT_FONE_AREA_NUMBER))
+
 
         buttonnext3.setOnClickListener {
 
@@ -33,8 +37,8 @@ class CreateAccount3 : AppCompatActivity() {
             val email = spCreate3.getString("email", "")
             val password = spCreate3.getString("password", "")
             val nickname = inputcadastronick.text.toString()
-            val phoneAreaCode = inputcode.text.toString()
-            val phoneAreaNumber = inputnumber.text.toString()
+            val phoneAreaCode = MaskEditUtil.unmask(inputcode.text.toString())
+            val phoneAreaNumber = MaskEditUtil.unmask(inputnumber.text.toString())
 
             if (nickname.isEmpty()) {
                 inputcadastronick.error = "Nickname is required!"
