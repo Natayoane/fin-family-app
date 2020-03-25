@@ -31,12 +31,12 @@ class CreateAccount : AppCompatActivity() {
             val birthday = inputdatebirth.text.toString()
 
             if (fullName.isEmpty()) {
-                inputname.error = "Full Name is required!"
+                inputname.error = "Nome Completo é um campo obrigatório!"
                 inputname.requestFocus()
                 return@setOnClickListener
             }else{
                 if(!MaskEditUtil.validateFullName(fullName)){
-                    inputname.error = "Invalid Full Name!"
+                    inputname.error = "Nome Completo é inválido!"
                     inputname.requestFocus()
                     return@setOnClickListener
                 }
@@ -44,7 +44,7 @@ class CreateAccount : AppCompatActivity() {
 
             println(cpf)
             if (cpf.isEmpty()) {
-                inputcpf.error = "CPF is required!"
+                inputcpf.error = "CPF é um campo obrigatório!"
                 inputcpf.requestFocus()
                 return@setOnClickListener
             }else{
@@ -56,7 +56,7 @@ class CreateAccount : AppCompatActivity() {
             }
 
             if (birthday.isEmpty()) {
-                inputdatebirth.error = "Birthday is required!"
+                inputdatebirth.error = "Data de nascimento é um campo obrigatório!"
                 inputdatebirth.requestFocus()
                 return@setOnClickListener
             }else{
