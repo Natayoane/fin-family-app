@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,18 +13,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
+        <activity android:name=".ProfileEdit"></activity>
         <activity
             android:name=".MembersGroup"
             android:label="Members"
-            android:theme="@style/navbar"/>
+            android:theme="@style/navbar" />
         <activity
             android:name=".CreateAccount3"
-          android:theme="@style/AppTheme"
-          android:usesCleartextTraffic="true"/>
-
+            android:theme="@style/AppTheme"
+            android:usesCleartextTraffic="true" />
         <activity android:name=".CreateAccount2" />
-
         <activity
             android:name=".Profile"
             android:label="Profile"
@@ -45,7 +44,6 @@
         <activity
             android:name=".Login"
             android:exported="true" />
-
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
