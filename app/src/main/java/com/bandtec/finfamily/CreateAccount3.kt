@@ -1,6 +1,7 @@
 package com.bandtec.finfamily
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Toast
@@ -24,6 +25,7 @@ class CreateAccount3 : AppCompatActivity() {
         setContentView(R.layout.activity_create_account3)
 
         val spCreate3 : SharedPreferences = getSharedPreferences("spCreate1", Context.MODE_PRIVATE)
+        val intent = Intent(this, MainActivity::class.java)
 
         inputcode.addTextChangedListener(MaskEditUtil.mask(inputcode, MaskEditUtil.FORMAT_FONE_AREA_CODE))
         inputnumber.addTextChangedListener(MaskEditUtil.mask(inputnumber, MaskEditUtil.FORMAT_FONE_AREA_NUMBER))
@@ -71,16 +73,16 @@ class CreateAccount3 : AppCompatActivity() {
                         response: Response<LoginResponse>
                     ) {
                         if(response.code().toString() == "201"){
-                            Toast.makeText(applicationContext, response.body()?.email, Toast.LENGTH_LONG).show()
+                            Toast.makeText(applicationContext, "Sucesso!", Toast.LENGTH_LONG).show()
 //                            sp.edit().putBoolean("logged", true).apply()
 //                            sp.edit().putInt("id", response.body()?.id!!).apply()
 //                            sp.edit().putString("full_name", response.body()?.fullName).apply()
 //                            sp.edit().putString("email", response.body()?.email).apply()
 //                            sp.edit().putString("nickname", response.body()?.nickname).apply()
-
+                            startActivity(intent)
                         }
                         else {
-                            Toast.makeText(applicationContext, "ERROR!", Toast.LENGTH_LONG).show()
+                            Toast.makeText(applicationContext, "Internal Server Error!", Toast.LENGTH_LONG).show()
                         }
 
 

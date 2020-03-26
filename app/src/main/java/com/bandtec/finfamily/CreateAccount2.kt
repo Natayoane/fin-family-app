@@ -25,19 +25,19 @@ class CreateAccount2 : AppCompatActivity() {
             val passwordConfirm = inputverificapassword.text.toString()
 
             if (email.isEmpty()) {
-                inputcadastroemail.error = "Email is required!"
+                inputcadastroemail.error = "Email é um campo obrigatório!"
                 inputcadastroemail.requestFocus()
                 return@setOnClickListener
             }else {
                 if (!MaskEditUtil.validateEmail(email)) {
-                    inputcadastroemail.error = "This email is not a valid email!"
+                    inputcadastroemail.error = "Email inválido!"
                     inputcadastroemail.requestFocus()
                     return@setOnClickListener
                 }
             }
 
             if (password.isEmpty()) {
-                inputpassword.error = "Password code is required!"
+                inputpassword.error = "Senha é um campo obrigatório!"
                 inputpassword.requestFocus()
                 return@setOnClickListener
             }else{
@@ -56,13 +56,13 @@ class CreateAccount2 : AppCompatActivity() {
             }
 
             if (passwordConfirm.isEmpty()) {
-                inputverificapassword.error = "Password confirmation is required!"
+                inputverificapassword.error = "Confirmação de Senha é um campo obrigatório!"
                 inputverificapassword.requestFocus()
                 return@setOnClickListener
             }else {
                 if (password != passwordConfirm) {
-                    inputpassword.error = "Passwords must be the same!"
-                    inputverificapassword.error = "Passwords must be the same!"
+                    inputpassword.error = "As senhas devem ser iguais!"
+                    inputverificapassword.error = "As senhas devem ser iguais!"
                     return@setOnClickListener
 
                 }

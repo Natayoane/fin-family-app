@@ -33,19 +33,19 @@ class Login : AppCompatActivity() {
             val password = inputpassword.text.toString()
 
             if (email.isEmpty()) {
-                inputemail.error = "Email is required!"
+                inputemail.error = "Email é um campo obrigatório!"
                 inputemail.requestFocus()
                 return@setOnClickListener
             }else {
                 if (!MaskEditUtil.validateEmail(email)) {
-                    inputemail.error = "This email is not a valid email!"
+                    inputemail.error = "Email inválido!"
                     inputemail.requestFocus()
                     return@setOnClickListener
                 }
             }
 
             if (password.isEmpty()) {
-                inputpassword.error = "Password is required!"
+                inputpassword.error = "Senha é um campo obrigatório!"
                 inputpassword.requestFocus()
                 return@setOnClickListener
             }else{

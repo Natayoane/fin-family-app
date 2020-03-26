@@ -1,5 +1,6 @@
 package com.bandtec.finfamily
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -11,6 +12,7 @@ import java.text.SimpleDateFormat
 
 class CreateAccount : AppCompatActivity() {
 
+    @SuppressLint("SimpleDateFormat")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_account)
@@ -31,20 +33,19 @@ class CreateAccount : AppCompatActivity() {
             val birthday = inputdatebirth.text.toString()
 
             if (fullName.isEmpty()) {
-                inputname.error = "Full Name is required!"
+                inputname.error = "Nome Completo é um campo obrigatório!"
                 inputname.requestFocus()
                 return@setOnClickListener
             }else{
                 if(!MaskEditUtil.validateFullName(fullName)){
-                    inputname.error = "Invalid Full Name!"
+                    inputname.error = "Nome Completo é inválido!"
                     inputname.requestFocus()
                     return@setOnClickListener
                 }
             }
 
-            println(cpf)
             if (cpf.isEmpty()) {
-                inputcpf.error = "CPF is required!"
+                inputcpf.error = "CPF é um campo obrigatório!"
                 inputcpf.requestFocus()
                 return@setOnClickListener
             }else{
@@ -56,12 +57,10 @@ class CreateAccount : AppCompatActivity() {
             }
 
             if (birthday.isEmpty()) {
-                inputdatebirth.error = "Birthday is required!"
+                inputdatebirth.error = "Data de nascimento é um campo obrigatório!"
                 inputdatebirth.requestFocus()
                 return@setOnClickListener
             }else{
-                println(birthday)
-
                 if(!BirthdayValidator.isValid(birthday)){
                     inputdatebirth.error = "Data de nascimento inválida!"
                     inputdatebirth.requestFocus()
