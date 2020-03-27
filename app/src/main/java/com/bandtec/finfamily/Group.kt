@@ -6,6 +6,7 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_group.*
+import kotlinx.android.synthetic.main.activity_panel.*
 
 class Group : AppCompatActivity() {
 
@@ -15,9 +16,9 @@ class Group : AppCompatActivity() {
 
         val sp : SharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
 
-        imageView8.setOnClickListener {
-            val intent = Intent(this, Panel::class.java)
-            // start your next activity
+        individual.setOnClickListener {
+           val intent = Intent(this, Panel::class.java)
+            //start your next activity
             startActivity(intent)
         }
     }

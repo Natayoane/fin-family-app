@@ -35,7 +35,7 @@ class Panel : AppCompatActivity() {
             startActivity(intent)
         }
 
-        imageView3.setOnClickListener {
+        bnthome.setOnClickListener {
             val intent = Intent(this, Group::class.java)
             // start your next activity
             startActivity(intent)
