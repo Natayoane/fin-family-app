@@ -34,5 +34,11 @@ class Panel : AppCompatActivity() {
             // start your next activity
             startActivity(intent)
         }
+
+        imageView3.setOnClickListener {
+            val intent = Intent(this, Group::class.java)
+            // start your next activity
+            startActivity(intent)
+        }
     }
 }
