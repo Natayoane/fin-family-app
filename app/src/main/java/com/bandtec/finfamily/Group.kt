@@ -6,9 +6,8 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_group.*
-import kotlinx.android.synthetic.main.activity_panel.*
 
-class Group : AppCompatActivity() {
+public class Group : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,6 +17,12 @@ class Group : AppCompatActivity() {
 
         individual.setOnClickListener {
            val intent = Intent(this, Panel::class.java)
+            //start your next activity
+            startActivity(intent)
+        }
+
+        btnGroup.setOnClickListener {
+            val intent = Intent(this, PopNewGroup::class.java)
             //start your next activity
             startActivity(intent)
         }

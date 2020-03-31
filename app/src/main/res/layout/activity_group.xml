@@ -35,7 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:drawableTop="@drawable/ic_image_black_24dp"
+                android:drawableTop="@drawable/ic_image_50dp"
                 android:text="My Finances"
                 android:textAlignment="center"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -48,7 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:drawableTop="@drawable/ic_image_black_24dp"
+                android:drawableTop="@drawable/ic_image_50dp"
                 android:text="My Finances"
                 android:textAlignment="center"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -65,21 +65,21 @@
         android:id="@+id/menulayout"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
+        android:background="@drawable/fundo2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@drawable/fundo2"
         app:layout_constraintTop_toTopOf="@+id/relativeLayout"
         app:layout_constraintVertical_bias="1.0"></androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/btnGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/menulayout"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/menulayout"
         app:srcCompat="@drawable/ic_add" />
 
 

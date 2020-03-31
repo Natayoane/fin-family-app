@@ -96,7 +96,6 @@
     </ScrollView>
 
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/menulayout"
         android:layout_width="wrap_content"
@@ -111,13 +110,13 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/btnGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/menulayout"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/menulayout"
         app:srcCompat="@drawable/ic_add" />
 
     <Button
