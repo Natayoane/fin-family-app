@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_group.*
 
-class Group : AppCompatActivity() {
+public class Group : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -15,9 +15,15 @@ class Group : AppCompatActivity() {
 
         val sp : SharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
 
-        imageView8.setOnClickListener {
-            val intent = Intent(this, Panel::class.java)
-            // start your next activity
+        individual.setOnClickListener {
+           val intent = Intent(this, Panel::class.java)
+            //start your next activity
+            startActivity(intent)
+        }
+
+        btnGroup.setOnClickListener {
+            val intent = Intent(this, PopNewGroup::class.java)
+            //start your next activity
             startActivity(intent)
         }
     }
