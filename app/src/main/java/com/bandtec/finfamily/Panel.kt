@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_panel.*
+import kotlinx.android.synthetic.main.activity_pop_new_invoice.*
 
 class Panel : AppCompatActivity() {
 
@@ -34,5 +35,18 @@ class Panel : AppCompatActivity() {
             // start your next activity
             startActivity(intent)
         }
+
+        bnthome.setOnClickListener {
+            val intent = Intent(this, Group::class.java)
+            // start your next activity
+            startActivity(intent)
+        }
+
+        btnGroup.setOnClickListener {
+            val intent = Intent(this, PopNewInvoice::class.java)
+            // start your next activity
+            startActivity(intent)
+        }
+
     }
 }

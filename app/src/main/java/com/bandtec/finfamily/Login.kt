@@ -9,6 +9,7 @@ import android.content.SharedPreferences
 import android.widget.Toast
 import com.bandtec.finfamily.api.RetrofitClient
 import com.bandtec.finfamily.model.LoginResponse
+import com.bandtec.finfamily.utils.MaskEditUtil
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -18,11 +19,10 @@ class Login : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        val intent = Intent(this, Group::class.java)
 
         buttonlogin.setOnClickListener {
-            val intent = Intent(this, Group::class.java)
             // start your next activity
-            startActivity(intent)
         inputemail.requestFocus()
 
         val sp : SharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
@@ -33,15 +33,34 @@ class Login : AppCompatActivity() {
             val password = inputpassword.text.toString()
 
             if (email.isEmpty()) {
-                inputemail.error = "Email is required!"
+                inputemail.error = "Email é um campo obrigatório!"
                 inputemail.requestFocus()
                 return@setOnClickListener
+            }else {
+                if (!MaskEditUtil.validateEmail(email)) {
+                    inputemail.error = "Email inválido!"
+                    inputemail.requestFocus()
+                    return@setOnClickListener
+                }
             }
 
             if (password.isEmpty()) {
-                inputpassword.error = "Password is required!"
+                inputpassword.error = "Senha é um campo obrigatório!"
                 inputpassword.requestFocus()
                 return@setOnClickListener
+            }else{
+                if(password.length < 8){
+                    inputpassword.error = "A senha deve conter entre 8 e 60 caracteres contendo ao " +
+                            "menos uma letra maiúscula, um número e um caracter especial!"
+                    inputpassword.requestFocus()
+                    return@setOnClickListener
+                }
+                if(!MaskEditUtil.validatePassword(password)){
+                    inputpassword.error = "A senha deve conter entre 8 e 60 caracteres contendo ao " +
+                            "menos uma letra maiúscula, um número e um caracter especial!"
+                    inputpassword.requestFocus()
+                    return@setOnClickListener
+                }
             }
 
 
@@ -58,12 +77,12 @@ class Login : AppCompatActivity() {
                         if(response.code().toString() == "200"){
 //                            Toast.makeText(applicationContext, response.body()?.fullName, Toast.LENGTH_LONG).show()
                             Toast.makeText(applicationContext, response.code().toString(), Toast.LENGTH_LONG).show()
-//                            sp.edit().putBoolean("logged", true).apply()
-//                            sp.edit().putInt("id", response.body()?.id!!).apply()
-//                            sp.edit().putString("full_name", response.body()?.fullName).apply()
-//                            sp.edit().putString("email", response.body()?.email).apply()
-//                            sp.edit().putString("nickname", response.body()?.nickname).apply()
-
+                            sp.edit().putBoolean("logged", true).apply()
+                            sp.edit().putInt("id", response.body()?.id!!).apply()
+                            sp.edit().putString("full_name", response.body()?.fullName).apply()
+                            sp.edit().putString("email", response.body()?.email).apply()
+                            sp.edit().putString("nickname", response.body()?.nickname).apply()
+                            startActivity(intent)
                         }
                         else {
                             Toast.makeText(applicationContext, "User and/or password are incorrect!", Toast.LENGTH_LONG).show()

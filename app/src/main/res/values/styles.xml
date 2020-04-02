@@ -9,6 +9,14 @@
 
     </style>
 
+    <style name="MaterialDesignDark" parent="Theme.MaterialComponents.DayNight">
+        <!-- ... -->
+    </style>
+
+    <style name="MaterialDesignlight" parent="Theme.MaterialComponents.Light">
+        <!-- ... -->
+    </style>
+
     <style name="navbar" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorAccent</item>
