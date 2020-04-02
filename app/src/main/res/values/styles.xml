@@ -9,7 +9,11 @@
 
     </style>
 
-    <style name="Theme.MyApp" parent="Theme.MaterialComponents.DayNight">
+    <style name="MaterialDesignDark" parent="Theme.MaterialComponents.DayNight">
+        <!-- ... -->
+    </style>
+
+    <style name="MaterialDesignlight" parent="Theme.MaterialComponents.Light">
         <!-- ... -->
     </style>
 

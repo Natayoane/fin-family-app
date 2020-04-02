@@ -26,10 +26,6 @@
             android:theme="@style/AppTheme"
             android:usesCleartextTraffic="true" />
 
-        <activity
-            android:name=".LoginMaterialTest"
-            android:theme="@style/Theme.MyApp"
-            android:usesCleartextTraffic="true" />
 
         <activity android:name=".CreateAccount2" />
         <activity
