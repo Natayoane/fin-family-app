@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".PopNewInvoice"></activity>
+        <activity android:name=".PopNewInvoice" />
         <activity android:name=".PopAddNewMember" />
         <activity android:name=".PopNewGroup" />
         <activity android:name=".ProfileEdit" />
@@ -25,6 +25,12 @@
             android:name=".CreateAccount3"
             android:theme="@style/AppTheme"
             android:usesCleartextTraffic="true" />
+
+        <activity
+            android:name=".LoginMaterialTest"
+            android:theme="@style/Theme.MyApp"
+            android:usesCleartextTraffic="true" />
+
         <activity android:name=".CreateAccount2" />
         <activity
             android:name=".Profile"
