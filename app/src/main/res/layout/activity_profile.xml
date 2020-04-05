@@ -8,7 +8,7 @@
 
     <TextView
         android:id="@+id/textView9"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/fundo2"
         android:drawableEnd="@drawable/ic_settings_black_24dp"
@@ -90,7 +90,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="50dp"
-        android:background="@drawable/buttonlogoff"
+        android:background="@drawable/buttonlogininicio"
         android:text="Go out"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"

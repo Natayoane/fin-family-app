@@ -13,9 +13,10 @@ class PopNewGroup : AppCompatActivity() {
         setContentView(R.layout.pop_activity_new_group);
 
         btnClose.setOnClickListener {
-            val intent = Intent(this, Group::class.java)
+            val intent = Intent(this, PopChooseGroupAction::class.java)
             //start your next activity
             startActivity(intent)
+            finish()
         }
     }
 }

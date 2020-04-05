@@ -4,13 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="350dp"
     android:layout_height="wrap_content"
-    tools:context=".PopNewGroup"
+    tools:context=".PopNewEntry"
     android:orientation="vertical"
     android:background="#FFFFFF"
     android:elevation="20dp"
-    android:layout_gravity="center"
-
-    >
+    android:layout_gravity="center">
 
     <ImageView
         android:id="@+id/btnClose"
@@ -26,51 +24,52 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:text="New Group"
+        android:text="New entry"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="bold" />
 
+
     <EditText
         android:id="@+id/inputNameGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name" />
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:text="R$ Insert value" />
 
-    <EditText
-        android:id="@+id/cdgGroup"
+    <Spinner
+        android:id="@+id/spinner1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="#CreateYourCode" />
+        android:layout_marginBottom="10dp"
+        android:prompt="@string/country_prompt"
+        android:entries="@array/entry"
+        android:scrollbarSize="4dp" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="match_parent"
+    <CheckBox
+        android:id="@+id/checkFixed"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Fixed"
+        android:layout_gravity="start"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
-        android:drawableStart="@drawable/ic_image_black_24dp"
-        android:drawablePadding="10dp"
-        android:text="upload image" />
+        />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/btnSaveMembers"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:src="@drawable/ic_check_black_24dp" />
 
 
