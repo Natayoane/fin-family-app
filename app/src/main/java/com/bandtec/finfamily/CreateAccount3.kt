@@ -7,12 +7,9 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bandtec.finfamily.api.RetrofitClient
-import com.bandtec.finfamily.model.LoginResponse
-import com.bandtec.finfamily.model.SignupResponse
-import com.bandtec.finfamily.model.Users
+import com.bandtec.finfamily.model.UserResponse
 import com.bandtec.finfamily.utils.MaskEditUtil
 import kotlinx.android.synthetic.main.activity_create_account3.*
-import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -60,17 +57,15 @@ class CreateAccount3 : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            val user = Users(fullName, cpf, birthday, email, password, nickname, phoneAreaCode, phoneAreaNumber)
-
             RetrofitClient.instance.signupUser(fullName!!, cpf!!, birthday!!, email!!, password!!, nickname, phoneAreaCode, phoneAreaNumber)
-                .enqueue(object : Callback<LoginResponse> {
-                    override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                .enqueue(object : Callback<UserResponse> {
+                    override fun onFailure(call: Call<UserResponse>, t: Throwable) {
                         Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
                     }
 
                     override fun onResponse(
-                        call: Call<LoginResponse>,
-                        response: Response<LoginResponse>
+                        call: Call<UserResponse>,
+                        response: Response<UserResponse>
                     ) {
                         if(response.code().toString() == "201"){
                             Toast.makeText(applicationContext, "Sucesso!", Toast.LENGTH_LONG).show()

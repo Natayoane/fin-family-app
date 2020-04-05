@@ -28,7 +28,7 @@
         app:srcCompat="@drawable/ic_face_black_80dp" />
 
     <EditText
-        android:id="@+id/editName"
+        android:id="@+id/etName"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_marginStart="10dp"
@@ -41,7 +41,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView28" />
 
     <EditText
-        android:id="@+id/editNickname"
+        android:id="@+id/etNickname"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_marginStart="10dp"
@@ -51,10 +51,10 @@
         android:inputType="textPersonName"
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/imageView14"
-        app:layout_constraintTop_toBottomOf="@+id/editName" />
+        app:layout_constraintTop_toBottomOf="@+id/etName" />
 
     <EditText
-        android:id="@+id/editEmail"
+        android:id="@+id/etEmail"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginStart="20dp"
@@ -69,7 +69,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView14" />
 
     <EditText
-        android:id="@+id/editPassword"
+        android:id="@+id/etNewPassword"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginStart="20dp"
@@ -81,37 +81,37 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText6" />
+        app:layout_constraintTop_toBottomOf="@+id/etBasePassword" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/etPasswordConfirm"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="20dp"
         android:ems="10"
-        android:hint="Confirm password"
+        android:hint="Confirm new password"
         android:inputType="textPassword"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/etNewPassword" />
 
     <EditText
-        android:id="@+id/editText6"
+        android:id="@+id/etBasePassword"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="20dp"
         android:ems="10"
-        android:hint="Your current password"
+        android:hint="*******"
         android:inputType="textPassword"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/etEmail" />
 
     <Button
         android:id="@+id/btnSaveProfile"
@@ -125,7 +125,8 @@
         android:textColorLink="#00FFFFFF"
         app:layout_constraintBottom_toBottomOf="@+id/textView9"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView9" />
+        app:layout_constraintTop_toTopOf="@+id/textView9"
+        tools:ignore="UnknownIdInLayout" />
 
     <TextView
         android:id="@+id/textView29"
