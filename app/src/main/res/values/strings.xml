@@ -32,15 +32,28 @@
 
     <string name="country_prompt">Choose a category</string>
 
-    <string-array name="country_arrays">
-        <item>Banco</item>
-        <item>Mercado</item>
-        <item>Escola</item>
-        <item>Vestiário</item>
-        <item>Casa</item>
-        <item>Carro</item>
-        <item>Médico</item>
-        <item>Beleza</item>
+    <string-array name="entry">
+        <item>Salário</item>
+        <item>Emprétismo</item>
+        <item>Bônus</item>
+        <item>Benefício</item>
+        <item>Doação</item>
+        <item>Crédito</item>
     </string-array>
 
+   <string-array name="expenses">
+       <item>Aluguel</item>
+       <item>Luz</item>
+       <item>Àgua</item>
+       <item>Gás</item>
+       <item>Material Escolar</item>
+       <item>Vestiário</item>
+       <item>Saúde</item>
+       <item>Supermercado</item>
+       <item>Padaria</item>
+       <item>Escola/Universidade</item>
+       <item>Casa</item>
+       <item>Fatura</item>
+       <item>Boleto</item>
+   </string-array>
 </resources>
