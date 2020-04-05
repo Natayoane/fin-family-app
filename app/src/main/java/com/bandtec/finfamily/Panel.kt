@@ -14,25 +14,7 @@ class Panel : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_panel)
 
-        val sp : SharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
-
-
-        buttonpnextract.setOnClickListener {
-            val intent = Intent(this, Extract::class.java)
-            // start your next activity
-            startActivity(intent)
-        }
-
-        imageView7.setOnClickListener {
-            val intent = Intent(this, Extract::class.java)
-            // start your next activity
-            startActivity(intent)
-        }
-
-        imageView5.setOnClickListener {
-            val intent = Intent(this, Profile::class.java)
-            // start your next activity
-            startActivity(intent) }
+        val sp: SharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
 
         buttonpnextract.setOnClickListener {
             val intent = Intent(this, Extract::class.java)
@@ -55,11 +37,19 @@ class Panel : AppCompatActivity() {
 
         val idGrupo = 1; //Teste
 
-        if(idGrupo == 1){
+        if (idGrupo == 1) {
             btnProfile.setOnClickListener {
-                val intent = Intent(this, MembersGroup::class.java)
+
+                val intent = Intent(this, Profile::class.java)
                 // start your next activity
-                startActivity(intent) }
+                startActivity(intent)
+            }
+        } else if (idGrupo == 2) {
+            btnProfile.setOnClickListener {
+            val intent = Intent(this, MembersGroup::class.java)
+            // start your next activity
+            startActivity(intent)
+            }
         }
     }
 }
