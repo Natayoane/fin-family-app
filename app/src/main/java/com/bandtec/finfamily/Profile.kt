@@ -13,8 +13,18 @@ class Profile : AppCompatActivity() {
 
         settingsProfile.setOnClickListener {
             val intent = Intent(this, ProfileEdit::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             // start your next activity
             startActivity(intent)
         }
+
+        btLogout.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            // start your next activity
+            startActivity(intent)
+        }
+
+
     }
 }
