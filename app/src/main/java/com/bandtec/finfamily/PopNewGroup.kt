@@ -25,7 +25,10 @@ class PopNewGroup : AppCompatActivity() {
 
 
         btnClose.setOnClickListener {
+            val intent = Intent(this, PopChooseGroupAction::class.java)
+
             startActivity(intent)
+            finish()
         }
 
         ivFinish.setOnClickListener {

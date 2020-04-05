@@ -32,11 +32,10 @@ class Panel : AppCompatActivity() {
         imageView5.setOnClickListener {
             val intent = Intent(this, Profile::class.java)
             // start your next activity
-            startActivity(intent)
-        }
+            startActivity(intent) }
 
-        imageView6.setOnClickListener {
-            val intent = Intent(this, MembersGroup::class.java)
+        buttonpnextract.setOnClickListener {
+            val intent = Intent(this, Extract::class.java)
             // start your next activity
             startActivity(intent)
         }
@@ -45,13 +44,23 @@ class Panel : AppCompatActivity() {
             val intent = Intent(this, Group::class.java)
             // start your next activity
             startActivity(intent)
+            finish()
         }
 
-        btnGroup.setOnClickListener {
+        btnadd.setOnClickListener {
             val intent = Intent(this, PopNewInvoice::class.java)
             // start your next activity
             startActivity(intent)
         }
 
+        val idGrupo = 1; //Teste
+
+        if(idGrupo == 1){
+            btnProfile.setOnClickListener {
+                val intent = Intent(this, MembersGroup::class.java)
+                // start your next activity
+                startActivity(intent) }
+        }
     }
 }
+

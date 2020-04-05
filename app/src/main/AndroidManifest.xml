@@ -13,10 +13,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".PopNewExpense"></activity>
+        <activity android:name=".PopNewEntry" />
+        <activity android:name=".PopChooseGroupAction" />
+        <activity android:name=".PopJoinGroup" />
         <activity android:name=".PopNewInvoice" />
         <activity android:name=".PopAddNewMember" />
         <activity android:name=".PopNewGroup" />
-        <activity android:name=".ProfileEdit" />
+        <activity
+            android:name=".ProfileEdit"
+            android:label="Edit Profile"
+            android:theme="@style/navbar" />
         <activity
             android:name=".MembersGroup"
             android:label="Members"

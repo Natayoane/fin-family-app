@@ -8,7 +8,7 @@
 
     <TextView
         android:id="@+id/textView28"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/fundo2"
         android:drawableEnd="@drawable/ic_check_black_24dp"
