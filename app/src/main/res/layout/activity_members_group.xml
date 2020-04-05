@@ -35,7 +35,7 @@
                     app:srcCompat="@drawable/ic_face_black_24dp" />
 
                 <TextView
-                    android:id="@+id/textView16"
+                    android:id="@+id/tvNick"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
@@ -45,14 +45,14 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/textView18"
+                    android:id="@+id/tvName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="5dp"
                     android:text="Maria Antônia"
                     app:layout_constraintStart_toEndOf="@+id/imageView"
-                    app:layout_constraintTop_toBottomOf="@+id/textView16" />
+                    app:layout_constraintTop_toBottomOf="@+id/tvNick" />
 
                 <TextView
                     android:id="@+id/textView19"
@@ -79,7 +79,7 @@
                     android:id="@+id/imageView4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toTopOf="@+id/textView16"
+                    app:layout_constraintBottom_toTopOf="@+id/tvNick"
                     app:layout_constraintStart_toEndOf="@+id/imageView"
                     app:srcCompat="@drawable/ic_star_black_24dp" />
 

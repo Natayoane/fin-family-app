@@ -41,7 +41,7 @@
         android:layout_marginEnd="20dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name" />
+        android:hint="Name" />
 
     <EditText
         android:id="@+id/cdgGroup"
@@ -66,12 +66,13 @@
         android:text="upload image" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/ivFinish"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
-        android:src="@drawable/ic_check_black_24dp" />
+        android:src="@drawable/ic_check_black_24dp"
+        />
 
 
 </LinearLayout>

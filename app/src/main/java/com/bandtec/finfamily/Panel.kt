@@ -1,6 +1,8 @@
 package com.bandtec.finfamily
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_panel.*
@@ -12,7 +14,22 @@ class Panel : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_panel)
 
-        btnProfile.setOnClickListener {
+        val sp : SharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
+
+
+        buttonpnextract.setOnClickListener {
+            val intent = Intent(this, Extract::class.java)
+            // start your next activity
+            startActivity(intent)
+        }
+
+        imageView7.setOnClickListener {
+            val intent = Intent(this, Extract::class.java)
+            // start your next activity
+            startActivity(intent)
+        }
+
+        imageView5.setOnClickListener {
             val intent = Intent(this, Profile::class.java)
             // start your next activity
             startActivity(intent) }

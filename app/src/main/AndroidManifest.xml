@@ -32,6 +32,8 @@
             android:name=".CreateAccount3"
             android:theme="@style/AppTheme"
             android:usesCleartextTraffic="true" />
+
+
         <activity android:name=".CreateAccount2" />
         <activity
             android:name=".Profile"

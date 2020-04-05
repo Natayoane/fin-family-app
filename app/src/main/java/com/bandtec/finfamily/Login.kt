@@ -8,7 +8,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.widget.Toast
 import com.bandtec.finfamily.api.RetrofitClient
-import com.bandtec.finfamily.model.LoginResponse
+import com.bandtec.finfamily.model.UserResponse
 import com.bandtec.finfamily.utils.MaskEditUtil
 import retrofit2.Call
 import retrofit2.Callback
@@ -20,12 +20,10 @@ class Login : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         val intent = Intent(this, Group::class.java)
-
-        buttonlogin.setOnClickListener {
-            // start your next activity
+        // start your next activity
         inputemail.requestFocus()
 
-        val sp : SharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
+        val sp: SharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
 
         buttonlogin.setOnClickListener {
 
@@ -36,7 +34,7 @@ class Login : AppCompatActivity() {
                 inputemail.error = "Email é um campo obrigatório!"
                 inputemail.requestFocus()
                 return@setOnClickListener
-            }else {
+            } else {
                 if (!MaskEditUtil.validateEmail(email)) {
                     inputemail.error = "Email inválido!"
                     inputemail.requestFocus()
@@ -48,16 +46,18 @@ class Login : AppCompatActivity() {
                 inputpassword.error = "Senha é um campo obrigatório!"
                 inputpassword.requestFocus()
                 return@setOnClickListener
-            }else{
-                if(password.length < 8){
-                    inputpassword.error = "A senha deve conter entre 8 e 60 caracteres contendo ao " +
-                            "menos uma letra maiúscula, um número e um caracter especial!"
+            } else {
+                if (password.length < 8) {
+                    inputpassword.error =
+                        "A senha deve conter entre 8 e 60 caracteres contendo ao " +
+                                "menos uma letra maiúscula, um número e um caracter especial!"
                     inputpassword.requestFocus()
                     return@setOnClickListener
                 }
-                if(!MaskEditUtil.validatePassword(password)){
-                    inputpassword.error = "A senha deve conter entre 8 e 60 caracteres contendo ao " +
-                            "menos uma letra maiúscula, um número e um caracter especial!"
+                if (!MaskEditUtil.validatePassword(password)) {
+                    inputpassword.error =
+                        "A senha deve conter entre 8 e 60 caracteres contendo ao " +
+                                "menos uma letra maiúscula, um número e um caracter especial!"
                     inputpassword.requestFocus()
                     return@setOnClickListener
                 }
@@ -65,34 +65,40 @@ class Login : AppCompatActivity() {
 
 
             RetrofitClient.instance.loginUser(email, password)
-                .enqueue(object : Callback<LoginResponse> {
-                    override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                .enqueue(object : Callback<UserResponse> {
+                    override fun onFailure(call: Call<UserResponse>, t: Throwable) {
                         Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
                     }
 
                     override fun onResponse(
-                        call: Call<LoginResponse>,
-                        response: Response<LoginResponse>
+                        call: Call<UserResponse>,
+                        response: Response<UserResponse>
                     ) {
-                        if(response.code().toString() == "200"){
+                        if (response.code().toString() == "200") {
 //                            Toast.makeText(applicationContext, response.body()?.fullName, Toast.LENGTH_LONG).show()
-                            Toast.makeText(applicationContext, response.code().toString(), Toast.LENGTH_LONG).show()
+                            Toast.makeText(
+                                applicationContext,
+                                response.code().toString(),
+                                Toast.LENGTH_LONG
+                            ).show()
                             sp.edit().putBoolean("logged", true).apply()
                             sp.edit().putInt("id", response.body()?.id!!).apply()
                             sp.edit().putString("full_name", response.body()?.fullName).apply()
                             sp.edit().putString("email", response.body()?.email).apply()
                             sp.edit().putString("nickname", response.body()?.nickname).apply()
                             startActivity(intent)
-                        }
-                        else {
-                            Toast.makeText(applicationContext, "User and/or password are incorrect!", Toast.LENGTH_LONG).show()
+                        } else {
+                            Toast.makeText(
+                                applicationContext,
+                                "User and/or password are incorrect!",
+                                Toast.LENGTH_LONG
+                            ).show()
                         }
 
 
                     }
 
                 })
-            }
         }
     }
 }
