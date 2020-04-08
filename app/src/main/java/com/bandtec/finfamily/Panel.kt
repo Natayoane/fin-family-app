@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import kotlinx.android.synthetic.main.activity_panel.*
 import kotlinx.android.synthetic.main.activity_pop_new_invoice.*
 
@@ -13,8 +14,31 @@ class Panel : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_panel)
-
         val sp: SharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
+
+        val id = intent.extras?.getInt("id");
+
+        if(id!! == 0 ) btnProfile.setImageDrawable(getDrawable(R.drawable.ic_person)) else btnProfile.setImageDrawable(getDrawable(R.drawable.ic_people))
+
+        if (id == 0) {
+            btnProfile.setOnClickListener {
+                val intent = Intent(this, Profile::class.java)
+                startActivity(intent)
+            }
+        } else {
+            btnProfile.setOnClickListener {
+                val intent = Intent(this, MembersGroup::class.java)
+                startActivity(intent)
+            }
+        }
+
+        val sp : SharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
+
+        buttonpnextract.setOnClickListener {
+            val intent = Intent(this, Extract::class.java)
+            // start your next activity
+            startActivity(intent)
+        }
 
         buttonpnextract.setOnClickListener {
             val intent = Intent(this, Extract::class.java)

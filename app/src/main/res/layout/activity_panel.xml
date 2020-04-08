@@ -141,8 +141,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline13"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_person" />
+                app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/start"
