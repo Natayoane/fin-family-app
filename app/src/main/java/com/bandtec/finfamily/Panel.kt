@@ -14,6 +14,7 @@ class Panel : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_panel)
+        val sp: SharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
 
         val id = intent.extras?.getInt("id");
 
@@ -56,6 +57,23 @@ class Panel : AppCompatActivity() {
             val intent = Intent(this, PopNewInvoice::class.java)
             // start your next activity
             startActivity(intent)
+        }
+
+        val idGrupo = 1; //Teste
+
+        if (idGrupo == 1) {
+            btnProfile.setOnClickListener {
+
+                val intent = Intent(this, Profile::class.java)
+                // start your next activity
+                startActivity(intent)
+            }
+        } else if (idGrupo == 2) {
+            btnProfile.setOnClickListener {
+            val intent = Intent(this, MembersGroup::class.java)
+            // start your next activity
+            startActivity(intent)
+            }
         }
     }
 }
