@@ -31,10 +31,11 @@
 
 
             <TextView
-                android:id="@+id/individual"
+                android:id="@+id/btnPersonal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:onClick="Personal"
                 android:drawableTop="@drawable/ic_image_50dp"
                 android:text="My Finances"
                 android:textAlignment="center"
@@ -44,12 +45,12 @@
 
 
             <TextView
-                android:id="@+id/vlEarnings"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:drawableTop="@drawable/ic_image_50dp"
                 android:text="My Finances"
+                android:onClick="Group"
                 android:textAlignment="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
