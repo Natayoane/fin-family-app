@@ -10,7 +10,7 @@ import android.view.View
 import android.widget.Button
 import kotlinx.android.synthetic.main.activity_group.*
 
-public class Group : AppCompatActivity() {
+class Group : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
