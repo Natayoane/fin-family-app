@@ -32,8 +32,6 @@ class Panel : AppCompatActivity() {
             }
         }
 
-        val sp : SharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
-
         buttonpnextract.setOnClickListener {
             val intent = Intent(this, Extract::class.java)
             // start your next activity
