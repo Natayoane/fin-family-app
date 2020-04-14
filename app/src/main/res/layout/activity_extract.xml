@@ -38,11 +38,11 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView11"
+            android:id="@+id/textTotalFamily"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Total family"
+            android:text="@string/Total_family"
             android:textSize="10sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/guideline2"
@@ -70,23 +70,44 @@
             app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
         <TextView
-            android:id="@+id/textView13"
+            android:id="@+id/txtS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="7dp"
-            android:text="R$         1350,00"
-            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            android:text="@string/sifrao"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView11" />
+            app:layout_constraintTop_toBottomOf="@+id/textTotalFamily" />
 
         <TextView
             android:id="@+id/textView14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="8dp"
-            android:text="R$         750,00"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/Sifrao"
             app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+        <TextView
+            android:id="@+id/vlTotalFamily"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:layout_marginTop="8dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toEndOf="@+id/txtS"
+            app:layout_constraintTop_toBottomOf="@+id/textTotalFamily" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView14"
             app:layout_constraintTop_toBottomOf="@+id/textView12" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -112,7 +133,7 @@
             android:drawableLeft="@drawable/money"
             android:drawablePadding="10dp"
             android:paddingLeft="10dp"
-            android:text="Accounts"
+            android:text="@string/Accounts"
             android:textColor="#000000"
             android:textSize="15sp"
             android:textStyle="normal"
@@ -126,7 +147,7 @@
             android:layout_height="20dp"
             android:background="@drawable/fundo2"
             android:paddingLeft="10dp"
-            android:text="Total"
+            android:text="@string/Total"
             android:textAlignment="gravity"
             android:textColor="#000000"
             android:textColorHint="#39000000"
@@ -156,7 +177,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
-            android:text="R$"
+            android:text="@string/sifrao"
             android:textColor="#000000"
             android:textSize="12dp"
             android:textStyle="bold"
@@ -202,7 +223,7 @@
             android:drawableLeft="@drawable/ic_timeline_black_24dp"
             android:drawablePadding="10dp"
             android:paddingLeft="10dp"
-            android:text="Expenditure budget"
+            android:text="@string/Expenditure_budget"
             android:textColor="#000000"
             android:textSize="15dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -215,7 +236,7 @@
             android:layout_height="20dp"
             android:background="@drawable/fundo2"
             android:paddingLeft="10dp"
-            android:text="Total"
+            android:text="@string/Total"
             android:textColor="#000000"
             android:textSize="12sp"
             android:textStyle="bold"
@@ -260,10 +281,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_add" />
-
-
-
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

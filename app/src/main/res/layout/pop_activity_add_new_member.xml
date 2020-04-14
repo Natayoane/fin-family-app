@@ -26,7 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:text="Add Member"
+        android:text="@string/Add_Member"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="18sp"
@@ -46,15 +46,15 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Invite someone" />
+            android:text="@string/Invite_someone" />
 
         <Button
             android:id="@+id/btnSendMember"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:text="Send"
+            android:background="@drawable/fundo2"
             android:gravity="center"
-            android:background="@drawable/fundo2"/>
+            android:text="@string/Send" />
 
     </LinearLayout>
 
