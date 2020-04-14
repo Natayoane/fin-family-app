@@ -37,7 +37,7 @@
                 android:layout_marginTop="20dp"
                 android:onClick="Personal"
                 android:drawableTop="@drawable/ic_image_50dp"
-                android:text="My Finances"
+                android:text="@string/My_Finances"
                 android:textAlignment="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

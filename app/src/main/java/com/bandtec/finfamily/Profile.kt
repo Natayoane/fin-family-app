@@ -3,9 +3,11 @@ package com.bandtec.finfamily
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_profile.*
+
 
 class Profile : AppCompatActivity() {
 
@@ -33,7 +35,6 @@ class Profile : AppCompatActivity() {
             // start your next activity
             startActivity(intent)
         }
-
-
     }
 }
+

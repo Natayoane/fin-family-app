@@ -8,9 +8,7 @@
     android:orientation="vertical"
     android:background="#FFFFFF"
     android:elevation="20dp"
-    android:layout_gravity="center"
-
-    >
+    android:layout_gravity="center">
 
     <ImageView
         android:id="@+id/btnClose"
@@ -26,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:text="Join Group"
+        android:text="@string/Join_Group"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="18sp"
@@ -41,7 +39,7 @@
         android:layout_marginEnd="20dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="#EnterGroupCode" />
+        android:text="@string/EnterGroupCode" />
 
 
 

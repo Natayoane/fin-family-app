@@ -3,7 +3,10 @@ package com.bandtec.finfamily
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import kotlinx.android.synthetic.main.activity_pop_new_expense.*
 import kotlinx.android.synthetic.main.activity_pop_new_invoice.*
+import kotlinx.android.synthetic.main.activity_pop_new_invoice.btnClose
 
 class PopNewExpense : AppCompatActivity() {
 
@@ -17,6 +20,15 @@ class PopNewExpense : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+    }
 
+    fun newExpense(v:View){
+        val value = value.text.toString().toFloat()
+        val intent = Intent(this, Panel::class.java)
+        intent.putExtra("expense",value)
+
+        startActivity(intent)
+
+        finish()
     }
 }
