@@ -72,6 +72,13 @@
     <string name="CreateYourCode">#CreateYourCode</string>
     <string name="upload_image">Upload image</string>
     <string name="sifrao">$</string>
+    <string name="txt_contribution">FamContribution expenses</string>
+    <string name="txt_entry">Entry</string>
+    <string name="delete_put">Are you sure you want to delete?</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+    <string name="txt_alter_release">" Change invoice"</string>
+    <string name="view_more">More</string>
 
     <string-array name="entry">
         <item>Salary</item>
@@ -82,18 +89,18 @@
         <item>Credit</item>
     </string-array>
 
-   <string-array name="expenses">
-       <item>Rent</item>
-       <item>Ligth</item>
-       <item>Water</item>
-       <item>Gas</item>
-       <item>School supplies</item>
-       <item>Locker room</item>
-       <item>Cheers</item>
-       <item>Supermarket</item>
-       <item>The bakery</item>
-       <item>School / University</item>
-       <item>Home</item>
-       <item>Payment booklet</item>
-   </string-array>
+    <string-array name="expenses">
+        <item>Rent</item>
+        <item>Ligth</item>
+        <item>Water</item>
+        <item>Gas</item>
+        <item>School supplies</item>
+        <item>Locker room</item>
+        <item>Cheers</item>
+        <item>Supermarket</item>
+        <item>The bakery</item>
+        <item>School / University</item>
+        <item>Home</item>
+        <item>Payment booklet</item>
+    </string-array>
 </resources>

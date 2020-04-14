@@ -77,15 +77,6 @@ class PopJoinGroup : AppCompatActivity() {
                         }
                     }
                 })
-
-
-
-
-
-
-
         }
     }
-
-
 }
