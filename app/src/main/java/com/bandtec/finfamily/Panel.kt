@@ -28,7 +28,6 @@ class Panel : AppCompatActivity() {
         //Saldo positivo
         val totalFamily = entry - expense
 
-
         val sp: SharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
 
         val id = intent.extras?.getInt("id");
@@ -50,9 +49,9 @@ class Panel : AppCompatActivity() {
         buttonpnextract.setOnClickListener {
             val intent = Intent(this, Extract::class.java)
             // start your next activity
-            intent.putExtra("totalFamily", totalFamily)
             startActivity(intent)
         }
+
 
         bnthome.setOnClickListener {
             val intent = Intent(this, Group::class.java)
