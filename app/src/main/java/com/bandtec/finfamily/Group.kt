@@ -24,7 +24,7 @@ class Group : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_group)
-
+    
         val user = getSharedPreferences("user", Context.MODE_PRIVATE)
         val spGroups = getSharedPreferences("group", Context.MODE_PRIVATE).all
 
