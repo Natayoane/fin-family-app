@@ -47,6 +47,11 @@ interface Api {
         @Field("groupOwner") groupOwner:Int
     ):Call<GroupResponse>
 
+    @GET("user/{userId}/groups")
+    fun getUserGroups(
+        @Path("userId") userId: Int
+    ):Call<List<GroupResponse>>
+
     @POST("group/participants/add/{userId}/{externalId}")
     fun addGroupMember(
         @Path("userId") userId: Int,
