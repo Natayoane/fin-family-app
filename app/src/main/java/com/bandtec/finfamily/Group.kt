@@ -31,34 +31,25 @@ class Group : AppCompatActivity() {
         getGroups(user.getInt("userId", 0))
 
         val gson = Gson()
-        val groups = spGroups.toString().removeRange(0,8).dropLast(spGroups.size)
-
-        val userGroups = gson.fromJson(groups, Array<GroupResponse>::class.java).asList()
-
-        userGroups.forEachIndexed() { i, g ->
-            println("Grupo $i: ${g.id} ")
-        }
+//        val groups = spGroups.toString().removeRange(0,8).dropLast(spGroups.size)
+//
+//        val userGroups = gson.fromJson(groups, Array<GroupResponse>::class.java).asList()
+//
+//        userGroups.forEachIndexed() { i, g ->
+//            println("Grupo $i: ${g.id} ")
+//        }
 
         btnGroup.setOnClickListener {
             val intent = Intent(this, PopChooseGroupAction::class.java)
             //start your next activity
             startActivity(intent)
         }
-
-
-
     }
 
     fun Personal(v: View){
-        btnPersonal.setOnClickListener {
-            val intent = Intent(this, Panel::class.java)
-
-            val id:Int = 0
-            intent.putExtra("id", id)
-
-            //start your next activity
-            startActivity(intent)
-        }
+        val intent = Intent(this, Panel::class.java)
+        //start your next activity
+        startActivity(intent)
     }
 
     fun Group(v: View){
