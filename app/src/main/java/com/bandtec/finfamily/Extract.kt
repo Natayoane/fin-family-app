@@ -14,8 +14,6 @@ class Extract : AppCompatActivity() {
 
         val total = intent.extras?.getFloat("totalFamily")
 
-        vlTotalFamily.text = "$total"
-
         btNewContribution.setOnClickListener {
             val intent = Intent(this, PopFamContribution::class.java)
             //start your next activity
@@ -25,10 +23,4 @@ class Extract : AppCompatActivity() {
 
     }
 
-    fun viewMore(v: View){
-            val intent = Intent(this, ModalEntry::class.java)
-            //start your next activity
-            startActivity(intent)
-            finish()
-    }
 }

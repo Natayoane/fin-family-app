@@ -51,16 +51,9 @@
         android:layout_marginEnd="10dp"
         android:background="@drawable/btnextract"
         android:backgroundTint="#FF1B1B"
+        android:layout_marginBottom="20dp"
         android:text="@string/New_expense"
         app:backgroundTint="#FF1B1B" />
-
-    <ImageView
-        android:id="@+id/btnSaveMembers"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:src="@drawable/ic_check_black_24dp" />
 
 
 </LinearLayout>
