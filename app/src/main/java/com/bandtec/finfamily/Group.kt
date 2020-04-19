@@ -39,6 +39,9 @@ class Group : AppCompatActivity() {
 //            println("Grupo $i: ${g.id} ")
 //        }
 
+
+
+
         btnGroup.setOnClickListener {
             val intent = Intent(this, PopChooseGroupAction::class.java)
             //start your next activity
@@ -74,22 +77,16 @@ class Group : AppCompatActivity() {
                 ) {
                     when {
                         response.code().toString() == "200" -> {
-                            Toast.makeText(
-                                applicationContext,
-                                response.code().toString(),
-                                Toast.LENGTH_LONG
-                            ).show()
                                 var group = getSharedPreferences("group", Context.MODE_PRIVATE)
                                 val gson = Gson()
                                 val json = gson.toJson(response.body())
-                                group.edit().putString("grupos", json).commit()
+                                group.edit().putString("grupos", json).apply()
                         }
                         response.code().toString() == "204" -> {
-                            Toast.makeText(
-                                applicationContext,
-                                "Você não possui grupos!",
-                                Toast.LENGTH_LONG
-                            ).show()
+                            var group = getSharedPreferences("group", Context.MODE_PRIVATE)
+                            val gson = Gson()
+                            val json = gson.toJson(response.body())
+                            group.edit().putString("grupos", json).apply()
                         }
                         else -> {
                             Toast.makeText(
