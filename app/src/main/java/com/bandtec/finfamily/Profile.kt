@@ -29,9 +29,10 @@ class Profile : AppCompatActivity() {
             startActivity(intent)
         }
 
-        btLogout.setOnClickListener {
+        btnLogout.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.putExtra("choose", 1)
             // start your next activity
             startActivity(intent)
         }

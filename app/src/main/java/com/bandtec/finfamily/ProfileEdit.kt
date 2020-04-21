@@ -14,6 +14,7 @@ import androidx.core.content.FileProvider
 import com.bandtec.finfamily.api.RetrofitClient
 import com.bandtec.finfamily.model.UserResponse
 import com.bandtec.finfamily.utils.MaskEditUtil
+import kotlinx.android.synthetic.main.activity_panel.*
 import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.activity_profile_edit.*
 import kotlinx.android.synthetic.main.activity_profile_edit.etEmail
@@ -42,6 +43,14 @@ class ProfileEdit : AppCompatActivity() {
         etName.hint = sp.getString("full_name", "")
         etNickname.hint = sp.getString("nickname", "")
         etEmail.hint = sp.getString("email", "")
+
+        btnDeleteAccount.setOnClickListener(){
+            val delete = Intent(this,PopConfirmAction::class.java)
+
+            delete.putExtra("choose", 0)
+
+            startActivity(delete)
+        }
 
         btnSaveProfile.setOnClickListener {
             val fullName = etName.text.toString()

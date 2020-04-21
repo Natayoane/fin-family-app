@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".PopAlterPut"></activity>
+        <activity android:name=".PopConfirmAction"></activity>
+        <activity android:name=".PopAlterPut" />
         <activity android:name=".PopDeletePut" />
         <activity android:name=".ModalEntry" />
         <activity android:name=".PopFamContribution" />
