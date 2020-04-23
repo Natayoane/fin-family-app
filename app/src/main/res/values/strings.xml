@@ -1,29 +1,25 @@
 <resources>
-    <string name="app_name">Fin Family</string>
     <string name="title_activity_login">Sign in</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="welcome">"Welcome !"</string>
-    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_username">Invalid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
-    <string name="finfamily">FinFamily</string>
+    <string name="app_name">FinFamily</string>
     <string name="buttonLogin">Login</string>
-    <string name="need_help_">
-        <a href="http://clubedosgeeks.com.br/">Need help?</a>
-    </string>
-    <string name="titleinicio">FinFamily</string>
-    <string name="title_activity_cadastro">Cadastro</string>
+    <string name="need_help_">"         <a href="http://clubedosgeeks.com.br/">Need help?</a>     "</string>
+    <string name="title_activity_cadastro">Register</string>
     <string name="create_acco">Create Account</string>
     <string name="members">Members</string>
-    <string name="title_activity_buttom_navigation">buttomNavigation</string>
+    <string name="title_activity_buttom_navigation" translatable="false">buttomNavigation</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
+    <string name="title_dashboard" translatable="false">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <string name="api_here">API HERE</string>
-    <string name="string_api_here" />
+    <string name="api_here" translatable="false">API HERE</string>
+    <string name="string_api_here" translatable="false" />
     <string name="name">Name</string>
     <string name="cpf">CPF</string>
     <string name="Date">Date of birth</string>
@@ -39,7 +35,6 @@
     <string name="Access_Information">Access_Information</string>
     <string name="Nickname">Nickname</string>
     <string name="Total_family">Total family</string>
-    <string name="Sifrao">"$   "</string>
     <string name="Accounts">Accounts</string>
     <string name="Total">Total</string>
     <string name="Expenditure_budget">Expenditure budget</string>
@@ -105,7 +100,9 @@
     </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title" />
-    <string name="FaltaContribuir">Falta Contribuir</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="title" translatable="false">title</string>
+    <string name="FaltaContribuir">"Lack Contribute "</string>
+    <string name="FamWallet">FamWallet</string>
+    <string name="Sifrao">$</string>
 </resources>
