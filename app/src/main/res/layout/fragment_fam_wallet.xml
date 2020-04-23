@@ -30,7 +30,7 @@
             android:drawableLeft="@drawable/card"
             android:drawablePadding="10dp"
             android:paddingLeft="10dp"
-            android:text="FamWallet"
+            android:text="@string/FamWallet"
             android:textAlignment="inherit"
             android:textColor="#000000"
             android:textSize="15dp"
