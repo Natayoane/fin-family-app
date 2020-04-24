@@ -5,9 +5,12 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.anychart.anychart.AnyChart
+import com.anychart.anychart.AnyChartView
+import com.anychart.anychart.DataEntry
+import com.anychart.anychart.ValueDataEntry
 import com.bandtec.finfamily.api.RetrofitClient
 import com.bandtec.finfamily.model.GroupResponse
 import com.bandtec.finfamily.model.GroupTransactionsResponse
@@ -30,13 +33,8 @@ class Panel : AppCompatActivity() {
 
         getTransactions(1)
 
-//
-//        //Saldo positivo
-//        val totalFamily = entry - expense
-
         val sp: SharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
 
-//        val id = intent.extras?.getInt("id");
         val id = 0
         if(id!! == 0 ) btnProfile.setImageDrawable(getDrawable(R.drawable.ic_person)) else btnProfile.setImageDrawable(getDrawable(R.drawable.ic_people))
 
@@ -71,18 +69,17 @@ class Panel : AppCompatActivity() {
             // start your next activity
             startActivity(intent)
         }
-    }
 
-    fun calcExpenses(expense:Float) : Float {
-        var total = 0;
-        return expense;
-    }
+        val pie = AnyChart.pie()
 
-    fun calcEntry(entry: Float) : Float {
-        var total = 0;
-        return entry;
-    }
+        val data: MutableList<DataEntry> = ArrayList()
+        data.add(ValueDataEntry("John", 10000))
+        data.add(ValueDataEntry("Jake", 12000))
+        data.add(ValueDataEntry("Peter", 18000))
 
+        val anyChartView = any_chart_view as AnyChartView
+        anyChartView.setChart(pie)
+    }
 
 
     fun getTransactions(userId : Int){
@@ -122,10 +119,9 @@ class Panel : AppCompatActivity() {
                             ).show()
                         }
                     }
-
-
                 }
             })
+
         val spTransactions = getSharedPreferences("transactions", Context.MODE_PRIVATE).all
         val gson = Gson()
         println(spTransactions.toString().removeRange(0, 14).dropLast(spTransactions.size))
@@ -150,13 +146,9 @@ class Panel : AppCompatActivity() {
         }
 
         //Despesas
-//        val expense = intent.extras?.getFloat("expense")
-//        calcExpenses(expense!!);
         vlExpenses2.text = String.format("%.2f", expense)
-//
-//        //Entradas/Receita
-//        val entry = intent.extras?.getFloat("entry")
-//        calcEntry(entry!!);
+
+        //Entradas/Receita
         vlEarnings2.text = String.format("%.2f", entry)
     }
 }
