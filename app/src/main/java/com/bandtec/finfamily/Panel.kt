@@ -27,11 +27,12 @@ class Panel : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_panel)
 
+        getTransactions(1)
+
         refreshLayout.setOnRefreshListener {
             getTransactions(1)
+            updateValues()
         }
-
-        getTransactions(1)
 
         val sp: SharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
 
@@ -121,6 +122,9 @@ class Panel : AppCompatActivity() {
                     }
                 }
             })
+    }
+
+    fun updateValues(){
 
         val spTransactions = getSharedPreferences("transactions", Context.MODE_PRIVATE).all
         val gson = Gson()
@@ -128,10 +132,6 @@ class Panel : AppCompatActivity() {
         val transactions = spTransactions.toString().removeRange(0, 14).dropLast(spTransactions.size)
 
         val groupTransactions = gson.fromJson(transactions, Array<GroupTransactionsResponse>::class.java).asList()
-
-//        groupTransactions.forEachIndexed() { i, g ->
-//            println("Grupo $i: ${g.value} ")
-//        }
 
         var expense : Float = 0f
         var entry : Float = 0f
