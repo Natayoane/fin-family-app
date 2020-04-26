@@ -24,13 +24,13 @@ class Panel : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_panel)
 
-        refreshLayout.setOnRefreshListener {
-            getTransactions(1)
-        }
-
         getTransactions(1)
 
-//
+        refreshLayout.setOnRefreshListener {
+            getTransactions(1)
+            updateValues()
+        }
+
 //        //Saldo positivo
 //        val totalFamily = entry - expense
 
@@ -122,20 +122,19 @@ class Panel : AppCompatActivity() {
                             ).show()
                         }
                     }
-
-
                 }
             })
+
+
+    }
+
+    fun updateValues(){
         val spTransactions = getSharedPreferences("transactions", Context.MODE_PRIVATE).all
         val gson = Gson()
         println(spTransactions.toString().removeRange(0, 14).dropLast(spTransactions.size))
         val transactions = spTransactions.toString().removeRange(0, 14).dropLast(spTransactions.size)
 
         val groupTransactions = gson.fromJson(transactions, Array<GroupTransactionsResponse>::class.java).asList()
-
-//        groupTransactions.forEachIndexed() { i, g ->
-//            println("Grupo $i: ${g.value} ")
-//        }
 
         var expense : Float = 0f
         var entry : Float = 0f
