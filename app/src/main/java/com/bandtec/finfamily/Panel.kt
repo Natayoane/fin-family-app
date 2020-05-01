@@ -7,10 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.anychart.anychart.AnyChart
-import com.anychart.anychart.AnyChartView
-import com.anychart.anychart.DataEntry
-import com.anychart.anychart.ValueDataEntry
+import com.anychart.anychart.*
 import com.bandtec.finfamily.api.RetrofitClient
 import com.bandtec.finfamily.model.GroupResponse
 import com.bandtec.finfamily.model.GroupTransactionsResponse
@@ -22,6 +19,9 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class Panel : AppCompatActivity() {
+
+    val months = listOf("Jan", "Feb", "Mar")
+    val earnings = arrayOf(500, 800, 2000)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,15 +71,20 @@ class Panel : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val pie = AnyChart.pie()
+        setupPieChart()
+    }
 
-        val data: MutableList<DataEntry> = ArrayList()
-        data.add(ValueDataEntry("John", 10000))
-        data.add(ValueDataEntry("Jake", 12000))
-        data.add(ValueDataEntry("Peter", 18000))
+    fun setupPieChart() {
+        var pie : Pie = AnyChart.pie()
+        var dataEntries : List<DataEntry> = ArrayList()
 
-        val anyChartView = any_chart_view as AnyChartView
-        anyChartView.setChart(pie)
+        months.forEachIndexed { i, _ ->
+            dataEntries = listOf(ValueDataEntry(months[i], earnings[i]))
+        }
+
+        pie.data(dataEntries)
+        pie.setTitle("Earnings")
+        any_chart_view.setChart(pie)
     }
 
 
