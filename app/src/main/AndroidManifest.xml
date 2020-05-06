@@ -13,7 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".PopNewExpense"></activity>
+        <activity android:name=".PopConfirmAction"></activity>
+        <activity android:name=".PopAlterPut" />
+        <activity android:name=".PopDeletePut" />
+        <activity android:name=".ModalEntry" />
+        <activity android:name=".PopFamContribution" />
+        <activity android:name=".PopNewExpense" />
         <activity android:name=".PopNewEntry" />
         <activity android:name=".PopChooseGroupAction" />
         <activity android:name=".PopJoinGroup" />
@@ -32,8 +37,6 @@
             android:name=".CreateAccount3"
             android:theme="@style/AppTheme"
             android:usesCleartextTraffic="true" />
-
-
         <activity android:name=".CreateAccount2" />
         <activity
             android:name=".Profile"

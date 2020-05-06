@@ -7,15 +7,6 @@
     android:layout_height="fill_parent"
     tools:context=".Group">
 
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
-
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,35 +20,15 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-
-            <TextView
-                android:id="@+id/individual"
+            <fragment
+                android:id="@+id/personal"
+                class="com.bandtec.finfamily.GroupFinance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:drawableTop="@drawable/ic_image_50dp"
-                android:text="My Finances"
-                android:textAlignment="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView8" />
-
-
-            <TextView
-                android:id="@+id/vlEarnings"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:drawableTop="@drawable/ic_image_50dp"
-                android:text="My Finances"
-                android:textAlignment="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+                tools:layout="@layout/fragment_group_finance"/>
 
         </LinearLayout>
-
-
 
     </ScrollView>
 

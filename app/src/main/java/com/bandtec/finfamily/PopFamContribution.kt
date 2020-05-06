@@ -3,24 +3,19 @@ package com.bandtec.finfamily
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import kotlinx.android.synthetic.main.activity_extract.*
+import kotlinx.android.synthetic.main.activity_pop_new_invoice.*
 
-class Extract : AppCompatActivity() {
+class PopFamContribution : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_extract)
+        setContentView(R.layout.activity_pop_fam_contribution)
 
-        val total = intent.extras?.getFloat("totalFamily")
-
-        btNewContribution.setOnClickListener {
-            val intent = Intent(this, PopFamContribution::class.java)
+        btnClose.setOnClickListener {
+            val intent = Intent(this, Extract::class.java)
             //start your next activity
             startActivity(intent)
             finish()
         }
-
     }
-
 }

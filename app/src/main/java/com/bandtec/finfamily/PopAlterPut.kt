@@ -3,24 +3,23 @@ package com.bandtec.finfamily
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import kotlinx.android.synthetic.main.activity_extract.*
+import kotlinx.android.synthetic.main.activity_pop_alter_put.*
 
-class Extract : AppCompatActivity() {
+class PopAlterPut : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_extract)
+        setContentView(R.layout.activity_pop_alter_put)
 
-        val total = intent.extras?.getFloat("totalFamily")
-
-        btNewContribution.setOnClickListener {
-            val intent = Intent(this, PopFamContribution::class.java)
+        btnDeletePut.setOnClickListener {
+            val intent = Intent(this, PopDeletePut::class.java)
             //start your next activity
             startActivity(intent)
             finish()
         }
 
+        btnClose.setOnClickListener {
+            finish()
+        }
     }
-
 }

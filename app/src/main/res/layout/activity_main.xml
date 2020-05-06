@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_marginBottom="225dp"
-        android:text="@string/finfamily"
+        android:text="@string/app_name"
         android:textAppearance="@style/finfamily" />
 
 
@@ -37,14 +37,14 @@
             android:layout_alignParentRight="true"
             android:layout_marginBottom="10dp"
             android:background="@drawable/cadastroinicial"
-            android:text="Create Account" />
+            android:text="@string/CreateAccount" />
 
         <Button
             android:id="@+id/logininicio"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="@drawable/buttonlogininicio"
-            android:text="Login" />
+            android:text="@string/Login" />
 
     </LinearLayout>
 

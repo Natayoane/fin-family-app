@@ -4,31 +4,28 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import kotlinx.android.synthetic.main.activity_pop_new_expense.*
+import kotlinx.android.synthetic.main.activity_modal_entry.*
 import kotlinx.android.synthetic.main.activity_pop_new_invoice.*
 import kotlinx.android.synthetic.main.activity_pop_new_invoice.btnClose
 
-class PopNewExpense : AppCompatActivity() {
+class ModalEntry : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_pop_new_expense)
+        setContentView(R.layout.activity_modal_entry)
 
         btnClose.setOnClickListener {
-            val intent = Intent(this, PopNewInvoice::class.java)
+            val intent = Intent(this, Extract::class.java)
             //start your next activity
             startActivity(intent)
             finish()
         }
     }
 
-    fun newExpense(v:View){
-        val value = value.text.toString().toFloat()
-        val intent = Intent(this, Panel::class.java)
-        intent.putExtra("expense",value)
-
+    fun alterPut(v:View){
+        val intent = Intent(this, PopAlterPut::class.java)
+        //start your next activity
         startActivity(intent)
-
         finish()
     }
 }

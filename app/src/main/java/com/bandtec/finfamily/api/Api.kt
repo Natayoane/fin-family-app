@@ -1,6 +1,8 @@
 package com.bandtec.finfamily.api
 
+import com.bandtec.finfamily.model.GroupParticipantsResponse
 import com.bandtec.finfamily.model.GroupResponse
+import com.bandtec.finfamily.model.GroupTransactionsResponse
 import com.bandtec.finfamily.model.UserResponse
 import retrofit2.Call
 import retrofit2.http.*
@@ -45,5 +47,21 @@ interface Api {
         @Field("groupType") groupType:Int,
         @Field("groupOwner") groupOwner:Int
     ):Call<GroupResponse>
+
+    @GET("user/{userId}/groups")
+    fun getUserGroups(
+        @Path("userId") userId: Int
+    ):Call<List<GroupResponse>>
+
+    @POST("group/participants/add/{userId}/{externalId}")
+    fun addGroupMember(
+        @Path("userId") userId: Int,
+        @Path("externalId") externalGroupId : String
+    ): Call<GroupParticipantsResponse>
+
+    @GET("transactions/{groupId}")
+    fun getTransactions(
+        @Path("groupId") groupId : Int
+    ): Call<List<GroupTransactionsResponse>>
 }
 

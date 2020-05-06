@@ -82,7 +82,7 @@ class Login : AppCompatActivity() {
                                 Toast.LENGTH_LONG
                             ).show()
                             sp.edit().putBoolean("logged", true).apply()
-                            sp.edit().putInt("id", response.body()?.id!!).apply()
+                            sp.edit().putInt("userId", response.body()?.id!!).apply()
                             sp.edit().putString("full_name", response.body()?.fullName).apply()
                             sp.edit().putString("email", response.body()?.email).apply()
                             sp.edit().putString("nickname", response.body()?.nickname).apply()
