@@ -3,20 +3,22 @@ package com.bandtec.finfamily
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.anychart.anychart.*
+import androidx.appcompat.app.AppCompatActivity
+import com.anychart.anychart.AnyChart
+import com.anychart.anychart.DataEntry
+import com.anychart.anychart.Pie
+import com.anychart.anychart.ValueDataEntry
 import com.bandtec.finfamily.api.RetrofitClient
-import com.bandtec.finfamily.model.GroupResponse
 import com.bandtec.finfamily.model.GroupTransactionsResponse
+import com.github.mikephil.charting.charts.PieChart
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_panel.*
-import kotlinx.android.synthetic.main.activity_pop_new_invoice.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+
 
 class Panel : AppCompatActivity() {
 
@@ -72,19 +74,26 @@ class Panel : AppCompatActivity() {
         }
 
         setupPieChart()
+
     }
 
     fun setupPieChart() {
         var pie : Pie = AnyChart.pie()
-        var dataEntries : List<DataEntry> = ArrayList()
+
+        var dataEntries : List<DataEntry> = ArrayList();
 
         months.forEachIndexed { i, _ ->
-            dataEntries = listOf(ValueDataEntry(months[i], earnings[i]))
+            dataEntries =  listOf(ValueDataEntry(months[i], earnings[i]))
+            pie.setData(dataEntries)
         }
 
-        pie.data(dataEntries)
-        pie.setTitle("Earnings")
+
         any_chart_view.setChart(pie)
+
+
+        // set chart radius
+       pie.setInnerRadius("95%")
+
     }
 
 
