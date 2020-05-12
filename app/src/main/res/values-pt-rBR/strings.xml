@@ -75,4 +75,17 @@
     <string name="view_more">Mais</string>
     <string name="FaltaContribuir">"Falta Contribuir "</string>
     <string name="FamWallet">FamCarteira</string>
+    <string name="Janeiro">Janeiro</string>
+    <string name="Fevereiro">Fevereiro</string>
+    <string name="Availabre">Disponivel</string>
+    <string name="Março">Março</string>
+    <string name="Abril">Abril</string>
+    <string name="Maio">Maio</string>
+    <string name="Junho">Junho</string>
+    <string name="Julho">Julho</string>
+    <string name="Agosto">Agosto</string>
+    <string name="Setembro">Setembro</string>
+    <string name="Outubro">Outubro</string>
+    <string name="Novembro">Novembro</string>
+    <string name="Dezembro">Dezembro</string>
 </resources>
