@@ -75,6 +75,22 @@
     <string name="txt_alter_release">" Change invoice"</string>
     <string name="view_more">More</string>
 
+    <string-array
+        name="meses_array">
+        <item>@string/Janeiro</item>
+        <item>@string/Fevereiro</item>
+        <item>@string/Março</item>
+        <item>@string/Abril</item>
+        <item>@string/Maio</item>
+        <item>@string/Junho</item>
+        <item>@string/Julho</item>
+        <item>@string/Agosto</item>
+        <item>@string/Setembro</item>
+        <item>@string/Outubro</item>
+        <item>@string/Novembro</item>
+        <item>@string/Dezembro</item>
+    </string-array>
+
     <string-array name="entry">
         <item>Salary</item>
         <item>Loan</item>
@@ -106,4 +122,19 @@
     <string name="FamWallet">FamWallet</string>
     <string name="Sifrao">$</string>
     <string name="Availabre">Availabre</string>
+    <string name="finfamily">FinFamily</string>
+    <string name="titleinicio">FinFamily</string>
+    <string name="Janeiro">January</string>
+    <string name="Fevereiro">February</string>
+    <string name="Março">"March"</string>
+    <string name="Abril">"April"</string>
+    <string name="Maio">May</string>
+    <string name="Junho">"June"</string>
+    <string name="Julho">"July"</string>
+    <string name="Agosto">"August"</string>
+    <string name="Setembro">"September"</string>
+    <string name="Outubro">"October"</string>
+    <string name="Novembro">"November"</string>
+    <string name="Dezembro">"December"</string>
+
 </resources>
