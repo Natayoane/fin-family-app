@@ -3,31 +3,20 @@ package com.bandtec.finfamily
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.graphics.Bitmap
-import android.net.Uri
 import android.os.Bundle
-import android.os.Environment
-import android.provider.MediaStore
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.FileProvider
+import com.bandtec.finfamily.Popups.PopConfirmAction
 import com.bandtec.finfamily.api.RetrofitClient
 import com.bandtec.finfamily.model.UserResponse
 import com.bandtec.finfamily.utils.MaskEditUtil
-import kotlinx.android.synthetic.main.activity_panel.*
-import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.activity_profile_edit.*
 import kotlinx.android.synthetic.main.activity_profile_edit.etEmail
 import kotlinx.android.synthetic.main.activity_profile_edit.etName
 import kotlinx.android.synthetic.main.activity_profile_edit.etNickname
-import kotlinx.android.synthetic.main.activity_profile_edit.imageView14
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.io.File
-import java.io.IOException
-import java.text.SimpleDateFormat
-import java.util.*
 
 
 class ProfileEdit : AppCompatActivity() {
@@ -45,7 +34,8 @@ class ProfileEdit : AppCompatActivity() {
         etEmail.hint = sp.getString("email", "")
 
         btnDeleteAccount.setOnClickListener(){
-            val delete = Intent(this,PopConfirmAction::class.java)
+            val delete = Intent(this,
+                PopConfirmAction::class.java)
 
             delete.putExtra("choose", 0)
 

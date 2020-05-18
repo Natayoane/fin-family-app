@@ -1,11 +1,10 @@
-package com.bandtec.finfamily
+package com.bandtec.finfamily.Popups
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.bandtec.finfamily.R
 import kotlinx.android.synthetic.main.activity_pop_delete_put.*
 import kotlinx.android.synthetic.main.activity_pop_delete_put.btnClose
-import kotlinx.android.synthetic.main.activity_pop_new_invoice.*
 
 class PopConfirmAction : AppCompatActivity() {
 

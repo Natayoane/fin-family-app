@@ -1,11 +1,11 @@
-package com.bandtec.finfamily
+package com.bandtec.finfamily.Popups
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.bandtec.finfamily.R
 import kotlinx.android.synthetic.main.activity_pop_choose_group_action.*
 import kotlinx.android.synthetic.main.activity_pop_choose_group_action.btnClose
-import kotlinx.android.synthetic.main.pop_activity_new_group.*
 
 class PopChooseGroupAction : AppCompatActivity() {
 
