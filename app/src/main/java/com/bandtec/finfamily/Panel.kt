@@ -10,9 +10,9 @@ import com.anychart.anychart.AnyChart
 import com.anychart.anychart.DataEntry
 import com.anychart.anychart.Pie
 import com.anychart.anychart.ValueDataEntry
+import com.bandtec.finfamily.Popups.PopNewInvoice
 import com.bandtec.finfamily.api.RetrofitClient
 import com.bandtec.finfamily.model.GroupTransactionsResponse
-import com.github.mikephil.charting.charts.PieChart
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_panel.*
 import retrofit2.Call
@@ -24,6 +24,8 @@ class Panel : AppCompatActivity() {
 
     val months = listOf("Jan", "Feb", "Mar")
     val earnings = arrayOf(500, 800, 2000)
+
+    var teste = "";
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

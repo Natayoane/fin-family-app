@@ -1,12 +1,13 @@
-package com.bandtec.finfamily
+package com.bandtec.finfamily.Popups
 
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.DisplayMetrics
 import android.widget.Toast
+import com.bandtec.finfamily.Group
+import com.bandtec.finfamily.R
 import com.bandtec.finfamily.api.RetrofitClient
 import com.bandtec.finfamily.model.GroupResponse
 import kotlinx.android.synthetic.main.pop_activity_new_group.*

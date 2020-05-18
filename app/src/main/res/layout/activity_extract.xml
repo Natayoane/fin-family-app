@@ -11,7 +11,7 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        class="com.bandtec.finfamily.FamWallet"
+        class="com.bandtec.finfamily.Fragments.FamWallet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -111,7 +111,7 @@
 
                 <fragment
                     android:id="@+id/personal"
-                    class="com.bandtec.finfamily.AccountItems"
+                    class="com.bandtec.finfamily.Fragments.AccountItems"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
