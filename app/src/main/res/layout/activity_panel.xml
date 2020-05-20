@@ -211,13 +211,25 @@
             android:background="@drawable/fundo2"
             android:entries="@array/meses_array"
             android:gravity="center"
+            android:paddingTop="10dp"
+            android:paddingBottom="20dp"
             android:prompt="@string/Janeiro"
             android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="28dp"
+            android:layout_height="40dp"
+            android:drawableBottom="@drawable/down"
+            app:layout_constraintBottom_toBottomOf="@+id/mes"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

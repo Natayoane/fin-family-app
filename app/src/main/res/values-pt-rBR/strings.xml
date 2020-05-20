@@ -57,7 +57,7 @@
     <string name="Sair">"Sair "</string>
     <string name="New_password">"Nova senha "</string>
     <string name="Confirm_new_password">"Confirme nova senha "</string>
-    <string name="Edit_Image">"Editar imagem "</string>
+    <string name="Edit_Image">Editar avatar</string>
     <string name="Delete_Account">Deletar a conta</string>
     <string name="Add_Member">"Adicionar membro "</string>
     <string name="Invite_someone">"Convidar alguém "</string>
