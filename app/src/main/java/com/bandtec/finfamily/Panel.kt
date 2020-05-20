@@ -25,8 +25,6 @@ class Panel : AppCompatActivity() {
     val months = listOf("Jan", "Feb", "Mar")
     val earnings = arrayOf(500, 800, 2000)
 
-    var teste = "";
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_panel)

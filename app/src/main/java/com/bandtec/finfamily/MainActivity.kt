@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         logininicio.setOnClickListener {
-            val intent = Intent(this, Panel::class.java)
+            val intent = Intent(this, Extract::class.java)
             // start your next activity
             startActivity(intent)
         }

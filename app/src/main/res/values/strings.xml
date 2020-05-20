@@ -58,7 +58,7 @@
     <string name="Sair">Go out</string>
     <string name="New_password">New password</string>
     <string name="Confirm_new_password">Confirm new password</string>
-    <string name="Edit_Image">Edit Image</string>
+    <string name="Edit_Image">Edit avatar</string>
     <string name="Delete_Account">Delete Account</string>
     <string name="Add_Member">Add Member</string>
     <string name="Invite_someone">Invite someone</string>
@@ -75,8 +75,7 @@
     <string name="txt_alter_release">" Change invoice"</string>
     <string name="view_more">More</string>
 
-    <string-array
-        name="meses_array">
+    <string-array name="meses_array">
         <item>@string/Janeiro</item>
         <item>@string/Fevereiro</item>
         <item>@string/Março</item>
