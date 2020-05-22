@@ -1,4 +1,4 @@
-package com.bandtec.finfamily.Popups
+package com.bandtec.finfamily.popups
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

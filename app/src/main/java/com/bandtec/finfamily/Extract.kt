@@ -3,7 +3,7 @@ package com.bandtec.finfamily
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.bandtec.finfamily.Popups.PopFamContribution
+import com.bandtec.finfamily.popups.PopFamContribution
 import kotlinx.android.synthetic.main.activity_extract.*
 
 class Extract : AppCompatActivity() {

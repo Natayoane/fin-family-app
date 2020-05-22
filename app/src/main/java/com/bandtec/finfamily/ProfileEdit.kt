@@ -5,8 +5,9 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.bandtec.finfamily.Popups.PopConfirmAction
+import com.bandtec.finfamily.popups.PopConfirmAction
 import com.bandtec.finfamily.api.RetrofitClient
+import com.bandtec.finfamily.model.UpdateUserModel
 import com.bandtec.finfamily.model.UserResponse
 import com.bandtec.finfamily.utils.MaskEditUtil
 import kotlinx.android.synthetic.main.activity_profile_edit.*
@@ -86,19 +87,14 @@ class ProfileEdit : AppCompatActivity() {
                     }
                 }
             } else if (basePassword.isEmpty() && newPassword.isNotEmpty() || passwordConfirm.isNotEmpty()) {
-                etBasePassword.error = "É necessário digitar sua senha atual para altera sua senha!"
+                etBasePassword.error = "É necessário digitar sua senha atual para alterar sua senha!"
                 etBasePassword.requestFocus()
                 return@setOnClickListener
             }
 
-            RetrofitClient.instance.updateUser(
-                fullName,
-                nickname,
-                email,
-                basePassword,
-                newPassword,
-                userId
-            )
+            val user = UpdateUserModel(fullName, nickname, email, basePassword, newPassword)
+
+            RetrofitClient.instance.updateUser(user, userId)
                 .enqueue(object : Callback<UserResponse> {
                     override fun onFailure(call: Call<UserResponse>, t: Throwable) {
                         Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()

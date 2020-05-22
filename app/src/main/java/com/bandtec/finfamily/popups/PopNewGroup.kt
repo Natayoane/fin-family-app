@@ -1,4 +1,4 @@
-package com.bandtec.finfamily.Popups
+package com.bandtec.finfamily.popups
 
 import android.content.Context
 import android.content.Intent
@@ -9,6 +9,7 @@ import android.widget.Toast
 import com.bandtec.finfamily.Group
 import com.bandtec.finfamily.R
 import com.bandtec.finfamily.api.RetrofitClient
+import com.bandtec.finfamily.model.CreateGroupModel
 import com.bandtec.finfamily.model.GroupResponse
 import kotlinx.android.synthetic.main.pop_activity_new_group.*
 import retrofit2.Call
@@ -45,7 +46,9 @@ class PopNewGroup : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            RetrofitClient.instance.createGroup(groupName, 2, sp.getInt("userId", 0))
+            val group = CreateGroupModel(groupName, 2, sp.getInt("userId", 0))
+
+            RetrofitClient.instance.createGroup(group)
                 .enqueue(object : Callback<GroupResponse> {
                     override fun onFailure(call: Call<GroupResponse>, t: Throwable) {
                         Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()

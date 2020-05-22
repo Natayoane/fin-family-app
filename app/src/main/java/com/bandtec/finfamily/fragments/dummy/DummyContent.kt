@@ -1,4 +1,4 @@
-package com.bandtec.finfamily.Fragments.dummy
+package com.bandtec.finfamily.fragments.dummy
 
 import java.util.ArrayList
 import java.util.HashMap

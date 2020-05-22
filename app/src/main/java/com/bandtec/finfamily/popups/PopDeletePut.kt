@@ -1,20 +1,19 @@
-package com.bandtec.finfamily.Popups
+package com.bandtec.finfamily.popups
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.bandtec.finfamily.MembersGroup
 import com.bandtec.finfamily.R
-import kotlinx.android.synthetic.main.pop_activity_new_group.*
+import kotlinx.android.synthetic.main.activity_pop_new_invoice.btnClose
 
-class PopAddNewMember : AppCompatActivity() {
+class PopDeletePut : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.pop_activity_add_new_member)
+        setContentView(R.layout.activity_pop_delete_put)
 
         btnClose.setOnClickListener {
-            val intent = Intent(this, MembersGroup::class.java)
+            val intent = Intent(this, PopAlterPut::class.java)
             //start your next activity
             startActivity(intent)
             finish()

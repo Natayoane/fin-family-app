@@ -8,6 +8,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.widget.Toast
 import com.bandtec.finfamily.api.RetrofitClient
+import com.bandtec.finfamily.model.CredencialsModel
 import com.bandtec.finfamily.model.UserResponse
 import com.bandtec.finfamily.utils.MaskEditUtil
 import retrofit2.Call
@@ -46,25 +47,11 @@ class Login : AppCompatActivity() {
                 inputpassword.error = "Senha é um campo obrigatório!"
                 inputpassword.requestFocus()
                 return@setOnClickListener
-            } else {
-                if (password.length < 8) {
-                    inputpassword.error =
-                        "A senha deve conter entre 8 e 60 caracteres contendo ao " +
-                                "menos uma letra maiúscula, um número e um caracter especial!"
-                    inputpassword.requestFocus()
-                    return@setOnClickListener
-                }
-                if (!MaskEditUtil.validatePassword(password)) {
-                    inputpassword.error =
-                        "A senha deve conter entre 8 e 60 caracteres contendo ao " +
-                                "menos uma letra maiúscula, um número e um caracter especial!"
-                    inputpassword.requestFocus()
-                    return@setOnClickListener
-                }
             }
 
-
-            RetrofitClient.instance.loginUser(email, password)
+            val credentials = CredencialsModel(email, password)
+            println(credentials)
+            RetrofitClient.instance.loginUser(credentials)
                 .enqueue(object : Callback<UserResponse> {
                     override fun onFailure(call: Call<UserResponse>, t: Throwable) {
                         Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()

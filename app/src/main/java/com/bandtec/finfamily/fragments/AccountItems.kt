@@ -1,10 +1,10 @@
-package com.bandtec.finfamily.Fragments
+package com.bandtec.finfamily.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.bandtec.finfamily.R
 
 // TODO: Rename parameter arguments, choose names that match
@@ -14,10 +14,10 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [FamWallet.newInstance] factory method to
+ * Use the [AccountItems.newInstance] factory method to
  * create an instance of this fragment.
  */
-class FamWallet : Fragment() {
+class AccountItems : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -27,6 +27,7 @@ class FamWallet : Fragment() {
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
+
         }
     }
 
@@ -35,7 +36,7 @@ class FamWallet : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fam_wallet, container, false)
+        return inflater.inflate(R.layout.fragment_account_items, container, false)
     }
 
     companion object {
@@ -45,12 +46,12 @@ class FamWallet : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment FamWallet.
+         * @return A new instance of fragment AccountItems.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            FamWallet().apply {
+            AccountItems().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

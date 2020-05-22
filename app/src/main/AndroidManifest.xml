@@ -17,18 +17,18 @@
             android:label="Avatar"
             android:theme="@style/navbar"/>
 
-        <activity android:name=".Popups.PopConfirmAction" />
-        <activity android:name=".Popups.PopAlterPut" />
-        <activity android:name=".Popups.PopDeletePut" />
+        <activity android:name=".popups.PopConfirmAction" />
+        <activity android:name=".popups.PopAlterPut" />
+        <activity android:name=".popups.PopDeletePut" />
         <activity android:name=".ModalEntry" />
-        <activity android:name=".Popups.PopFamContribution" />
-        <activity android:name=".Popups.PopNewExpense" />
-        <activity android:name=".Popups.PopNewEntry" />
-        <activity android:name=".Popups.PopChooseGroupAction" />
-        <activity android:name=".Popups.PopJoinGroup" />
-        <activity android:name=".Popups.PopNewInvoice" />
-        <activity android:name=".Popups.PopAddNewMember" />
-        <activity android:name=".Popups.PopNewGroup" />
+        <activity android:name=".popups.PopFamContribution" />
+        <activity android:name=".popups.PopNewExpense" />
+        <activity android:name=".popups.PopNewEntry" />
+        <activity android:name=".popups.PopChooseGroupAction" />
+        <activity android:name=".popups.PopJoinGroup" />
+        <activity android:name=".popups.PopNewInvoice" />
+        <activity android:name=".popups.PopAddNewMember" />
+        <activity android:name=".popups.PopNewGroup" />
 
         <activity
             android:name=".ProfileEdit"

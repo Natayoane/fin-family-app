@@ -1,4 +1,4 @@
-package com.bandtec.finfamily.Fragments
+package com.bandtec.finfamily.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
