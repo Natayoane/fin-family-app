@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.bandtec.finfamily.Popups.PopChooseGroupAction
+import com.bandtec.finfamily.popups.PopChooseGroupAction
 import com.bandtec.finfamily.api.RetrofitClient
 import com.bandtec.finfamily.model.GroupResponse
 import com.google.gson.Gson
@@ -28,7 +28,7 @@ class Group : AppCompatActivity() {
     
         val user = getSharedPreferences("user", Context.MODE_PRIVATE)
         val spGroups = getSharedPreferences("group", Context.MODE_PRIVATE).all
-
+        println(user.getInt("userId", 0))
         getGroups(user.getInt("userId", 0))
 
         val gson = Gson()

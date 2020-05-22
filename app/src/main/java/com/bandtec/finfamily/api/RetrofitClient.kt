@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit
 
 object RetrofitClient {
 
-    private const val baseUrl = "http://192.168.0.26:8080/api/v1/"
+    private const val baseUrl = "http://192.168.0.13:8080/api/v1/"
 
     private val okHttpClient: OkHttpClient = OkHttpClient.Builder()
         .connectTimeout(5, TimeUnit.MINUTES)
@@ -23,6 +23,5 @@ object RetrofitClient {
 
         retrofit.create(Api::class.java)
     }
-
 
 }

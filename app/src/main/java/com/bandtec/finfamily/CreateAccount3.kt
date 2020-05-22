@@ -57,7 +57,20 @@ class CreateAccount3 : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            RetrofitClient.instance.signupUser(fullName!!, cpf!!, birthday!!, email!!, password!!, nickname, phoneAreaCode, phoneAreaNumber)
+//            var fullName: String?,
+//            var cpf: String?,
+//            var birthday: String?,
+//            var phoneAreaCode: String?,
+//            var phoneAreaNumber: String?,
+//            var email: String?,
+//            var password: String?,
+//            var createdAt: String?,
+//            var updatedAt: String?,
+//            var nickname: String?
+
+            val user = UserResponse(null, fullName, cpf, birthday, phoneAreaCode, phoneAreaNumber, email, password, null, null, nickname)
+
+            RetrofitClient.instance.signupUser(user)
                 .enqueue(object : Callback<UserResponse> {
                     override fun onFailure(call: Call<UserResponse>, t: Throwable) {
                         Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()

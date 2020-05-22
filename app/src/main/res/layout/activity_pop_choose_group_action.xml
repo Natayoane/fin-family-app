@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="350dp"
     android:layout_height="wrap_content"
-    tools:context=".Popups.PopChooseGroupAction"
+    tools:context=".popups.PopChooseGroupAction"
     android:orientation="vertical"
     android:background="#00FFFFFF"
     android:elevation="20dp"

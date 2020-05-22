@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context=".Fragments.FamWallet">
+    tools:context=".fragments.FamWallet">
     
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/rectangle_"

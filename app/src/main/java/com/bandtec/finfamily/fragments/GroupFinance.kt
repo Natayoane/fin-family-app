@@ -1,4 +1,4 @@
-package com.bandtec.finfamily.Fragments
+package com.bandtec.finfamily.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -51,6 +51,7 @@ class GroupFinance : Fragment() {
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             GroupFinance().apply {
+//                val intent = Intent(activity, Panel::class.java)
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

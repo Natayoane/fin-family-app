@@ -10,7 +10,7 @@ import com.anychart.anychart.AnyChart
 import com.anychart.anychart.DataEntry
 import com.anychart.anychart.Pie
 import com.anychart.anychart.ValueDataEntry
-import com.bandtec.finfamily.Popups.PopNewInvoice
+import com.bandtec.finfamily.popups.PopNewInvoice
 import com.bandtec.finfamily.api.RetrofitClient
 import com.bandtec.finfamily.model.GroupTransactionsResponse
 import com.google.gson.Gson
