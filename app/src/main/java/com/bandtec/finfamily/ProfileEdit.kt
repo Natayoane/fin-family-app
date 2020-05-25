@@ -21,21 +21,12 @@ class ProfileEdit : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile_edit)
-        val avatarImg =  Intent(this, Avatar::class.java)
+        val avatar =  Intent(this, Avatar::class.java)
         val intent = Intent(this, Panel::class.java)
         val sp: SharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
         val userId = sp.getInt("id", 0)
 
-        uploadImg.setOnClickListener(){
-            val avatar = Intent(this,
-                Avatar::class.java)
-
-            startActivity(avatar)
-        }
-
-        val avatar = avatarImg.extras?.getInt("avatar")
-
-       when  (avatar) {
+        when  (avatar?.getIntExtra("avatar", 0)) {
             1 -> imageView14.setImageDrawable(getDrawable(R.mipmap.man_foreground))
             2 -> imageView14.setImageDrawable(getDrawable(R.mipmap.woman_foreground))
             3 -> imageView14.setImageDrawable(getDrawable(R.mipmap.woman3_foreground))
@@ -43,6 +34,10 @@ class ProfileEdit : AppCompatActivity() {
             5 -> imageView14.setImageDrawable(getDrawable(R.mipmap.woman4_foreground))
             6 -> imageView14.setImageDrawable(getDrawable(R.mipmap.man3_foreground))
        }
+
+        uploadImg.setOnClickListener(){
+            startActivity(avatar)
+        }
 
         etName.hint = sp.getString("full_name", "")
         etNickname.hint = sp.getString("nickname", "")
