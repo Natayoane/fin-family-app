@@ -13,43 +13,36 @@ class Avatar : AppCompatActivity() {
 
         avatar1.setOnClickListener{
             //man_foreground
-            val avatar = 1;
-            chooseAvatar(avatar)
+            chooseAvatar(1)
         }
 
         avatar2.setOnClickListener{
             //woman_foreground
-            val avatar = 2;
-            chooseAvatar(avatar)
+            chooseAvatar(2)
         }
 
         avatar3.setOnClickListener{
             //woman3_foreground
-            val avatar = 3;
-            chooseAvatar(avatar)
+            chooseAvatar(3)
         }
 
         avatar4.setOnClickListener{
             //woman3_foreground
-            val avatar = 4;
-            chooseAvatar(avatar)
+            chooseAvatar(4)
         }
 
         avatar5.setOnClickListener{
             //woman3_foreground
-            val avatar = 5;
-            chooseAvatar(avatar)
+            chooseAvatar(5)
         }
 
         avatar6.setOnClickListener{
             //woman3_foreground
-            val avatar = 6;
-            chooseAvatar(avatar)
+            chooseAvatar(6)
         }
     }
 
-    fun chooseAvatar(avatar:Int) {
-
+    private fun chooseAvatar(avatar:Int) {
         val profile = Intent(this, Profile::class.java)
         val profileEdit = Intent(this, ProfileEdit::class.java)
         val members = Intent(this, MembersGroup::class.java)
@@ -61,6 +54,5 @@ class Avatar : AppCompatActivity() {
         group.putExtra("avatar", avatar)
 
         startActivity(profileEdit);
-        finish()
     }
 }
