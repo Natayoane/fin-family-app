@@ -64,7 +64,7 @@
     <string name="Send">"Enviar "</string>
     <string name="Name">Nome</string>
     <string name="CreateYourCode">#CrieSeuCodigo</string>
-    <string name="upload_image">"Enviar imagem "</string>
+    <string name="upload_image">Escolher avatar</string>
     <string name="sifrao">$</string>
     <string name="txt_contribution">FamContribuição despesas</string>
     <string name="txt_entry">"Entrada "</string>
@@ -88,4 +88,6 @@
     <string name="Outubro">Outubro</string>
     <string name="Novembro">Novembro</string>
     <string name="Dezembro">Dezembro</string>
+    <string name="Insert_name">Inserir nome</string>
+    <string name="title" translatable="false">Titulo</string>
 </resources>

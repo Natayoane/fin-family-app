@@ -6,6 +6,7 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.bandtec.finfamily.AvatarGroups
 import com.bandtec.finfamily.Group
 import com.bandtec.finfamily.R
 import com.bandtec.finfamily.api.RetrofitClient
@@ -25,6 +26,11 @@ class PopNewGroup : AppCompatActivity() {
 
         val sp: SharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
 
+        avatar.setOnClickListener {
+            val intent = Intent(this, AvatarGroups::class.java)
+            startActivity(intent)
+            finish()
+        }
 
         btnClose.setOnClickListener {
             val intent = Intent(this, PopChooseGroupAction::class.java)
