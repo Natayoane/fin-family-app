@@ -41,23 +41,34 @@
         android:layout_marginEnd="20dp"
         android:hint="@string/Insert_value" />
 
-<!--    <Spinner-->
-<!--        android:id="@+id/spinner1"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="20dp"-->
-<!--        android:layout_marginTop="10dp"-->
-<!--        android:layout_marginEnd="20dp"-->
-<!--        android:layout_marginBottom="10dp"-->
-<!--        android:prompt="@string/country_prompt"-->
-<!--        android:entries="@array/expenses"-->
-<!--        android:scrollbarSize="4dp" />-->
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:hint="@string/Insert_name" />
+
+    <Spinner
+        android:id="@+id/spinner1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
+        android:prompt="@string/country_prompt"
+        android:entries="@array/expenses"
+        android:scrollbarSize="4dp" />
 
     <CheckBox
         android:id="@+id/checkFixed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Fixed"
+        android:enabled="true"
         android:layout_gravity="start"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"

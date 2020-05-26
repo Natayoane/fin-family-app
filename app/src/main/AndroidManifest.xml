@@ -13,10 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Avatar"
+        <activity android:name=".AvatarGroups"></activity>
+        <activity
+            android:name=".Avatar"
             android:label="Avatar"
-            android:theme="@style/navbar"/>
-
+            android:theme="@style/navbar" />
         <activity android:name=".popups.PopConfirmAction" />
         <activity android:name=".popups.PopAlterPut" />
         <activity android:name=".popups.PopDeletePut" />
@@ -29,7 +30,6 @@
         <activity android:name=".popups.PopNewInvoice" />
         <activity android:name=".popups.PopAddNewMember" />
         <activity android:name=".popups.PopNewGroup" />
-
         <activity
             android:name=".ProfileEdit"
             android:label="Edit Profile"

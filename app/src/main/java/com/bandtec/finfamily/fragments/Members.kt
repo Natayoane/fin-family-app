@@ -10,14 +10,14 @@ import com.bandtec.finfamily.R
 /**
  * A simple [Fragment] subclass.
  */
-class FamWallet : Fragment() {
+class Members : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fam_wallet, container, false)
+        return inflater.inflate(R.layout.fragment_members, container, false)
     }
 
 }

@@ -19,6 +19,7 @@
         android:layout_marginEnd="1dp"
         android:layout_marginTop="1dp"/>
 
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
@@ -41,18 +42,27 @@
         android:layout_marginEnd="20dp"
         android:hint="@string/Insert_value" />
 
+    <EditText
+        android:id="@+id/nome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:hint="@string/Insert_name" />
 
-<!--    <Spinner-->
-<!--        android:id="@+id/spinner1"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="20dp"-->
-<!--        android:layout_marginTop="10dp"-->
-<!--        android:layout_marginEnd="20dp"-->
-<!--        android:layout_marginBottom="10dp"-->
-<!--        android:prompt="@string/country_prompt"-->
-<!--        android:entries="@array/expenses"-->
-<!--        android:scrollbarSize="4dp" />-->
+    <Spinner
+        android:id="@+id/spinner1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
+        android:prompt="@string/country_prompt"
+        android:entries="@array/expenses"
+        android:scrollbarSize="4dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -78,8 +88,5 @@
             android:src="@drawable/ic_check_black_24dp" />
 
     </LinearLayout>
-
-
-
 
 </LinearLayout>
