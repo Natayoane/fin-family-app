@@ -136,5 +136,8 @@
     <string name="Novembro">"November"</string>
     <string name="Dezembro">"December"</string>
     <string name="Insert_name">Insert name</string>
+    <string name="family">Family</string>
+    <string name="spouse">Spouse</string>
+    <string name="team">Team</string>
 
 </resources>
