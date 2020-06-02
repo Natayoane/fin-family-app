@@ -1,10 +1,12 @@
 package com.bandtec.finfamily
 
 import android.content.Intent
+import android.graphics.drawable.BitmapDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
+import androidx.core.view.drawToBitmap
 import kotlinx.android.synthetic.main.activity_avatar.*
 
 class Avatar : AppCompatActivity() {
@@ -20,12 +22,12 @@ class Avatar : AppCompatActivity() {
         val members = Intent(this, MembersGroup::class.java)
         val group = Intent(this, Group::class.java)
 
-
-        profile.putExtra("avatar", image.id)
-        profileEdit.putExtra("avatar", (image as ImageView).id)
-        members.putExtra("avatar", image.id)
-        group.putExtra("avatar", image.id)
+        profile.putExtra("avatar", ((image as ImageView).drawable as BitmapDrawable).bitmap)
+        profileEdit.putExtra("avatar",((image as ImageView).drawable as BitmapDrawable).bitmap)
+        members.putExtra("avatar",  ((image as ImageView).drawable as BitmapDrawable).bitmap)
+        group.putExtra("avatar", ((image as ImageView).drawable as BitmapDrawable).bitmap)
 
         startActivity(profileEdit);
+        finish()
     }
 }

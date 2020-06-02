@@ -2,6 +2,7 @@ package com.bandtec.finfamily
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.Toast
@@ -22,21 +23,21 @@ class ProfileEdit : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile_edit)
-        val avatar =  Intent(this, Avatar::class.java)
-      //  val intent = Intent(this, Panel::class.java)
+       // val avatar =  Intent(this, Avatar::class.java)
+       // val intent = Intent(this, Panel::class.java)
         val sp: SharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
         val userId = sp.getInt("id", 0)
-        val idAvatar = intent.getIntExtra("avatar", 0)
+        val btmAvatar = intent?.extras?.getParcelable<Bitmap>("avatar")
 
-        if(idAvatar != 0){
-            val image = findViewById<ImageView>(idAvatar)
-            imageView14.setImageDrawable(image.drawable)
-            //imageView14.setImageDrawable(getDrawable(idAvatar))
+
+        if(btmAvatar != null){
+            imageView14.setImageBitmap(btmAvatar)
         }
 
         uploadImg.setOnClickListener(){
             val avatar =  Intent(this, Avatar::class.java)
             startActivity(avatar)
+            finish()
         }
         etName.hint = sp.getString("full_name", "")
         etNickname.hint = sp.getString("nickname", "")
