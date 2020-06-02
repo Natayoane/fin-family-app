@@ -9,6 +9,7 @@
 
     <ImageView
         android:id="@+id/avatar1"
+        android:onClick="chooseAvatar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@mipmap/man_foreground"
@@ -26,6 +27,7 @@
 
     <ImageView
         android:id="@+id/avatar2"
+        android:onClick="chooseAvatar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -36,6 +38,7 @@
 
     <ImageView
         android:id="@+id/avatar3"
+        android:onClick="chooseAvatar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -46,6 +49,7 @@
 
     <ImageView
         android:id="@+id/avatar4"
+        android:onClick="chooseAvatar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/avatar2"
@@ -56,6 +60,7 @@
 
     <ImageView
         android:id="@+id/avatar5"
+        android:onClick="chooseAvatar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -66,6 +71,7 @@
 
     <ImageView
         android:id="@+id/avatar6"
+        android:onClick="chooseAvatar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"

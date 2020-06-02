@@ -3,6 +3,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bandtec.finfamily.popups.PopConfirmAction
@@ -22,23 +23,21 @@ class ProfileEdit : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile_edit)
         val avatar =  Intent(this, Avatar::class.java)
-        val intent = Intent(this, Panel::class.java)
+      //  val intent = Intent(this, Panel::class.java)
         val sp: SharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
         val userId = sp.getInt("id", 0)
+        val idAvatar = intent.getIntExtra("avatar", 0)
 
-        when  (avatar?.getIntExtra("avatar", 0)) {
-            1 -> imageView14.setImageDrawable(getDrawable(R.mipmap.man_foreground))
-            2 -> imageView14.setImageDrawable(getDrawable(R.mipmap.woman_foreground))
-            3 -> imageView14.setImageDrawable(getDrawable(R.mipmap.woman3_foreground))
-            4 -> imageView14.setImageDrawable(getDrawable(R.mipmap.man2_foreground))
-            5 -> imageView14.setImageDrawable(getDrawable(R.mipmap.woman4_foreground))
-            6 -> imageView14.setImageDrawable(getDrawable(R.mipmap.man3_foreground))
-       }
-
-        uploadImg.setOnClickListener(){
-            startActivity(avatar)
+        if(idAvatar != 0){
+            val image = findViewById<ImageView>(idAvatar)
+            imageView14.setImageDrawable(image.drawable)
+            //imageView14.setImageDrawable(getDrawable(idAvatar))
         }
 
+        uploadImg.setOnClickListener(){
+            val avatar =  Intent(this, Avatar::class.java)
+            startActivity(avatar)
+        }
         etName.hint = sp.getString("full_name", "")
         etNickname.hint = sp.getString("nickname", "")
         etEmail.hint = sp.getString("email", "")
