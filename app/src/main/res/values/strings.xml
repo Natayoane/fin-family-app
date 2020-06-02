@@ -25,7 +25,6 @@
     <string name="Date">Date of birth</string>
     <string name="Next">Next</string>
     <string name="Finish">Finish</string>
-
     <string name="country_prompt">Choose a category</string>
     <string name="CreateAccount">Create Account</string>
     <string name="PersonalInformation">Personal Information</string>
@@ -74,7 +73,6 @@
     <string name="yes">Yes</string>
     <string name="txt_alter_release">" Change invoice"</string>
     <string name="view_more">More</string>
-
     <string-array name="meses_array">
         <item>@string/Janeiro</item>
         <item>@string/Fevereiro</item>
@@ -89,7 +87,6 @@
         <item>@string/Novembro</item>
         <item>@string/Dezembro</item>
     </string-array>
-
     <string-array name="entry">
         <item>Salary</item>
         <item>Loan</item>
@@ -98,7 +95,6 @@
         <item>Donation</item>
         <item>Credit</item>
     </string-array>
-
     <string-array name="expenses">
         <item>Rent</item>
         <item>Ligth</item>
@@ -113,7 +109,6 @@
         <item>Home</item>
         <item>Payment booklet</item>
     </string-array>
-
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="title" translatable="false">title</string>
@@ -136,6 +131,8 @@
     <string name="Novembro">"November"</string>
     <string name="Dezembro">"December"</string>
     <string name="Insert_name">Insert name</string>
-    <string name="txt_contributors">Contributors</string>
-
+<string name="txt_contributors">Contributors</string>
+    <string name="family">Family</string>
+    <string name="spouse">Spouse</string>
+    <string name="team">Team</string>
 </resources>
