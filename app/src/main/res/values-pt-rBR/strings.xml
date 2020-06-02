@@ -89,5 +89,7 @@
     <string name="Novembro">Novembro</string>
     <string name="Dezembro">Dezembro</string>
     <string name="Insert_name">Inserir nome</string>
-    <string name="title" translatable="false">Titulo</string>
+    <string name="family">Familia</string>
+    <string name="spouse">Cônjuge</string>
+    <string name="team">Equipe</string>
 </resources>
