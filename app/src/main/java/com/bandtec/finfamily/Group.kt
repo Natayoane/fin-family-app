@@ -101,17 +101,20 @@ class Group : AppCompatActivity() {
             })
     }
 
-    fun setGroups(groups : List<GroupResponse>){
+    fun setGroups(userGroups : List<GroupResponse>){
         val transaction = supportFragmentManager.beginTransaction()
-        val fragment = supportFragmentManager
-        val parametros = Bundle()
 
-        groups.forEachIndexed { _, g ->
-        parametros.putString("groupName", g.groupName)
-            val groups = GroupFinance()
-            groups.arguments = parametros
+        userGroups.forEachIndexed { _, g ->
+            val parametros = Bundle()
+            parametros.putInt("groupId", g.id!!)
+            parametros.putString("groupName", g.groupName)
+            parametros.putInt("groupType", g.groupType!!)
+            parametros.putInt("groupOwner", g.groupOwner!!)
+            parametros.putString("groupExternalId", g.externalGroupId)
+            val groupsFragments = GroupFinance()
+            groupsFragments.arguments = parametros
 
-            transaction.add(R.id.fragment0, groups, "group1")
+            transaction.add(R.id.fragment0, groupsFragments, "group1")
 
         }
         transaction.commit()
