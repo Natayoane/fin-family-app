@@ -1,33 +1,20 @@
 package com.bandtec.finfamily
-
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.graphics.Bitmap
-import android.net.Uri
 import android.os.Bundle
-import android.os.Environment
-import android.provider.MediaStore
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.FileProvider
+import com.bandtec.finfamily.popups.PopConfirmAction
 import com.bandtec.finfamily.api.RetrofitClient
+import com.bandtec.finfamily.model.UpdateUserModel
 import com.bandtec.finfamily.model.UserResponse
 import com.bandtec.finfamily.utils.MaskEditUtil
-import kotlinx.android.synthetic.main.activity_panel.*
-import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.activity_profile_edit.*
-import kotlinx.android.synthetic.main.activity_profile_edit.etEmail
-import kotlinx.android.synthetic.main.activity_profile_edit.etName
-import kotlinx.android.synthetic.main.activity_profile_edit.etNickname
-import kotlinx.android.synthetic.main.activity_profile_edit.imageView14
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.io.File
-import java.io.IOException
-import java.text.SimpleDateFormat
-import java.util.*
 
 
 class ProfileEdit : AppCompatActivity() {
@@ -35,17 +22,29 @@ class ProfileEdit : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile_edit)
-        val intent = Intent(this, Panel::class.java)
+        val avatar =  Intent(this, Avatar::class.java)
+      //  val intent = Intent(this, Panel::class.java)
         val sp: SharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
         val userId = sp.getInt("id", 0)
+        val idAvatar = intent.getIntExtra("avatar", 0)
 
+        if(idAvatar != 0){
+            val image = findViewById<ImageView>(idAvatar)
+            imageView14.setImageDrawable(image.drawable)
+            //imageView14.setImageDrawable(getDrawable(idAvatar))
+        }
 
+        uploadImg.setOnClickListener(){
+            val avatar =  Intent(this, Avatar::class.java)
+            startActivity(avatar)
+        }
         etName.hint = sp.getString("full_name", "")
         etNickname.hint = sp.getString("nickname", "")
         etEmail.hint = sp.getString("email", "")
 
         btnDeleteAccount.setOnClickListener(){
-            val delete = Intent(this,PopConfirmAction::class.java)
+            val delete = Intent(this,
+                PopConfirmAction::class.java)
 
             delete.putExtra("choose", 0)
 
@@ -82,19 +81,14 @@ class ProfileEdit : AppCompatActivity() {
                     }
                 }
             } else if (basePassword.isEmpty() && newPassword.isNotEmpty() || passwordConfirm.isNotEmpty()) {
-                etBasePassword.error = "É necessário digitar sua senha atual para altera sua senha!"
+                etBasePassword.error = "É necessário digitar sua senha atual para alterar sua senha!"
                 etBasePassword.requestFocus()
                 return@setOnClickListener
             }
 
-            RetrofitClient.instance.updateUser(
-                fullName,
-                nickname,
-                email,
-                basePassword,
-                newPassword,
-                userId
-            )
+            val user = UpdateUserModel(fullName, nickname, email, basePassword, newPassword)
+
+            RetrofitClient.instance.updateUser(user, userId)
                 .enqueue(object : Callback<UserResponse> {
                     override fun onFailure(call: Call<UserResponse>, t: Throwable) {
                         Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()

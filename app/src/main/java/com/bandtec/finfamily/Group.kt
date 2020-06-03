@@ -7,7 +7,10 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.add
+import com.bandtec.finfamily.popups.PopChooseGroupAction
 import com.bandtec.finfamily.api.RetrofitClient
+import com.bandtec.finfamily.fragments.GroupFinance
 import com.bandtec.finfamily.model.GroupResponse
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_group.*
@@ -18,29 +21,28 @@ import retrofit2.Response
 
 class Group : AppCompatActivity() {
 
-    private var sp : SharedPreferences? = null
+    private var sp: SharedPreferences? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_group)
-    
+
         val user = getSharedPreferences("user", Context.MODE_PRIVATE)
         val spGroups = getSharedPreferences("group", Context.MODE_PRIVATE).all
 
-        getGroups(user.getInt("userId", 0))
+        getUserGroups(user.getInt("userId", 0))
 
-        val gson = Gson()
-//        val groups = spGroups.toString().removeRange(0,8).dropLast(spGroups.size)
+
+
+//        val transaction = supportFragmentManager.beginTransaction()
+
+//        transaction.add(R.id.fragment0, GroupFinance())
+//        transaction.add(R.id.fragment0, GroupFinance())
+//        transaction.add(R.id.fragment0, GroupFinance())
+//        transaction.add(R.id.fragment0, GroupFinance())
 //
-//        val userGroups = gson.fromJson(groups, Array<GroupResponse>::class.java).asList()
-//
-//        userGroups.forEachIndexed() { i, g ->
-//            println("Grupo $i: ${g.id} ")
-//        }
-
-
-
+//        transaction.commit()
 
         btnGroup.setOnClickListener {
             val intent = Intent(this, PopChooseGroupAction::class.java)
@@ -49,24 +51,20 @@ class Group : AppCompatActivity() {
         }
     }
 
-    fun Personal(v: View){
-        val intent = Intent(this, Panel::class.java)
-        //start your next activity
-        startActivity(intent)
-    }
-
-    fun Group(v: View){
+    fun Group(v: View) {
         val intent = Intent(this, Panel::class.java)
 
-        val id:Int = 1
+        val id: Int = 1
         intent.putExtra("id", id)
 
         startActivity(intent)
     }
 
-    fun getGroups(userId : Int){
+    fun getUserGroups(userId: Int){
         RetrofitClient.instance.getUserGroups(userId)
             .enqueue(object : Callback<List<GroupResponse>> {
+                var groups : List<GroupResponse>? = null
+
                 override fun onFailure(call: Call<List<GroupResponse>>, t: Throwable) {
                     Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
                 }
@@ -77,16 +75,19 @@ class Group : AppCompatActivity() {
                 ) {
                     when {
                         response.code().toString() == "200" -> {
-                                var group = getSharedPreferences("group", Context.MODE_PRIVATE)
-                                val gson = Gson()
-                                val json = gson.toJson(response.body())
-                                group.edit().putString("grupos", json).apply()
+                            groups = response.body()!!
+                            println(groups?.size)
+                            setGroups(groups!!)
+//                            var group = getSharedPreferences("group", Context.MODE_PRIVATE)
+//                            val gson = Gson()
+//                            val json = gson.toJson(response.body())
+//                            group.edit().putString("grupos", json).apply()
                         }
                         response.code().toString() == "204" -> {
-                            var group = getSharedPreferences("group", Context.MODE_PRIVATE)
-                            val gson = Gson()
-                            val json = gson.toJson(response.body())
-                            group.edit().putString("grupos", json).apply()
+//                            var group = getSharedPreferences("group", Context.MODE_PRIVATE)
+//                            val gson = Gson()
+//                            val json = gson.toJson(response.body())
+//                            group.edit().putString("grupos", json).apply()
                         }
                         else -> {
                             Toast.makeText(
@@ -96,10 +97,26 @@ class Group : AppCompatActivity() {
                             ).show()
                         }
                     }
-
-
                 }
-
             })
+    }
+
+    fun setGroups(userGroups : List<GroupResponse>){
+        val transaction = supportFragmentManager.beginTransaction()
+
+        userGroups.forEachIndexed { _, g ->
+            val parametros = Bundle()
+            parametros.putInt("groupId", g.id!!)
+            parametros.putString("groupName", g.groupName)
+            parametros.putInt("groupType", g.groupType!!)
+            parametros.putInt("groupOwner", g.groupOwner!!)
+            parametros.putString("groupExternalId", g.externalGroupId)
+            val groupsFragments = GroupFinance()
+            groupsFragments.arguments = parametros
+
+            transaction.add(R.id.fragment0, groupsFragments, "group1")
+
+        }
+        transaction.commit()
     }
 }

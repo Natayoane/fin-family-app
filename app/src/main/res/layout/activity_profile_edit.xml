@@ -19,13 +19,13 @@
 
     <ImageView
         android:id="@+id/imageView14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="84dp"
+        android:layout_height="81dp"
         android:layout_marginStart="28dp"
         android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView28"
-        app:srcCompat="@drawable/ic_face_black_80dp" />
+        app:srcCompat="@drawable/ic_launcher_background" />
 
     <EditText
         android:id="@+id/etName"

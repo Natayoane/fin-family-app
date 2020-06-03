@@ -25,7 +25,6 @@
     <string name="Date">Date of birth</string>
     <string name="Next">Next</string>
     <string name="Finish">Finish</string>
-
     <string name="country_prompt">Choose a category</string>
     <string name="CreateAccount">Create Account</string>
     <string name="PersonalInformation">Personal Information</string>
@@ -58,14 +57,14 @@
     <string name="Sair">Go out</string>
     <string name="New_password">New password</string>
     <string name="Confirm_new_password">Confirm new password</string>
-    <string name="Edit_Image">Edit Image</string>
+    <string name="Edit_Image">Edit avatar</string>
     <string name="Delete_Account">Delete Account</string>
     <string name="Add_Member">Add Member</string>
     <string name="Invite_someone">Invite someone</string>
     <string name="Send">Send</string>
     <string name="Name">Name</string>
     <string name="CreateYourCode">#CreateYourCode</string>
-    <string name="upload_image">Upload image</string>
+    <string name="upload_image">Choose avatar</string>
     <string name="sifrao">$</string>
     <string name="txt_contribution">FamContribution expenses</string>
     <string name="txt_entry">Entry</string>
@@ -74,7 +73,20 @@
     <string name="yes">Yes</string>
     <string name="txt_alter_release">" Change invoice"</string>
     <string name="view_more">More</string>
-
+    <string-array name="meses_array">
+        <item>@string/Janeiro</item>
+        <item>@string/Fevereiro</item>
+        <item>@string/Março</item>
+        <item>@string/Abril</item>
+        <item>@string/Maio</item>
+        <item>@string/Junho</item>
+        <item>@string/Julho</item>
+        <item>@string/Agosto</item>
+        <item>@string/Setembro</item>
+        <item>@string/Outubro</item>
+        <item>@string/Novembro</item>
+        <item>@string/Dezembro</item>
+    </string-array>
     <string-array name="entry">
         <item>Salary</item>
         <item>Loan</item>
@@ -83,7 +95,6 @@
         <item>Donation</item>
         <item>Credit</item>
     </string-array>
-
     <string-array name="expenses">
         <item>Rent</item>
         <item>Ligth</item>
@@ -98,11 +109,30 @@
         <item>Home</item>
         <item>Payment booklet</item>
     </string-array>
-
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="title" translatable="false">title</string>
     <string name="FaltaContribuir">"Lack Contribute "</string>
     <string name="FamWallet">FamWallet</string>
     <string name="Sifrao">$</string>
+    <string name="Availabre">Availabre</string>
+    <string name="finfamily">FinFamily</string>
+    <string name="titleinicio">FinFamily</string>
+    <string name="Janeiro">January</string>
+    <string name="Fevereiro">February</string>
+    <string name="Março">"March"</string>
+    <string name="Abril">"April"</string>
+    <string name="Maio">May</string>
+    <string name="Junho">"June"</string>
+    <string name="Julho">"July"</string>
+    <string name="Agosto">"August"</string>
+    <string name="Setembro">"September"</string>
+    <string name="Outubro">"October"</string>
+    <string name="Novembro">"November"</string>
+    <string name="Dezembro">"December"</string>
+    <string name="Insert_name">Insert name</string>
+<string name="txt_contributors">Contributors</string>
+    <string name="family">Family</string>
+    <string name="spouse">Spouse</string>
+    <string name="team">Team</string>
 </resources>

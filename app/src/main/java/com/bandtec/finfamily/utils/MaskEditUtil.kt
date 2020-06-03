@@ -3,7 +3,6 @@ package com.bandtec.finfamily.utils
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.EditText
-import java.util.regex.Matcher
 import java.util.regex.Pattern
 
 

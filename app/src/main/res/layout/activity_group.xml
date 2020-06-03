@@ -16,17 +16,33 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
+            android:id="@+id/fragment0"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <!--
             <fragment
-                android:id="@+id/personal"
-                class="com.bandtec.finfamily.GroupFinance"
+                android:id="@+id/personal1"
+                class="com.bandtec.finfamily.fragments.GroupFinance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 tools:layout="@layout/fragment_group_finance"/>
+
+            <fragment
+                android:id="@+id/personal2"
+                class="com.bandtec.finfamily.fragments.GroupFinance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:layout="@layout/fragment_group_finance"/>
+
+            <fragment
+                android:id="@+id/personal3"
+                class="com.bandtec.finfamily.fragments.GroupFinance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:layout="@layout/fragment_group_finance"/>
+-->
 
         </LinearLayout>
 

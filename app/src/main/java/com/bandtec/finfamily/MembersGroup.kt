@@ -5,7 +5,9 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.bandtec.finfamily.popups.PopAddNewMember
 import kotlinx.android.synthetic.main.activity_members_group.*
+import kotlinx.android.synthetic.main.fragment_members.*
 
 class MembersGroup : AppCompatActivity() {
 

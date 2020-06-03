@@ -1,59 +1,27 @@
 package com.bandtec.finfamily.api
 
-import com.bandtec.finfamily.model.GroupParticipantsResponse
-import com.bandtec.finfamily.model.GroupResponse
-import com.bandtec.finfamily.model.GroupTransactionsResponse
-import com.bandtec.finfamily.model.UserResponse
+import com.bandtec.finfamily.model.*
 import retrofit2.Call
 import retrofit2.http.*
 
 interface Api {
 
-    @FormUrlEncoded
-    @POST("user/login")
-    fun loginUser(
-        @Field("email") email:String,
-        @Field("password") password:String
-    ):Call<UserResponse>
+    @POST("users/login")
+    fun loginUser(@Body user:CredencialsModel):Call<UserResponse>
 
-    @FormUrlEncoded
-    @POST("user/update/{id}")
-    fun updateUser(
-        @Field("fullName") fullName:String,
-        @Field("nickname") nickname:String,
-        @Field("email") email:String,
-        @Field("basePassword") basePassword:String,
-        @Field("newPassword") newPassword:String,
-        @Path("id") userId:Int
-    ):Call<UserResponse>
+    @POST("users/update/{id}")
+    fun updateUser(@Body user:UpdateUserModel, @Path("id") userId: Int):Call<UserResponse>
 
-    @FormUrlEncoded
-    @POST("user")
-    fun signupUser (
-        @Field("fullName") fullName:String,
-        @Field("cpf") cpf:String,
-        @Field("birthday") birthday:String,
-        @Field("email") email:String,
-        @Field("password") password:String,
-        @Field("nickname") nickname:String,
-        @Field("phoneAreaCode") phoneAreaCode:String,
-        @Field("phoneAreaNumber") phoneAreaNumber:String
-    ):Call<UserResponse>
+    @POST("users")
+    fun signupUser (@Body user:UserResponse):Call<UserResponse>
 
-    @FormUrlEncoded
-    @POST("group/create")
-    fun createGroup (
-        @Field("groupName") groupName:String,
-        @Field("groupType") groupType:Int,
-        @Field("groupOwner") groupOwner:Int
-    ):Call<GroupResponse>
+    @POST("groups/create")
+    fun createGroup (@Body group:CreateGroupModel):Call<GroupResponse>
 
-    @GET("user/{userId}/groups")
-    fun getUserGroups(
-        @Path("userId") userId: Int
-    ):Call<List<GroupResponse>>
+    @GET("users/{userId}/groups")
+    fun getUserGroups(@Path("userId") userId: Int):Call<List<GroupResponse>>
 
-    @POST("group/participants/add/{userId}/{externalId}")
+    @POST("groups/participants/add/{userId}/{externalId}")
     fun addGroupMember(
         @Path("userId") userId: Int,
         @Path("externalId") externalGroupId : String

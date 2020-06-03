@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="350dp"
     android:layout_height="wrap_content"
-    tools:context=".PopNewExpense"
+    tools:context=".popups.PopNewExpense"
     android:orientation="vertical"
     android:background="#FFFFFF"
     android:elevation="20dp"
@@ -41,6 +41,16 @@
         android:layout_marginEnd="20dp"
         android:hint="@string/Insert_value" />
 
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:hint="@string/Insert_name" />
+
     <Spinner
         android:id="@+id/spinner1"
         android:layout_width="match_parent"
@@ -58,6 +68,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Fixed"
+        android:enabled="true"
         android:layout_gravity="start"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="350dp"
     android:layout_height="wrap_content"
-    tools:context=".PopNewGroup"
+    tools:context=".popups.PopNewGroup"
     android:orientation="vertical"
     android:background="#FFFFFF"
     android:elevation="20dp"

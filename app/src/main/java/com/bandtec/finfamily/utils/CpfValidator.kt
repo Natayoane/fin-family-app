@@ -1,7 +1,5 @@
 package com.bandtec.finfamily.utils
 
-import java.util.*
-
 object CpfValidator{
 
     fun isCPF(cpf: String): Boolean {

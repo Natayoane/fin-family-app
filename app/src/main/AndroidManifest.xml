@@ -7,24 +7,30 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_icon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".PopConfirmAction"></activity>
-        <activity android:name=".PopAlterPut" />
-        <activity android:name=".PopDeletePut" />
+        <activity android:name=".popups.PopListContributors"></activity>
+        <activity android:name=".AvatarGroups" />
+        <activity
+            android:name=".Avatar"
+            android:label="Avatar"
+            android:theme="@style/navbar" />
+        <activity android:name=".popups.PopConfirmAction" />
+        <activity android:name=".popups.PopAlterPut" />
+        <activity android:name=".popups.PopDeletePut" />
         <activity android:name=".ModalEntry" />
-        <activity android:name=".PopFamContribution" />
-        <activity android:name=".PopNewExpense" />
-        <activity android:name=".PopNewEntry" />
-        <activity android:name=".PopChooseGroupAction" />
-        <activity android:name=".PopJoinGroup" />
-        <activity android:name=".PopNewInvoice" />
-        <activity android:name=".PopAddNewMember" />
-        <activity android:name=".PopNewGroup" />
+        <activity android:name=".popups.PopFamContribution" />
+        <activity android:name=".popups.PopNewExpense" />
+        <activity android:name=".popups.PopNewEntry" />
+        <activity android:name=".popups.PopChooseGroupAction" />
+        <activity android:name=".popups.PopJoinGroup" />
+        <activity android:name=".popups.PopNewInvoice" />
+        <activity android:name=".popups.PopAddNewMember" />
+        <activity android:name=".popups.PopNewGroup" />
         <activity
             android:name=".ProfileEdit"
             android:label="Edit Profile"

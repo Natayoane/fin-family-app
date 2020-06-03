@@ -4,8 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import kotlinx.android.synthetic.main.activity_modal_entry.*
-import kotlinx.android.synthetic.main.activity_pop_new_invoice.*
+import com.bandtec.finfamily.popups.PopAlterPut
 import kotlinx.android.synthetic.main.activity_pop_new_invoice.btnClose
 
 class ModalEntry : AppCompatActivity() {
