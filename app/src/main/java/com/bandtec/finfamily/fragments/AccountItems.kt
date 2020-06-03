@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import com.bandtec.finfamily.R
 import com.bandtec.finfamily.popups.PopAlterPut
 import com.bandtec.finfamily.popups.PopListContributors
-imporkotlinx.android.synthetic.main.fragment_account_ite
 import kotlinx.android.synthetic.main.fragment_account_items.*
 /**
  * A simple [Fragment] subclass.
@@ -32,7 +31,7 @@ class AccountItems : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_account_items, container, false)
     }
-        val rootView =  inflater.inflate(R.layout.fragment_account_items, container, false)
-        return rootView;
-    }
+
+}

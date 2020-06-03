@@ -28,6 +28,10 @@ class Panel : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_panel)
+        val groupId = intent.extras?.get("groupId").toString()
+
+
+        println("oooooi ${groupId}")
 
         getTransactions(1)
 

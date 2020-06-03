@@ -8,7 +8,7 @@
     tools:context=".fragments.GroupFinance">
 
     <TextView
-        android:id="@+id/btnPersonal"
+        android:id="@+id/tvGroups"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -17,7 +17,6 @@
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:onClick="callPanel"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
