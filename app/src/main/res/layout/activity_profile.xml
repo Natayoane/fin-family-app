@@ -26,7 +26,7 @@
         android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9"
-        app:srcCompat="@drawable/ic_face_black_80dp" />
+        app:srcCompat="@mipmap/man_foreground" />
 
     <TextView
         android:id="@+id/etName"

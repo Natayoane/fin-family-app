@@ -11,8 +11,6 @@ import kotlinx.android.synthetic.main.activity_profile.etEmail
 import kotlinx.android.synthetic.main.activity_profile.etName
 import kotlinx.android.synthetic.main.activity_profile.etNickname
 import kotlinx.android.synthetic.main.activity_profile.imageView14
-import kotlinx.android.synthetic.main.activity_profile_edit.*
-
 
 class Profile : AppCompatActivity() {
 
