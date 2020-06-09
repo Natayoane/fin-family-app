@@ -12,12 +12,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         logininicio.setOnClickListener {
-            val intent = Intent(this, Login::class.java)
+            val intent = Intent(this, ProfileEdit::class.java)
             // start your next activity
             startActivity(intent)
         }
         cadastroinicio.setOnClickListener {
-            val intent = Intent(this, CreateAccount::class.java)
+            val intent = Intent(this, Profile::class.java)
             // start your next activity
             startActivity(intent)
         }
