@@ -12,22 +12,26 @@
     <fragment
         android:id="@+id/mainFragment"
         class="com.bandtec.finfamily.fragments.FamWallet"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="20dp"
-        tools:layout="@layout/fragment_fam_wallet"/>
+        tools:layout="@layout/fragment_fam_wallet" />
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/accounts"
-        android:layout_width="319dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="20dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/famwalletview"
         android:elevation="6dp"
@@ -38,7 +42,7 @@
 
         <TextView
             android:id="@+id/textView15"
-            android:layout_width="320dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bordafw"
             android:drawableLeft="@drawable/money"
@@ -97,7 +101,7 @@
             app:layout_constraintTop_toTopOf="@+id/textAccount" />
 
         <ScrollView
-            android:layout_width="318dp"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -108,8 +112,7 @@
                 android:id="@+id/accItensFrag"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-            </LinearLayout>
+                android:orientation="vertical"></LinearLayout>
         </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
