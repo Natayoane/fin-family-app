@@ -15,6 +15,14 @@ import kotlinx.android.synthetic.main.fragment_fam_wallet_personal.*
  */
 class FamWalletPersonal : Fragment() {
 
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_fam_wallet_personal, container, false)
+    }
+
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -24,13 +32,4 @@ class FamWalletPersonal : Fragment() {
             startActivity(tela1)
         }
     }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fam_wallet_personal, container, false)
-    }
-
 }
