@@ -1,6 +1,6 @@
 package com.bandtec.finfamily.model
 
-data class GroupTransactionsResponse (
+data class GroupTransResponse (
     val id : Int?,
     var name : String,
     var description : String?,
@@ -11,6 +11,7 @@ data class GroupTransactionsResponse (
     var userId : Int?,
     var idRecurrenceType : Int?,
     var idExpenseCategory : Int?,
+    var idReceipeCategory : Int?,
     var idTransactionType : Int?,
     var createdAt : String?,
     var updatedAt : String?

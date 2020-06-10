@@ -9,7 +9,7 @@ import android.widget.Toast
 import com.bandtec.finfamily.Group
 import com.bandtec.finfamily.R
 import com.bandtec.finfamily.api.RetrofitClient
-import com.bandtec.finfamily.model.GroupParticipantsResponse
+import com.bandtec.finfamily.model.GroupsResponse
 import kotlinx.android.synthetic.main.activity_pop_join_group.*
 import kotlinx.android.synthetic.main.pop_activity_new_group.btnClose
 import kotlinx.android.synthetic.main.pop_activity_new_group.ivFinish
@@ -45,14 +45,14 @@ class PopJoinGroup : AppCompatActivity() {
             }
 
             RetrofitClient.instance.addGroupMember(userId, externalId)
-                .enqueue(object : Callback<GroupParticipantsResponse> {
-                    override fun onFailure(call: Call<GroupParticipantsResponse>, t: Throwable) {
+                .enqueue(object : Callback<GroupsResponse> {
+                    override fun onFailure(call: Call<GroupsResponse>, t: Throwable) {
                         Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
                     }
 
                     override fun onResponse(
-                        call: Call<GroupParticipantsResponse>,
-                        response: Response<GroupParticipantsResponse>
+                        call: Call<GroupsResponse>,
+                        response: Response<GroupsResponse>
                     ) {
                         when {
                             response.code().toString() == "200" -> {
