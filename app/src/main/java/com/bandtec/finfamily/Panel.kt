@@ -13,7 +13,6 @@ import com.anychart.anychart.ValueDataEntry
 import com.bandtec.finfamily.popups.PopNewInvoice
 import com.bandtec.finfamily.api.RetrofitClient
 import com.bandtec.finfamily.model.GroupTransResponse
-import com.bandtec.finfamily.model.GroupsResponse
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_panel.*
 import retrofit2.Call
@@ -104,7 +103,7 @@ class Panel : AppCompatActivity() {
 
     fun getTransactions(userId : Int){
         refreshLayout.isRefreshing = true
-        RetrofitClient.instance.getTransactions(userId)
+        RetrofitClient.instance.getEntries(userId)
             .enqueue(object : Callback<List<GroupTransResponse>> {
                 override fun onFailure(call: Call<List<GroupTransResponse>>, t: Throwable) {
                     refreshLayout.isRefreshing = false

@@ -38,7 +38,7 @@ class ModalEntry : AppCompatActivity() {
     }
 
     fun getEntries(groupId : Int){
-        RetrofitClient.instance.getTransactions(groupId)
+        RetrofitClient.instance.getEntries(groupId)
             .enqueue(object : Callback<List<GroupTransResponse>> {
                 override fun onFailure(call: Call<List<GroupTransResponse>>, t: Throwable) {
                     Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
