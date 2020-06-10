@@ -9,19 +9,20 @@
     android:orientation="vertical"
     tools:context=".Extract">
 
+
     <fragment
         android:id="@+id/mainFragment"
         class="com.bandtec.finfamily.fragments.FamWallet"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="10dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout="@layout/fragment_fam_wallet" />
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/accounts"
@@ -77,27 +78,16 @@
             android:id="@+id/valorTotalAccount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="5dp"
+            android:drawableStart="@drawable/ic_attach_money_black_24dp"
+            android:gravity="center"
             android:text="1335,00"
-            android:textAlignment="textEnd"
+            android:textAlignment="textStart"
             android:textColor="#000000"
             android:textSize="12dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textAccount" />
-
-        <TextView
-            android:id="@+id/textView22"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="5dp"
-            android:text="@string/sifrao"
-            android:textColor="#000000"
-            android:textSize="12dp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/valorTotalAccount"
             app:layout_constraintTop_toTopOf="@+id/textAccount" />
 
         <ScrollView
