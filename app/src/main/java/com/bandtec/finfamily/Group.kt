@@ -7,12 +7,10 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.add
 import com.bandtec.finfamily.popups.PopChooseGroupAction
 import com.bandtec.finfamily.api.RetrofitClient
 import com.bandtec.finfamily.fragments.GroupFinance
 import com.bandtec.finfamily.model.GroupResponse
-import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_group.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -32,17 +30,6 @@ class Group : AppCompatActivity() {
         val spGroups = getSharedPreferences("group", Context.MODE_PRIVATE).all
 
         getUserGroups(user.getInt("userId", 0))
-
-
-
-//        val transaction = supportFragmentManager.beginTransaction()
-
-//        transaction.add(R.id.fragment0, GroupFinance())
-//        transaction.add(R.id.fragment0, GroupFinance())
-//        transaction.add(R.id.fragment0, GroupFinance())
-//        transaction.add(R.id.fragment0, GroupFinance())
-//
-//        transaction.commit()
 
         btnGroup.setOnClickListener {
             val intent = Intent(this, PopChooseGroupAction::class.java)
@@ -78,16 +65,8 @@ class Group : AppCompatActivity() {
                             groups = response.body()!!
                             println(groups?.size)
                             setGroups(groups!!)
-//                            var group = getSharedPreferences("group", Context.MODE_PRIVATE)
-//                            val gson = Gson()
-//                            val json = gson.toJson(response.body())
-//                            group.edit().putString("grupos", json).apply()
                         }
                         response.code().toString() == "204" -> {
-//                            var group = getSharedPreferences("group", Context.MODE_PRIVATE)
-//                            val gson = Gson()
-//                            val json = gson.toJson(response.body())
-//                            group.edit().putString("grupos", json).apply()
                         }
                         else -> {
                             Toast.makeText(
@@ -114,7 +93,7 @@ class Group : AppCompatActivity() {
             val groupsFragments = GroupFinance()
             groupsFragments.arguments = parametros
 
-            transaction.add(R.id.fragment0, groupsFragments, "group1")
+            transaction.add(R.id.groupFinanceFrag, groupsFragments, "group1")
 
         }
         transaction.commit()

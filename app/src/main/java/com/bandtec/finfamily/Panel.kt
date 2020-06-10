@@ -12,7 +12,7 @@ import com.anychart.anychart.Pie
 import com.anychart.anychart.ValueDataEntry
 import com.bandtec.finfamily.popups.PopNewInvoice
 import com.bandtec.finfamily.api.RetrofitClient
-import com.bandtec.finfamily.model.GroupTransactionsResponse
+import com.bandtec.finfamily.model.GroupTransResponse
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_panel.*
 import retrofit2.Call
@@ -28,24 +28,25 @@ class Panel : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_panel)
+        val sp: SharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
+
         val groupId = intent.extras?.get("groupId").toString()
+        val groupType = intent.extras?.get("groupType").toString().toInt()
+        val groupName = intent.extras?.get("groupName").toString()
+        val userId = sp.getInt("userId", 0)
 
-
-        println("oooooi ${groupId}")
-
-        getTransactions(1)
+        getTransactions(userId)
 
         refreshLayout.setOnRefreshListener {
-            getTransactions(1)
+            getTransactions(userId)
             updateValues()
         }
 
-        val sp: SharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
 
         val id = 0
-        if(id!! == 0 ) btnProfile.setImageDrawable(getDrawable(R.drawable.ic_person)) else btnProfile.setImageDrawable(getDrawable(R.drawable.ic_people))
+        if(groupType == 1) btnProfile.setImageDrawable(getDrawable(R.drawable.ic_person)) else btnProfile.setImageDrawable(getDrawable(R.drawable.ic_people))
 
-        if (id!! == 0) {
+        if (id == 0) {
             btnProfile.setOnClickListener {
                 val intent = Intent(this, Profile::class.java)
                 startActivity(intent)
@@ -58,9 +59,24 @@ class Panel : AppCompatActivity() {
         }
 
         buttonpnextract.setOnClickListener {
-            val intent = Intent(this, Extract::class.java)
-            // start your next activity
-            startActivity(intent)
+            if(groupType == 1){
+                val intent = Intent(this, Extract::class.java)
+                intent.putExtra("groupId", groupId)
+                intent.putExtra("groupType", groupType)
+                intent.putExtra("groupName", groupName)
+                intent.putExtra("userId", userId)
+                startActivity(intent)
+
+            } else if(groupType == 2){
+                val intent = Intent(this, GroupExtract::class.java)
+                intent.putExtra("groupId", groupId)
+                intent.putExtra("groupType", groupType)
+                intent.putExtra("groupName", groupName)
+                intent.putExtra("userId", userId)
+                startActivity(intent)
+
+            }
+
         }
 
 
@@ -103,16 +119,16 @@ class Panel : AppCompatActivity() {
 
     fun getTransactions(userId : Int){
         refreshLayout.isRefreshing = true
-        RetrofitClient.instance.getTransactions(userId)
-            .enqueue(object : Callback<List<GroupTransactionsResponse>> {
-                override fun onFailure(call: Call<List<GroupTransactionsResponse>>, t: Throwable) {
+        RetrofitClient.instance.getEntries(userId)
+            .enqueue(object : Callback<List<GroupTransResponse>> {
+                override fun onFailure(call: Call<List<GroupTransResponse>>, t: Throwable) {
                     refreshLayout.isRefreshing = false
                     Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
                 }
 
                 override fun onResponse(
-                    call: Call<List<GroupTransactionsResponse>>,
-                    response: Response<List<GroupTransactionsResponse>>
+                    call: Call<List<GroupTransResponse>>,
+                    response: Response<List<GroupTransResponse>>
 
                 ) {
                     refreshLayout.isRefreshing = false
@@ -149,7 +165,7 @@ class Panel : AppCompatActivity() {
         println(spTransactions.toString().removeRange(0, 14).dropLast(spTransactions.size))
         val transactions = spTransactions.toString().removeRange(0, 14).dropLast(spTransactions.size)
 
-        val groupTransactions = gson.fromJson(transactions, Array<GroupTransactionsResponse>::class.java).asList()
+        val groupTransactions = gson.fromJson(transactions, Array<GroupTransResponse>::class.java).asList()
 
         var expense : Float = 0f
         var entry : Float = 0f

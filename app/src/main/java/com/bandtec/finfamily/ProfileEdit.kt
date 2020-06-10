@@ -1,15 +1,21 @@
 package com.bandtec.finfamily
+
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
+import android.util.Base64
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.bandtec.finfamily.popups.PopConfirmAction
 import com.bandtec.finfamily.api.RetrofitClient
 import com.bandtec.finfamily.model.UpdateUserModel
 import com.bandtec.finfamily.model.UserResponse
+import com.bandtec.finfamily.popups.PopConfirmAction
 import com.bandtec.finfamily.utils.MaskEditUtil
 import kotlinx.android.synthetic.main.activity_profile_edit.*
 import retrofit2.Call
@@ -22,22 +28,20 @@ class ProfileEdit : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile_edit)
-        val avatar =  Intent(this, Avatar::class.java)
-      //  val intent = Intent(this, Panel::class.java)
         val sp: SharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
         val userId = sp.getInt("id", 0)
-        val idAvatar = intent.getIntExtra("avatar", 0)
+       val btmAvatar = intent?.extras?.getParcelable<Bitmap>("avatar")
 
-        if(idAvatar != 0){
-            val image = findViewById<ImageView>(idAvatar)
-            imageView14.setImageDrawable(image.drawable)
-            //imageView14.setImageDrawable(getDrawable(idAvatar))
+        if(btmAvatar != null){
+         imageView14.setImageBitmap(btmAvatar)
         }
 
         uploadImg.setOnClickListener(){
             val avatar =  Intent(this, Avatar::class.java)
             startActivity(avatar)
+            finish()
         }
+
         etName.hint = sp.getString("full_name", "")
         etNickname.hint = sp.getString("nickname", "")
         etEmail.hint = sp.getString("email", "")

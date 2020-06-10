@@ -30,7 +30,6 @@ class GroupFinance : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-
         val groupId = arguments?.get("groupId").toString().toInt()
         val groupName = arguments?.get("groupName").toString()
         val groupType = arguments?.get("groupType").toString().toInt()
@@ -38,8 +37,6 @@ class GroupFinance : Fragment() {
         val externalGroupId = arguments?.get("groupExternalId").toString()
 
         tvGroups.text = groupName
-        println(arguments?.get("groupName").toString())
-
 
         tvGroups.setOnClickListener {
             val panel = Intent(requireActivity(), Panel::class.java)

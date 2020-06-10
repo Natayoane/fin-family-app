@@ -10,11 +10,11 @@
 
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/tvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:drawablePadding="20dp"
         android:text="Nome da conta"
         android:textColor="#000000"
@@ -22,68 +22,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
-        android:text="1000,00"
-        app:layout_constraintBottom_toTopOf="@+id/textView13"
-        app:layout_constraintEnd_toStartOf="@+id/edit"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.50" />
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="5dp"
-        android:src="@drawable/ic_attach_money_black_24dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView13"
-        app:layout_constraintEnd_toStartOf="@+id/textView8"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.50" />
-
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:background="@drawable/fundo2"
-        android:paddingLeft="10sp"
-        android:paddingTop="2sp"
-        android:text="@string/FaltaContribuir"
-        android:textColor="#000000"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent">
-
-    </TextView>
-
-
-    <TextView
+        android:id="@+id/tvCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:text="Categoria"
-        app:layout_constraintBottom_toTopOf="@+id/textView13"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
     <TextView
-        android:id="@+id/textView16"
+        android:id="@+id/tvValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
-        android:text="200,00"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView13" />
+        android:text="1000,00"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toStartOf="@+id/edit"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.50" />
+
 
     <ImageView
         android:id="@+id/edit"
@@ -91,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
         android:src="@drawable/edit"
-        app:layout_constraintBottom_toTopOf="@+id/textView16"
+        android:layout_marginTop="5dp"
         app:layout_constraintEnd_toStartOf="@+id/contributors"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.50" />
@@ -101,8 +60,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
+        android:layout_marginTop="5dp"
         android:src="@drawable/visibility"
-        app:layout_constraintBottom_toTopOf="@+id/textView16"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

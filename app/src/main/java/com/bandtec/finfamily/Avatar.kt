@@ -1,11 +1,10 @@
 package com.bandtec.finfamily
-
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
-import kotlinx.android.synthetic.main.activity_avatar.*
+import androidx.appcompat.app.AppCompatActivity
 
 class Avatar : AppCompatActivity() {
 
@@ -15,17 +14,13 @@ class Avatar : AppCompatActivity() {
     }
 
     fun chooseAvatar(image: View) {
-        val profile = Intent(this, Profile::class.java)
         val profileEdit = Intent(this, ProfileEdit::class.java)
-        val members = Intent(this, MembersGroup::class.java)
-        val group = Intent(this, Group::class.java)
+        val profile = Intent(this, Profile::class.java)
+        profileEdit.putExtra("avatar", ((image as ImageView).drawable as BitmapDrawable).bitmap)
+        profile.putExtra("avatar", ((image as ImageView).drawable as BitmapDrawable).bitmap)
 
-
-        profile.putExtra("avatar", image.id)
-        profileEdit.putExtra("avatar", (image as ImageView).id)
-        members.putExtra("avatar", image.id)
-        group.putExtra("avatar", image.id)
-
-        startActivity(profileEdit);
+        startActivity(profileEdit)
+        finish()
     }
 }
+
