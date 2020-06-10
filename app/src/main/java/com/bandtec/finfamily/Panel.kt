@@ -12,7 +12,8 @@ import com.anychart.anychart.Pie
 import com.anychart.anychart.ValueDataEntry
 import com.bandtec.finfamily.popups.PopNewInvoice
 import com.bandtec.finfamily.api.RetrofitClient
-import com.bandtec.finfamily.model.GroupTransactionsResponse
+import com.bandtec.finfamily.model.GroupTransResponse
+import com.bandtec.finfamily.model.GroupsResponse
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_panel.*
 import retrofit2.Call
@@ -104,15 +105,15 @@ class Panel : AppCompatActivity() {
     fun getTransactions(userId : Int){
         refreshLayout.isRefreshing = true
         RetrofitClient.instance.getTransactions(userId)
-            .enqueue(object : Callback<List<GroupTransactionsResponse>> {
-                override fun onFailure(call: Call<List<GroupTransactionsResponse>>, t: Throwable) {
+            .enqueue(object : Callback<List<GroupTransResponse>> {
+                override fun onFailure(call: Call<List<GroupTransResponse>>, t: Throwable) {
                     refreshLayout.isRefreshing = false
                     Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
                 }
 
                 override fun onResponse(
-                    call: Call<List<GroupTransactionsResponse>>,
-                    response: Response<List<GroupTransactionsResponse>>
+                    call: Call<List<GroupTransResponse>>,
+                    response: Response<List<GroupTransResponse>>
 
                 ) {
                     refreshLayout.isRefreshing = false
@@ -149,7 +150,7 @@ class Panel : AppCompatActivity() {
         println(spTransactions.toString().removeRange(0, 14).dropLast(spTransactions.size))
         val transactions = spTransactions.toString().removeRange(0, 14).dropLast(spTransactions.size)
 
-        val groupTransactions = gson.fromJson(transactions, Array<GroupTransactionsResponse>::class.java).asList()
+        val groupTransactions = gson.fromJson(transactions, Array<GroupTransResponse>::class.java).asList()
 
         var expense : Float = 0f
         var entry : Float = 0f

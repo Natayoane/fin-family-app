@@ -1,6 +1,6 @@
 package com.bandtec.finfamily.model
 
-data class GroupParticipantsResponse(
+data class GroupsResponse(
 
     val id : Int?,
     val userId : Int?,

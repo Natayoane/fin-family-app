@@ -25,11 +25,11 @@ interface Api {
     fun addGroupMember(
         @Path("userId") userId: Int,
         @Path("externalId") externalGroupId : String
-    ): Call<GroupParticipantsResponse>
+    ): Call<GroupsResponse>
 
-    @GET("transactions/{groupId}")
+    @GET("transactions/{groupId}/entries")
     fun getTransactions(
         @Path("groupId") groupId : Int
-    ): Call<List<GroupTransactionsResponse>>
+    ): Call<List<GroupTransResponse>>
 }
 
