@@ -7,7 +7,7 @@
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Extract">
+    tools:context=".GroupExtract">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/walletFrag"
@@ -30,7 +30,7 @@
             android:drawableLeft="@drawable/card"
             android:drawablePadding="10dp"
             android:paddingLeft="10dp"
-            android:text="FamWallet"
+            android:text="@string/FamWallet"
             android:textAlignment="inherit"
             android:textColor="#000000"
             android:textSize="15dp"
@@ -40,15 +40,77 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/textTotalFamily"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/Total_family"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvGroupName" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="160dp" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="FamContribution"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/tvGroupName" />
+
+        <TextView
+            android:id="@+id/txtS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="7dp"
+            android:text="@string/sifrao"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textTotalFamily" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/Sifrao"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+        <TextView
             android:id="@+id/vlTotalFamily"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1280,00"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textSize="14sp"
+            android:layout_marginTop="8dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toEndOf="@+id/txtS"
+            app:layout_constraintTop_toBottomOf="@+id/textTotalFamily" />
+
+        <TextView
+            android:id="@+id/tvTotalUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="TextView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView10" />
+            app:layout_constraintStart_toEndOf="@+id/textView14"
+            app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
         <TextView
             android:id="@+id/more"
@@ -61,20 +123,17 @@
             android:textSize="10sp"
             app:layout_constraintBottom_toBottomOf="@+id/textView10"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView10"
+            app:layout_constraintTop_toTopOf="@+id/tvGroupName"
             app:layout_constraintVertical_bias="0.39" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/accounts"
-        android:layout_width="0dp"
+        android:layout_width="319dp"
         android:layout_height="0dp"
         android:layout_marginTop="20dp"
         android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/famwalletview"
         android:elevation="6dp"
@@ -85,7 +144,7 @@
 
         <TextView
             android:id="@+id/textView15"
-            android:layout_width="match_parent"
+            android:layout_width="320dp"
             android:layout_height="wrap_content"
             android:background="@drawable/bordafw"
             android:drawableStart="@drawable/money"
@@ -143,7 +202,7 @@
             app:layout_constraintTop_toTopOf="@+id/textAccount" />
 
         <ScrollView
-            android:layout_width="match_parent"
+            android:layout_width="318dp"
             android:layout_height="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -154,7 +213,8 @@
                 android:id="@+id/accItensFrag"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"></LinearLayout>
+                android:orientation="vertical">
+            </LinearLayout>
         </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

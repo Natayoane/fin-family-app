@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".popups.PopListContributors"></activity>
+        <activity android:name=".GroupExtract"></activity>
+        <activity android:name=".popups.PopListContributors" />
         <activity android:name=".AvatarGroups" />
         <activity
             android:name=".Avatar"

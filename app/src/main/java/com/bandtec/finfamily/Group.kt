@@ -31,16 +31,6 @@ class Group : AppCompatActivity() {
 
         getUserGroups(user.getInt("userId", 0))
 
-
-//        val transaction = supportFragmentManager.beginTransaction()
-
-//        transaction.add(R.id.fragment0, GroupFinance())
-//        transaction.add(R.id.fragment0, GroupFinance())
-//        transaction.add(R.id.fragment0, GroupFinance())
-//        transaction.add(R.id.fragment0, GroupFinance())
-//
-//        transaction.commit()
-
         btnGroup.setOnClickListener {
             val intent = Intent(this, PopChooseGroupAction::class.java)
             //start your next activity
@@ -75,16 +65,8 @@ class Group : AppCompatActivity() {
                             groups = response.body()!!
                             println(groups?.size)
                             setGroups(groups!!)
-//                            var group = getSharedPreferences("group", Context.MODE_PRIVATE)
-//                            val gson = Gson()
-//                            val json = gson.toJson(response.body())
-//                            group.edit().putString("grupos", json).apply()
                         }
                         response.code().toString() == "204" -> {
-//                            var group = getSharedPreferences("group", Context.MODE_PRIVATE)
-//                            val gson = Gson()
-//                            val json = gson.toJson(response.body())
-//                            group.edit().putString("grupos", json).apply()
                         }
                         else -> {
                             Toast.makeText(

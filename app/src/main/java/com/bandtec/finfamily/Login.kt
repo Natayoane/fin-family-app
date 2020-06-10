@@ -62,17 +62,11 @@ class Login : AppCompatActivity() {
                         response: Response<UserResponse>
                     ) {
                         if (response.code().toString() == "200") {
-//                            Toast.makeText(applicationContext, response.body()?.fullName, Toast.LENGTH_LONG).show()
-                            Toast.makeText(
-                                applicationContext,
-                                response.code().toString(),
-                                Toast.LENGTH_LONG
-                            ).show()
-                            sp.edit().putBoolean("logged", true).apply()
-                            sp.edit().putInt("userId", response.body()?.id!!).apply()
-                            sp.edit().putString("full_name", response.body()?.fullName).apply()
-                            sp.edit().putString("email", response.body()?.email).apply()
-                            sp.edit().putString("nickname", response.body()?.nickname).apply()
+                            sp.edit().putBoolean("logged", true).commit()
+                            sp.edit().putInt("userId", response.body()?.id!!).commit()
+                            sp.edit().putString("full_name", response.body()?.fullName).commit()
+                            sp.edit().putString("email", response.body()?.email).commit()
+                            sp.edit().putString("nickname", response.body()?.nickname).commit()
                             startActivity(intent)
                         } else {
                             Toast.makeText(

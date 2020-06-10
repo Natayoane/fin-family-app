@@ -19,8 +19,8 @@ class ModalEntry : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_modal_entry)
-
-        getEntries(1)
+        val groupId = intent.extras?.get("groupId").toString().toInt()
+        getEntries(groupId)
 
         btnClose.setOnClickListener {
             val intent = Intent(this, Extract::class.java)

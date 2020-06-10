@@ -15,20 +15,10 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
+            android:id="@+id/groupMembers"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <fragment
-                android:id="@+id/mainFragment"
-                class="com.bandtec.finfamily.fragments.Members"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="20dp"
-                tools:layout="@layout/fragment_members"/>
-
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
         </LinearLayout>
     </ScrollView>
 
