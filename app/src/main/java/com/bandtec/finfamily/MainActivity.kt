@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
         cadastroinicio.setOnClickListener {
-            val intent = Intent(this, Profile::class.java)
+            val intent = Intent(this, Panel::class.java)
             // start your next activity
             startActivity(intent)
         }

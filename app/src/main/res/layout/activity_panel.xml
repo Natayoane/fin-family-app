@@ -49,7 +49,7 @@
             android:layout_height="0dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="5dp"
             android:layout_marginBottom="10dp"
             android:background="#FFFFFF"
             app:layout_constraintBottom_toTopOf="@+id/buttonpnextract"
@@ -64,11 +64,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginRight="5dp"
                 android:drawableBottom="@drawable/ic_info_outline_black_24dp"
                 android:drawablePadding="20sp"
                 android:gravity="center"
                 android:text="1200,00"
-                android:textColor="#000000"
+                android:textColor="#55910E"
                 android:textSize="25dp" />
 
         </com.anychart.anychart.AnyChartView>

@@ -42,5 +42,10 @@ interface Api {
     fun getExpenses(
         @Path("groupId") groupId : Int
     ): Call<List<GroupTransResponse>>
+
+    @GET("groups/participants/members/{externalId}")
+    fun getGroupMembers(
+        @Path("externalId") extId : String
+    ): Call<List<UserResponse>>
 }
 
