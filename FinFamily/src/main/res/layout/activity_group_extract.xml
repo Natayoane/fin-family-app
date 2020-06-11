@@ -121,7 +121,6 @@
             android:drawablePadding="5sp"
             android:text="@string/view_more"
             android:textSize="10sp"
-            app:layout_constraintBottom_toBottomOf="@+id/textView10"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tvGroupName"
             app:layout_constraintVertical_bias="0.39" />

@@ -29,8 +29,9 @@ class ProfileEdit : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile_edit)
         val sp: SharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
-        val userId = sp.getInt("id", 0)
-       val btmAvatar = intent?.extras?.getParcelable<Bitmap>("avatar")
+        val userId = sp.getInt("userId", 0)
+        val btmAvatar = intent?.extras?.getParcelable<Bitmap>("avatar")
+        val profile =  Intent(this, Profile::class.java)
 
         if(btmAvatar != null){
          imageView14.setImageBitmap(btmAvatar)
@@ -104,7 +105,6 @@ class ProfileEdit : AppCompatActivity() {
                     ) {
                         when {
                             response.code().toString() == "200" -> {
-
                                 Toast.makeText(
                                     applicationContext,
                                     "Dado(s) alterado(s) com sucesso!",
@@ -113,7 +113,7 @@ class ProfileEdit : AppCompatActivity() {
                                 sp.edit().putString("full_name", response.body()?.fullName).apply()
                                 sp.edit().putString("email", response.body()?.email).apply()
                                 sp.edit().putString("nickname", response.body()?.nickname).apply()
-                                startActivity(intent)
+                                startActivity(profile)
                             }
                             response.code().toString() == "401" -> {
                                 etBasePassword.error = "A senha informada está incorreta"

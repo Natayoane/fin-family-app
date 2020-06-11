@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fundo"
-    tools:context=".CreateAccount">
+    tools:context=".CreateAccount2">
 
 
     <TextView
@@ -20,34 +20,34 @@
         android:text="@string/CreateAccount"
         android:textAppearance="@style/finfamily"
         android:textSize="40sp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 
     <EditText
-        android:id="@+id/inputname"
+        android:id="@+id/inputcadastroemail"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/inputpassword"
-        android:digits="abcdefghijklmnopqrstuvwxyzáéíóúâêôàçñãõ ABCDEFGHIJKLMNOPQRSTUVWXYZÁÉÍÓÚÂÊÔÀÜÇÑÃÕ"
-        android:drawableStart="@drawable/persol"
+        android:drawableStart="@drawable/ic_mail_outline_black_24dp"
         android:drawablePadding="10dp"
-        android:hint="@string/name"
+        android:hint="@string/emailforacess"
         android:inputType="text"
-        android:maxLength="80"
-        android:paddingStart="10dp"
+        android:maxLength="120"
         android:paddingLeft="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/inputcpf"
-        app:layout_constraintEnd_toEndOf="@+id/inputdatebirth"
-        app:layout_constraintStart_toStartOf="@+id/inputdatebirth" />
+        app:layout_constraintBottom_toTopOf="@+id/inputpassword"
+        app:layout_constraintEnd_toEndOf="@+id/inputverificapassword"
+        app:layout_constraintStart_toStartOf="@+id/inputverificapassword" />
+        app:layout_constraintBottom_toTopOf="@+id/cadastropassword"
+        app:layout_constraintEnd_toEndOf="@+id/verificapassword"
+        app:layout_constraintStart_toStartOf="@+id/verificapassword" />
 
     <EditText
-        android:id="@+id/inputdatebirth"
+        android:id="@+id/inputverificapassword"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginStart="10dp"
@@ -55,37 +55,39 @@
         android:layout_marginEnd="10dp"
         android:background="@drawable/inputpassword"
         android:baselineAligned="false"
-        android:drawableStart="@drawable/ic_date_range_black_24dp"
+        android:drawableStart="@drawable/ic_lock_outline_black_24dp"
         android:drawablePadding="10dp"
-        android:hint="@string/Date"
-        android:inputType="number"
+        android:hint="@string/Confirmpassword"
+        android:inputType="textPassword"
+        android:maxLength="60"
         android:paddingLeft="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputcpf"
+        app:layout_constraintTop_toBottomOf="@+id/inputpassword"
         tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/inputcpf"
+        android:id="@+id/inputpassword"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:background="@drawable/inputpassword"
         android:baselineAligned="false"
-        android:drawableStart="@drawable/persol"
+        android:drawableStart="@drawable/ic_lock_outline_black_24dp"
         android:drawablePadding="10dp"
-        android:hint="@string/cpf"
-        android:inputType="number"
+        android:hint="@string/Password"
+        android:inputType="textPassword"
+        android:maxLength="60"
         android:paddingLeft="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonnext"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/buttonnext2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/finfamily" />
 
     <Button
-        android:id="@+id/buttonnext"
+        android:id="@+id/buttonnext2"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginStart="10dp"
@@ -95,9 +97,10 @@
         android:text="@string/Next"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/inputcpf"
+        app:layout_constraintEnd_toEndOf="@+id/inputpassword"
         app:layout_constraintHorizontal_bias="0.75"
-        app:layout_constraintStart_toStartOf="@+id/inputcpf" />
+        app:layout_constraintStart_toStartOf="@+id/inputpassword" />
+        app:layout_constraintStart_toStartOf="@+id/cadastropassword" />
 
     <TextView
         android:id="@+id/need_help_"
@@ -109,14 +112,14 @@
         android:textAppearance="@style/need_help_"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonnext" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonnext2" />
 
     <TextView
-        android:id="@+id/textPersonalInformation"
+        android:id="@+id/textAccessInformation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="@string/PersonalInformation"
+        android:text="@string/Access_Information"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
