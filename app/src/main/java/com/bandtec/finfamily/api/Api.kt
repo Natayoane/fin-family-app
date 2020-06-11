@@ -38,9 +38,20 @@ interface Api {
         @Path("userId") userId : Int
     ): Call<List<GroupTransResponse>>
 
+    @GET("transactions/{groupId}/{userId}/entries/total")
+    fun getUserEntriesTotal(
+        @Path("groupId") groupId : Int,
+        @Path("userId") userId : Int
+    ): Call<Float>
+
     @GET("transactions/{groupId}/expenses")
     fun getExpenses(
         @Path("groupId") groupId : Int
     ): Call<List<GroupTransResponse>>
+
+    @GET("groups/participants/members/{externalId}")
+    fun getGroupMembers(
+        @Path("externalId") extId : String
+    ): Call<List<UserResponse>>
 }
 

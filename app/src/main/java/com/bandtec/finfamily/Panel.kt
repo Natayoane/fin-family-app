@@ -31,6 +31,7 @@ class Panel : AppCompatActivity() {
         val sp: SharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
 
         val groupId = intent.extras?.get("groupId").toString()
+        val extId = intent.extras?.get("groupExternalId").toString()
         val groupType = intent.extras?.get("groupType").toString().toInt()
         val groupName = intent.extras?.get("groupName").toString()
         val userId = sp.getInt("userId", 0)
@@ -42,18 +43,24 @@ class Panel : AppCompatActivity() {
             updateValues()
         }
 
-
-        val id = 0
         if(groupType == 1) btnProfile.setImageDrawable(getDrawable(R.drawable.ic_person)) else btnProfile.setImageDrawable(getDrawable(R.drawable.ic_people))
 
-        if (id == 0) {
+        if (groupType == 1) {
             btnProfile.setOnClickListener {
                 val intent = Intent(this, Profile::class.java)
+                intent.putExtra("extId", extId)
+                intent.putExtra("groupId", groupId)
+                intent.putExtra("groupName", groupName)
+
                 startActivity(intent)
             }
         } else {
             btnProfile.setOnClickListener {
                 val intent = Intent(this, MembersGroup::class.java)
+                intent.putExtra("extId", extId)
+                intent.putExtra("groupId", groupId)
+                intent.putExtra("groupName", groupName)
+
                 startActivity(intent)
             }
         }

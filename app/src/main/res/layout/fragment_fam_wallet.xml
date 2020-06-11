@@ -8,23 +8,23 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:context=".fragments.FamWallet">
-    
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/rectangle_"
-        android:layout_width="320dp"
+        android:layout_width="0dp"
         android:layout_height="90dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="20dp"
         android:background="@drawable/famwalletview"
         android:elevation="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/textView10"
-            android:layout_width="320dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/bordafw"
             android:drawableLeft="@drawable/card"
@@ -57,7 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="160dp" />
+            app:layout_constraintGuide_percent="0.5" />
 
         <TextView
             android:id="@+id/textView12"
@@ -95,11 +95,11 @@
             android:id="@+id/vlTotalFamily"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
             android:layout_marginTop="8dp"
             android:text="TextView"
+            android:textSize="14sp"
             app:layout_constraintEnd_toStartOf="@+id/guideline2"
-            app:layout_constraintStart_toEndOf="@+id/txtS"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textTotalFamily" />
 
         <TextView
@@ -109,7 +109,7 @@
             android:layout_marginTop="8dp"
             android:text="TextView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView14"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
             app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
         <TextView
