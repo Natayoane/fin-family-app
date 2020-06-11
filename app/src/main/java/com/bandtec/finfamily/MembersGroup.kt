@@ -8,6 +8,8 @@ import android.os.Bundle
 import android.widget.Toast
 import com.bandtec.finfamily.api.RetrofitClient
 import com.bandtec.finfamily.fragments.Members
+import com.bandtec.finfamily.fragments.MembersFamContribution
+import com.bandtec.finfamily.model.GroupTransResponse
 import com.bandtec.finfamily.model.UserResponse
 import com.bandtec.finfamily.popups.PopAddNewMember
 import kotlinx.android.synthetic.main.activity_members_group.*
@@ -23,8 +25,11 @@ class MembersGroup : AppCompatActivity() {
         setContentView(R.layout.activity_members_group)
         val sp: SharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
         val extId = intent.extras?.get("extId").toString()
+        val groupId = intent.extras?.get("groupId").toString().toInt()
+        val groupName = intent.extras?.get("groupName").toString()
 
-        getGroupMembers(extId)
+
+        getGroupMembers(extId, groupId, groupName)
 
         btnGroup.setOnClickListener {
             val intent = Intent(this, PopAddNewMember::class.java)
@@ -33,7 +38,7 @@ class MembersGroup : AppCompatActivity() {
         }
     }
 
-    fun getGroupMembers(extId: String){
+    fun getGroupMembers(extId: String, groupId: Int, groupName: String){
         RetrofitClient.instance.getGroupMembers(extId)
             .enqueue(object : Callback<List<UserResponse>> {
                 var members : List<UserResponse>? = null
@@ -48,9 +53,10 @@ class MembersGroup : AppCompatActivity() {
                 ) {
                     when {
                         response.code().toString() == "200" -> {
-                            println(response.body())
                             members = response.body()!!
-                            setMembers(members!!)
+                            val userIds = setMembers(members!!)
+                            Thread.sleep(100L)
+                            getEntries(groupId, groupName, userIds)
                         }
                         response.code().toString() == "204" -> {
                             println("Something are wrong!!")
@@ -67,19 +73,68 @@ class MembersGroup : AppCompatActivity() {
             })
     }
 
-    fun setMembers(members : List<UserResponse>){
-        val transaction = supportFragmentManager.beginTransaction()
+    fun getEntries(groupId : Int, groupName: String, userId : IntArray){
+//        extractRefreshLayout.isRefreshing = true
 
-        members.forEachIndexed { _, m ->
+        userId.forEach {
+            Thread.sleep(100L)
+            RetrofitClient.instance.getUserEntriesTotal(groupId, it)
+                .enqueue(object : Callback<Float> {
+                    override fun onFailure(call: Call<Float>, t: Throwable) {
+//                    extractRefreshLayout.isRefreshing = false
+                        Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                    }
+
+                    override fun onResponse(
+                        call: Call<Float>,
+                        response: Response<Float>
+                    ) {
+//                    extractRefreshLayout.isRefreshing = false
+                        when {
+                            response.code().toString() == "200" -> {
+                                setTotal(response.body()!!, groupName)
+                            }
+                            response.code().toString() == "204" -> {
+                                setTotal(0f, groupName)
+                                println("No content!")
+                            }
+                            else -> {
+                                println("Something are wrong!")
+                            }
+                        }
+                    }
+                })
+        }
+
+    }
+
+    fun setMembers(members : List<UserResponse>) : IntArray {
+        val transaction = supportFragmentManager.beginTransaction()
+        var userIds = IntArray(members.size)
+        members.forEachIndexed { i, m ->
             val parametros = Bundle()
+            userIds[i] = m.id!!
             parametros.putString("nickname", m.nickname)
             parametros.putString("fullname", m.fullName)
             val membersFragment = Members()
             membersFragment.arguments = parametros
 
-            transaction.add(R.id.groupMembers, membersFragment, "group1")
+            transaction.add(R.id.personFrag, membersFragment)
 
         }
         transaction.commit()
+
+        return userIds
+    }
+
+    fun setTotal(total : Float, groupName : String){
+        val transaction = supportFragmentManager.beginTransaction()
+            val parametros = Bundle()
+            parametros.putString("groupName", groupName)
+            parametros.putFloat("groupTotal", total)
+            val accountItensFrag = MembersFamContribution()
+            accountItensFrag.arguments = parametros
+            transaction.add(R.id.totalFrag, accountItensFrag)
+            transaction.commit()
     }
 }
