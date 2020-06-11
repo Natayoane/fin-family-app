@@ -3,21 +3,21 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginTop="10dp"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     tools:context=".fragments.Members">
 
     <TextView
-        android:id="@+id/textView19"
+        android:id="@+id/tvFamName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="FamContribution"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView20"
+        android:id="@+id/tvFamValue"
         android:layout_width="59dp"
         android:layout_height="18dp"
         android:layout_marginTop="5dp"
@@ -26,7 +26,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView19"
+        app:layout_constraintTop_toBottomOf="@+id/tvFamName"
         tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -49,12 +49,18 @@ class Panel : AppCompatActivity() {
             btnProfile.setOnClickListener {
                 val intent = Intent(this, Profile::class.java)
                 intent.putExtra("extId", extId)
+                intent.putExtra("groupId", groupId)
+                intent.putExtra("groupName", groupName)
+
                 startActivity(intent)
             }
         } else {
             btnProfile.setOnClickListener {
                 val intent = Intent(this, MembersGroup::class.java)
                 intent.putExtra("extId", extId)
+                intent.putExtra("groupId", groupId)
+                intent.putExtra("groupName", groupName)
+
                 startActivity(intent)
             }
         }
