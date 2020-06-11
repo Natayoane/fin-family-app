@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.Window
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.anychart.anychart.AnyChart
@@ -27,7 +29,10 @@ class Panel : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
         setContentView(R.layout.activity_panel)
+
         val sp: SharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
 
         val groupId = intent.extras?.get("groupId").toString()
