@@ -8,6 +8,7 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     android:orientation="vertical"
+    android:layout_marginTop="40dp"
     tools:context=".Panel">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -208,13 +209,13 @@
             android:id="@+id/mes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/fundo2"
             android:entries="@array/meses_array"
             android:gravity="center"
             android:paddingTop="10dp"
             android:paddingBottom="20dp"
             android:prompt="@string/Janeiro"
-            android:textAlignment="center"
+            android:textAlignment="center"            android:background="@drawable/fundo2"
+
             android:textColor="#000000"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -230,6 +231,16 @@
             app:layout_constraintBottom_toBottomOf="@+id/mes"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:background="@drawable/fundo2"
+            app:layout_constraintBottom_toTopOf="@+id/mes"
+            tools:layout_editor_absoluteX="2dp"
+            tools:layout_editor_absoluteY="4dp" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
