@@ -77,6 +77,7 @@ class PopNewExpense : AppCompatActivity() {
             )
             createTransaction(transaction)
             startActivity(groups)
+            finish()
         }
 
     }

@@ -146,7 +146,7 @@ class GroupExtract : AppCompatActivity() {
     fun setExpenses(expenses : List<GroupTransResponse>){
         val transaction = supportFragmentManager.beginTransaction()
         var total = 0f
-        val totalFamily = vlTotalFamily.text.toString().toFloat()
+        val totalFamily = vlTotalFamily?.text.toString().replace("R$", "").toFloat()
         expenses.forEachIndexed {i, e ->
             val parametros = Bundle()
             parametros.putInt("id", e.id!!)
