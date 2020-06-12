@@ -6,8 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#FFFFFF"
+    android:layout_marginTop="30dp"
     android:orientation="vertical"
     tools:context=".GroupExtract">
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearLayout3"
@@ -227,6 +229,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"/>
             </ScrollView>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -251,4 +254,5 @@
             app:layout_constraintStart_toStartOf="parent"
             app:srcCompat="@drawable/ic_add" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
