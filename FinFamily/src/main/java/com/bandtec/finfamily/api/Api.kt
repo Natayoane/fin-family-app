@@ -12,6 +12,9 @@ interface Api {
     @POST("users/update/{id}")
     fun updateUser(@Body user:UpdateUserModel, @Path("id") userId: Int):Call<UserResponse>
 
+    @POST("transactions/create")
+    fun createTransaction(@Body transaction : GroupTransResponse) : Call<String>
+
     @POST("users")
     fun signupUser (@Body user:UserResponse):Call<UserResponse>
 
@@ -21,11 +24,11 @@ interface Api {
     @GET("users/{userId}/groups")
     fun getUserGroups(@Path("userId") userId: Int):Call<List<GroupResponse>>
 
-    @POST("groups/participants/add/{userId}/{externalId}")
+    @POST("groups/participants/add/members/{userId}/{externalId}")
     fun addGroupMember(
         @Path("userId") userId: Int,
         @Path("externalId") externalGroupId : String
-    ): Call<GroupsResponse>
+    ): Call<String>
 
     @GET("transactions/{groupId}/entries")
     fun getEntries(
@@ -53,5 +56,11 @@ interface Api {
     fun getGroupMembers(
         @Path("externalId") extId : String
     ): Call<List<UserResponse>>
+
+    @DELETE("groups/participants/remove/members/{userId}/{groupId}")
+    fun leaveGroup(
+        @Path("userId") userId : Int,
+        @Path("groupId") groupId : Int
+    ): Call<Any>
 }
 

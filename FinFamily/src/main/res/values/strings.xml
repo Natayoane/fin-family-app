@@ -88,26 +88,45 @@
         <item>@string/Dezembro</item>
     </string-array>
     <string-array name="entry">
-        <item>Salary</item>
-        <item>Loan</item>
-        <item>Bonus</item>
-        <item>Benefit</item>
-        <item>Donation</item>
-        <item>Credit</item>
+        <item>Remuneração</item>
+        <item>Bônus</item>
+        <item>Rendimento</item>
+        <item>Outras</item>
+        <item>Empréstimos</item>
     </string-array>
     <string-array name="expenses">
-        <item>Rent</item>
-        <item>Ligth</item>
-        <item>Water</item>
-        <item>Gas</item>
-        <item>School supplies</item>
-        <item>Locker room</item>
-        <item>Cheers</item>
-        <item>Supermarket</item>
-        <item>The bakery</item>
-        <item>School / University</item>
-        <item>Home</item>
-        <item>Payment booklet</item>
+        <item>Moradia</item>
+        <item>Contas</item>
+        <item>Saúde</item>
+        <item>Educação</item>
+        <item>Transporte</item>
+        <item>Mercado</item>
+        <item>Empregados</item>
+        <item>TV / Internet</item>
+        <item>Taxas</item>
+        <item>Saques</item>
+        <item>Bares</item>
+        <item>Lazer</item>
+        <item>Compras</item>
+        <item>Cuidados</item>
+        <item>Serviços</item>
+        <item>Viagem</item>
+        <item>Presentes</item>
+        <item>Família</item>
+        <item>Despesas</item>
+        <item>Outros</item>
+        <item>Impostos</item>
+        <item>Juros</item>
+        <item>Crediário</item>
+        <item>Cheque</item>
+        <item>Crédito</item>
+        <item>Carnê</item>
+        <item>Outros</item>
+        <item>Juros</item>
+        <item>Pagamento</item>
+        <item>Resgate</item>
+        <item>Aplicação</item>
+        <item>Transferência</item>
     </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>

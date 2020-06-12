@@ -15,7 +15,7 @@ import retrofit2.Response
 
 
 class GroupExtract : AppCompatActivity() {
-
+    var fragSize = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_group_extract)
@@ -29,6 +29,20 @@ class GroupExtract : AppCompatActivity() {
         Thread.sleep(200L)
         getExpenses(groupId)
 
+
+        groupExtractRefresh.setOnRefreshListener {
+            val frags = supportFragmentManager
+            var i = 0
+            while( i < fragSize){
+                val fragment = frags.findFragmentByTag("expenses$i")
+                frags.beginTransaction().detach(fragment!!).commit()
+                i++
+            }
+            getEntries(groupId, groupName)
+            getUserEntries(groupId, userId)
+            Thread.sleep(200L)
+            getExpenses(groupId)
+        }
         more.setOnClickListener {
             val entries = Intent(this, ModalEntry::class.java)
             entries.putExtra("groupId", groupId)
@@ -47,6 +61,7 @@ class GroupExtract : AppCompatActivity() {
         RetrofitClient.instance.getExpenses(groupId)
             .enqueue(object : Callback<List<GroupTransResponse>> {
                 override fun onFailure(call: Call<List<GroupTransResponse>>, t: Throwable) {
+                    groupExtractRefresh.isRefreshing = false
                     Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
                 }
 
@@ -54,6 +69,7 @@ class GroupExtract : AppCompatActivity() {
                     call: Call<List<GroupTransResponse>>,
                     response: Response<List<GroupTransResponse>>
                 ) {
+                    groupExtractRefresh.isRefreshing = false
                     when {
                         response.code().toString() == "200" -> {
                             setExpenses(response.body()!!)
@@ -70,6 +86,7 @@ class GroupExtract : AppCompatActivity() {
     }
 
     fun getEntries(groupId : Int, groupName: String){
+        groupExtractRefresh.isRefreshing = true
         RetrofitClient.instance.getEntries(groupId)
             .enqueue(object : Callback<List<GroupTransResponse>> {
                 override fun onFailure(call: Call<List<GroupTransResponse>>, t: Throwable) {
@@ -113,7 +130,7 @@ class GroupExtract : AppCompatActivity() {
                             setUserEntries(response.body()!!)
                         }
                         response.code().toString() == "204" -> {
-                            vlTotalFamily.text = "0.0"
+                            tvTotalUser.text = "R$0.0"
                             println("No content!")
                         }
                         else -> {
@@ -129,8 +146,8 @@ class GroupExtract : AppCompatActivity() {
     fun setExpenses(expenses : List<GroupTransResponse>){
         val transaction = supportFragmentManager.beginTransaction()
         var total = 0f
-        val totalFamily = vlTotalFamily.text.toString().toFloat()
-        expenses.forEach {e ->
+        val totalFamily = vlTotalFamily?.text.toString().replace("R$", "").toFloat()
+        expenses.forEachIndexed {i, e ->
             val parametros = Bundle()
             parametros.putInt("id", e.id!!)
             parametros.putString("name", e.name)
@@ -138,13 +155,14 @@ class GroupExtract : AppCompatActivity() {
             parametros.putFloat("value", e.value!!)
             val accountItensFrag = AccountItems()
             accountItensFrag.arguments = parametros
-            transaction.add(R.id.accItensFrag, accountItensFrag)
+            transaction.add(R.id.accItensFrag, accountItensFrag, "expenses$i")
             total += e.value!!
         }
 
         val avaible = totalFamily - total
         tvAvaibleAccount.text = avaible.toString()
         transaction.commit()
+        fragSize = expenses.size
     }
 
     fun setGroupEntries(entries : List<GroupTransResponse>, groupName : String){

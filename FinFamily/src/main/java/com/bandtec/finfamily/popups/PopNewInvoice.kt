@@ -12,21 +12,27 @@ class PopNewInvoice : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pop_new_invoice)
 
+        val userId = intent.extras?.get("userId").toString().toInt()
+        val groupId = intent.extras?.get("groupId").toString()
+
+
         btnClose.setOnClickListener {
             finish()
         }
 
         newEntry.setOnClickListener {
-            val intent = Intent(this, PopNewEntry::class.java)
-            //start your next activity
-            startActivity(intent)
+            val newEntry = Intent(this, PopNewEntry::class.java)
+            newEntry.putExtra("groupId", groupId)
+            newEntry.putExtra("userId", userId)
+            startActivity(newEntry)
             finish()
         }
 
         newExit.setOnClickListener {
-            val intent = Intent(this, PopNewExpense::class.java)
-            //start your next activity
-            startActivity(intent)
+            val newExpense = Intent(this, PopNewExpense::class.java)
+            newExpense.putExtra("groupId", groupId)
+            newExpense.putExtra("userId", userId)
+            startActivity(newExpense)
             finish()
         }
     }

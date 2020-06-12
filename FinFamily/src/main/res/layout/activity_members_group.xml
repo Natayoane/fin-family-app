@@ -44,32 +44,6 @@
                 app:layout_constraintTop_toTopOf="parent"
                 android:orientation="vertical"/>
 
-            <!--            <fragment-->
-            <!--                android:id="@+id/personFrag"-->
-            <!--                class="com.bandtec.finfamily.fragments.Members"-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_marginTop="5dp"-->
-            <!--                android:layout_marginBottom="5dp"-->
-            <!--                app:layout_constraintBottom_toBottomOf="parent"-->
-            <!--                app:layout_constraintEnd_toStartOf="@+id/guideline3"-->
-            <!--                app:layout_constraintStart_toStartOf="parent"-->
-            <!--                app:layout_constraintTop_toTopOf="parent"-->
-            <!--                tools:layout="@layout/fragment_members" />-->
-
-
-            <!--            <fragment-->
-            <!--                android:id="@+id/total"-->
-            <!--                class="com.bandtec.finfamily.fragments.MembersFamContribution"-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_marginBottom="5dp"-->
-            <!--                app:layout_constraintBottom_toBottomOf="parent"-->
-            <!--                app:layout_constraintEnd_toEndOf="parent"-->
-            <!--                app:layout_constraintStart_toStartOf="@+id/guideline3"-->
-            <!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                            tools:layout="@layout/fragment_members_fam_contribution" />-->
-
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline3"
                 android:layout_width="wrap_content"
@@ -78,13 +52,6 @@
                 app:layout_constraintGuide_percent="0.49878347" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <!--        <LinearLayout-->
-        <!--            android:id="@+id/groupMembers"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:orientation="vertical">-->
-        <!--        </LinearLayout>-->
 
     </ScrollView>
 
@@ -112,7 +79,7 @@
         app:srcCompat="@drawable/ic_add" />
 
     <Button
-        android:id="@+id/buttonLeaveGroup"
+        android:id="@+id/btLeaveGroup"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginStart="10dp"

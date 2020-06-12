@@ -30,18 +30,17 @@ class ListEntry : Fragment() {
         val idCategory = arguments?.getInt("category", 0)
         val value = arguments?.getFloat("value", 0f).toString()
 
+        val entriesTypes = resources.getStringArray(R.array.entry)
+
 
         when (idCategory) {
             0 -> tvCategory.text = ""
-            1 -> tvCategory.text = "Remuneração"
-            2 -> tvCategory.text = "Bônus"
-            3 -> tvCategory.text = "Rendimento"
-            4 -> tvCategory.text = "Outras rendas"
-            5 -> tvCategory.text = "Empréstimos"
+            1 -> tvCategory.text = entriesTypes[0]
+            2 -> tvCategory.text = entriesTypes[1]
+            3 -> tvCategory.text = entriesTypes[2]
+            4 -> tvCategory.text = entriesTypes[3]
+            5 -> tvCategory.text = entriesTypes[4]
         }
-
-        Toast.makeText(activity, "2 : $value", Toast.LENGTH_SHORT).show()
-
         tvName.text = name
         tvValue.text = value
     }

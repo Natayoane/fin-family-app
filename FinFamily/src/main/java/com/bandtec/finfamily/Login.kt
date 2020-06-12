@@ -20,7 +20,7 @@ class Login : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        val intent = Intent(this, Group::class.java)
+        val group = Intent(this, Group::class.java)
         // start your next activity
         inputemail.requestFocus()
 
@@ -62,12 +62,12 @@ class Login : AppCompatActivity() {
                         response: Response<UserResponse>
                     ) {
                         if (response.code().toString() == "200") {
-                            sp.edit().putBoolean("logged", true).commit()
-                            sp.edit().putInt("userId", response.body()?.id!!).commit()
-                            sp.edit().putString("full_name", response.body()?.fullName).commit()
-                            sp.edit().putString("email", response.body()?.email).commit()
-                            sp.edit().putString("nickname", response.body()?.nickname).commit()
-                            startActivity(intent)
+                            sp.edit().putBoolean("logged", true).apply()
+                            sp.edit().putInt("userId", response.body()?.id!!).apply()
+                            sp.edit().putString("full_name", response.body()?.fullName).apply()
+                            sp.edit().putString("email", response.body()?.email).apply()
+                            sp.edit().putString("nickname", response.body()?.nickname).apply()
+                            startActivity(group)
                         } else {
                             Toast.makeText(
                                 applicationContext,

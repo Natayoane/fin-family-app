@@ -22,7 +22,7 @@ class CreateAccount3 : AppCompatActivity() {
         setContentView(R.layout.activity_create_account3)
 
         val spCreate3 : SharedPreferences = getSharedPreferences("spCreate1", Context.MODE_PRIVATE)
-        val intent = Intent(this, MainActivity::class.java)
+        val home = Intent(this, MainActivity::class.java)
 
         inputcode.addTextChangedListener(MaskEditUtil.mask(inputcode, MaskEditUtil.FORMAT_FONE_AREA_CODE))
         inputnumber.addTextChangedListener(MaskEditUtil.mask(inputnumber, MaskEditUtil.FORMAT_FONE_AREA_NUMBER))
@@ -87,7 +87,7 @@ class CreateAccount3 : AppCompatActivity() {
 //                            sp.edit().putString("full_name", response.body()?.fullName).apply()
 //                            sp.edit().putString("email", response.body()?.email).apply()
 //                            sp.edit().putString("nickname", response.body()?.nickname).apply()
-                            startActivity(intent)
+                            startActivity(home)
                         }
                         else {
                             Toast.makeText(applicationContext, "Internal Server Error!", Toast.LENGTH_LONG).show()

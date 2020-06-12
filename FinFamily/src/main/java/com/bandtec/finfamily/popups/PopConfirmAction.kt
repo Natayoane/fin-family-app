@@ -20,5 +20,17 @@ class PopConfirmAction : AppCompatActivity() {
         btnClose.setOnClickListener {
             finish()
         }
+
+        btnNo.setOnClickListener {
+            finish()
+        }
+
+        btnYes.setOnClickListener {
+
+        }
+    }
+
+    fun removeUser(userId : Int){
+        
     }
 }
