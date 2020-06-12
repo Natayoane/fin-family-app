@@ -21,6 +21,9 @@ interface Api {
     @POST("groups/create")
     fun createGroup (@Body group:CreateGroupModel):Call<GroupResponse>
 
+    @DELETE("users/remove/{userId}")
+    fun removeUser (@Path("userId") userId: Int):Call<String>
+
     @GET("users/{userId}/groups")
     fun getUserGroups(@Path("userId") userId: Int):Call<List<GroupResponse>>
 
