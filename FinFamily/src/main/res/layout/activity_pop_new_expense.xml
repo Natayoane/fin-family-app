@@ -31,18 +31,10 @@
         android:textStyle="bold" />
 
 
-    <EditText
-        android:id="@+id/value"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="numberDecimal"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
-        android:hint="@string/Insert_value" />
+
 
     <EditText
-        android:id="@+id/name"
+        android:id="@+id/etName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
@@ -51,8 +43,18 @@
         android:layout_marginEnd="20dp"
         android:hint="@string/Insert_name" />
 
+    <EditText
+        android:id="@+id/etValue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:hint="@string/Insert_value" />
+
     <Spinner
-        android:id="@+id/spinner1"
+        android:id="@+id/spType"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -64,7 +66,7 @@
         android:scrollbarSize="4dp" />
 
     <CheckBox
-        android:id="@+id/checkFixed"
+        android:id="@+id/cbRecurrent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Fixed"
@@ -76,12 +78,11 @@
         />
 
     <ImageView
-        android:id="@+id/btnSaveMembers"
+        android:id="@+id/btSaveEntry"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:onClick="newExpense"
         android:src="@drawable/ic_check_black_24dp" />
 
 

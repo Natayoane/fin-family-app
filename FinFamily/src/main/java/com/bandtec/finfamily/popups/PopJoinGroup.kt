@@ -33,7 +33,7 @@ class PopJoinGroup : AppCompatActivity() {
         }
 
         ivFinish.setOnClickListener {
-            val intent = Intent(this, Group::class.java)
+            val group = Intent(this, Group::class.java)
 
             val userId = sp.getInt("userId", 0)
             val externalId = etGroupCode.text.toString()
@@ -45,14 +45,20 @@ class PopJoinGroup : AppCompatActivity() {
             }
 
             RetrofitClient.instance.addGroupMember(userId, externalId)
-                .enqueue(object : Callback<GroupsResponse> {
-                    override fun onFailure(call: Call<GroupsResponse>, t: Throwable) {
+                .enqueue(object : Callback<String> {
+                    override fun onFailure(call: Call<String>, t: Throwable) {
+                        println("passei aqui")
+                        println(t.message)
+                        println(t.stackTrace)
+                        println(t.cause)
+
+
                         Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
                     }
 
                     override fun onResponse(
-                        call: Call<GroupsResponse>,
-                        response: Response<GroupsResponse>
+                        call: Call<String>,
+                        response: Response<String>
                     ) {
                         when {
                             response.code().toString() == "200" -> {
@@ -61,18 +67,18 @@ class PopJoinGroup : AppCompatActivity() {
                                     applicationContext,
                                     "Sucesso!",
                                     Toast.LENGTH_LONG).show()
-                                startActivity(intent)
+                                startActivity(group)
                             }
                             response.code().toString() == "409" -> {
                                 Toast.makeText(
                                     applicationContext, "Você já pertence a este grupo!",
                                     Toast.LENGTH_LONG).show()
-                                startActivity(intent)
+                                startActivity(group)
                             }
                             else -> {
                                 Toast.makeText(applicationContext, "Verifique o código do grupo " +
                                         "e tente novamente!", Toast.LENGTH_LONG).show()
-                                startActivity(intent)
+                                startActivity(group)
                             }
                         }
                     }

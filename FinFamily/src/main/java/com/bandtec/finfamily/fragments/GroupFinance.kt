@@ -10,13 +10,15 @@ import android.view.View
 import android.view.ViewGroup
 import com.bandtec.finfamily.Panel
 import com.bandtec.finfamily.R
+import kotlinx.android.synthetic.main.activity_group.*
 import kotlinx.android.synthetic.main.fragment_group_finance.*
 
 /**
  * A simple [Fragment] subclass.
  */
 class GroupFinance : Fragment() {
-    val groupsPreferences : SharedPreferences? = context?.getSharedPreferences("groups", Context.MODE_PRIVATE)
+    val groupsPreferences: SharedPreferences? =
+        context?.getSharedPreferences("groups", Context.MODE_PRIVATE)
 
 
     override fun onCreateView(
@@ -49,6 +51,5 @@ class GroupFinance : Fragment() {
 
             startActivity(panel)
         }
-
     }
 }

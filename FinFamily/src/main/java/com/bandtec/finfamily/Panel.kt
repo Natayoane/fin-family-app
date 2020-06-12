@@ -29,8 +29,6 @@ class Panel : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
         setContentView(R.layout.activity_panel)
 
         val sp: SharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
@@ -42,6 +40,7 @@ class Panel : AppCompatActivity() {
         val userId = sp.getInt("userId", 0)
 
         getTransactions(userId)
+        updateValues()
 
         refreshLayout.setOnRefreshListener {
             getTransactions(userId)
@@ -93,16 +92,18 @@ class Panel : AppCompatActivity() {
 
 
         bnthome.setOnClickListener {
-            val intent = Intent(this, Group::class.java)
+            val home = Intent(this, Group::class.java)
             // start your next activity
-            startActivity(intent)
+            startActivity(home)
             finish()
         }
 
         btnadd.setOnClickListener {
-            val intent = Intent(this, PopNewInvoice::class.java)
-            // start your next activity
-            startActivity(intent)
+            val newInvoice = Intent(this, PopNewInvoice::class.java)
+            newInvoice.putExtra("groupId", groupId)
+            newInvoice.putExtra("userId", userId)
+
+            startActivity(newInvoice)
         }
 
         setupPieChart()

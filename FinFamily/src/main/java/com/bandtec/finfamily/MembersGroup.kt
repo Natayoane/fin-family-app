@@ -3,17 +3,16 @@ package com.bandtec.finfamily
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.bandtec.finfamily.api.RetrofitClient
 import com.bandtec.finfamily.fragments.Members
 import com.bandtec.finfamily.fragments.MembersFamContribution
-import com.bandtec.finfamily.model.GroupTransResponse
 import com.bandtec.finfamily.model.UserResponse
 import com.bandtec.finfamily.popups.PopAddNewMember
 import kotlinx.android.synthetic.main.activity_members_group.*
-import kotlinx.android.synthetic.main.fragment_members.*
+import kotlinx.android.synthetic.main.activity_panel.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -27,21 +26,89 @@ class MembersGroup : AppCompatActivity() {
         val extId = intent.extras?.get("extId").toString()
         val groupId = intent.extras?.get("groupId").toString().toInt()
         val groupName = intent.extras?.get("groupName").toString()
+        val userId = sp.getInt("userId", 0)
 
 
         getGroupMembers(extId, groupId, groupName)
 
         btnGroup.setOnClickListener {
-            val intent = Intent(this, PopAddNewMember::class.java)
-            //start your next activity
-            startActivity(intent)
+
+            val sharingIntent = Intent(Intent.ACTION_SEND)
+            sharingIntent.type = "text/plain"
+            sharingIntent.putExtra(
+                Intent.EXTRA_TEXT, """
+                Olá, estou usando o app Fin Family para marcar minhas despesas!
+                Venha fazer parte do meu grupo:
+                Nome do grupo: *$groupName*
+                Código do grupo: *$extId*
+            """.trimIndent()
+            )
+            sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Fin Family - Entre no meu grupo")
+            startActivity(Intent.createChooser(sharingIntent, "Compartilhe o ID do grupo"))
+
+        }
+
+        btLeaveGroup.setOnClickListener {
+            val login = Intent(this, Login::class.java)
+
+            if (userId == 0) {
+                Toast.makeText(
+                    this,
+                    """Ops, algo deu errado!
+                        Por favor, tente fazer o login novamente!
+                    """.trimMargin(),
+                    Toast.LENGTH_LONG
+                ).show()
+                startActivity(login)
+                finish()
+            } else {
+                leaveGroup(userId, groupId, groupName)
+                startActivity(login)
+            }
+
         }
     }
 
-    fun getGroupMembers(extId: String, groupId: Int, groupName: String){
+    private fun leaveGroup(userId: Int, groupId: Int, groupName: String) {
+        RetrofitClient.instance.leaveGroup(userId, groupId)
+            .enqueue(object : Callback<Any> {
+                override fun onFailure(call: Call<Any>, t: Throwable) {
+                    println("Passei 1")
+                    println(t.message)
+                    Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                }
+
+                override fun onResponse(
+                    call: Call<Any>,
+                    response: Response<Any>
+                ) {
+                    when {
+                        response.code().toString() == "200" -> {
+                            println("Passei 2")
+                            println("groupName")
+                            println(response.body().toString())
+                            Toast.makeText(
+                                applicationContext,
+                                "Você saiu do $groupName!",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                        else -> {
+                            val extract = Intent(applicationContext, Extract::class.java)
+                            println("Something are wrong!")
+                            startActivity(extract)
+                            finish()
+                        }
+                    }
+                }
+            })
+    }
+
+
+    private fun getGroupMembers(extId: String, groupId: Int, groupName: String) {
         RetrofitClient.instance.getGroupMembers(extId)
             .enqueue(object : Callback<List<UserResponse>> {
-                var members : List<UserResponse>? = null
+                var members: List<UserResponse>? = null
 
                 override fun onFailure(call: Call<List<UserResponse>>, t: Throwable) {
                     Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
@@ -73,7 +140,7 @@ class MembersGroup : AppCompatActivity() {
             })
     }
 
-    fun getEntries(groupId : Int, groupName: String, userId : IntArray){
+    fun getEntries(groupId: Int, groupName: String, userId: IntArray) {
 //        extractRefreshLayout.isRefreshing = true
 
         userId.forEach {
@@ -108,9 +175,9 @@ class MembersGroup : AppCompatActivity() {
 
     }
 
-    fun setMembers(members : List<UserResponse>) : IntArray {
+    fun setMembers(members: List<UserResponse>): IntArray {
         val transaction = supportFragmentManager.beginTransaction()
-        var userIds = IntArray(members.size)
+        val userIds = IntArray(members.size)
         members.forEachIndexed { i, m ->
             val parametros = Bundle()
             userIds[i] = m.id!!
@@ -127,14 +194,14 @@ class MembersGroup : AppCompatActivity() {
         return userIds
     }
 
-    fun setTotal(total : Float, groupName : String){
+    fun setTotal(total: Float, groupName: String) {
         val transaction = supportFragmentManager.beginTransaction()
-            val parametros = Bundle()
-            parametros.putString("groupName", groupName)
-            parametros.putFloat("groupTotal", total)
-            val accountItensFrag = MembersFamContribution()
-            accountItensFrag.arguments = parametros
-            transaction.add(R.id.totalFrag, accountItensFrag)
-            transaction.commit()
+        val parametros = Bundle()
+        parametros.putString("groupName", groupName)
+        parametros.putFloat("groupTotal", total)
+        val accountItensFrag = MembersFamContribution()
+        accountItensFrag.arguments = parametros
+        transaction.add(R.id.totalFrag, accountItensFrag)
+        transaction.commit()
     }
 }
