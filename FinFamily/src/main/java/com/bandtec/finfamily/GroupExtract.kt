@@ -153,6 +153,7 @@ class GroupExtract : AppCompatActivity() {
             parametros.putString("name", e.name)
             parametros.putInt("category", e.idExpenseCategory!!)
             parametros.putFloat("value", e.value!!)
+            parametros.putInt("userId", e.userId!!)
             val accountItensFrag = AccountItems()
             accountItensFrag.arguments = parametros
             transaction.add(R.id.accItensFrag, accountItensFrag, "expenses$i")

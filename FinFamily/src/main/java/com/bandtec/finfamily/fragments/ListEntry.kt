@@ -1,12 +1,15 @@
 package com.bandtec.finfamily.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.bandtec.finfamily.R
+import com.bandtec.finfamily.popups.PopAlterEntry
+import com.bandtec.finfamily.popups.PopAlterExpense
+import kotlinx.android.synthetic.main.activity_panel.*
 import kotlinx.android.synthetic.main.fragment_list_entry.*
 
 /**
@@ -41,8 +44,18 @@ class ListEntry : Fragment() {
             4 -> tvCategory.text = entriesTypes[3]
             5 -> tvCategory.text = entriesTypes[4]
         }
+
         tvName.text = name
         tvValue.text = value
+
+        ivEdit.setOnClickListener {
+            val alter = Intent(requireActivity(), PopAlterEntry::class.java)
+            alter.putExtra("id", id)
+            alter.putExtra("name", name)
+            alter.putExtra("category", idCategory)
+            alter.putExtra("value", value)
+            startActivity(alter)
+        }
     }
 
 }
