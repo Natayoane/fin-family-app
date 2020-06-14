@@ -68,6 +68,7 @@ class Login : AppCompatActivity() {
                             sp.edit().putString("email", response.body()?.email).apply()
                             sp.edit().putString("nickname", response.body()?.nickname).apply()
                             startActivity(group)
+                            finish()
                         } else {
                             Toast.makeText(
                                 applicationContext,

@@ -51,21 +51,24 @@ class Panel : AppCompatActivity() {
 
         if (groupType == 1) {
             btnProfile.setOnClickListener {
-                val intent = Intent(this, Profile::class.java)
-                intent.putExtra("extId", extId)
-                intent.putExtra("groupId", groupId)
-                intent.putExtra("groupName", groupName)
+                val profile = Intent(this, Profile::class.java)
+                profile.putExtra("extId", extId)
+                profile.putExtra("groupId", groupId)
+                profile.putExtra("groupName", groupName)
 
-                startActivity(intent)
+                startActivity(profile)
+                finish()
+
             }
         } else {
             btnProfile.setOnClickListener {
-                val intent = Intent(this, MembersGroup::class.java)
-                intent.putExtra("extId", extId)
-                intent.putExtra("groupId", groupId)
-                intent.putExtra("groupName", groupName)
+                val members = Intent(this, MembersGroup::class.java)
+                members.putExtra("extId", extId)
+                members.putExtra("groupId", groupId)
+                members.putExtra("groupName", groupName)
 
-                startActivity(intent)
+                startActivity(members)
+                finish()
             }
         }
 
@@ -77,6 +80,7 @@ class Panel : AppCompatActivity() {
                 intent.putExtra("groupName", groupName)
                 intent.putExtra("userId", userId)
                 startActivity(intent)
+                finish()
 
             } else if(groupType == 2){
                 val intent = Intent(this, GroupExtract::class.java)
@@ -85,16 +89,15 @@ class Panel : AppCompatActivity() {
                 intent.putExtra("groupName", groupName)
                 intent.putExtra("userId", userId)
                 startActivity(intent)
-
+                finish()
             }
 
         }
 
-
         bnthome.setOnClickListener {
-            val home = Intent(this, Group::class.java)
+            val groups = Intent(this, Group::class.java)
             // start your next activity
-            startActivity(home)
+            startActivity(groups)
             finish()
         }
 
@@ -104,6 +107,7 @@ class Panel : AppCompatActivity() {
             newInvoice.putExtra("userId", userId)
 
             startActivity(newInvoice)
+            finish()
         }
 
         setupPieChart()
@@ -150,7 +154,7 @@ class Panel : AppCompatActivity() {
                             var transactions = getSharedPreferences("transactions", Context.MODE_PRIVATE)
                             val gson = Gson()
                             val json = gson.toJson(response.body())
-                            transactions.edit().putString("transactions", json).commit()
+                            transactions.edit().putString("transactions", json).apply()
                         }
                         response.code().toString() == "204" -> {
                             Toast.makeText(
