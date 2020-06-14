@@ -9,7 +9,6 @@ import com.bandtec.finfamily.MainActivity
 import com.bandtec.finfamily.R
 import com.bandtec.finfamily.api.RetrofitClient
 import kotlinx.android.synthetic.main.activity_pop_confirm_action.*
-import kotlinx.android.synthetic.main.activity_pop_delete_put.*
 import kotlinx.android.synthetic.main.activity_pop_delete_put.btnClose
 import kotlinx.android.synthetic.main.activity_pop_delete_put.txtTitle
 import retrofit2.Call
@@ -32,11 +31,11 @@ class PopConfirmAction : AppCompatActivity() {
             finish()
         }
 
-        btNo.setOnClickListener {
+        btnNo.setOnClickListener {
             finish()
         }
 
-        btYes.setOnClickListener {
+        btnYes.setOnClickListener {
             val home = Intent(this, MainActivity::class.java)
             removeUser(user.getInt("userId", 0))
             startActivity(home)

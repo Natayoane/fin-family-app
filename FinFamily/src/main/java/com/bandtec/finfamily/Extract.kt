@@ -29,7 +29,7 @@ class Extract : AppCompatActivity() {
         extractRefresh.setOnRefreshListener {
             val frags = supportFragmentManager
             var i = 0
-            while( i < fragSize){
+            while (i < fragSize) {
                 val fragment = frags.findFragmentByTag("expenses$i")
                 frags.beginTransaction().detach(fragment!!).commit()
                 i++
@@ -38,9 +38,6 @@ class Extract : AppCompatActivity() {
             Thread.sleep(200L)
             getExpenses(groupId.toInt())
         }
-
-
-        val total = intent.extras?.getFloat("totalFamily")
 
         more.setOnClickListener {
             val entries = Intent(this, ModalEntry::class.java)
@@ -119,12 +116,13 @@ class Extract : AppCompatActivity() {
         var total = 0f
         val totalFamily = vlTotalFamily.text.toString().toFloat()
 
-        expenses.forEachIndexed {i, e ->
+        expenses.forEachIndexed { i, e ->
             val parametros = Bundle()
             parametros.putInt("id", e.id!!)
             parametros.putString("name", e.name)
             parametros.putInt("category", e.idExpenseCategory!!)
             parametros.putFloat("value", e.value!!)
+            parametros.putInt("userId", e.userId!!)
             val accountItensFrag = AccountItems()
             accountItensFrag.arguments = parametros
             transaction.add(R.id.accItensFrag, accountItensFrag, "expenses$i")
