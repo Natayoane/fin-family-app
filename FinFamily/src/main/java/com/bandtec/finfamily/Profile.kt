@@ -35,7 +35,6 @@ class Profile : AppCompatActivity() {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             // start your next activity
             startActivity(intent)
-            finish()
         }
 
         btnLogout.setOnClickListener {

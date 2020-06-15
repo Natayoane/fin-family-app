@@ -25,9 +25,6 @@ class PopNewExpense : AppCompatActivity() {
 
 
         btnClose.setOnClickListener {
-            val intent = Intent(this, PopNewInvoice::class.java)
-            //start your next activity
-            startActivity(intent)
             finish()
         }
         btSaveEntry.setOnClickListener {

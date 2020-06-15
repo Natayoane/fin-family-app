@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/refreshLayout"
+    android:id="@+id/panelRefresh"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
@@ -20,19 +20,19 @@
         tools:context=".Panel">
 
         <TextView
-            android:id="@+id/vlExpenses2"
+            android:id="@+id/tvTotalExpense"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="00,00"
-            android:textColor="#FF0000"
+            android:textColor="#CC0000"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/guideline7"
             app:layout_constraintStart_toStartOf="@+id/guideline8"
             app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
         <TextView
-            android:id="@+id/vlEarnings2"
+            android:id="@+id/tvTotalEntry"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -44,7 +44,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
         <com.anychart.anychart.AnyChartView
-            android:id="@+id/any_chart_view"
+            android:id="@+id/chart"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginStart="10dp"
@@ -56,11 +56,23 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/vlEarnings2"
+            app:layout_constraintTop_toBottomOf="@+id/tvTotalEntry"
             app:layout_constraintVertical_bias="1.0">
 
             <TextView
-                android:id="@+id/textView21"
+                android:id="@+id/tvSaldo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="5dp"
+                android:gravity="center"
+                android:text="Saldo"
+                android:layout_marginBottom="60dp"
+                android:textColor="#696969"
+                android:textSize="25dp" />
+
+            <TextView
+                android:id="@+id/tvAvaible"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -69,6 +81,7 @@
                 android:drawablePadding="20sp"
                 android:gravity="center"
                 android:text="1200,00"
+                android:onClick="popInstruction"
                 android:textColor="#55910E"
                 android:textSize="25dp" />
 
@@ -202,6 +215,7 @@
             android:background="@drawable/btnextract"
             android:text="@string/Extract"
             app:layout_constraintBottom_toTopOf="@+id/menulayout"
+            app:backgroundTint="#3ED4AF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -214,8 +228,8 @@
             android:paddingTop="10dp"
             android:paddingBottom="20dp"
             android:prompt="@string/Janeiro"
-            android:textAlignment="center"            android:background="@drawable/fundo2"
-
+            android:textAlignment="center"
+            android:background="#FFFFFF"
             android:textColor="#000000"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -237,7 +251,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TextView"
-            android:background="@drawable/fundo2"
+            android:background="#FFFFFF"
             app:layout_constraintBottom_toTopOf="@+id/mes"
             tools:layout_editor_absoluteX="2dp"
             tools:layout_editor_absoluteY="4dp" />

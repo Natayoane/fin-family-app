@@ -26,7 +26,7 @@
         android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView28"
-        app:srcCompat="@drawable/ic_launcher_background" />
+        app:srcCompat="@mipmap/man" />
 
     <EditText
         android:id="@+id/etName"

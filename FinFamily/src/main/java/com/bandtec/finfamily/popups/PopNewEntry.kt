@@ -27,9 +27,6 @@ class PopNewEntry : AppCompatActivity() {
         val groups = Intent(applicationContext, Group::class.java)
 
         btnClose.setOnClickListener {
-            val intent = Intent(this, PopNewInvoice::class.java)
-            //start your next activity
-            startActivity(intent)
             finish()
         }
 

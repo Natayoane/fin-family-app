@@ -49,7 +49,6 @@ class Extract : AppCompatActivity() {
             val intent = Intent(this, PopFamContribution::class.java)
             //start your next activity
             startActivity(intent)
-            finish()
         }
 
     }
@@ -83,7 +82,7 @@ class Extract : AppCompatActivity() {
     }
 
     fun getEntries(groupId: Int, groupName: String) {
-        extractRefresh.isRefreshing = true
+//        extractRefresh.isRefreshing = true
         RetrofitClient.instance.getEntries(groupId)
             .enqueue(object : Callback<List<GroupTransResponse>> {
                 override fun onFailure(call: Call<List<GroupTransResponse>>, t: Throwable) {
@@ -114,7 +113,7 @@ class Extract : AppCompatActivity() {
     fun setExpenses(expenses: List<GroupTransResponse>) {
         val transaction = supportFragmentManager.beginTransaction()
         var total = 0f
-        val totalFamily = vlTotalFamily.text.toString().toFloat()
+        val totalFamily = vlTotalFamily.text.toString().replace("R$", "").toFloat()
 
         expenses.forEachIndexed { i, e ->
             val parametros = Bundle()
