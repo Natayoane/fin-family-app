@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
+        <activity android:name=".popups.PopAlterEntry"></activity>
         <activity android:name=".GroupExtract" />
         <activity android:name=".popups.PopListContributors" />
         <activity android:name=".AvatarGroups" />
@@ -22,7 +22,7 @@
             android:label="Avatar"
             android:theme="@style/navbar" />
         <activity android:name=".popups.PopConfirmAction" />
-        <activity android:name=".popups.PopAlterPut" />
+        <activity android:name=".popups.PopAlterExpense" />
         <activity android:name=".popups.PopDeletePut" />
         <activity android:name=".ModalEntry" />
         <activity android:name=".popups.PopFamContribution" />

@@ -46,19 +46,21 @@ class Group : AppCompatActivity() {
         }
 
         btnGroup.setOnClickListener {
-            val intent = Intent(this, PopChooseGroupAction::class.java)
+            val groupAct = Intent(this, PopChooseGroupAction::class.java)
             //start your next activity
-            startActivity(intent)
+            startActivity(groupAct)
+            finish()
         }
     }
 
     fun Group(v: View) {
-        val intent = Intent(this, Panel::class.java)
+        val panel = Intent(this, Panel::class.java)
 
         val id: Int = 1
-        intent.putExtra("id", id)
+        panel.putExtra("id", id)
 
-        startActivity(intent)
+        startActivity(panel)
+        finish()
     }
 
     fun getUserGroups(userId: Int) {

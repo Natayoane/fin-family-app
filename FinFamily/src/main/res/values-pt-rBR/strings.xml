@@ -47,11 +47,12 @@
     <string name="Join_Group">Entrar no grupo</string>
     <string name="New_Group">Novo grupo</string>
     <string name="EnterGroupCode">#EntrarComCodigo</string>
-    <string name="New_entry">Nova entrada</string>
+    <string name="New_entry">Entrada</string>
     <string name="Insert_value">"$  Insira o valor "</string>
     <string name="Fixed">Fixo</string>
-    <string name="New_expense">Nova  despesa</string>
-    <string name="New_Invoice">Nova fatura</string>
+    <string name="New_expense">Despesa</string>
+    <string name="New_Invoice">Nova Entrada</string>
+    <string name="New_Transaction">Nova Transação</string>
     <string name="Sifrao">$</string>
     <string name="Administrador">"Administrador "</string>
     <string name="Sair">"Sair "</string>

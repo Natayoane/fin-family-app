@@ -43,6 +43,7 @@ class Profile : AppCompatActivity() {
             intent.putExtra("choose", 1)
             // start your next activity
             startActivity(intent)
+            finish()
         }
     }
 }

@@ -114,6 +114,7 @@ class ProfileEdit : AppCompatActivity() {
                                 sp.edit().putString("email", response.body()?.email).apply()
                                 sp.edit().putString("nickname", response.body()?.nickname).apply()
                                 startActivity(profile)
+                                finish()
                             }
                             response.code().toString() == "401" -> {
                                 etBasePassword.error = "A senha informada está incorreta"

@@ -4,84 +4,75 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.bandtec.finfamily.Group
 import com.bandtec.finfamily.R
 import com.bandtec.finfamily.api.RetrofitClient
 import com.bandtec.finfamily.model.GroupTransResponse
-import kotlinx.android.synthetic.main.activity_pop_new_expense.*
-import kotlinx.android.synthetic.main.activity_pop_new_invoice.btnClose
+import kotlinx.android.synthetic.main.activity_pop_alter_expense.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.text.SimpleDateFormat
-import java.util.*
 
-class PopNewExpense : AppCompatActivity() {
+class PopAlterExpense : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_pop_new_expense)
-        val groups = Intent(applicationContext, Group::class.java)
+        setContentView(R.layout.activity_pop_alter_expense)
 
+        val transId = intent?.extras?.getInt("id", 0)
+        val name = intent?.extras?.getString("name", "")
+        val idCategory = intent?.extras?.getInt("category", 0)
+        val value = intent?.extras?.getString("value", "")
+
+        etNome.hint = name
+        etValue.hint = value
+        spCategory.setSelection(idCategory!! - 1)
+
+        btnDeletePut.setOnClickListener {
+            val delete = Intent(this, PopDeletePut::class.java)
+
+            delete.putExtra("id", transId)
+
+            startActivity(delete)
+            finish()
+
+        }
 
         btnClose.setOnClickListener {
             finish()
         }
-        btSaveEntry.setOnClickListener {
-            val userId = intent.extras?.get("userId").toString().toInt()
-            val groupId = intent.extras?.get("groupId").toString().toInt()
-            val entryName = etName.text.toString()
-            val entryValue = etValue.text.toString()
-            val expenseType = spType.selectedItem.toString()
-            val isRecurrent = cbRecurrent.isChecked
-            var recurrenteTypeId: Int
 
-            var expenseTypeId = getExpenseId(expenseType)
-
-            if (entryName.isEmpty()) {
-                etName.error = "Dê um nome para essa entrada!"
-                etName.requestFocus()
-                return@setOnClickListener
-            }
-            if (entryValue.isEmpty()) {
-                etValue.error = "Coloque o valor para essa entrada!"
-                etValue.requestFocus()
-                return@setOnClickListener
-            }
-
-            recurrenteTypeId = if (isRecurrent) {
-                5
-            } else {
-                1
-            }
-
-            val payDate: String = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date())
-            val transaction = GroupTransResponse(
-                0,
-                entryName,
-                "",
-                entryValue.toFloat(),
-                payDate,
-                isRecurrent,
-                groupId,
-                userId,
-                recurrenteTypeId,
-                expenseTypeId,
+        btUpdate.setOnClickListener {
+            val categoryId = getExpenseId(spCategory.selectedItem.toString())
+            var transaction = GroupTransResponse(
+                transId,
+                name!!,
                 null,
-                2,
+                value?.toFloat(),
+                null,
+                null,
+                null,
+                null,
+                null,
+                categoryId,
+                null,
+                null,
                 null,
                 null
             )
-            createTransaction(transaction)
-            startActivity(groups)
+            if(etNome.text.isNotEmpty()){
+                transaction.name = etNome.text.toString()
+            }
+            if(etValue.text.isNotEmpty()){
+                transaction.value = etValue.text.toString().toFloat()
+            }
+
+            updateTransaction(transId!!, transaction)
             finish()
         }
-
     }
 
-    fun createTransaction(transaction: GroupTransResponse) {
-
-        RetrofitClient.instance.createTransaction(transaction)
+    fun updateTransaction(transId: Int, transaction: GroupTransResponse) {
+        RetrofitClient.instance.updateTransactions(transId, transaction)
             .enqueue(object : Callback<String> {
                 override fun onFailure(call: Call<String>, t: Throwable) {
                     Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
@@ -91,26 +82,31 @@ class PopNewExpense : AppCompatActivity() {
                     call: Call<String>,
                     response: Response<String>
                 ) {
-                    when {
-                        response.code().toString() == "201" -> {
-                            Toast.makeText(
-                                applicationContext,
-                                "Transação adicionada com sucesso!",
-                                Toast.LENGTH_LONG
-                            ).show()
-                        }
-                        else -> {
-                            println("Something are wrong!")
-                        }
+                    if (response.code().toString() == "200") {
+                        Toast.makeText(
+                            applicationContext,
+                            "Transação alterada com sucesso!",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    } else {
+                        Toast.makeText(
+                            applicationContext,
+                            "Houve um erro ao alterar a transação!\nTente novamente mais tarde!",
+                            Toast.LENGTH_LONG
+                        ).show()
+                        println("Something are wrong!")
                     }
+
+
                 }
+
             })
     }
 
-    fun getExpenseId(entryType: String): Int {
+    fun getExpenseId(category: String): Int {
         val expenseTypes = resources.getStringArray(R.array.expenses)
         var expenseId = 0
-        when (entryType) {
+        when (category) {
             expenseTypes[0] -> expenseId = 1
             expenseTypes[1] -> expenseId = 2
             expenseTypes[2] -> expenseId = 3

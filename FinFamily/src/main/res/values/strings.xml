@@ -51,8 +51,9 @@
     <string name="New_entry">New entry</string>
     <string name="Insert_value">$ Insert value</string>
     <string name="Fixed">Fixed</string>
-    <string name="New_expense">New expense</string>
+    <string name="New_expense">Expense</string>
     <string name="New_Invoice">New Invoice</string>
+    <string name="New_Transaction">New Transaction</string>
     <string name="Administrador">Administrator</string>
     <string name="Sair">Go out</string>
     <string name="New_password">New password</string>
