@@ -19,7 +19,7 @@ class PopDeletePut : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pop_delete_put)
 
-        val transId = intent?.extras?.getInt("expenseId", 0)
+        val transId = intent?.extras?.getInt("id", 0)
 
         btnClose.setOnClickListener {
             val alter = Intent(this, PopAlterExpense::class.java)

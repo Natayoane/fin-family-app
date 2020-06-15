@@ -30,9 +30,10 @@ class PopAlterExpense : AppCompatActivity() {
         btnDeletePut.setOnClickListener {
             val delete = Intent(this, PopDeletePut::class.java)
 
-            delete.putExtra("expenseId", transId)
+            delete.putExtra("id", transId)
 
             startActivity(delete)
+            finish()
 
         }
 

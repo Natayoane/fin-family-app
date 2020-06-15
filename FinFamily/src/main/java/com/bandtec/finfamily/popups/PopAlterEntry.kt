@@ -28,9 +28,10 @@ class PopAlterEntry : AppCompatActivity() {
         btnDeletePut.setOnClickListener {
             val delete = Intent(this, PopDeletePut::class.java)
 
-            delete.putExtra("entryId", transId)
+            delete.putExtra("id", transId)
 
             startActivity(delete)
+            finish()
 
         }
 
