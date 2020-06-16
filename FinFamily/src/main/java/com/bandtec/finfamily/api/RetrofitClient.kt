@@ -10,8 +10,8 @@ import java.util.concurrent.TimeUnit
 
 object RetrofitClient {
 
-    private const val baseUrl = "http://192.168.0.13:8080/api/v1/"
-//    private const val baseUrl = "http://ec2-100-25-143-148.compute-1.amazonaws.com/api/v1/"
+   // private const val baseUrl = "http://192.168.0.13:8080/api/v1/"
+      private const val baseUrl = "http://ec2-100-25-143-148.compute-1.amazonaws.com/api/v1/"
 
     private val okHttpClient: OkHttpClient = OkHttpClient.Builder()
         .connectTimeout(5, TimeUnit.MINUTES)
