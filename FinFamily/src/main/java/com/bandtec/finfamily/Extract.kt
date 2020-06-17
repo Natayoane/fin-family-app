@@ -9,6 +9,11 @@ import com.bandtec.finfamily.fragments.AccountItems
 import com.bandtec.finfamily.model.GroupTransResponse
 import com.bandtec.finfamily.popups.PopFamContribution
 import kotlinx.android.synthetic.main.activity_extract.*
+import kotlinx.android.synthetic.main.activity_extract.more
+import kotlinx.android.synthetic.main.activity_extract.tvAvaibleAccount
+import kotlinx.android.synthetic.main.activity_extract.tvGroupName
+import kotlinx.android.synthetic.main.activity_extract.vlTotalFamily
+import kotlinx.android.synthetic.main.activity_group_extract.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

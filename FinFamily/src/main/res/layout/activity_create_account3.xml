@@ -25,7 +25,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/inputcadastronick"
         android:layout_width="match_parent"
         android:layout_height="40dp"
@@ -44,7 +44,7 @@
         app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/inputnumber"
         android:layout_width="244dp"
         android:layout_height="40dp"
@@ -58,7 +58,7 @@
         app:layout_constraintStart_toEndOf="@+id/inputcode"
         app:layout_constraintTop_toBottomOf="@+id/finfamily" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/inputcode"
         android:layout_width="90dp"
         android:layout_height="40dp"

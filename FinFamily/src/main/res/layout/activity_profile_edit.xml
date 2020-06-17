@@ -28,7 +28,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView28"
         app:srcCompat="@mipmap/man" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/etName"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
@@ -41,7 +41,7 @@
         app:layout_constraintStart_toEndOf="@+id/imageView14"
         app:layout_constraintTop_toBottomOf="@+id/textView28" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/etNickname"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
@@ -54,7 +54,7 @@
         app:layout_constraintStart_toEndOf="@+id/imageView14"
         app:layout_constraintTop_toBottomOf="@+id/etName" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/etEmail"
         android:layout_width="0dp"
         android:layout_height="40dp"
@@ -69,7 +69,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView14" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/etNewPassword"
         android:layout_width="0dp"
         android:layout_height="40dp"
@@ -84,7 +84,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etBasePassword" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/etPasswordConfirm"
         android:layout_width="0dp"
         android:layout_height="40dp"
@@ -99,7 +99,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etNewPassword" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/etBasePassword"
         android:layout_width="0dp"
         android:layout_height="40dp"
@@ -125,6 +125,7 @@
         android:textColorHint="#00FFFFFF"
         android:textColorLink="#00FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="UnknownIdInLayout" />
 
     <TextView
