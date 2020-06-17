@@ -153,9 +153,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/guideline12"
+                app:layout_constraintStart_toStartOf="@+id/start"
                 app:layout_constraintTop_toTopOf="@+id/menulayout"
-                app:srcCompat="@drawable/ic_home_black_24dp" />
+                app:srcCompat="@drawable/ic_baseline_beenhere_24" />
 
             <ImageView
                 android:id="@+id/btnadd"
@@ -179,19 +179,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.9" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline12"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.20" />
+                app:layout_constraintGuide_percent="0.890511" />
 
             <ImageView
                 android:id="@+id/btnProfile"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="4dp"
+                android:layout_height="4dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline13"
                 app:layout_constraintTop_toTopOf="parent" />

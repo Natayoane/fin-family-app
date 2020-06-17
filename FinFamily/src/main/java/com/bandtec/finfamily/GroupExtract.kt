@@ -49,11 +49,11 @@ class GroupExtract : AppCompatActivity() {
             startActivity(entries)
         }
 
-        btNewContribution.setOnClickListener {
-            val intent = Intent(this, PopFamContribution::class.java)
-            startActivity(intent)
-            finish()
-        }
+//        btNewContribution.setOnClickListener {
+//            val intent = Intent(this, PopFamContribution::class.java)
+//            startActivity(intent)
+//            finish()
+//        }
 
     }
 
