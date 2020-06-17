@@ -12,6 +12,7 @@ import com.bandtec.finfamily.api.RetrofitClient
 import com.bandtec.finfamily.fragments.GroupFinance
 import com.bandtec.finfamily.model.GroupResponse
 import com.bandtec.finfamily.popups.PopChooseGroupAction
+import kotlinx.android.synthetic.main.activity_goals.*
 import kotlinx.android.synthetic.main.activity_group.*
 import retrofit2.Call
 import retrofit2.Callback

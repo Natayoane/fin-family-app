@@ -149,7 +149,7 @@
             app:layout_constraintVertical_bias="1.0">
 
             <ImageView
-                android:id="@+id/bnthome"
+                android:id="@+id/btGoals"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -183,8 +183,8 @@
 
             <ImageView
                 android:id="@+id/btnProfile"
-                android:layout_width="4dp"
-                android:layout_height="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline13"
                 app:layout_constraintTop_toTopOf="parent" />
