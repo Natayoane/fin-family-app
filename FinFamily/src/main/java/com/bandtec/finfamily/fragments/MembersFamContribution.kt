@@ -24,7 +24,7 @@ class MembersFamContribution : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         println(arguments?.getFloat("groupTotal")).toString()
-        tvFamName.text = arguments?.getString("groupName", "")
+//        tvFamName.text = arguments?.getString("groupName", "")
         tvFamValue.text = arguments?.getFloat("groupTotal", 0f).toString()
     }
 

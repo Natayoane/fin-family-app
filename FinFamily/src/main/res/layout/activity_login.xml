@@ -12,10 +12,10 @@
         android:id="@+id/finfamily"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
         android:gravity="center_horizontal|top"
         android:text="@string/app_name"
         android:textAppearance="@style/finfamily"
+        app:layout_constraintBottom_toTopOf="@+id/inputemail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
