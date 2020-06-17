@@ -61,7 +61,7 @@ class CreateAccount : AppCompatActivity() {
                 inputdatebirth.requestFocus()
                 return@setOnClickListener
             }else{
-                if(!BirthdayValidator.isValid(birthday)){
+                if(!DateValidation.isValid(birthday)){
                     inputdatebirth.error = "Data de nascimento inválida!"
                     inputdatebirth.requestFocus()
                     return@setOnClickListener
