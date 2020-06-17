@@ -4,11 +4,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/panelRefresh"
+    android:layout_marginTop="45dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     android:orientation="vertical"
-    android:layout_marginTop="40dp"
     tools:context=".Panel">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,6 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:paddingStart="2dp"
             android:text="00,00"
             android:textColor="#CC0000"
             android:textStyle="bold"
@@ -36,6 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:paddingStart="2dp"
             android:text="00,00"
             android:textColor="#2176D3"
             android:textStyle="bold"
@@ -66,7 +68,7 @@
                 android:layout_gravity="center"
                 android:layout_marginRight="5dp"
                 android:gravity="center"
-                android:text="Saldo"
+                android:text="@string/balance"
                 android:layout_marginBottom="60dp"
                 android:textColor="#696969"
                 android:textSize="25dp" />
@@ -80,8 +82,9 @@
                 android:drawableBottom="@drawable/ic_info_outline_black_24dp"
                 android:drawablePadding="20sp"
                 android:gravity="center"
-                android:text="1200,00"
                 android:onClick="popInstruction"
+                android:paddingStart="2dp"
+                android:text="1200,00"
                 android:textColor="#55910E"
                 android:textSize="25dp" />
 
@@ -144,9 +147,8 @@
             android:elevation="6dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintVertical_bias="1.0">
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent">
 
             <ImageView
                 android:id="@+id/bnthome"
@@ -167,6 +169,16 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_add_black_24dp" />
 
+            <ImageView
+                android:id="@+id/btnProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/guideline13"
+                app:layout_constraintTop_toTopOf="@+id/menulayout"
+                app:srcCompat="@drawable/ic_baseline_person_24" />
+
+
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline11"
                 android:layout_width="wrap_content"
@@ -181,13 +193,6 @@
                 android:orientation="vertical"
                 app:layout_constraintGuide_percent="0.890511" />
 
-            <ImageView
-                android:id="@+id/btnProfile"
-                android:layout_width="4dp"
-                android:layout_height="4dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/guideline13"
-                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/start"
@@ -238,16 +243,6 @@
             app:layout_constraintBottom_toBottomOf="@+id/mes"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            android:background="#FFFFFF"
-            app:layout_constraintBottom_toTopOf="@+id/mes"
-            tools:layout_editor_absoluteX="2dp"
-            tools:layout_editor_absoluteY="4dp" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

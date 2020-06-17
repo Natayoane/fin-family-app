@@ -102,4 +102,8 @@
     <string name="insert_reason">Razão</string>
     <string name="type_entry">Entrada</string>
     <string name="type_output">Saída</string>
+    <string name="balance">Saldo</string>
+    <string name="save_editions">Salvar edições</string>
+    <string name="wallet">Carteira</string>
+    <string name="my_contribution">MInha contribuição</string>
 </resources>

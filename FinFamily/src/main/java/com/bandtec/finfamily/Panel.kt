@@ -49,8 +49,8 @@ class Panel : AppCompatActivity() {
             getExpenses(groupId.toInt())
         }
 
-        if (groupType == 1) btnProfile.setImageDrawable(getDrawable(R.drawable.ic_person)) else btnProfile.setImageDrawable(
-            getDrawable(R.drawable.ic_people)
+        if (groupType == 1) btnProfile.setImageDrawable(getDrawable(R.drawable.ic_baseline_person_24))
+            else btnProfile.setImageDrawable(getDrawable(R.drawable.ic_people)
         )
 
         if (groupType == 1) {

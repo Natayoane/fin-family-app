@@ -169,4 +169,8 @@
     <string name="insert_reason">Reason</string>
     <string name="type_entry">Entry</string>
     <string name="type_output">Out put</string>
+    <string name="balance">Balance</string>
+    <string name="save_editions">Save editions</string>
+    <string name="wallet">Wallet</string>
+    <string name="my_contribution">My contribution</string>
 </resources>

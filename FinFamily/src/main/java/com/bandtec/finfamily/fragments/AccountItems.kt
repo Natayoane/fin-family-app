@@ -72,7 +72,7 @@ class AccountItems : Fragment() {
         }
         tvValue.text = value
 
-        edit.setOnClickListener {
+        settingsProfile.setOnClickListener {
             val alter = Intent(requireActivity(), PopAlterExpense::class.java)
             alter.putExtra("id", id)
             alter.putExtra("name", name)
