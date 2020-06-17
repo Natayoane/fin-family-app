@@ -54,16 +54,6 @@ class Group : AppCompatActivity() {
         }
     }
 
-    fun Group(v: View) {
-        val panel = Intent(this, Panel::class.java)
-
-        val id: Int = 1
-        panel.putExtra("id", id)
-
-        startActivity(panel)
-        finish()
-    }
-
     fun getUserGroups(userId: Int) {
         groupRefresh.isRefreshing = true
 

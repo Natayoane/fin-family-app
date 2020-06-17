@@ -38,14 +38,13 @@ class Panel : AppCompatActivity() {
         val groupName = intent.extras?.get("groupName").toString()
         val userId = sp.getInt("userId", 0)
 
-
         getEntries(groupId.toInt())
-        Thread.sleep(500L)
+        Thread.sleep(1000L)
         getExpenses(groupId.toInt())
 
         panelRefresh.setOnRefreshListener {
             getEntries(groupId.toInt())
-            Thread.sleep(500L)
+            Thread.sleep(1000L)
             getExpenses(groupId.toInt())
         }
 
@@ -113,9 +112,9 @@ class Panel : AppCompatActivity() {
     }
 
     fun setupPieChart() {
-        var pie = AnyChart.pie()
+        val pie = AnyChart.pie()
 
-        var data: List<DataEntry>
+        val data: List<DataEntry>
 
         if (totalEntry > 0f || totalExpense > 0f) {
             if (totalEntry > 0f && totalExpense == 0f) {
@@ -171,9 +170,10 @@ class Panel : AppCompatActivity() {
                     when {
                         response.code().toString() == "200" -> {
                             totalEntry = setEntries(response.body()!!)
+                            Thread.sleep(300L)
                         }
                         response.code().toString() == "204" -> {
-                            tvTotalEntry.text = "R$0.00"
+                            tvTotalEntry.text = "0.00"
                             println("No content!")
                         }
                         else -> {
@@ -206,8 +206,8 @@ class Panel : AppCompatActivity() {
                                 tvAvaible.setTextColor(Color.parseColor("#2176D3"))
                             } else {
                                 tvAvaible.setTextColor(Color.parseColor("#CC0000"))
-
                             }
+                            Thread.sleep(300L)
                             setupPieChart()
                         }
                         response.code().toString() == "204" -> {
@@ -236,7 +236,7 @@ class Panel : AppCompatActivity() {
         entries.forEach { e ->
             total += e.value!!
         }
-        tvTotalEntry.text = "R$${total}"
+        tvTotalEntry.text = "${total}"
         return total
     }
 
@@ -245,7 +245,7 @@ class Panel : AppCompatActivity() {
         entries.forEach { e ->
             total += e.value!!
         }
-        tvTotalExpense.text = "R$${total}"
+        tvTotalExpense.text = "${total}"
         return total
     }
 
