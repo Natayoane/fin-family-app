@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="350dp"
     android:layout_height="wrap_content"
-    tools:context=".popups.PopAlterExpense"
+    tools:context=".popups.PopNewGoal"
     android:orientation="vertical"
     android:background="#FFFFFF"
     android:elevation="20dp"
@@ -19,20 +19,20 @@
         android:layout_marginEnd="1dp"
         android:layout_marginTop="1dp"/>
 
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
+        android:text="@string/new_goal"
         android:textAlignment="center"
         android:textColor="#000000"
-        android:text="@string/txt_alter_release"
         android:textSize="18sp"
         android:textStyle="bold" />
 
+
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/etNome"
+        android:id="@+id/etName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
@@ -40,6 +40,16 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
         android:hint="@string/Insert_name" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/etDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textAutoCorrect"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:hint="@string/insert_description" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/etValue"
@@ -51,42 +61,23 @@
         android:layout_marginEnd="20dp"
         android:hint="@string/Insert_value" />
 
-
-    <Spinner
-        android:id="@+id/spCategory"
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/etDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="date"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="10dp"
-        android:prompt="@string/country_prompt"
-        android:entries="@array/expenses"
-        android:scrollbarSize="4dp" />
+        android:hint="@string/deadline" />
 
-    <LinearLayout
+    <ImageView
+        android:id="@+id/btSaveGoal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        >
+        android:src="@drawable/ic_check_black_24dp" />
 
-        <ImageView
-            android:id="@+id/btnDeletePut"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="5dp"
-            app:srcCompat="@drawable/ic_cancel_black_24dp" />
-
-        <ImageView
-            android:id="@+id/btUpdate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:src="@drawable/ic_check_black_24dp" />
-
-    </LinearLayout>
 
 </LinearLayout>

@@ -59,10 +59,10 @@ class PopAlterExpense : AppCompatActivity() {
                 null,
                 null
             )
-            if(etNome.text.isNotEmpty()){
+            if(etNome.text!!.isNotEmpty()){
                 transaction.name = etNome.text.toString()
             }
-            if(etValue.text.isNotEmpty()){
+            if(etValue.text!!.isNotEmpty()){
                 transaction.value = etValue.text.toString().toFloat()
             }
 

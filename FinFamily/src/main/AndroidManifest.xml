@@ -13,7 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".popups.PopAlterEntry"></activity>
+        <activity android:name=".popups.PopDeleteGoal"></activity>
+        <activity android:name=".popups.PopEntryOutputGoal" />
+        <activity android:name=".popups.PopNewGoal" />
+        <activity android:name=".Goals" />
+        <activity android:name=".popups.PopAlterEntry" />
         <activity android:name=".GroupExtract" />
         <activity android:name=".popups.PopListContributors" />
         <activity android:name=".AvatarGroups" />

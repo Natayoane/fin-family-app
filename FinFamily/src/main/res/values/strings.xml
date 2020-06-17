@@ -66,7 +66,7 @@
     <string name="Name">Name</string>
     <string name="CreateYourCode">#CreateYourCode</string>
     <string name="upload_image">Choose avatar</string>
-    <string name="sifrao">$</string>
+    <string name="cifrao">$%1$s</string>
     <string name="txt_contribution">FamContribution expenses</string>
     <string name="txt_entry">Entry</string>
     <string name="delete_put">Are you sure you want to delete?</string>
@@ -134,7 +134,7 @@
     <string name="title" translatable="false">title</string>
     <string name="FaltaContribuir">"Lack Contribute "</string>
     <string name="FamWallet">FamWallet</string>
-    <string name="Sifrao">$</string>
+    <string name="Cifrao">$</string>
     <string name="Availabre">Availabre</string>
     <string name="finfamily">FinFamily</string>
     <string name="titleinicio">FinFamily</string>
@@ -155,4 +155,21 @@
     <string name="family">Family</string>
     <string name="spouse">Spouse</string>
     <string name="team">Team</string>
+    <string name="textExample">A certificação de metodologias que nos auxiliam a lidar
+        com o aumento do diálogo entre os diferentes setores
+        produtivos é uma das consequências do retorno esperado a longo prazo.
+        A certificação de metodologias que nos auxiliam a lidar
+        com o aumento do diálogo entre os diferentes setores
+        produtivos é uma das consequências do retorno esperado a longo prazo.</string>
+    <string name="value">Goal value:</string>
+    <string name="deadline">Deadline:</string>
+    <string name="new_goal">New Goal</string>
+    <string name="insert_description">Description</string>
+    <string name="new_entry_output">New entry/output</string>
+    <string name="insert_reason">Reason</string>
+    <string name="type_entry">Entry</string>
+    <string name="type_output">Out put</string>
+    <string name="percentage">Goal %1$s completed</string>
+    <string name="goal_name">Goal Name</string>
+    <string name="current_value">Current value:</string>
 </resources>

@@ -9,6 +9,11 @@ import com.bandtec.finfamily.fragments.AccountItems
 import com.bandtec.finfamily.model.GroupTransResponse
 import com.bandtec.finfamily.popups.PopFamContribution
 import kotlinx.android.synthetic.main.activity_extract.*
+import kotlinx.android.synthetic.main.activity_extract.more
+import kotlinx.android.synthetic.main.activity_extract.tvAvaibleAccount
+import kotlinx.android.synthetic.main.activity_extract.tvGroupName
+import kotlinx.android.synthetic.main.activity_extract.vlTotalFamily
+import kotlinx.android.synthetic.main.activity_group_extract.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -44,12 +49,12 @@ class Extract : AppCompatActivity() {
             entries.putExtra("groupId", groupId)
             startActivity(entries)
         }
-
-        btNewContribution.setOnClickListener {
-            val intent = Intent(this, PopFamContribution::class.java)
-            //start your next activity
-            startActivity(intent)
-        }
+//
+//        btNewContribution.setOnClickListener {
+//            val intent = Intent(this, PopFamContribution::class.java)
+//            //start your next activity
+//            startActivity(intent)
+//        }
 
     }
 

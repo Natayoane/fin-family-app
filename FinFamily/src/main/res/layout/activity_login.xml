@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/inputemail"
         android:layout_width="0dp"
         android:layout_height="40dp"
@@ -38,7 +38,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/inputpassword"
         android:layout_width="0dp"
         android:layout_height="40dp"

@@ -20,7 +20,7 @@ class PopNewInvoice : AppCompatActivity() {
             finish()
         }
 
-        newEntry.setOnClickListener {
+        btnNewEntry.setOnClickListener {
             val newEntry = Intent(this, PopNewEntry::class.java)
             newEntry.putExtra("groupId", groupId)
             newEntry.putExtra("userId", userId)
