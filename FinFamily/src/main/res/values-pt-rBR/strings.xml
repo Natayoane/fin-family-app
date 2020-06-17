@@ -53,7 +53,7 @@
     <string name="New_expense">Despesa</string>
     <string name="New_Invoice">Nova Entrada</string>
     <string name="New_Transaction">Nova Transação</string>
-    <string name="Sifrao">R$</string>
+    <string name="Cifrao">R$</string>
     <string name="Administrador">"Administrador "</string>
     <string name="Sair">"Sair "</string>
     <string name="New_password">"Nova senha "</string>
@@ -66,7 +66,7 @@
     <string name="Name">Nome</string>
     <string name="CreateYourCode">#CrieSeuCodigo</string>
     <string name="upload_image">Escolher avatar</string>
-    <string name="sifrao">$</string>
+    <string name="cifrao">R$%1$s</string>
     <string name="txt_contribution">FamContribuição despesas</string>
     <string name="txt_entry">"Entrada "</string>
     <string name="delete_put">Tem certeza de que deseja excluir?</string>
@@ -94,7 +94,7 @@
     <string name="spouse">Cônjuge</string>
     <string name="team">Equipe</string>
     <string name="txt_contributors">Contribuidores</string>
-    <string name="value">Valor:</string>
+    <string name="value">Valor da meta:</string>
     <string name="deadline">Data limite:</string>
     <string name="new_goal">Nova meta</string>
     <string name="insert_description">Descrição</string>
@@ -102,8 +102,14 @@
     <string name="insert_reason">Razão</string>
     <string name="type_entry">Entrada</string>
     <string name="type_output">Saída</string>
+<<<<<<< HEAD
     <string name="balance">Saldo</string>
     <string name="save_editions">Salvar edições</string>
     <string name="wallet">Carteira</string>
     <string name="my_contribution">MInha contribuição</string>
+=======
+    <string name="percentage">Meta %1$s completa</string>
+    <string name="goal_name">Nome da Meta</string>
+    <string name="current_value">Valor atual:</string>
+>>>>>>> 1e6f7eeec9db0b6fe99dba47ad463088e8174085
 </resources>

@@ -73,6 +73,13 @@ class Panel : AppCompatActivity() {
             }
         }
 
+        btGoals.setOnClickListener {
+            val goals = Intent(this, Goals::class.java)
+            goals.putExtra("groupId", groupId)
+            // start your next activity
+            startActivity(goals)
+        }
+
         buttonpnextract.setOnClickListener {
             if (groupType == 1) {
                 val intent = Intent(this, Extract::class.java)
@@ -93,11 +100,7 @@ class Panel : AppCompatActivity() {
 
         }
 
-        bnthome.setOnClickListener {
-            val groups = Intent(this, Group::class.java)
-            // start your next activity
-            startActivity(groups)
-        }
+
 
         btnadd.setOnClickListener {
             val newInvoice = Intent(this, PopNewInvoice::class.java)

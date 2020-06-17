@@ -77,5 +77,21 @@ interface Api {
         @Path("userId") userId: Int,
         @Path("groupId") groupId: Int
     ): Call<Any>
+
+    @GET("goals/{groupId}")
+    fun getGoals(
+        @Path("groupId") groupId: Int
+    ): Call<List<GoalsResponse>>
+
+    @GET("goals/transactions/{goalId}")
+    fun getGoalsTrans(
+        @Path("goalId") goalId: Int
+    ): Call<List<GoalsTransResponse>>
+
+    @POST("goals/create")
+    fun createGoals(@Body goal: GoalsResponse): Call<String>
+
+    @DELETE("goals/remove/{goalId}")
+    fun removeGoals(@Path("goalId") goalId: Int): Call<String>
 }
 
