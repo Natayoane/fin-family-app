@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.activity_profile.etEmail
 import kotlinx.android.synthetic.main.activity_profile.etName
 import kotlinx.android.synthetic.main.activity_profile.etNickname
-import kotlinx.android.synthetic.main.activity_profile.imageView14
+import kotlinx.android.synthetic.main.activity_profile.img
 
 class Profile : AppCompatActivity() {
 
@@ -22,7 +22,7 @@ class Profile : AppCompatActivity() {
 
 
         if(btmAvatar != null){
-            imageView14.setImageBitmap(btmAvatar)
+            img.setImageBitmap(btmAvatar)
         }
 
         etName.text = sp.getString("full_name", "Maria Antonia")

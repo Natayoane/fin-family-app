@@ -102,7 +102,14 @@
     <string name="insert_reason">Razão</string>
     <string name="type_entry">Entrada</string>
     <string name="type_output">Saída</string>
+<<<<<<< HEAD
+    <string name="balance">Saldo</string>
+    <string name="save_editions">Salvar edições</string>
+    <string name="wallet">Carteira</string>
+    <string name="my_contribution">MInha contribuição</string>
+=======
     <string name="percentage">Meta %1$s completa</string>
     <string name="goal_name">Nome da Meta</string>
     <string name="current_value">Valor atual:</string>
+>>>>>>> 1e6f7eeec9db0b6fe99dba47ad463088e8174085
 </resources>
