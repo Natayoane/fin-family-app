@@ -1,5 +1,6 @@
 package com.bandtec.finfamily.fragments
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -39,6 +40,8 @@ class CardGoal : Fragment() {
         val description = arguments?.getString("description", "")
         val value = arguments?.getFloat("value", 0f)
         val deadline = arguments?.getString("deadline", "")
+        val userId = arguments?.getInt("userId", 0)
+        val groupId = arguments?.getInt("groupId", 0)
 
         tvGoalName.text = name
         tvDescription.text = description
@@ -50,6 +53,9 @@ class CardGoal : Fragment() {
 
         btnNewEntry.setOnClickListener {
             val newInvoice = Intent(requireActivity(), PopEntryOutputGoal::class.java)
+            newInvoice.putExtra("groupId", groupId)
+            newInvoice.putExtra("userId", userId)
+            newInvoice.putExtra("goalId", id)
             startActivity(newInvoice)
         }
 
