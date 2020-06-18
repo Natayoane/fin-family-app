@@ -108,7 +108,6 @@ class ProfileEdit : AppCompatActivity() {
                                 sp.edit().putString("full_name", response.body()?.fullName).apply()
                                 sp.edit().putString("email", response.body()?.email).apply()
                                 sp.edit().putString("nickname", response.body()?.nickname).apply()
-                                startActivity(profile)
                                 finish()
                             }
                             response.code().toString() == "401" -> {

@@ -21,7 +21,7 @@ class GroupExtract : AppCompatActivity() {
         setContentView(R.layout.activity_group_extract)
 
         val groupId = intent.extras?.get("groupId").toString().toInt()
-        val groupType = intent.extras?.get("groupType").toString().toInt()
+//        val groupType = intent.extras?.get("groupType").toString().toInt()
         val groupName = intent.extras?.get("groupName").toString()
         val userId = intent.extras?.get("userId").toString().toInt()
         getEntries(groupId, groupName)

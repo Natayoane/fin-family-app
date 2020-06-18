@@ -17,7 +17,7 @@ class Avatar : AppCompatActivity() {
         val profileEdit = Intent(this, ProfileEdit::class.java)
         val profile = Intent(this, Profile::class.java)
         profileEdit.putExtra("avatar", ((image as ImageView).drawable as BitmapDrawable).bitmap)
-        profile.putExtra("avatar", ((image as ImageView).drawable as BitmapDrawable).bitmap)
+        profile.putExtra("avatar", (image.drawable as BitmapDrawable).bitmap)
 
         startActivity(profileEdit)
         finish()
