@@ -70,6 +70,7 @@ class PopNewExpense : AppCompatActivity() {
                 null,
                 2,
                 null,
+                null,
                 null
             )
             createTransaction(transaction)

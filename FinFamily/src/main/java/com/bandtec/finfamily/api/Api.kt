@@ -93,5 +93,8 @@ interface Api {
 
     @DELETE("goals/remove/{goalId}")
     fun removeGoals(@Path("goalId") goalId: Int): Call<String>
+
+    @POST("goals/transactions/create")
+    fun createGoalTrans(@Body transaction : GoalsTransResponse) : Call<String>
 }
 

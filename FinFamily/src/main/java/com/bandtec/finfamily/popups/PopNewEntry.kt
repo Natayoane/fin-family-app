@@ -72,6 +72,7 @@ class PopNewEntry : AppCompatActivity() {
                 expenseId,
                 1,
                 null,
+                null,
                 null
             )
             createTransaction(transaction)

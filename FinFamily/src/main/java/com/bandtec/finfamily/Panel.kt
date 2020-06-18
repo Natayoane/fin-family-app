@@ -6,8 +6,9 @@ import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.anychart.anychart.AnyChart
 import com.anychart.anychart.DataEntry
 import com.anychart.anychart.ValueDataEntry
@@ -18,6 +19,7 @@ import kotlinx.android.synthetic.main.activity_panel.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
 
 
 class Panel : AppCompatActivity() {
@@ -25,6 +27,7 @@ class Panel : AppCompatActivity() {
     var totalEntry = 0f
     var totalExpense = 0f
     var avaible = 0f
+    var currentMonth = Calendar.getInstance().get(Calendar.MONTH);
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +40,33 @@ class Panel : AppCompatActivity() {
         val groupType = intent.extras?.get("groupType").toString().toInt()
         val groupName = intent.extras?.get("groupName").toString()
         val userId = sp.getInt("userId", 0)
+
+        mes.setSelection(currentMonth)
+
+        val meses = resources.getStringArray(R.array.meses_array)
+
+        // access the spinner
+        val spinner = findViewById<Spinner>(R.id.mes)
+        if (spinner != null) {
+            val adapter = ArrayAdapter(this,
+                android.R.layout.simple_spinner_item, meses)
+            spinner.adapter = adapter
+            spinner.setSelection(currentMonth)
+            spinner.onItemSelectedListener = object :
+                AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>,
+                                            view: View, position: Int, id: Long) {
+                    getEntries(groupId.toInt())
+                    Thread.sleep(1000L)
+                    getExpenses(groupId.toInt())
+                    Toast.makeText(applicationContext, meses[position], Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>) {
+                    // write code to perform some action
+                }
+            }
+        }
 
         getEntries(groupId.toInt())
         Thread.sleep(1000L)
@@ -75,6 +105,7 @@ class Panel : AppCompatActivity() {
         btGoals.setOnClickListener {
             val goals = Intent(this, Goals::class.java)
             goals.putExtra("groupId", groupId)
+            goals.putExtra("userId", userId)
             // start your next activity
             startActivity(goals)
         }
@@ -218,12 +249,12 @@ class Panel : AppCompatActivity() {
                                 tvAvaible.setTextColor(Color.parseColor("#2176D3"))
                             } else {
                                 tvAvaible.setTextColor(Color.parseColor("#CC0000"))
-
                             }
                             setupPieChart()
                             println("No content!")
                         }
                         else -> {
+                            setupPieChart()
                             println("Something are wrong!")
                         }
                     }
@@ -236,7 +267,7 @@ class Panel : AppCompatActivity() {
         entries.forEach { e ->
             total += e.value!!
         }
-        tvTotalEntry.text = "${total}"
+        tvTotalEntry.text = "$total"
         return total
     }
 
@@ -245,7 +276,7 @@ class Panel : AppCompatActivity() {
         entries.forEach { e ->
             total += e.value!!
         }
-        tvTotalExpense.text = "${total}"
+        tvTotalExpense.text = "$total"
         return total
     }
 

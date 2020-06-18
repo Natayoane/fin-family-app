@@ -24,9 +24,10 @@ class Goals : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_goals)
         val groupId = intent.extras?.get("groupId").toString().toInt()
+        val userId = intent.extras?.get("userId").toString().toInt()
         println(groupId)
 
-        getGoals(groupId)
+        getGoals(groupId, userId)
 
         goalsRefresh.setOnRefreshListener {
 
@@ -37,7 +38,7 @@ class Goals : AppCompatActivity() {
                 frags.beginTransaction().detach(fragment!!).commit()
                 i++
             }
-            getGoals(groupId)
+            getGoals(groupId, userId)
         }
 
         btnNewGoal.setOnClickListener {
@@ -48,7 +49,7 @@ class Goals : AppCompatActivity() {
 
     }
 
-    fun getGoals(groupId: Int) {
+    fun getGoals(groupId: Int, userId: Int) {
         goalsRefresh.isRefreshing = true
         RetrofitClient.instance.getGoals(groupId)
             .enqueue(object : Callback<List<GoalsResponse>> {
@@ -64,7 +65,7 @@ class Goals : AppCompatActivity() {
                     goalsRefresh.isRefreshing = false
                     when {
                         response.code().toString() == "200" -> {
-                            setGoals(response.body()!!)
+                            setGoals(response.body()!!, userId)
                         }
                         response.code().toString() == "204" -> {
                             Toast.makeText(
@@ -83,7 +84,7 @@ class Goals : AppCompatActivity() {
             })
     }
 
-    fun setGoals(goals: List<GoalsResponse>) {
+    fun setGoals(goals: List<GoalsResponse>, userId : Int) {
         val goalsFrag = supportFragmentManager.beginTransaction()
 
         goals.forEachIndexed { i, g ->
@@ -94,6 +95,7 @@ class Goals : AppCompatActivity() {
             parametros.putFloat("value", g.value!!)
             parametros.putString("deadline", g.deadline)
             parametros.putInt("groupId", g.groupId!!)
+            parametros.putInt("userId", userId)
             val goalsFragment = CardGoal()
             goalsFragment.arguments = parametros
 
