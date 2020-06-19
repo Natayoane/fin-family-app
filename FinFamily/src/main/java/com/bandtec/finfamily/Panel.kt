@@ -42,6 +42,12 @@ class Panel : AppCompatActivity() {
         val userId = sp.getInt("userId", 0)
 
         mes.setSelection(currentMonth)
+        var month = ""
+        month = if (currentMonth + 1 < 10){
+            "0${currentMonth + 1}"
+        } else{
+            "${currentMonth + 1}"
+        }
 
         val meses = resources.getStringArray(R.array.meses_array)
 
@@ -56,9 +62,15 @@ class Panel : AppCompatActivity() {
                 AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(parent: AdapterView<*>,
                                             view: View, position: Int, id: Long) {
-                    getEntries(groupId.toInt())
+                    var spinnerMonth = ""
+                    spinnerMonth = if(position + 1< 10) {
+                        "0${position + 1}"
+                    } else {
+                        "${position + 1}"
+                    }
+                    getEntries(groupId.toInt(), spinnerMonth)
                     Thread.sleep(1000L)
-                    getExpenses(groupId.toInt())
+                    getExpenses(groupId.toInt(), spinnerMonth)
                     Toast.makeText(applicationContext, meses[position], Toast.LENGTH_SHORT).show()
                 }
 
@@ -68,14 +80,14 @@ class Panel : AppCompatActivity() {
             }
         }
 
-        getEntries(groupId.toInt())
+        getEntries(groupId.toInt(), month)
         Thread.sleep(1000L)
-        getExpenses(groupId.toInt())
+        getExpenses(groupId.toInt(), month)
 
         panelRefresh.setOnRefreshListener {
-            getEntries(groupId.toInt())
+            getEntries(groupId.toInt(), month)
             Thread.sleep(1000L)
-            getExpenses(groupId.toInt())
+            getExpenses(groupId.toInt(), month)
         }
 
         if (groupType == 1) btnProfile.setImageDrawable(getDrawable(R.drawable.ic_baseline_person_24))
@@ -186,9 +198,9 @@ class Panel : AppCompatActivity() {
         pie.setInnerRadius("95%")
     }
 
-    fun getEntries(groupId: Int) {
+    fun getEntries(groupId: Int, month : String) {
         panelRefresh.isRefreshing = true
-        RetrofitClient.instance.getEntries(groupId)
+        RetrofitClient.instance.getEntries(groupId, month)
             .enqueue(object : Callback<List<GroupTransResponse>> {
                 override fun onFailure(call: Call<List<GroupTransResponse>>, t: Throwable) {
                     Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
@@ -215,13 +227,13 @@ class Panel : AppCompatActivity() {
             })
     }
 
-    fun getExpenses(groupId: Int) {
-        RetrofitClient.instance.getExpenses(groupId)
+    fun getExpenses(groupId: Int, month: String) {
+        RetrofitClient.instance.getExpenses(groupId, month)
             .enqueue(object : Callback<List<GroupTransResponse>> {
                 override fun onFailure(call: Call<List<GroupTransResponse>>, t: Throwable) {
                     panelRefresh.isRefreshing = false
                     Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
-                }
+            }
 
                 override fun onResponse(
                     call: Call<List<GroupTransResponse>>,
