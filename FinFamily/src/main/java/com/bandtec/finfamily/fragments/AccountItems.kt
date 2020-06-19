@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.bandtec.finfamily.R
 import com.bandtec.finfamily.popups.PopAlterExpense
@@ -31,7 +33,7 @@ class AccountItems : Fragment() {
         val idCategory = arguments?.getInt("category", 0)
         val value = arguments?.getFloat("value", 0f).toString()
         val userId = arguments?.getInt("userId", 0)
-
+        Toast.makeText(activity, idCategory.toString(), Toast.LENGTH_SHORT).show()
         tvName.text = name
         val expensesTypes = resources.getStringArray(R.array.expenses)
 
@@ -69,17 +71,25 @@ class AccountItems : Fragment() {
             30 -> tvCategory.text = expensesTypes[29]
             31 -> tvCategory.text = expensesTypes[30]
             32 -> tvCategory.text = expensesTypes[31]
+            33 -> tvCategory.text = expensesTypes[32]
+
         }
         tvValue.text = value
-
-        edit.setOnClickListener {
-            val alter = Intent(requireActivity(), PopAlterExpense::class.java)
-            alter.putExtra("id", id)
-            alter.putExtra("name", name)
-            alter.putExtra("category", idCategory)
-            alter.putExtra("value", value)
-            startActivity(alter)
+    
+        if (idCategory == 33){
+            alterExpense.isVisible = false
+        } else {
+            alterExpense.setOnClickListener {
+                val alter = Intent(requireActivity(), PopAlterExpense::class.java)
+                alter.putExtra("id", id)
+                alter.putExtra("name", name)
+                alter.putExtra("category", idCategory)
+                alter.putExtra("value", value)
+                startActivity(alter)
+            }
         }
+
+
         contributors.setOnClickListener {
             val list = Intent(requireActivity(), PopListContributors::class.java)
             list.putExtra("value", value)

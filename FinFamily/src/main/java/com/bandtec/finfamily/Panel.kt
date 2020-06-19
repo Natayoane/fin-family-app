@@ -3,32 +3,34 @@ package com.bandtec.finfamily
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.graphics.Color
 import android.os.Bundle
 import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.anychart.anychart.AnyChart
-import com.anychart.anychart.DataEntry
-import com.anychart.anychart.ValueDataEntry
 import com.bandtec.finfamily.api.RetrofitClient
+import com.bandtec.finfamily.fragments.PieChart
 import com.bandtec.finfamily.model.GroupTransResponse
 import com.bandtec.finfamily.popups.PopNewInvoice
 import kotlinx.android.synthetic.main.activity_panel.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
 
 
 class Panel : AppCompatActivity() {
 
     var totalEntry = 0f
     var totalExpense = 0f
-    var avaible = 0f
+    var currentMonth = Calendar.getInstance().get(Calendar.MONTH);
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_panel)
+        mes.setSelection(currentMonth)
 
         val sp: SharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
 
@@ -37,19 +39,54 @@ class Panel : AppCompatActivity() {
         val groupType = intent.extras?.get("groupType").toString().toInt()
         val groupName = intent.extras?.get("groupName").toString()
         val userId = sp.getInt("userId", 0)
+        val meses = resources.getStringArray(R.array.meses_array)
+        val spinner = findViewById<Spinner>(R.id.mes)
 
+        if (spinner != null) {
+            val adapter = ArrayAdapter(
+                this,
+                android.R.layout.simple_spinner_item, meses
+            )
+            spinner.adapter = adapter
+            spinner.setSelection(currentMonth)
+            spinner.onItemSelectedListener = object :
+                AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>,
+                    view: View, position: Int, id: Long
+                ) {
+                    val spinnerMonth = if (position + 1 < 10) {
+                        "0${position + 1}"
+                    } else {
+                        "${position + 1}"
+                    }
+                    getEntries(groupId.toInt(), spinnerMonth)
+                    Thread.sleep(500L)
+                    getExpenses(groupId.toInt(), spinnerMonth)
 
-        getEntries(groupId.toInt())
-        Thread.sleep(500L)
-        getExpenses(groupId.toInt())
+                }
 
-        panelRefresh.setOnRefreshListener {
-            getEntries(groupId.toInt())
-            Thread.sleep(500L)
-            getExpenses(groupId.toInt())
+                override fun onNothingSelected(parent: AdapterView<*>) {
+                    println("Something are wrong!")
+                }
+            }
         }
 
-        if (groupType == 1) btnProfile.setImageDrawable(getDrawable(R.drawable.ic_person)) else btnProfile.setImageDrawable(
+
+        panelRefresh.setOnRefreshListener {
+            mes.setSelection(currentMonth)
+            val month = if (currentMonth + 1 < 10) {
+                "0${currentMonth + 1}"
+            } else {
+                "${currentMonth + 1}"
+            }
+            getEntries(groupId.toInt(), month)
+            Thread.sleep(500L)
+            getExpenses(groupId.toInt(), month)
+        }
+
+        if (groupType == 1) btnProfile.setImageDrawable(getDrawable(R.drawable.ic_baseline_person_24))
+        else btnProfile.setImageDrawable(
             getDrawable(R.drawable.ic_people)
         )
 
@@ -76,6 +113,7 @@ class Panel : AppCompatActivity() {
         btGoals.setOnClickListener {
             val goals = Intent(this, Goals::class.java)
             goals.putExtra("groupId", groupId)
+            goals.putExtra("userId", userId)
             // start your next activity
             startActivity(goals)
         }
@@ -87,6 +125,11 @@ class Panel : AppCompatActivity() {
                 intent.putExtra("groupType", groupType)
                 intent.putExtra("groupName", groupName)
                 intent.putExtra("userId", userId)
+                if(mes.selectedItemId + 1 < 9){
+                    intent.putExtra("month", "0${mes.selectedItemId + 1}")
+                } else {
+                    intent.putExtra("month", "${mes.selectedItemId + 1}")
+                }
                 startActivity(intent)
 
             } else if (groupType == 2) {
@@ -95,70 +138,27 @@ class Panel : AppCompatActivity() {
                 intent.putExtra("groupType", groupType)
                 intent.putExtra("groupName", groupName)
                 intent.putExtra("userId", userId)
+                if(mes.selectedItemId + 1 < 9){
+                    intent.putExtra("month", "0${mes.selectedItemId + 1}")
+                } else {
+                    intent.putExtra("month", "${mes.selectedItemId + 1}")
+                }
                 startActivity(intent)
             }
 
         }
 
-
-
         btnadd.setOnClickListener {
             val newInvoice = Intent(this, PopNewInvoice::class.java)
             newInvoice.putExtra("groupId", groupId)
             newInvoice.putExtra("userId", userId)
-
             startActivity(newInvoice)
         }
-
     }
 
-    fun setupPieChart() {
-        var pie = AnyChart.pie()
-
-        var data: List<DataEntry>
-
-        if (totalEntry > 0f || totalExpense > 0f) {
-            if (totalEntry > 0f && totalExpense == 0f) {
-                data = listOf(
-                    ValueDataEntry("Entradas", totalEntry.toDouble())
-                )
-                pie.setData(data)
-                pie.setPalette(
-                    arrayOf(
-                        "#55910E"
-                    )
-                )
-            } else if (totalExpense > 0f && totalEntry == 0f) {
-                data = listOf(
-                    ValueDataEntry("Saídas", totalExpense.toDouble())
-                )
-                pie.setData(data)
-                pie.setPalette(
-                    arrayOf(
-                        "#CC0000"
-                    )
-                )
-            } else if (totalEntry > 0f && totalExpense > 0f) {
-                data = listOf(
-                    ValueDataEntry("Entradas", totalEntry.toDouble()),
-                    ValueDataEntry("Saídas", totalExpense.toDouble())
-                )
-                pie.setData(data)
-                pie.setPalette(
-                    arrayOf(
-                        "#55910E",
-                        "#CC0000"
-                    )
-                )
-            }
-        }
-        chart.setChart(pie)
-        pie.setInnerRadius("95%")
-    }
-
-    fun getEntries(groupId: Int) {
+    fun getEntries(groupId: Int, month: String) {
         panelRefresh.isRefreshing = true
-        RetrofitClient.instance.getEntries(groupId)
+        RetrofitClient.instance.getEntries(groupId, month)
             .enqueue(object : Callback<List<GroupTransResponse>> {
                 override fun onFailure(call: Call<List<GroupTransResponse>>, t: Throwable) {
                     Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
@@ -171,9 +171,12 @@ class Panel : AppCompatActivity() {
                     when {
                         response.code().toString() == "200" -> {
                             totalEntry = setEntries(response.body()!!)
+                            Thread.sleep(1000L)
                         }
                         response.code().toString() == "204" -> {
-                            tvTotalEntry.text = "R$0.00"
+                            totalEntry = 0f
+                            Thread.sleep(1000L)
+                            tvTotalEntry.text = "0.00"
                             println("No content!")
                         }
                         else -> {
@@ -184,8 +187,8 @@ class Panel : AppCompatActivity() {
             })
     }
 
-    fun getExpenses(groupId: Int) {
-        RetrofitClient.instance.getExpenses(groupId)
+    fun getExpenses(groupId: Int, month: String) {
+        RetrofitClient.instance.getExpenses(groupId, month)
             .enqueue(object : Callback<List<GroupTransResponse>> {
                 override fun onFailure(call: Call<List<GroupTransResponse>>, t: Throwable) {
                     panelRefresh.isRefreshing = false
@@ -200,30 +203,18 @@ class Panel : AppCompatActivity() {
                     when {
                         response.code().toString() == "200" -> {
                             totalExpense = setExpenses(response.body()!!)
-                            avaible = totalEntry - totalExpense
-                            tvAvaible.text = "$avaible"
-                            if(avaible > 0){
-                                tvAvaible.setTextColor(Color.parseColor("#2176D3"))
-                            } else {
-                                tvAvaible.setTextColor(Color.parseColor("#CC0000"))
-
-                            }
-                            setupPieChart()
+                            Thread.sleep(1000L)
+                            createChart(totalEntry.toDouble(), totalExpense.toDouble())
                         }
                         response.code().toString() == "204" -> {
                             tvTotalExpense.text = "0.00"
-                            avaible = totalEntry - totalExpense
-                            tvAvaible.text = "$avaible"
-                            if(avaible > 0){
-                                tvAvaible.setTextColor(Color.parseColor("#2176D3"))
-                            } else {
-                                tvAvaible.setTextColor(Color.parseColor("#CC0000"))
-
-                            }
-                            setupPieChart()
+                            totalExpense = 0f
+                            Thread.sleep(1000L)
+                            createChart(totalEntry.toDouble(), totalExpense.toDouble())
                             println("No content!")
                         }
                         else -> {
+//                            setupPieChart()
                             println("Something are wrong!")
                         }
                     }
@@ -236,8 +227,12 @@ class Panel : AppCompatActivity() {
         entries.forEach { e ->
             total += e.value!!
         }
-        tvTotalEntry.text = "R$${total}"
-        return total
+        tvTotalEntry.text = String.format("%.2f", total)
+        return if (total > 0) {
+            total
+        } else {
+            0f
+        }
     }
 
     fun setExpenses(entries: List<GroupTransResponse>): Float {
@@ -245,18 +240,25 @@ class Panel : AppCompatActivity() {
         entries.forEach { e ->
             total += e.value!!
         }
-        tvTotalExpense.text = "R$${total}"
-        return total
+        tvTotalExpense.text = String.format("%.2f", total)
+        return if (total > 0) {
+            total
+        } else {
+            0f
+        }
     }
 
-    fun popInstruction(v: View) {
-        Toast.makeText(
-            this, """
-            Trás seu saldo total!
-            Calculo usado:
-            Entradas - Saídas = Saldo
-        """.trimIndent(), Toast.LENGTH_LONG
-        ).show()
+    fun createChart(entry: Double, expense: Double) {
+        val transaction = supportFragmentManager.beginTransaction()
+        val parametros = Bundle()
+        parametros.putDouble("entry", entry)
+        parametros.putDouble("expense", expense)
+        val chart = PieChart()
+        chart.arguments = parametros
+
+        transaction.replace(R.id.chart, chart, "chart")
+
+        transaction.commit()
     }
 }
 

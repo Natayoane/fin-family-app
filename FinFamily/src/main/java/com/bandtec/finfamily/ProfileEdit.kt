@@ -1,15 +1,10 @@
 package com.bandtec.finfamily
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
-import android.util.Base64
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bandtec.finfamily.api.RetrofitClient
@@ -34,10 +29,10 @@ class ProfileEdit : AppCompatActivity() {
         val profile =  Intent(this, Profile::class.java)
 
         if(btmAvatar != null){
-         imageView14.setImageBitmap(btmAvatar)
+         img.setImageBitmap(btmAvatar)
         }
 
-        uploadImg.setOnClickListener(){
+        img.setOnClickListener(){
             val avatar =  Intent(this, Avatar::class.java)
             startActivity(avatar)
             finish()
@@ -113,7 +108,6 @@ class ProfileEdit : AppCompatActivity() {
                                 sp.edit().putString("full_name", response.body()?.fullName).apply()
                                 sp.edit().putString("email", response.body()?.email).apply()
                                 sp.edit().putString("nickname", response.body()?.nickname).apply()
-                                startActivity(profile)
                                 finish()
                             }
                             response.code().toString() == "401" -> {

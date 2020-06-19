@@ -22,8 +22,6 @@ class PopDeleteGoal : AppCompatActivity() {
         val goalId = intent?.extras?.getInt("goalId", 0)
 
         btnClose.setOnClickListener {
-            val alter = Intent(this, PopAlterExpense::class.java)
-            startActivity(alter)
             finish()
         }
 

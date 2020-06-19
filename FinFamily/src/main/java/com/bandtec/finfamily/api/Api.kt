@@ -45,9 +45,10 @@ interface Api {
         @Path("externalId") externalGroupId: String
     ): Call<String>
 
-    @GET("transactions/{groupId}/entries")
+    @GET("transactions/{groupId}/entries/{month}")
     fun getEntries(
-        @Path("groupId") groupId: Int
+        @Path("groupId") groupId: Int,
+        @Path("month") month : String
     ): Call<List<GroupTransResponse>>
 
     @GET("transactions/{groupId}/{userId}/entries")
@@ -62,9 +63,10 @@ interface Api {
         @Path("userId") userId: Int
     ): Call<Float>
 
-    @GET("transactions/{groupId}/expenses")
+    @GET("transactions/{groupId}/expenses/{month}")
     fun getExpenses(
-        @Path("groupId") groupId: Int
+        @Path("groupId") groupId: Int,
+        @Path("month") month : String
     ): Call<List<GroupTransResponse>>
 
     @GET("groups/participants/members/{externalId}")
@@ -93,5 +95,8 @@ interface Api {
 
     @DELETE("goals/remove/{goalId}")
     fun removeGoals(@Path("goalId") goalId: Int): Call<String>
+
+    @POST("goals/transactions/create")
+    fun createGoalTrans(@Body transaction : GoalsTransResponse) : Call<String>
 }
 

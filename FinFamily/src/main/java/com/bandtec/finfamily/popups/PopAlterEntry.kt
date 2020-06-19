@@ -55,6 +55,7 @@ class PopAlterEntry : AppCompatActivity() {
                 categoryId,
                 null,
                 null,
+                null,
                 null
             )
             if(etNome.text!!.isNotEmpty()){

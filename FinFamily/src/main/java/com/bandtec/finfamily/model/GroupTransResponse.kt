@@ -1,5 +1,7 @@
 package com.bandtec.finfamily.model
 
+import java.io.Serializable
+
 data class GroupTransResponse (
     val id : Int?,
     var name : String,
@@ -14,5 +16,6 @@ data class GroupTransResponse (
     var idReceipeCategory : Int?,
     var idTransactionType : Int?,
     var createdAt : String?,
-    var updatedAt : String?
-)
+    var updatedAt : String?,
+    val goalId : Int?
+) : Serializable

@@ -11,20 +11,20 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/rectangle_"
-        android:layout_width="320dp"
+        android:layout_width="0dp"
         android:layout_height="90dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="20dp"
         android:background="@drawable/famwalletview"
         android:elevation="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/textView10"
-            android:layout_width="320dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bordafw"
             android:drawableLeft="@drawable/card"

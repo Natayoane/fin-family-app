@@ -19,7 +19,8 @@ class ModalEntry : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_modal_entry)
         val groupId = intent.extras?.get("groupId").toString().toInt()
-        getEntries(groupId)
+        val month = intent.extras?.get("month").toString()
+        getEntries(groupId, month)
 
         modalEntryRefresh.setOnRefreshListener {
             val frags = supportFragmentManager
@@ -29,7 +30,7 @@ class ModalEntry : AppCompatActivity() {
                 frags.beginTransaction().detach(fragment!!).commit()
                 i++
             }
-            getEntries(groupId)
+            getEntries(groupId, month)
         }
 
         btnClose.setOnClickListener {
@@ -37,10 +38,10 @@ class ModalEntry : AppCompatActivity() {
         }
     }
 
-    fun getEntries(groupId: Int) {
+    fun getEntries(groupId: Int, month : String) {
         modalEntryRefresh.isRefreshing = true
 
-        RetrofitClient.instance.getEntries(groupId)
+        RetrofitClient.instance.getEntries(groupId, month)
             .enqueue(object : Callback<List<GroupTransResponse>> {
                 override fun onFailure(call: Call<List<GroupTransResponse>>, t: Throwable) {
                     modalEntryRefresh.isRefreshing = false

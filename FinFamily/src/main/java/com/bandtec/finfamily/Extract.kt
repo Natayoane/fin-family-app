@@ -27,9 +27,10 @@ class Extract : AppCompatActivity() {
 
         val groupId = intent.extras?.get("groupId").toString()
         val groupName = intent.extras?.get("groupName").toString()
-        getEntries(groupId.toInt(), groupName)
+        val month = intent.extras?.get("month").toString()
+        getEntries(groupId.toInt(), groupName, month)
         Thread.sleep(200L)
-        getExpenses(groupId.toInt())
+        getExpenses(groupId.toInt(), month)
 
         extractRefresh.setOnRefreshListener {
             val frags = supportFragmentManager
@@ -39,14 +40,15 @@ class Extract : AppCompatActivity() {
                 frags.beginTransaction().detach(fragment!!).commit()
                 i++
             }
-            getEntries(groupId.toInt(), groupName)
+            getEntries(groupId.toInt(), groupName, month)
             Thread.sleep(200L)
-            getExpenses(groupId.toInt())
+            getExpenses(groupId.toInt(), month)
         }
 
         more.setOnClickListener {
             val entries = Intent(this, ModalEntry::class.java)
             entries.putExtra("groupId", groupId)
+            entries.putExtra("month", month)
             startActivity(entries)
         }
 //
@@ -58,8 +60,8 @@ class Extract : AppCompatActivity() {
 
     }
 
-    fun getExpenses(groupId: Int) {
-        RetrofitClient.instance.getExpenses(groupId)
+    fun getExpenses(groupId: Int, month : String) {
+        RetrofitClient.instance.getExpenses(groupId, month)
             .enqueue(object : Callback<List<GroupTransResponse>> {
                 override fun onFailure(call: Call<List<GroupTransResponse>>, t: Throwable) {
                     extractRefresh.isRefreshing = false
@@ -86,9 +88,9 @@ class Extract : AppCompatActivity() {
             })
     }
 
-    fun getEntries(groupId: Int, groupName: String) {
+    fun getEntries(groupId: Int, groupName: String, month : String) {
 //        extractRefresh.isRefreshing = true
-        RetrofitClient.instance.getEntries(groupId)
+        RetrofitClient.instance.getEntries(groupId, month)
             .enqueue(object : Callback<List<GroupTransResponse>> {
                 override fun onFailure(call: Call<List<GroupTransResponse>>, t: Throwable) {
                     Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()

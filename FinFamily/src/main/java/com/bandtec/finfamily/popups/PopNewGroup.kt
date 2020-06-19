@@ -27,15 +27,15 @@ class PopNewGroup : AppCompatActivity() {
         val sp: SharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
 
         avatar.setOnClickListener {
-            val intent = Intent(this, AvatarGroups::class.java)
-            startActivity(intent)
+            val avatar = Intent(this, AvatarGroups::class.java)
+            startActivity(avatar)
             finish()
         }
 
         btnClose.setOnClickListener {
-            val intent = Intent(this, PopChooseGroupAction::class.java)
+            val chooseAction = Intent(this, PopChooseGroupAction::class.java)
 
-            startActivity(intent)
+            startActivity(chooseAction)
             finish()
         }
 

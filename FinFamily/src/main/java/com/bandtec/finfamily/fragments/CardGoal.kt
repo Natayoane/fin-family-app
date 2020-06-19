@@ -1,5 +1,6 @@
 package com.bandtec.finfamily.fragments
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -39,10 +40,12 @@ class CardGoal : Fragment() {
         val description = arguments?.getString("description", "")
         val value = arguments?.getFloat("value", 0f)
         val deadline = arguments?.getString("deadline", "")
+        val userId = arguments?.getInt("userId", 0)
+        val groupId = arguments?.getInt("groupId", 0)
 
         tvGoalName.text = name
         tvDescription.text = description
-        goalValue.text = getString(R.string.cifrao, value.toString())
+        goalValue.text = getString(R.string.cifrao, String.format("%.2f", value))
         goalDeadline.text = deadline
         goalProgress.max = value?.toInt()!!
 
@@ -50,6 +53,9 @@ class CardGoal : Fragment() {
 
         btnNewEntry.setOnClickListener {
             val newInvoice = Intent(requireActivity(), PopEntryOutputGoal::class.java)
+            newInvoice.putExtra("groupId", groupId)
+            newInvoice.putExtra("userId", userId)
+            newInvoice.putExtra("goalId", id)
             startActivity(newInvoice)
         }
 
@@ -77,13 +83,13 @@ class CardGoal : Fragment() {
                         }
                         response.code().toString() == "204" -> {
                             goalProgress.progress = 0
-                            tvAvaibleNow.text = getString(R.string.cifrao, "0")
+                            tvAvaibleNow.text = getString(R.string.cifrao, "0.00")
                             tvPercentage.text = getString(R.string.percentage, "0%")
                             println("No content!")
                         }
                         else -> {
                             goalProgress.progress = 0
-                            tvAvaibleNow.text = getString(R.string.cifrao, "0")
+                            tvAvaibleNow.text = getString(R.string.cifrao, "0.00")
                             tvPercentage.text = getString(R.string.percentage, "0")
                             println("Something are wrong!")
                         }
@@ -105,8 +111,8 @@ class CardGoal : Fragment() {
         val total = totalEntry - totalExpense
         val percentage = (total * 100) / max
         goalProgress.progress = total.toInt()
-        tvAvaibleNow.text = getString(R.string.cifrao, total.toString())
-        tvPercentage.text = getString(R.string.percentage, "$percentage%")
+        tvAvaibleNow.text = getString(R.string.cifrao, String.format("%.2f", total))
+        tvPercentage.text = getString(R.string.percentage, String.format("%.2f", percentage)+"%")
 
     }
 }
