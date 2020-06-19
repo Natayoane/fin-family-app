@@ -33,10 +33,9 @@ class AccountItems : Fragment() {
         val idCategory = arguments?.getInt("category", 0)
         val value = arguments?.getFloat("value", 0f).toString()
         val userId = arguments?.getInt("userId", 0)
-        Toast.makeText(activity, idCategory.toString(), Toast.LENGTH_SHORT).show()
+
         tvName.text = name
         val expensesTypes = resources.getStringArray(R.array.expenses)
-
         when (idCategory) {
             0 -> tvCategory.text = ""
             1 -> tvCategory.text = expensesTypes[0]

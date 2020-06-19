@@ -163,7 +163,7 @@ class GroupExtract : AppCompatActivity() {
         }
 
         val avaible = totalFamily - total
-        tvAvaibleAccount.text = avaible.toString()
+        tvAvaibleAccount.text = getString(R.string.cifrao, avaible.toString())
         transaction.commit()
         fragSize = expenses.size
     }

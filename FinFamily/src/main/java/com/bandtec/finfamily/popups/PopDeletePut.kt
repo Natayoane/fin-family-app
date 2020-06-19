@@ -22,8 +22,6 @@ class PopDeletePut : AppCompatActivity() {
         val transId = intent?.extras?.getInt("id", 0)
 
         btnClose.setOnClickListener {
-            val alter = Intent(this, PopAlterExpense::class.java)
-            startActivity(alter)
             finish()
         }
 
@@ -34,6 +32,7 @@ class PopDeletePut : AppCompatActivity() {
         btYes.setOnClickListener {
             val groups = Intent(this, Group::class.java)
             deleteExpense(transId!!)
+            groups.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(groups)
             finish()
         }

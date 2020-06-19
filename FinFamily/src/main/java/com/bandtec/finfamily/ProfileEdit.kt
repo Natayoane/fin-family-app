@@ -34,8 +34,8 @@ class ProfileEdit : AppCompatActivity() {
 
         img.setOnClickListener(){
             val avatar =  Intent(this, Avatar::class.java)
+            avatar.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(avatar)
-            finish()
         }
 
         etName.hint = sp.getString("full_name", "")
