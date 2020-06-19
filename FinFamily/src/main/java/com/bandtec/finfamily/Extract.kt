@@ -48,6 +48,7 @@ class Extract : AppCompatActivity() {
         more.setOnClickListener {
             val entries = Intent(this, ModalEntry::class.java)
             entries.putExtra("groupId", groupId)
+            entries.putExtra("month", month)
             startActivity(entries)
         }
 //

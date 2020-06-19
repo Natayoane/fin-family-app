@@ -45,7 +45,7 @@
             app:layout_constraintStart_toStartOf="@+id/guideline10"
             app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
-        <com.anychart.anychart.AnyChartView
+        <LinearLayout
             android:id="@+id/chart"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -59,36 +59,7 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvTotalEntry"
-            app:layout_constraintVertical_bias="1.0">
-
-            <TextView
-                android:id="@+id/tvSaldo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginRight="5dp"
-                android:gravity="center"
-                android:text="@string/balance"
-                android:layout_marginBottom="60dp"
-                android:textColor="#696969"
-                android:textSize="25dp" />
-
-            <TextView
-                android:id="@+id/tvAvaible"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginRight="5dp"
-                android:drawableBottom="@drawable/ic_info_outline_black_24dp"
-                android:drawablePadding="20sp"
-                android:gravity="center"
-                android:onClick="popInstruction"
-                android:paddingStart="2dp"
-                android:text="1200,00"
-                android:textColor="#55910E"
-                android:textSize="25dp" />
-
-        </com.anychart.anychart.AnyChartView>
+            app:layout_constraintVertical_bias="1.0"/>
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline7"

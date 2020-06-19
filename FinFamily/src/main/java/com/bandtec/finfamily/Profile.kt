@@ -30,7 +30,7 @@ class Profile : AppCompatActivity() {
         etEmail.text = sp.getString("email", "mariaantonia@gmail.com")
 
 
-        settingsProfile.setOnClickListener {
+        alterExpense.setOnClickListener {
             val intent = Intent(this, ProfileEdit::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             // start your next activity

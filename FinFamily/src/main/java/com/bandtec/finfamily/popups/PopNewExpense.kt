@@ -8,8 +8,18 @@ import com.bandtec.finfamily.Group
 import com.bandtec.finfamily.R
 import com.bandtec.finfamily.api.RetrofitClient
 import com.bandtec.finfamily.model.GroupTransResponse
+import com.bandtec.finfamily.utils.MaskEditUtil
+import kotlinx.android.synthetic.main.activity_pop_new_entry.*
 import kotlinx.android.synthetic.main.activity_pop_new_expense.*
+import kotlinx.android.synthetic.main.activity_pop_new_expense.btSaveEntry
+import kotlinx.android.synthetic.main.activity_pop_new_expense.cbRecurrent
+import kotlinx.android.synthetic.main.activity_pop_new_expense.etDate
+import kotlinx.android.synthetic.main.activity_pop_new_expense.etName
+import kotlinx.android.synthetic.main.activity_pop_new_expense.etValue
+import kotlinx.android.synthetic.main.activity_pop_new_expense.spType
+import kotlinx.android.synthetic.main.activity_pop_new_goal.*
 import kotlinx.android.synthetic.main.activity_pop_new_invoice.btnClose
+import kotlinx.android.synthetic.main.fragment_account_items.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -21,6 +31,8 @@ class PopNewExpense : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pop_new_expense)
+        etDate.addTextChangedListener(MaskEditUtil.mask(etDate, MaskEditUtil.FORMAT_DATE))
+
         val groups = Intent(applicationContext, Group::class.java)
 
 
@@ -34,9 +46,10 @@ class PopNewExpense : AppCompatActivity() {
             val entryValue = etValue.text.toString()
             val expenseType = spType.selectedItem.toString()
             val isRecurrent = cbRecurrent.isChecked
-            var recurrenteTypeId: Int
+            val recurrenteTypeId: Int
+            val expenseTypeId = getExpenseId(expenseType)
+            val payDate = etDate.text.toString()
 
-            var expenseTypeId = getExpenseId(expenseType)
 
             if (entryName.isEmpty()) {
                 etName.error = "Dê um nome para essa entrada!"
@@ -49,13 +62,20 @@ class PopNewExpense : AppCompatActivity() {
                 return@setOnClickListener
             }
 
+
+            if(payDate.isEmpty()){
+                etDate.error = "Data de pagamento é um campo obrigatório!"
+                etDate.requestFocus()
+                return@setOnClickListener
+            }
+
+
             recurrenteTypeId = if (isRecurrent) {
                 5
             } else {
                 1
             }
 
-            val payDate: String = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date())
             val transaction = GroupTransResponse(
                 0,
                 entryName,
@@ -144,6 +164,7 @@ class PopNewExpense : AppCompatActivity() {
             expenseTypes[29] -> expenseId = 30
             expenseTypes[30] -> expenseId = 31
             expenseTypes[31] -> expenseId = 32
+            expenseTypes[32] -> expenseId = 33
         }
         return expenseId
     }
