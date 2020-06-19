@@ -10,7 +10,12 @@ import com.bandtec.finfamily.Panel
 import com.bandtec.finfamily.R
 import com.bandtec.finfamily.api.RetrofitClient
 import com.bandtec.finfamily.model.GroupTransResponse
+import com.bandtec.finfamily.utils.MaskEditUtil
 import kotlinx.android.synthetic.main.activity_pop_new_entry.*
+import kotlinx.android.synthetic.main.activity_pop_new_entry.etDate
+import kotlinx.android.synthetic.main.activity_pop_new_entry.etName
+import kotlinx.android.synthetic.main.activity_pop_new_entry.etValue
+import kotlinx.android.synthetic.main.activity_pop_new_goal.*
 import kotlinx.android.synthetic.main.activity_pop_new_invoice.btnClose
 import retrofit2.Call
 import retrofit2.Callback
@@ -24,6 +29,8 @@ class PopNewEntry : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pop_new_entry)
+        etDate.addTextChangedListener(MaskEditUtil.mask(etDate, MaskEditUtil.FORMAT_DATE))
+
         val groups = Intent(applicationContext, Group::class.java)
 
         btnClose.setOnClickListener {
@@ -37,8 +44,10 @@ class PopNewEntry : AppCompatActivity() {
             val entryValue = etValue.text.toString()
             val entryType = spType.selectedItem.toString()
             val isRecurrent = cbRecurrent.isChecked
-            var recurrenteTypeId: Int
-            var expenseId = getEntryId(entryType)
+            val recurrenteTypeId: Int
+            val expenseId = getEntryId(entryType)
+            val payDate = etDate.text.toString()
+
 
             if (entryName.isEmpty()) {
                 etName.error = "Dê um nome para essa entrada!"
@@ -51,13 +60,18 @@ class PopNewEntry : AppCompatActivity() {
                 return@setOnClickListener
             }
 
+            if(payDate.isEmpty()){
+                etDate.error = "Data de pagamento é um campo obrigatório!"
+                etDate.requestFocus()
+                return@setOnClickListener
+            }
+
             recurrenteTypeId = if (isRecurrent) {
                 5
             } else {
                 1
             }
 
-            val payDate: String = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date())
             val transaction = GroupTransResponse(
                 0,
                 entryName,

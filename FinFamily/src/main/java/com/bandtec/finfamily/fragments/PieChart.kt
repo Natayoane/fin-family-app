@@ -36,16 +36,11 @@ class PieChart : Fragment() {
         val entry = arguments?.getDouble("entry", 0.00)
         val expense = arguments?.getDouble("expense", 0.00)
         val avaible = entry!! - expense!!
-        setupPieChart(entry, expense)
-        if (avaible > 0) {
-            tvAvaible.setTextColor(Color.parseColor("#2176D3"))
-        } else {
-            tvAvaible.setTextColor(Color.parseColor("#CC0000"))
-        }
-        tvAvaible.text = avaible.toString()
+        setupPieChart(entry, expense, avaible)
+
     }
 
-    fun setupPieChart(entry: Double?, expense: Double?) {
+    fun setupPieChart(entry: Double?, expense: Double?, avaible : Double) {
         val pie = AnyChart.pie()
         val data: List<DataEntry>
         data = listOf(
@@ -62,6 +57,13 @@ class PieChart : Fragment() {
 
         pieChart.setChart(pie)
         pie.setInnerRadius("95%")
+
+        if (avaible >= 0) {
+            tvAvaible.setTextColor(Color.parseColor("#2176D3"))
+        } else {
+            tvAvaible.setTextColor(Color.parseColor("#CC0000"))
+        }
+        tvAvaible.text = String.format("%.2f", avaible)
     }
 
 }

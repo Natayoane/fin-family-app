@@ -3,26 +3,21 @@ package com.bandtec.finfamily
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.graphics.Color
 import android.os.Bundle
 import android.view.View
-import android.widget.*
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
-import com.anychart.anychart.AnyChart
-import com.anychart.anychart.DataEntry
-import com.anychart.anychart.ValueDataEntry
 import com.bandtec.finfamily.api.RetrofitClient
-import com.bandtec.finfamily.fragments.GroupFinance
 import com.bandtec.finfamily.fragments.PieChart
 import com.bandtec.finfamily.model.GroupTransResponse
 import com.bandtec.finfamily.popups.PopNewInvoice
 import kotlinx.android.synthetic.main.activity_panel.*
-import kotlinx.coroutines.delay
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.nio.DoubleBuffer
 import java.util.*
 
 
@@ -30,18 +25,12 @@ class Panel : AppCompatActivity() {
 
     var totalEntry = 0f
     var totalExpense = 0f
-    var avaible = 0f
     var currentMonth = Calendar.getInstance().get(Calendar.MONTH);
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_panel)
         mes.setSelection(currentMonth)
-        val month = if (currentMonth + 1 < 10) {
-            "0${currentMonth + 1}"
-        } else {
-            "${currentMonth + 1}"
-        }
 
         val sp: SharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
 
@@ -72,10 +61,9 @@ class Panel : AppCompatActivity() {
                         "${position + 1}"
                     }
                     getEntries(groupId.toInt(), spinnerMonth)
-                    println(totalExpense)
+                    Thread.sleep(500L)
                     getExpenses(groupId.toInt(), spinnerMonth)
 
-                    Toast.makeText(applicationContext, meses[position], Toast.LENGTH_SHORT).show()
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>) {
@@ -93,7 +81,7 @@ class Panel : AppCompatActivity() {
                 "${currentMonth + 1}"
             }
             getEntries(groupId.toInt(), month)
-            Thread.sleep(1000L)
+            Thread.sleep(500L)
             getExpenses(groupId.toInt(), month)
         }
 
@@ -137,6 +125,11 @@ class Panel : AppCompatActivity() {
                 intent.putExtra("groupType", groupType)
                 intent.putExtra("groupName", groupName)
                 intent.putExtra("userId", userId)
+                if(mes.selectedItemId + 1 < 9){
+                    intent.putExtra("month", "0${mes.selectedItemId + 1}")
+                } else {
+                    intent.putExtra("month", "${mes.selectedItemId + 1}")
+                }
                 startActivity(intent)
 
             } else if (groupType == 2) {
@@ -145,6 +138,11 @@ class Panel : AppCompatActivity() {
                 intent.putExtra("groupType", groupType)
                 intent.putExtra("groupName", groupName)
                 intent.putExtra("userId", userId)
+                if(mes.selectedItemId + 1 < 9){
+                    intent.putExtra("month", "0${mes.selectedItemId + 1}")
+                } else {
+                    intent.putExtra("month", "${mes.selectedItemId + 1}")
+                }
                 startActivity(intent)
             }
 
@@ -173,11 +171,11 @@ class Panel : AppCompatActivity() {
                     when {
                         response.code().toString() == "200" -> {
                             totalEntry = setEntries(response.body()!!)
-                            Thread.sleep(300L)
+                            Thread.sleep(1000L)
                         }
                         response.code().toString() == "204" -> {
                             totalEntry = 0f
-                            Thread.sleep(500L)
+                            Thread.sleep(1000L)
                             tvTotalEntry.text = "0.00"
                             println("No content!")
                         }
@@ -205,22 +203,13 @@ class Panel : AppCompatActivity() {
                     when {
                         response.code().toString() == "200" -> {
                             totalExpense = setExpenses(response.body()!!)
-                            avaible = totalEntry - totalExpense
-//                            tvAvaible.text = "$avaible"
-                            if (avaible > 0) {
-//                                tvAvaible.setTextColor(Color.parseColor("#2176D3"))
-                            } else {
-//                                tvAvaible.setTextColor(Color.parseColor("#CC0000"))
-                            }
-                            Thread.sleep(300L)
+                            Thread.sleep(1000L)
                             createChart(totalEntry.toDouble(), totalExpense.toDouble())
                         }
                         response.code().toString() == "204" -> {
                             tvTotalExpense.text = "0.00"
                             totalExpense = 0f
-                            Thread.sleep(500L)
-                            avaible = totalEntry - totalExpense
-//                            tvAvaible.text = "$avaible"
+                            Thread.sleep(1000L)
                             createChart(totalEntry.toDouble(), totalExpense.toDouble())
                             println("No content!")
                         }
@@ -238,8 +227,12 @@ class Panel : AppCompatActivity() {
         entries.forEach { e ->
             total += e.value!!
         }
-        tvTotalEntry.text = "$total"
-        return total
+        tvTotalEntry.text = String.format("%.2f", total)
+        return if (total > 0) {
+            total
+        } else {
+            0f
+        }
     }
 
     fun setExpenses(entries: List<GroupTransResponse>): Float {
@@ -247,8 +240,12 @@ class Panel : AppCompatActivity() {
         entries.forEach { e ->
             total += e.value!!
         }
-        tvTotalExpense.text = "$total"
-        return total
+        tvTotalExpense.text = String.format("%.2f", total)
+        return if (total > 0) {
+            total
+        } else {
+            0f
+        }
     }
 
     fun createChart(entry: Double, expense: Double) {
@@ -262,8 +259,6 @@ class Panel : AppCompatActivity() {
         transaction.replace(R.id.chart, chart, "chart")
 
         transaction.commit()
-        println(totalExpense)
-
     }
 }
 
