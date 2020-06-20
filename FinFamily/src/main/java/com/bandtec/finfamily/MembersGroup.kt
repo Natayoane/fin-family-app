@@ -11,13 +11,17 @@ import com.bandtec.finfamily.fragments.Members
 import com.bandtec.finfamily.fragments.MembersFamContribution
 import com.bandtec.finfamily.model.UserResponse
 import com.bandtec.finfamily.popups.PopAddNewMember
+import kotlinx.android.synthetic.main.activity_group.*
 import kotlinx.android.synthetic.main.activity_members_group.*
+import kotlinx.android.synthetic.main.activity_members_group.btnGroup
 import kotlinx.android.synthetic.main.activity_panel.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class MembersGroup : AppCompatActivity() {
+
+    var fragSize = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,9 +31,26 @@ class MembersGroup : AppCompatActivity() {
         val groupId = intent.extras?.get("groupId").toString().toInt()
         val groupName = intent.extras?.get("groupName").toString()
         val userId = sp.getInt("userId", 0)
+        val month = intent.extras?.get("month").toString()
+        Toast.makeText(applicationContext, month, Toast.LENGTH_SHORT).show()
+
+        getGroupMembers(extId, groupId, groupName, month)
+
+        groupMembersRefresh.setOnRefreshListener {
+
+            val frags = supportFragmentManager
+            var i = 0
+            while (i < fragSize) {
+                val groupMember = frags.findFragmentByTag("groupMember$i")
+                frags.beginTransaction().detach(groupMember!!).commit()
+                val groupContrib = frags.findFragmentByTag("memberContrib$i")
+                frags.beginTransaction().detach(groupContrib!!).commit()
+                i++
+            }
+            getGroupMembers(extId, groupId, groupName, month)
+        }
 
 
-        getGroupMembers(extId, groupId, groupName)
 
         btnGroup.setOnClickListener {
 
@@ -105,7 +126,9 @@ class MembersGroup : AppCompatActivity() {
     }
 
 
-    private fun getGroupMembers(extId: String, groupId: Int, groupName: String) {
+    private fun getGroupMembers(extId: String, groupId: Int, groupName: String, month: String) {
+        groupMembersRefresh.isRefreshing = true
+
         RetrofitClient.instance.getGroupMembers(extId)
             .enqueue(object : Callback<List<UserResponse>> {
                 var members: List<UserResponse>? = null
@@ -123,7 +146,7 @@ class MembersGroup : AppCompatActivity() {
                             members = response.body()!!
                             val userIds = setMembers(members!!)
                             Thread.sleep(100L)
-                            getEntries(groupId, groupName, userIds)
+                            getEntries(groupId, groupName, userIds, month)
                         }
                         response.code().toString() == "204" -> {
                             println("Something are wrong!!")
@@ -140,15 +163,14 @@ class MembersGroup : AppCompatActivity() {
             })
     }
 
-    fun getEntries(groupId: Int, groupName: String, userId: IntArray) {
-//        extractRefreshLayout.isRefreshing = true
+    fun getEntries(groupId: Int, groupName: String, userId: IntArray, month: String) {
 
-        userId.forEach {
+        userId.forEachIndexed { i, it ->
             Thread.sleep(100L)
-            RetrofitClient.instance.getUserEntriesTotal(groupId, it)
+            RetrofitClient.instance.getUserEntriesTotal(groupId, it, month)
                 .enqueue(object : Callback<Float> {
                     override fun onFailure(call: Call<Float>, t: Throwable) {
-//                    extractRefreshLayout.isRefreshing = false
+                        groupMembersRefresh.isRefreshing = false
                         Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
                     }
 
@@ -156,13 +178,13 @@ class MembersGroup : AppCompatActivity() {
                         call: Call<Float>,
                         response: Response<Float>
                     ) {
-//                    extractRefreshLayout.isRefreshing = false
+                        groupMembersRefresh.isRefreshing = false
                         when {
                             response.code().toString() == "200" -> {
-                                setTotal(response.body()!!, groupName)
+                                setTotal(response.body()!!, groupName, i)
                             }
                             response.code().toString() == "204" -> {
-                                setTotal(0f, groupName)
+                                setTotal(0f, groupName, i)
                                 println("No content!")
                             }
                             else -> {
@@ -186,22 +208,23 @@ class MembersGroup : AppCompatActivity() {
             val membersFragment = Members()
             membersFragment.arguments = parametros
 
-            transaction.add(R.id.personFrag, membersFragment)
+            transaction.add(R.id.personFrag, membersFragment, "groupMember$i")
 
         }
         transaction.commit()
-
+        fragSize = members.size
         return userIds
     }
 
-    fun setTotal(total: Float, groupName: String) {
+    fun setTotal(total: Float, groupName: String, fragItem: Int) {
         val transaction = supportFragmentManager.beginTransaction()
         val parametros = Bundle()
         parametros.putString("groupName", groupName)
         parametros.putFloat("groupTotal", total)
         val accountItensFrag = MembersFamContribution()
         accountItensFrag.arguments = parametros
-        transaction.add(R.id.totalFrag, accountItensFrag)
+        transaction.add(R.id.totalFrag, accountItensFrag, "memberContrib$fragItem")
         transaction.commit()
+
     }
 }

@@ -26,7 +26,6 @@ class ProfileEdit : AppCompatActivity() {
         val sp: SharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
         val userId = sp.getInt("userId", 0)
         val btmAvatar = intent?.extras?.getParcelable<Bitmap>("avatar")
-        val profile =  Intent(this, Profile::class.java)
 
         if(btmAvatar != null){
          img.setImageBitmap(btmAvatar)

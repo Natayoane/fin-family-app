@@ -172,4 +172,5 @@
     <string name="current_value">Current Value</string>
     <string name="pay_date">Pay Date</string>
     <string name="pay_date_entry">Receipt Date</string>
+    <string name="fam_name_and_month">%1$s - %2$s</string>
 </resources>

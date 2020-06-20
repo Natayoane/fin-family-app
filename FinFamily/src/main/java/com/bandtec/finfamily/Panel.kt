@@ -101,10 +101,16 @@ class Panel : AppCompatActivity() {
             }
         } else {
             btnProfile.setOnClickListener {
+                val month = if (mes.selectedItemId + 1 < 10) {
+                    "0${mes.selectedItemId + 1}"
+                } else {
+                    "${mes.selectedItemId + 1}"
+                }
                 val members = Intent(this, MembersGroup::class.java)
                 members.putExtra("extId", extId)
                 members.putExtra("groupId", groupId)
                 members.putExtra("groupName", groupName)
+                members.putExtra("month", month)
 
                 startActivity(members)
             }
