@@ -29,7 +29,7 @@ class PopAlterEntry : AppCompatActivity() {
             val delete = Intent(this, PopDeletePut::class.java)
 
             delete.putExtra("id", transId)
-
+            delete.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(delete)
             finish()
 

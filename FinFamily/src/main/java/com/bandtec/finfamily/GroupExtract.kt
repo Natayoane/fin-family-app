@@ -8,7 +8,12 @@ import com.bandtec.finfamily.api.RetrofitClient
 import com.bandtec.finfamily.fragments.AccountItems
 import com.bandtec.finfamily.model.GroupTransResponse
 import com.bandtec.finfamily.popups.PopFamContribution
+import kotlinx.android.synthetic.main.activity_extract.*
 import kotlinx.android.synthetic.main.activity_group_extract.*
+import kotlinx.android.synthetic.main.activity_group_extract.more
+import kotlinx.android.synthetic.main.activity_group_extract.tvAvaibleAccount
+import kotlinx.android.synthetic.main.activity_group_extract.tvGroupName
+import kotlinx.android.synthetic.main.activity_group_extract.vlTotalFamily
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -25,8 +30,11 @@ class GroupExtract : AppCompatActivity() {
         val groupName = intent.extras?.get("groupName").toString()
         val userId = intent.extras?.get("userId").toString().toInt()
         val month = intent.extras?.get("month").toString()
+
+
+
         getEntries(groupId, groupName, month)
-        getUserEntries(groupId, userId)
+        getUserEntries(groupId, userId, month)
         Thread.sleep(200L)
         getExpenses(groupId, month)
 
@@ -34,13 +42,13 @@ class GroupExtract : AppCompatActivity() {
         groupExtractRefresh.setOnRefreshListener {
             val frags = supportFragmentManager
             var i = 0
-            while( i < fragSize){
+            while (i < fragSize) {
                 val fragment = frags.findFragmentByTag("expenses$i")
                 frags.beginTransaction().detach(fragment!!).commit()
                 i++
             }
             getEntries(groupId, groupName, month)
-            getUserEntries(groupId, userId)
+            getUserEntries(groupId, userId, month)
             Thread.sleep(200L)
             getExpenses(groupId, month)
         }
@@ -59,7 +67,7 @@ class GroupExtract : AppCompatActivity() {
 
     }
 
-    fun getExpenses(groupId : Int, month : String){
+    fun getExpenses(groupId: Int, month: String) {
         RetrofitClient.instance.getExpenses(groupId, month)
             .enqueue(object : Callback<List<GroupTransResponse>> {
                 override fun onFailure(call: Call<List<GroupTransResponse>>, t: Throwable) {
@@ -87,7 +95,7 @@ class GroupExtract : AppCompatActivity() {
             })
     }
 
-    fun getEntries(groupId : Int, groupName: String, month : String){
+    fun getEntries(groupId: Int, groupName: String, month: String) {
         groupExtractRefresh.isRefreshing = true
         RetrofitClient.instance.getEntries(groupId, month)
             .enqueue(object : Callback<List<GroupTransResponse>> {
@@ -101,10 +109,16 @@ class GroupExtract : AppCompatActivity() {
                 ) {
                     when {
                         response.code().toString() == "200" -> {
-                            setGroupEntries(response.body()!!, groupName)
+                            setGroupEntries(response.body()!!, groupName, (month.toInt() - 1))
                         }
                         response.code().toString() == "204" -> {
-                            tvGroupName.text = groupName
+                            val meses = resources.getStringArray(R.array.meses_array)
+
+                            tvGroupName.text = getString(
+                                R.string.fam_name_and_month,
+                                groupName,
+                                meses[month.toInt() - 1]
+                            )
                             vlTotalFamily.text = "R$0.0"
                             println("No content!")
                         }
@@ -116,8 +130,8 @@ class GroupExtract : AppCompatActivity() {
             })
     }
 
-    fun getUserEntries(groupId : Int, userId : Int){
-        RetrofitClient.instance.getUserEntries(groupId, userId)
+    fun getUserEntries(groupId: Int, userId: Int, month: String) {
+        RetrofitClient.instance.getUserEntries(groupId, userId, month)
             .enqueue(object : Callback<List<GroupTransResponse>> {
                 override fun onFailure(call: Call<List<GroupTransResponse>>, t: Throwable) {
                     Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
@@ -144,12 +158,11 @@ class GroupExtract : AppCompatActivity() {
     }
 
 
-
-    fun setExpenses(expenses : List<GroupTransResponse>){
+    fun setExpenses(expenses: List<GroupTransResponse>) {
         val transaction = supportFragmentManager.beginTransaction()
         var total = 0f
         val totalFamily = vlTotalFamily?.text.toString().replace("R$", "").toFloat()
-        expenses.forEachIndexed {i, e ->
+        expenses.forEachIndexed { i, e ->
             val parametros = Bundle()
             parametros.putInt("id", e.id!!)
             parametros.putString("name", e.name)
@@ -163,21 +176,23 @@ class GroupExtract : AppCompatActivity() {
         }
 
         val avaible = totalFamily - total
-        tvAvaibleAccount.text = avaible.toString()
+        tvAvaibleAccount.text = getString(R.string.cifrao, avaible.toString())
         transaction.commit()
         fragSize = expenses.size
     }
 
-    fun setGroupEntries(entries : List<GroupTransResponse>, groupName : String){
+    fun setGroupEntries(entries: List<GroupTransResponse>, groupName: String, month: Int) {
         var total = 0f
         entries.forEach { e ->
             total += e.value!!
         }
         vlTotalFamily.text = total.toString()
-        tvGroupName.text = groupName
+        val meses = resources.getStringArray(R.array.meses_array)
+
+        tvGroupName.text = getString(R.string.fam_name_and_month, groupName, meses[month])
     }
 
-    fun setUserEntries(entries : List<GroupTransResponse>){
+    fun setUserEntries(entries: List<GroupTransResponse>) {
         var total = 0f
         entries.forEach { e ->
             total += e.value!!

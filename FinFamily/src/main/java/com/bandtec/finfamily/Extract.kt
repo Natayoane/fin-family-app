@@ -60,7 +60,7 @@ class Extract : AppCompatActivity() {
 
     }
 
-    fun getExpenses(groupId: Int, month : String) {
+    fun getExpenses(groupId: Int, month: String) {
         RetrofitClient.instance.getExpenses(groupId, month)
             .enqueue(object : Callback<List<GroupTransResponse>> {
                 override fun onFailure(call: Call<List<GroupTransResponse>>, t: Throwable) {
@@ -88,7 +88,7 @@ class Extract : AppCompatActivity() {
             })
     }
 
-    fun getEntries(groupId: Int, groupName: String, month : String) {
+    fun getEntries(groupId: Int, groupName: String, month: String) {
 //        extractRefresh.isRefreshing = true
         RetrofitClient.instance.getEntries(groupId, month)
             .enqueue(object : Callback<List<GroupTransResponse>> {
@@ -102,10 +102,16 @@ class Extract : AppCompatActivity() {
                 ) {
                     when {
                         response.code().toString() == "200" -> {
-                            setEntries(response.body()!!, groupName)
+                            setEntries(response.body()!!, groupName, (month.toInt() - 1))
                         }
                         response.code().toString() == "204" -> {
-                            tvGroupName.text = groupName
+                            val meses = resources.getStringArray(R.array.meses_array)
+
+                            tvGroupName.text = getString(
+                                R.string.fam_name_and_month,
+                                groupName,
+                                meses[month.toInt() - 1]
+                            )
                             vlTotalFamily.text = "R$0.0"
                             println("No content!")
                         }
@@ -140,12 +146,14 @@ class Extract : AppCompatActivity() {
         fragSize = expenses.size
     }
 
-    fun setEntries(entries: List<GroupTransResponse>, groupName: String) {
+    fun setEntries(entries: List<GroupTransResponse>, groupName: String, month: Int) {
         var total = 0f
         entries.forEach { e ->
             total += e.value!!
         }
         vlTotalFamily.text = "$total"
-        tvGroupName.text = groupName
+        val meses = resources.getStringArray(R.array.meses_array)
+
+        tvGroupName.text = getString(R.string.fam_name_and_month, groupName, meses[month])
     }
 }

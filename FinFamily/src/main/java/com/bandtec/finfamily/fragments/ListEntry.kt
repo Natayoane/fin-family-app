@@ -54,7 +54,9 @@ class ListEntry : Fragment() {
             alter.putExtra("name", name)
             alter.putExtra("category", idCategory)
             alter.putExtra("value", value)
+            alter.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(alter)
+            activity?.finish()
         }
     }
 

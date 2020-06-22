@@ -22,7 +22,6 @@ import java.lang.ref.WeakReference
 
 class Group : AppCompatActivity() {
 
-    private var sp: SharedPreferences? = null
     var fragSize = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

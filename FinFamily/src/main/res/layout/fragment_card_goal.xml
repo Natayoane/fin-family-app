@@ -61,7 +61,7 @@
                     android:id="@+id/tvDescription"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/textExample"
+                    android:text="@string/lore_ipsum_text"
                     android:textAlignment="textStart"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

@@ -60,7 +60,7 @@ class PopNewEntry : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            if(payDate.isEmpty()){
+            if (payDate.isEmpty()) {
                 etDate.error = "Data de pagamento é um campo obrigatório!"
                 etDate.requestFocus()
                 return@setOnClickListener
@@ -90,6 +90,7 @@ class PopNewEntry : AppCompatActivity() {
                 null
             )
             createTransaction(transaction)
+            groups.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(groups)
         }
     }
@@ -122,7 +123,7 @@ class PopNewEntry : AppCompatActivity() {
             })
     }
 
-    fun getEntryId(entryType : String) : Int {
+    fun getEntryId(entryType: String): Int {
         val entriesTypes = resources.getStringArray(R.array.entry)
         var expenseId = 0
         when (entryType) {
