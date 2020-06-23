@@ -94,7 +94,7 @@
     <string name="spouse">Cônjuge</string>
     <string name="team">Equipe</string>
     <string name="txt_contributors">Contribuidores</string>
-    <string name="value">Valor da Meta</string>
+    <string name="value">de</string>
     <string name="deadline">Data Limite</string>
     <string name="new_goal">Nova Meta</string>
     <string name="insert_description">Descrição</string>
@@ -106,7 +106,7 @@
     <string name="save_editions">Salvar Edições</string>
     <string name="wallet">Carteira</string>
     <string name="my_contribution">Minha Contribuição</string>
-    <string name="percentage">Meta %1$s Completa</string>
+    <string name="percentage">" %1$"</string>
     <string name="goal_name">Nome da Meta</string>
     <string name="current_value">Valor Atual</string>
     <string name="pay_date">Data de Pagamento</string>
