@@ -21,7 +21,7 @@ class Login : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         val group = Intent(this, Group::class.java)
-        // start your next activity
+
         inputemail.requestFocus()
 
         val sp: SharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
@@ -32,29 +32,32 @@ class Login : AppCompatActivity() {
             val password = inputpassword.text.toString()
 
             if (email.isEmpty()) {
-                inputemail.error = "Email é um campo obrigatório!"
+                inputemail.error = getString(R.string.email_validation_input)
                 inputemail.requestFocus()
                 return@setOnClickListener
             } else {
                 if (!MaskEditUtil.validateEmail(email)) {
-                    inputemail.error = "Email inválido!"
+                    inputemail.error = getString(R.string.invalid_mail)
                     inputemail.requestFocus()
                     return@setOnClickListener
                 }
             }
 
             if (password.isEmpty()) {
-                inputpassword.error = "Senha é um campo obrigatório!"
+                inputpassword.error = getString(R.string.password_validation_input)
                 inputpassword.requestFocus()
                 return@setOnClickListener
             }
 
             val credentials = CredencialsModel(email, password)
-            println(credentials)
             RetrofitClient.instance.loginUser(credentials)
                 .enqueue(object : Callback<UserResponse> {
                     override fun onFailure(call: Call<UserResponse>, t: Throwable) {
-                        Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                        Toast.makeText(
+                            applicationContext,
+                            getString(R.string.default_error),
+                            Toast.LENGTH_LONG
+                        ).show()
                     }
 
                     override fun onResponse(
@@ -72,14 +75,11 @@ class Login : AppCompatActivity() {
                         } else {
                             Toast.makeText(
                                 applicationContext,
-                                "User and/or password are incorrect!",
+                                getString(R.string.invalid_credentials),
                                 Toast.LENGTH_LONG
                             ).show()
                         }
-
-
                     }
-
                 })
         }
     }

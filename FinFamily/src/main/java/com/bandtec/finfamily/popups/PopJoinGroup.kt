@@ -3,13 +3,12 @@ package com.bandtec.finfamily.popups
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.bandtec.finfamily.Group
 import com.bandtec.finfamily.R
 import com.bandtec.finfamily.api.RetrofitClient
-import com.bandtec.finfamily.model.GroupsResponse
 import kotlinx.android.synthetic.main.activity_pop_join_group.*
 import kotlinx.android.synthetic.main.pop_activity_new_group.btnClose
 import kotlinx.android.synthetic.main.pop_activity_new_group.ivFinish
@@ -27,7 +26,6 @@ class PopJoinGroup : AppCompatActivity() {
         val sp: SharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
         btnClose.setOnClickListener {
             val intent = Intent(this, PopChooseGroupAction::class.java)
-            //start your next activity
             startActivity(intent)
             finish()
         }
@@ -38,8 +36,8 @@ class PopJoinGroup : AppCompatActivity() {
             val userId = sp.getInt("userId", 0)
             val externalId = etGroupCode.text.toString()
 
-            if(externalId.isEmpty()){
-                etGroupCode.error = "O campo 'ID do Grupo' deve ser preenchido!"
+            if (externalId.isEmpty()) {
+                etGroupCode.error = getString(R.string.group_id_input)
                 etGroupCode.requestFocus()
                 return@setOnClickListener
             }
@@ -47,13 +45,11 @@ class PopJoinGroup : AppCompatActivity() {
             RetrofitClient.instance.addGroupMember(userId, externalId)
                 .enqueue(object : Callback<String> {
                     override fun onFailure(call: Call<String>, t: Throwable) {
-                        println("passei aqui")
-                        println(t.message)
-                        println(t.stackTrace)
-                        println(t.cause)
-
-
-                        Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                        Toast.makeText(
+                            applicationContext,
+                            getString(R.string.default_error),
+                            Toast.LENGTH_LONG
+                        ).show()
                     }
 
                     override fun onResponse(
@@ -65,19 +61,25 @@ class PopJoinGroup : AppCompatActivity() {
 
                                 Toast.makeText(
                                     applicationContext,
-                                    "Sucesso!",
-                                    Toast.LENGTH_LONG).show()
+                                    getString(R.string.group_joined),
+                                    Toast.LENGTH_LONG
+                                ).show()
                                 startActivity(group)
                             }
                             response.code().toString() == "409" -> {
                                 Toast.makeText(
-                                    applicationContext, "Você já pertence a este grupo!",
-                                    Toast.LENGTH_LONG).show()
+                                    applicationContext,
+                                    getString(R.string.group_already_joined),
+                                    Toast.LENGTH_LONG
+                                ).show()
                                 startActivity(group)
                             }
                             else -> {
-                                Toast.makeText(applicationContext, "Verifique o código do grupo " +
-                                        "e tente novamente!", Toast.LENGTH_LONG).show()
+                                Toast.makeText(
+                                    applicationContext,
+                                    getString(R.string.default_error),
+                                    Toast.LENGTH_LONG
+                                ).show()
                                 startActivity(group)
                             }
                         }

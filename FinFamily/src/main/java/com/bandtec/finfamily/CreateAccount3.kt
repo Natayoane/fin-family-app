@@ -21,11 +21,21 @@ class CreateAccount3 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_account3)
 
-        val spCreate3 : SharedPreferences = getSharedPreferences("spCreate1", Context.MODE_PRIVATE)
+        val spCreate3: SharedPreferences = getSharedPreferences("spCreate1", Context.MODE_PRIVATE)
         val home = Intent(this, MainActivity::class.java)
 
-        inputcode.addTextChangedListener(MaskEditUtil.mask(inputcode, MaskEditUtil.FORMAT_FONE_AREA_CODE))
-        inputnumber.addTextChangedListener(MaskEditUtil.mask(inputnumber, MaskEditUtil.FORMAT_FONE_AREA_NUMBER))
+        inputcode.addTextChangedListener(
+            MaskEditUtil.mask(
+                inputcode,
+                MaskEditUtil.FORMAT_FONE_AREA_CODE
+            )
+        )
+        inputnumber.addTextChangedListener(
+            MaskEditUtil.mask(
+                inputnumber,
+                MaskEditUtil.FORMAT_FONE_AREA_NUMBER
+            )
+        )
 
 
         buttonnext3.setOnClickListener {
@@ -40,57 +50,64 @@ class CreateAccount3 : AppCompatActivity() {
             val phoneAreaNumber = MaskEditUtil.unmask(inputnumber.text.toString())
 
             if (nickname.isEmpty()) {
-                inputcadastronick.error = "Nickname is required!"
+                inputcadastronick.error = getString(R.string.nickname_validation_input)
                 inputcadastronick.requestFocus()
                 return@setOnClickListener
             }
 
             if (phoneAreaCode.isEmpty()) {
-                inputcode.error = "Area code is required!"
+                inputcode.error = getString(R.string.code_validation_input)
                 inputcode.requestFocus()
                 return@setOnClickListener
             }
 
             if (phoneAreaNumber.isEmpty()) {
-                inputnumber.error = "Number is required!"
+                inputnumber.error = getString(R.string.phone_validation_input)
                 inputnumber.requestFocus()
                 return@setOnClickListener
             }
 
-//            var fullName: String?,
-//            var cpf: String?,
-//            var birthday: String?,
-//            var phoneAreaCode: String?,
-//            var phoneAreaNumber: String?,
-//            var email: String?,
-//            var password: String?,
-//            var createdAt: String?,
-//            var updatedAt: String?,
-//            var nickname: String?
-
-            val user = UserResponse(null, fullName, cpf, birthday, phoneAreaCode, phoneAreaNumber, email, password, null, null, nickname)
+            val user = UserResponse(
+                null,
+                fullName,
+                cpf,
+                birthday,
+                phoneAreaCode,
+                phoneAreaNumber,
+                email,
+                password,
+                null,
+                null,
+                nickname
+            )
 
             RetrofitClient.instance.signupUser(user)
                 .enqueue(object : Callback<UserResponse> {
                     override fun onFailure(call: Call<UserResponse>, t: Throwable) {
-                        Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                        Toast.makeText(
+                            applicationContext,
+                            getString(R.string.default_error),
+                            Toast.LENGTH_LONG
+                        ).show()
                     }
 
                     override fun onResponse(
                         call: Call<UserResponse>,
                         response: Response<UserResponse>
                     ) {
-                        if(response.code().toString() == "201"){
-                            Toast.makeText(applicationContext, "Sucesso!", Toast.LENGTH_LONG).show()
-//                            sp.edit().putBoolean("logged", true).apply()
-//                            sp.edit().putInt("id", response.body()?.id!!).apply()
-//                            sp.edit().putString("full_name", response.body()?.fullName).apply()
-//                            sp.edit().putString("email", response.body()?.email).apply()
-//                            sp.edit().putString("nickname", response.body()?.nickname).apply()
+                        if (response.code().toString() == "201") {
+                            Toast.makeText(
+                                applicationContext,
+                                getString(R.string.account_successful_created),
+                                Toast.LENGTH_LONG
+                            ).show()
                             startActivity(home)
-                        }
-                        else {
-                            Toast.makeText(applicationContext, "Internal Server Error!", Toast.LENGTH_LONG).show()
+                        } else {
+                            Toast.makeText(
+                                applicationContext,
+                                getString(R.string.default_error),
+                                Toast.LENGTH_LONG
+                            ).show()
                         }
 
 

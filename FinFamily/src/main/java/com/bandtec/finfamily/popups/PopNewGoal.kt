@@ -1,15 +1,12 @@
 package com.bandtec.finfamily.popups
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.bandtec.finfamily.R
 import com.bandtec.finfamily.api.RetrofitClient
 import com.bandtec.finfamily.model.GoalsResponse
-import com.bandtec.finfamily.utils.DateValidation
 import com.bandtec.finfamily.utils.MaskEditUtil
-import kotlinx.android.synthetic.main.activity_create_account.*
-import kotlinx.android.synthetic.main.activity_goals.*
 import kotlinx.android.synthetic.main.activity_pop_new_goal.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -34,25 +31,25 @@ class PopNewGoal : AppCompatActivity() {
             val deadline = etDate.text.toString()
 
             if(name.isEmpty()){
-                etName.error = "Nome é um campo obrigatório!"
+                etName.error = getString(R.string.goal_name)
                 etName.requestFocus()
                 return@setOnClickListener
             }
 
             if(description.isEmpty()){
-                etDescription.error = "Descrição é um campo obrigatório!"
+                etDescription.error = getString(R.string.goal_description)
                 etDescription.requestFocus()
                 return@setOnClickListener
             }
 
             if(goalValue.isEmpty()){
-                etName.error = "Valor é um campo obrigatório!"
+                etName.error = getString(R.string.goal_value)
                 etName.requestFocus()
                 return@setOnClickListener
             }
 
             if(deadline.isEmpty()){
-                etDate.error = "Data limite é um campo obrigatório!"
+                etDate.error = getString(R.string.goal_deadline)
                 etDate.requestFocus()
                 return@setOnClickListener
             }
@@ -67,7 +64,7 @@ class PopNewGoal : AppCompatActivity() {
         RetrofitClient.instance.createGoals(goal)
             .enqueue(object : Callback<String> {
                 override fun onFailure(call: Call<String>, t: Throwable) {
-                    Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext, getString(R.string.default_error), Toast.LENGTH_LONG).show()
                 }
 
                 override fun onResponse(
@@ -78,12 +75,12 @@ class PopNewGoal : AppCompatActivity() {
                         response.code().toString() == "201" -> {
                             Toast.makeText(
                                 applicationContext,
-                                "Meta criada com sucesso!",
+                                getString(R.string.goal_created),
                                 Toast.LENGTH_LONG
                             ).show()
                         }
                         else -> {
-                            println("Something are wrong!")
+                            Toast.makeText(applicationContext, getString(R.string.default_error), Toast.LENGTH_LONG).show()
                         }
                     }
                 }

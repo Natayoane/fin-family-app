@@ -10,17 +10,13 @@ import com.bandtec.finfamily.ModalEntry
 import com.bandtec.finfamily.R
 import kotlinx.android.synthetic.main.fragment_fam_wallet_personal.*
 
-/**
- * A simple [Fragment] subclass.
- */
 class FamWalletPersonal : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fam_wallet_personal, container, false)
+       return inflater.inflate(R.layout.fragment_fam_wallet_personal, container, false)
     }
 
 
@@ -28,8 +24,8 @@ class FamWalletPersonal : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         more.setOnClickListener {
-            val tela1 = Intent(requireActivity(), ModalEntry::class.java)
-            startActivity(tela1)
+            val modalEntry = Intent(requireActivity(), ModalEntry::class.java)
+            startActivity(modalEntry)
         }
     }
 }

@@ -18,16 +18,14 @@ class PopChooseGroupAction : AppCompatActivity() {
         }
 
         joinGroup.setOnClickListener {
-            val intent = Intent(this, PopJoinGroup::class.java)
-            //start your next activity
-            startActivity(intent)
+            val joinGroup = Intent(this, PopJoinGroup::class.java)
+            startActivity(joinGroup)
             finish()
         }
 
         newGroup.setOnClickListener {
-            val intent = Intent(this, PopNewGroup::class.java)
-            //start your next activity
-            startActivity(intent)
+            val newGroup = Intent(this, PopNewGroup::class.java)
+            startActivity(newGroup)
             finish()
         }
     }

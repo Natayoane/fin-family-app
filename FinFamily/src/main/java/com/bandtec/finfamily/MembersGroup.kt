@@ -10,11 +10,7 @@ import com.bandtec.finfamily.api.RetrofitClient
 import com.bandtec.finfamily.fragments.Members
 import com.bandtec.finfamily.fragments.MembersFamContribution
 import com.bandtec.finfamily.model.UserResponse
-import com.bandtec.finfamily.popups.PopAddNewMember
-import kotlinx.android.synthetic.main.activity_group.*
 import kotlinx.android.synthetic.main.activity_members_group.*
-import kotlinx.android.synthetic.main.activity_members_group.btnGroup
-import kotlinx.android.synthetic.main.activity_panel.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -32,12 +28,10 @@ class MembersGroup : AppCompatActivity() {
         val groupName = intent.extras?.get("groupName").toString()
         val userId = sp.getInt("userId", 0)
         val month = intent.extras?.get("month").toString()
-        Toast.makeText(applicationContext, month, Toast.LENGTH_SHORT).show()
 
         getGroupMembers(extId, groupId, groupName, month)
 
         groupMembersRefresh.setOnRefreshListener {
-
             val frags = supportFragmentManager
             var i = 0
             while (i < fragSize) {
@@ -50,23 +44,17 @@ class MembersGroup : AppCompatActivity() {
             getGroupMembers(extId, groupId, groupName, month)
         }
 
-
-
         btnGroup.setOnClickListener {
-
             val sharingIntent = Intent(Intent.ACTION_SEND)
             sharingIntent.type = "text/plain"
             sharingIntent.putExtra(
-                Intent.EXTRA_TEXT, """
-                Olá, estou usando o app Fin Family para marcar minhas despesas!
-                Venha fazer parte do meu grupo:
-                Nome do grupo: *$groupName*
-                Código do grupo: *$extId*
-            """.trimIndent()
+                Intent.EXTRA_TEXT, getString(R.string.invite_new_member_text, groupName, extId)
             )
-            sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Fin Family - Entre no meu grupo")
-            startActivity(Intent.createChooser(sharingIntent, "Compartilhe o ID do grupo"))
-
+            sharingIntent.putExtra(
+                Intent.EXTRA_SUBJECT,
+                getString(R.string.invite_new_member_title)
+            )
+            startActivity(Intent.createChooser(sharingIntent, getString(R.string.share_group_id)))
         }
 
         btLeaveGroup.setOnClickListener {
@@ -75,9 +63,7 @@ class MembersGroup : AppCompatActivity() {
             if (userId == 0) {
                 Toast.makeText(
                     this,
-                    """Ops, algo deu errado!
-                        Por favor, tente fazer o login novamente!
-                    """.trimMargin(),
+                    getString(R.string.default_error),
                     Toast.LENGTH_LONG
                 ).show()
                 startActivity(login)
@@ -94,9 +80,11 @@ class MembersGroup : AppCompatActivity() {
         RetrofitClient.instance.leaveGroup(userId, groupId)
             .enqueue(object : Callback<Any> {
                 override fun onFailure(call: Call<Any>, t: Throwable) {
-                    println("Passei 1")
-                    println(t.message)
-                    Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        applicationContext,
+                        getString(R.string.default_error),
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
 
                 override fun onResponse(
@@ -105,18 +93,15 @@ class MembersGroup : AppCompatActivity() {
                 ) {
                     when {
                         response.code().toString() == "200" -> {
-                            println("Passei 2")
-                            println("groupName")
-                            println(response.body().toString())
                             Toast.makeText(
                                 applicationContext,
-                                "Você saiu do $groupName!",
+                                getString(R.string.group_get_out, groupName),
                                 Toast.LENGTH_SHORT
                             ).show()
                         }
                         else -> {
                             val extract = Intent(applicationContext, Extract::class.java)
-                            println("Something are wrong!")
+                            getString(R.string.default_error)
                             startActivity(extract)
                             finish()
                         }
@@ -134,7 +119,11 @@ class MembersGroup : AppCompatActivity() {
                 var members: List<UserResponse>? = null
 
                 override fun onFailure(call: Call<List<UserResponse>>, t: Throwable) {
-                    Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        applicationContext,
+                        getString(R.string.default_error),
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
 
                 override fun onResponse(
@@ -149,12 +138,16 @@ class MembersGroup : AppCompatActivity() {
                             getEntries(groupId, groupName, userIds, month)
                         }
                         response.code().toString() == "204" -> {
-                            println("Something are wrong!!")
+                            Toast.makeText(
+                                applicationContext,
+                                getString(R.string.default_error),
+                                Toast.LENGTH_LONG
+                            ).show()
                         }
                         else -> {
                             Toast.makeText(
                                 applicationContext,
-                                "Erro interno no servidor!",
+                                getString(R.string.default_error),
                                 Toast.LENGTH_LONG
                             ).show()
                         }
@@ -171,7 +164,11 @@ class MembersGroup : AppCompatActivity() {
                 .enqueue(object : Callback<Float> {
                     override fun onFailure(call: Call<Float>, t: Throwable) {
                         groupMembersRefresh.isRefreshing = false
-                        Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                        Toast.makeText(
+                            applicationContext,
+                            getString(R.string.default_error),
+                            Toast.LENGTH_LONG
+                        ).show()
                     }
 
                     override fun onResponse(
@@ -185,16 +182,18 @@ class MembersGroup : AppCompatActivity() {
                             }
                             response.code().toString() == "204" -> {
                                 setTotal(0f, groupName, i)
-                                println("No content!")
                             }
                             else -> {
-                                println("Something are wrong!")
+                                Toast.makeText(
+                                    applicationContext,
+                                    getString(R.string.default_error),
+                                    Toast.LENGTH_LONG
+                                ).show()
                             }
                         }
                     }
                 })
         }
-
     }
 
     fun setMembers(members: List<UserResponse>): IntArray {
@@ -209,7 +208,6 @@ class MembersGroup : AppCompatActivity() {
             membersFragment.arguments = parametros
 
             transaction.add(R.id.personFrag, membersFragment, "groupMember$i")
-
         }
         transaction.commit()
         fragSize = members.size
@@ -225,6 +223,5 @@ class MembersGroup : AppCompatActivity() {
         accountItensFrag.arguments = parametros
         transaction.add(R.id.totalFrag, accountItensFrag, "memberContrib$fragItem")
         transaction.commit()
-
     }
 }

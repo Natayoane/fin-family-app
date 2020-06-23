@@ -14,8 +14,7 @@ class PopNewInvoice : AppCompatActivity() {
 
         val userId = intent.extras?.get("userId").toString().toInt()
         val groupId = intent.extras?.get("groupId").toString()
-
-
+        
         btnClose.setOnClickListener {
             finish()
         }

@@ -21,8 +21,6 @@ class PopEntryOutputGoal : AppCompatActivity() {
         val goalId = intent.extras?.getInt("goalId", 0)
         var invoiceType = 0
 
-        println("$userId, $groupId, $goalId")
-
         btnClose.setOnClickListener {
             finish()
         }
@@ -32,7 +30,6 @@ class PopEntryOutputGoal : AppCompatActivity() {
                 etTypeOutPut.isChecked = false
             }
             invoiceType = 1
-            println("Invoice Type: $invoiceType")
         }
 
         etTypeOutPut.setOnClickListener {
@@ -40,7 +37,6 @@ class PopEntryOutputGoal : AppCompatActivity() {
                 etTypeEntry.isChecked = false
             }
             invoiceType = 2
-            println("Invoice Type: $invoiceType")
         }
 
         btSaveGoal.setOnClickListener {
@@ -58,7 +54,11 @@ class PopEntryOutputGoal : AppCompatActivity() {
         RetrofitClient.instance.createGoalTrans(transaction)
             .enqueue(object : Callback<String> {
                 override fun onFailure(call: Call<String>, t: Throwable) {
-                    Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        applicationContext,
+                        getString(R.string.default_error),
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
 
                 override fun onResponse(
@@ -69,17 +69,16 @@ class PopEntryOutputGoal : AppCompatActivity() {
                         response.code().toString() == "201" -> {
                             Toast.makeText(
                                 applicationContext,
-                                "Transação adicionada com sucesso!",
+                                getString(R.string.transaction_added),
                                 Toast.LENGTH_LONG
                             ).show()
                         }
                         else -> {
                             Toast.makeText(
                                 applicationContext,
-                                "Houve um erro ao adicionar a transação!\n Por favor, tente novamente mais tarde!",
+                                getString(R.string.default_error),
                                 Toast.LENGTH_LONG
                             ).show()
-                            println("Something are wrong!")
                         }
                     }
                 }

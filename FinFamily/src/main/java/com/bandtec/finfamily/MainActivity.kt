@@ -1,9 +1,8 @@
 package com.bandtec.finfamily
 
 import android.content.Intent
-import android.graphics.drawable.Drawable
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -13,14 +12,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         logininicio.setOnClickListener {
-            val intent = Intent(this, Login::class.java)
-            // start your next activity
-            startActivity(intent)
+            val signin = Intent(this, Login::class.java)
+            startActivity(signin)
         }
         cadastroinicio.setOnClickListener {
-            val intent = Intent(this, CreateAccount::class.java)
-            // start your next activity
-            startActivity(intent)
+            val signup = Intent(this, CreateAccount::class.java)
+            startActivity(signup)
         }
     }
 }

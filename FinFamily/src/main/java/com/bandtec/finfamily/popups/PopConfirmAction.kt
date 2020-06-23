@@ -24,8 +24,8 @@ class PopConfirmAction : AppCompatActivity() {
 
         val choose = intent.extras?.getInt("choose")
 
-        if (choose == 0) txtTitle.text = "Confirm delete account"
-        if (choose == 1) txtTitle.text = "Are you sure you want to leave ?"
+        if (choose == 0) txtTitle.text = getString(R.string.confirm_delete_account)
+        if (choose == 1) txtTitle.text = getString(R.string.confirm_leave_group)
 
         btnClose.setOnClickListener {
             finish()
@@ -47,7 +47,11 @@ class PopConfirmAction : AppCompatActivity() {
         RetrofitClient.instance.removeUser(userId)
             .enqueue(object : Callback<String> {
                 override fun onFailure(call: Call<String>, t: Throwable) {
-                    Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        applicationContext,
+                        getString(R.string.default_error),
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
 
                 override fun onResponse(
@@ -58,7 +62,7 @@ class PopConfirmAction : AppCompatActivity() {
                         response.code().toString() == "200" -> {
                             Toast.makeText(
                                 applicationContext,
-                                "Usuário removido com sucesso!",
+                                getString(R.string.user_removed),
                                 Toast.LENGTH_LONG
                             ).show()
 
@@ -66,10 +70,9 @@ class PopConfirmAction : AppCompatActivity() {
                         else -> {
                             Toast.makeText(
                                 applicationContext,
-                                "Houve um erro! Por favor, tente novamente mais tarde.",
+                                getString(R.string.default_error),
                                 Toast.LENGTH_LONG
                             ).show()
-
                         }
                     }
                 }

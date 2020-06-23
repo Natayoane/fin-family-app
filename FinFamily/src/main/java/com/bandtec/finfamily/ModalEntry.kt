@@ -1,13 +1,11 @@
 package com.bandtec.finfamily
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bandtec.finfamily.api.RetrofitClient
 import com.bandtec.finfamily.fragments.ListEntry
 import com.bandtec.finfamily.model.GroupTransResponse
-import kotlinx.android.synthetic.main.activity_group.*
 import kotlinx.android.synthetic.main.activity_modal_entry.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -38,14 +36,18 @@ class ModalEntry : AppCompatActivity() {
         }
     }
 
-    fun getEntries(groupId: Int, month : String) {
+    fun getEntries(groupId: Int, month: String) {
         modalEntryRefresh.isRefreshing = true
 
         RetrofitClient.instance.getEntries(groupId, month)
             .enqueue(object : Callback<List<GroupTransResponse>> {
                 override fun onFailure(call: Call<List<GroupTransResponse>>, t: Throwable) {
                     modalEntryRefresh.isRefreshing = false
-                    Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        applicationContext,
+                        getString(R.string.default_error),
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
 
                 override fun onResponse(
@@ -53,10 +55,24 @@ class ModalEntry : AppCompatActivity() {
                     response: Response<List<GroupTransResponse>>
                 ) {
                     modalEntryRefresh.isRefreshing = false
-                    if (response.code().toString() == "200") {
-                        setEntries(response.body()!!)
-                    } else {
-                        println("Something are wrong!")
+                    when {
+                        response.code().toString() == "200" -> {
+                            setEntries(response.body()!!)
+                        }
+                        response.code().toString() == "204" -> {
+                            Toast.makeText(
+                                applicationContext,
+                                getString(R.string.entries_no_content),
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+                        else -> {
+                            Toast.makeText(
+                                applicationContext,
+                                getString(R.string.default_error),
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
                     }
                 }
             })
@@ -64,7 +80,7 @@ class ModalEntry : AppCompatActivity() {
 
     fun setEntries(entries: List<GroupTransResponse>) {
         val transaction = supportFragmentManager.beginTransaction()
-        entries.forEachIndexed {i, e ->
+        entries.forEachIndexed { i, e ->
             val parametros = Bundle()
             parametros.putInt("id", e.id!!)
             parametros.putString("name", e.name)
@@ -76,6 +92,5 @@ class ModalEntry : AppCompatActivity() {
         }
         transaction.commit()
         fragSize = entries.size
-
     }
 }
