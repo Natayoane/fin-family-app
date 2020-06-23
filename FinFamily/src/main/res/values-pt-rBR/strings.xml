@@ -110,6 +110,7 @@
     <string name="pay_date">Data de Pagamento</string>
     <string name="pay_date_entry">Data do Recebimento</string>
     <string name="fam_name_and_month">%1$s - %2$s</string>
+    <string name="save_email">Lembrar e-mail</string>
     <string name="name_validation_input">Nome Completo é um campo obrigatório!</string>
     <string name="invalid_full_name">Nome Completo é inválido!</string>
     <string name="cpf_validation_input">CPF é um campo obrigatório!</string>
@@ -164,6 +165,5 @@
     <string name="invalid_group_name">O nome do grupo deve conter entre 4 e 45 caracteres!</string>
     <string name="group_created">Grupo criado com sucesso!</string>
     <string name="goal_percentage">%1$s</string>
-
 
 </resources>
