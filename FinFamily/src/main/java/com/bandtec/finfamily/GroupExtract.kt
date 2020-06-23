@@ -202,6 +202,7 @@ class GroupExtract : AppCompatActivity() {
         var total = 0f
         entries.forEach { e ->
             total += e.value!!
+            println(total)
         }
         tvTotalUser.text = "$total"
     }

@@ -80,7 +80,6 @@ class Extract : AppCompatActivity() {
     }
 
     fun getEntries(groupId: Int, groupName: String, month: String) {
-//        extractRefresh.isRefreshing = true
         RetrofitClient.instance.getEntries(groupId, month)
             .enqueue(object : Callback<List<GroupTransResponse>> {
                 override fun onFailure(call: Call<List<GroupTransResponse>>, t: Throwable) {

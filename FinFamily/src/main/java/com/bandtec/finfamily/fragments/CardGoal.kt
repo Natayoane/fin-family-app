@@ -80,12 +80,12 @@ class CardGoal : Fragment() {
                         response.code().toString() == "204" -> {
                             goalProgress.progress = 0
                             tvAvaibleNow.text = getString(R.string.cifrao, "0.00")
-                            tvPercentage.text = getString(R.string.percentage, "0%")
+                            tvPercentage.text = getString(R.string.goal_percentage, "0")
                         }
                         else -> {
                             goalProgress.progress = 0
                             tvAvaibleNow.text = getString(R.string.cifrao, "0.00")
-                            tvPercentage.text = getString(R.string.percentage, "0")
+                            tvPercentage.text = getString(R.string.goal_percentage, "0")
                             Toast.makeText(
                                 activity,
                                 getString(R.string.default_error),
@@ -112,7 +112,7 @@ class CardGoal : Fragment() {
         val percentage = (total * 100) / max
         goalProgress.progress = total.toInt()
         tvAvaibleNow.text = getString(R.string.cifrao, String.format("%.2f", total))
-        tvPercentage.text = getString(R.string.percentage, String.format("%.2f", percentage) + "%")
+        tvPercentage.text = getString(R.string.goal_percentage, String.format("%.2f", percentage) + "%")
 
     }
 }
