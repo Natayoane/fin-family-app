@@ -13,9 +13,9 @@ pipeline {
     stage('Deploy') {
       steps {
         echo 'Enviando .war para a fin-family-backend-01'
-        sh '#scp -o StrictHostKeyChecking=no  -i /var/lib/jenkins/keys/fin-family-backend-new.pem FinFamily/build/outputs/apk/release/FinFamily-release.apk ubuntu@34.231.187.221:/tmp/'
+        sh 'scp -o StrictHostKeyChecking=no  -i /var/lib/jenkins/keys/fin-family-backend-new.pem FinFamily/build/outputs/apk/release/FinFamily-release.apk ubuntu@34.231.187.221:/tmp/'
         echo 'Realizando deploy do .war na fin-family-01'
-        sh '#ssh -o StrictHostKeyChecking=no  -i /var/lib/jenkins/keys/fin-family-backend-new.pem ubuntu@34.231.187.221 \'/home/ubuntu/scripts/apk.sh\''
+        sh 'ssh -o StrictHostKeyChecking=no  -i /var/lib/jenkins/keys/fin-family-backend-new.pem ubuntu@34.231.187.221 \'/home/ubuntu/scripts/apk.sh\''
         echo 'Enviando .war para a fin-family-backend-02'
         sh 'scp -o StrictHostKeyChecking=no  -i /var/lib/jenkins/keys/fin-family-backend-new.pem FinFamily/build/outputs/apk/release/FinFamily-release.apk ubuntu@34.237.168.116:/tmp/'
         echo 'Realizando deploy do .war na fin-family-02'
