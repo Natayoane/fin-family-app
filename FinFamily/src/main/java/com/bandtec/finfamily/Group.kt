@@ -2,22 +2,17 @@ package com.bandtec.finfamily
 
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import com.bandtec.finfamily.api.RetrofitClient
 import com.bandtec.finfamily.fragments.GroupFinance
 import com.bandtec.finfamily.model.GroupResponse
 import com.bandtec.finfamily.popups.PopChooseGroupAction
-import kotlinx.android.synthetic.main.activity_goals.*
 import kotlinx.android.synthetic.main.activity_group.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.lang.ref.WeakReference
 
 
 class Group : AppCompatActivity() {
@@ -26,7 +21,6 @@ class Group : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_group)
-
 
         val user = getSharedPreferences("user", Context.MODE_PRIVATE)
         val userId = user.getInt("userId", 0)
@@ -37,7 +31,7 @@ class Group : AppCompatActivity() {
 
             val frags = supportFragmentManager
             var i = 0
-            while( i < fragSize){
+            while (i < fragSize) {
                 val fragment = frags.findFragmentByTag("group$i")
                 frags.beginTransaction().detach(fragment!!).commit()
                 i++
@@ -47,7 +41,6 @@ class Group : AppCompatActivity() {
 
         btnGroup.setOnClickListener {
             val groupAct = Intent(this, PopChooseGroupAction::class.java)
-            //start your next activity
             startActivity(groupAct)
             finish()
         }
@@ -63,7 +56,11 @@ class Group : AppCompatActivity() {
                 override fun onFailure(call: Call<List<GroupResponse>>, t: Throwable) {
                     groupRefresh.isRefreshing = false
 
-                    Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        applicationContext,
+                        getString(R.string.default_error),
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
 
                 override fun onResponse(
@@ -75,15 +72,19 @@ class Group : AppCompatActivity() {
                     when {
                         response.code().toString() == "200" -> {
                             groups = response.body()!!
-                            println(groups?.size)
                             setGroups(groups!!)
                         }
                         response.code().toString() == "204" -> {
+                            Toast.makeText(
+                                applicationContext,
+                                getString(R.string.groups_no_content),
+                                Toast.LENGTH_LONG
+                            ).show()
                         }
                         else -> {
                             Toast.makeText(
                                 applicationContext,
-                                "Erro interno no servidor!",
+                                getString(R.string.default_error),
                                 Toast.LENGTH_LONG
                             ).show()
                         }
@@ -106,12 +107,9 @@ class Group : AppCompatActivity() {
             groupsFragments.arguments = parametros
 
             transaction.add(R.id.groupFinanceFrag, groupsFragments, "group$i")
-
         }
         transaction.commit()
         fragSize = userGroups.size
     }
-
-
 }
 

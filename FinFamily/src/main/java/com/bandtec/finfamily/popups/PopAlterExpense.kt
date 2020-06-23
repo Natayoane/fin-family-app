@@ -60,10 +60,10 @@ class PopAlterExpense : AppCompatActivity() {
                 null,
                 null
             )
-            if(etNome.text!!.isNotEmpty()){
+            if (etNome.text!!.isNotEmpty()) {
                 transaction.name = etNome.text.toString()
             }
-            if(etValue.text!!.isNotEmpty()){
+            if (etValue.text!!.isNotEmpty()) {
                 transaction.value = etValue.text.toString().toFloat()
             }
 
@@ -76,7 +76,11 @@ class PopAlterExpense : AppCompatActivity() {
         RetrofitClient.instance.updateTransactions(transId, transaction)
             .enqueue(object : Callback<String> {
                 override fun onFailure(call: Call<String>, t: Throwable) {
-                    Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        applicationContext,
+                        getString(R.string.default_error),
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
 
                 override fun onResponse(
@@ -86,21 +90,17 @@ class PopAlterExpense : AppCompatActivity() {
                     if (response.code().toString() == "200") {
                         Toast.makeText(
                             applicationContext,
-                            "Transação alterada com sucesso!",
+                            getString(R.string.transaction_changed),
                             Toast.LENGTH_LONG
                         ).show()
                     } else {
                         Toast.makeText(
                             applicationContext,
-                            "Houve um erro ao alterar a transação!\nTente novamente mais tarde!",
+                            getString(R.string.default_error),
                             Toast.LENGTH_LONG
                         ).show()
-                        println("Something are wrong!")
                     }
-
-
                 }
-
             })
     }
 

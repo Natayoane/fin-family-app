@@ -7,13 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bandtec.finfamily.api.RetrofitClient
 import com.bandtec.finfamily.fragments.AccountItems
 import com.bandtec.finfamily.model.GroupTransResponse
-import com.bandtec.finfamily.popups.PopFamContribution
 import kotlinx.android.synthetic.main.activity_extract.*
-import kotlinx.android.synthetic.main.activity_extract.more
-import kotlinx.android.synthetic.main.activity_extract.tvAvaibleAccount
-import kotlinx.android.synthetic.main.activity_extract.tvGroupName
-import kotlinx.android.synthetic.main.activity_extract.vlTotalFamily
-import kotlinx.android.synthetic.main.activity_group_extract.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -51,13 +45,6 @@ class Extract : AppCompatActivity() {
             entries.putExtra("month", month)
             startActivity(entries)
         }
-//
-//        btNewContribution.setOnClickListener {
-//            val intent = Intent(this, PopFamContribution::class.java)
-//            //start your next activity
-//            startActivity(intent)
-//        }
-
     }
 
     fun getExpenses(groupId: Int, month: String) {
@@ -65,7 +52,11 @@ class Extract : AppCompatActivity() {
             .enqueue(object : Callback<List<GroupTransResponse>> {
                 override fun onFailure(call: Call<List<GroupTransResponse>>, t: Throwable) {
                     extractRefresh.isRefreshing = false
-                    Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        applicationContext,
+                        getString(R.string.default_error),
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
 
                 override fun onResponse(
@@ -81,7 +72,7 @@ class Extract : AppCompatActivity() {
                             tvAvaibleAccount.text = vlTotalFamily.text
                         }
                         else -> {
-                            println("Something are wrong!")
+                            getString(R.string.default_error)
                         }
                     }
                 }
@@ -93,7 +84,11 @@ class Extract : AppCompatActivity() {
         RetrofitClient.instance.getEntries(groupId, month)
             .enqueue(object : Callback<List<GroupTransResponse>> {
                 override fun onFailure(call: Call<List<GroupTransResponse>>, t: Throwable) {
-                    Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        applicationContext,
+                        getString(R.string.default_error),
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
 
                 override fun onResponse(
@@ -112,11 +107,10 @@ class Extract : AppCompatActivity() {
                                 groupName,
                                 meses[month.toInt() - 1]
                             )
-                            vlTotalFamily.text = "R$0.0"
-                            println("No content!")
+                            vlTotalFamily.text = getString(R.string.cifrao, "0.0")
                         }
                         else -> {
-                            println("Something are wrong!")
+                            getString(R.string.default_error)
                         }
                     }
                 }
@@ -126,7 +120,7 @@ class Extract : AppCompatActivity() {
     fun setExpenses(expenses: List<GroupTransResponse>) {
         val transaction = supportFragmentManager.beginTransaction()
         var total = 0f
-        val totalFamily = vlTotalFamily.text.toString().replace("R$", "").toFloat()
+        val totalFamily = vlTotalFamily.text.toString().replace("R$", "").replace("$", "").toFloat()
 
         expenses.forEachIndexed { i, e ->
             val parametros = Bundle()

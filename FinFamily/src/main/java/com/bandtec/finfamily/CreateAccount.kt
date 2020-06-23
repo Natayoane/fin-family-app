@@ -4,11 +4,12 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.bandtec.finfamily.utils.*
+import androidx.appcompat.app.AppCompatActivity
+import com.bandtec.finfamily.utils.CpfValidator
+import com.bandtec.finfamily.utils.DateValidation
+import com.bandtec.finfamily.utils.MaskEditUtil
 import kotlinx.android.synthetic.main.activity_create_account.*
-import java.text.SimpleDateFormat
 
 class CreateAccount : AppCompatActivity() {
 
@@ -31,36 +32,36 @@ class CreateAccount : AppCompatActivity() {
             val birthday = inputdatebirth.text.toString()
 
             if (fullName.isEmpty()) {
-                inputname.error = "Nome Completo é um campo obrigatório!"
+                inputname.error = getString(R.string.name_validation_input)
                 inputname.requestFocus()
                 return@setOnClickListener
             }else{
                 if(!MaskEditUtil.validateFullName(fullName)){
-                    inputname.error = "Nome Completo é inválido!"
+                    inputname.error = getString(R.string.invalid_full_name)
                     inputname.requestFocus()
                     return@setOnClickListener
                 }
             }
 
             if (cpf.isEmpty()) {
-                inputcpf.error = "CPF é um campo obrigatório!"
+                inputcpf.error = getString(R.string.cpf_validation_input)
                 inputcpf.requestFocus()
                 return@setOnClickListener
             }else{
                 if(!CpfValidator.isCPF(cpf)){
-                    inputcpf.error = "CPF não é válido!"
+                    inputcpf.error = getString(R.string.invalid_cpf)
                     inputcpf.requestFocus()
                     return@setOnClickListener
                 }
             }
 
             if (birthday.isEmpty()) {
-                inputdatebirth.error = "Data de nascimento é um campo obrigatório!"
+                inputdatebirth.error = getString(R.string.birthday_validation_input)
                 inputdatebirth.requestFocus()
                 return@setOnClickListener
             }else{
                 if(!DateValidation.isValid(birthday)){
-                    inputdatebirth.error = "Data de nascimento inválida!"
+                    inputdatebirth.error = getString(R.string.invalid_birthday)
                     inputdatebirth.requestFocus()
                     return@setOnClickListener
                 }

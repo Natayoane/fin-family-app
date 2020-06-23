@@ -26,11 +26,7 @@ class PieChart : Fragment() {
         super.onActivityCreated(savedInstanceState)
         tvAvaible.setOnClickListener {
             Toast.makeText(
-                activity, """
-            Trás seu saldo total!
-            Calculo usado:
-            Entradas - Saídas = Saldo
-        """.trimIndent(), Toast.LENGTH_LONG
+                activity, getString(R.string.total_help), Toast.LENGTH_LONG
             ).show()
         }
         val entry = arguments?.getDouble("entry", 0.00)
@@ -44,8 +40,8 @@ class PieChart : Fragment() {
         val pie = AnyChart.pie()
         val data: List<DataEntry>
         data = listOf(
-            ValueDataEntry("Entradas", entry),
-            ValueDataEntry("Saídas", expense)
+            ValueDataEntry(getString(R.string.entries), entry),
+            ValueDataEntry(getString(R.string.expenses), expense)
         )
         pie.setData(data)
         pie.setPalette(

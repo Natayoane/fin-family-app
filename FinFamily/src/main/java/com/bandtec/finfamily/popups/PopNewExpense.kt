@@ -1,30 +1,19 @@
 package com.bandtec.finfamily.popups
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.bandtec.finfamily.Group
 import com.bandtec.finfamily.R
 import com.bandtec.finfamily.api.RetrofitClient
 import com.bandtec.finfamily.model.GroupTransResponse
 import com.bandtec.finfamily.utils.MaskEditUtil
-import kotlinx.android.synthetic.main.activity_pop_new_entry.*
 import kotlinx.android.synthetic.main.activity_pop_new_expense.*
-import kotlinx.android.synthetic.main.activity_pop_new_expense.btSaveEntry
-import kotlinx.android.synthetic.main.activity_pop_new_expense.cbRecurrent
-import kotlinx.android.synthetic.main.activity_pop_new_expense.etDate
-import kotlinx.android.synthetic.main.activity_pop_new_expense.etName
-import kotlinx.android.synthetic.main.activity_pop_new_expense.etValue
-import kotlinx.android.synthetic.main.activity_pop_new_expense.spType
-import kotlinx.android.synthetic.main.activity_pop_new_goal.*
 import kotlinx.android.synthetic.main.activity_pop_new_invoice.btnClose
-import kotlinx.android.synthetic.main.fragment_account_items.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.text.SimpleDateFormat
-import java.util.*
 
 class PopNewExpense : AppCompatActivity() {
 
@@ -52,19 +41,18 @@ class PopNewExpense : AppCompatActivity() {
 
 
             if (entryName.isEmpty()) {
-                etName.error = "Dê um nome para essa entrada!"
+                etName.error = getString(R.string.transaction_name)
                 etName.requestFocus()
                 return@setOnClickListener
             }
             if (entryValue.isEmpty()) {
-                etValue.error = "Coloque o valor para essa entrada!"
+                etValue.error = getString(R.string.transaction_value)
                 etValue.requestFocus()
                 return@setOnClickListener
             }
 
-
-            if(payDate.isEmpty()){
-                etDate.error = "Data de pagamento é um campo obrigatório!"
+            if (payDate.isEmpty()) {
+                etDate.error = getString(R.string.transaction_pay_date)
                 etDate.requestFocus()
                 return@setOnClickListener
             }
@@ -105,7 +93,11 @@ class PopNewExpense : AppCompatActivity() {
         RetrofitClient.instance.createTransaction(transaction)
             .enqueue(object : Callback<String> {
                 override fun onFailure(call: Call<String>, t: Throwable) {
-                    Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        applicationContext,
+                        getString(R.string.default_error),
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
 
                 override fun onResponse(
@@ -116,12 +108,12 @@ class PopNewExpense : AppCompatActivity() {
                         response.code().toString() == "201" -> {
                             Toast.makeText(
                                 applicationContext,
-                                "Transação adicionada com sucesso!",
+                                getString(R.string.transaction_added),
                                 Toast.LENGTH_LONG
                             ).show()
                         }
                         else -> {
-                            println("Something are wrong!")
+                            getString(R.string.default_error)
                         }
                     }
                 }
