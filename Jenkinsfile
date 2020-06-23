@@ -10,5 +10,11 @@ pipeline {
       }
     }
 
+    stage('Deploy') {
+      steps {
+        echo 'Enviar apk para os servidores de backend'
+      }
+    }
+
   }
 }
