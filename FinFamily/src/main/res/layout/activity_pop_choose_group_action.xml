@@ -30,6 +30,18 @@
         android:layout_marginBottom="20dp"/>
 
     <Button
+        android:id="@+id/newGroup"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/btnextract"
+        android:backgroundTint="#2176D3"
+        android:text="@string/New_Group"
+        app:backgroundTint="#2176D3"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="20dp"/>
+
+    <Button
         android:id="@+id/joinGroup"
         android:layout_width="match_parent"
         android:layout_height="40dp"
@@ -41,15 +53,5 @@
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"/>
 
-    <Button
-        android:id="@+id/newGroup"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="@drawable/btnextract"
-        android:backgroundTint="#2176D3"
-        android:text="@string/New_Group"
-        app:backgroundTint="#2176D3"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="20dp"/>
+
 </LinearLayout>

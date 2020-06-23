@@ -39,7 +39,11 @@ class PopDeleteGoal : AppCompatActivity() {
         RetrofitClient.instance.removeGoals(goalId)
             .enqueue(object : Callback<String> {
                 override fun onFailure(call: Call<String>, t: Throwable) {
-                    Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        applicationContext,
+                        getString(R.string.default_error),
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
 
                 override fun onResponse(
@@ -49,19 +53,16 @@ class PopDeleteGoal : AppCompatActivity() {
                     if (response.code().toString() == "200") {
                         Toast.makeText(
                             applicationContext,
-                            "Meta removida com sucesso!",
+                            getString(R.string.goal_removed),
                             Toast.LENGTH_LONG
                         ).show()
                     } else {
                         Toast.makeText(
                             applicationContext,
-                            "Houve um erro ao remover a meta!\nTente novamente mais tarde!",
+                            getString(R.string.default_error),
                             Toast.LENGTH_LONG
                         ).show()
-                        println("Something are wrong!")
                     }
-
-
                 }
 
             })
