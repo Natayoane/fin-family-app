@@ -51,16 +51,18 @@ interface Api {
         @Path("month") month : String
     ): Call<List<GroupTransResponse>>
 
-    @GET("transactions/{groupId}/{userId}/entries")
+    @GET("transactions/{groupId}/{userId}/entries/{month}")
     fun getUserEntries(
         @Path("groupId") groupId: Int,
-        @Path("userId") userId: Int
+        @Path("userId") userId: Int,
+        @Path("month") month : String
     ): Call<List<GroupTransResponse>>
 
-    @GET("transactions/{groupId}/{userId}/entries/total")
+    @GET("transactions/{groupId}/{userId}/entries/total/{month}")
     fun getUserEntriesTotal(
         @Path("groupId") groupId: Int,
-        @Path("userId") userId: Int
+        @Path("userId") userId: Int,
+        @Path("month") month : String
     ): Call<Float>
 
     @GET("transactions/{groupId}/expenses/{month}")

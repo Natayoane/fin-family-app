@@ -4,23 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.bandtec.finfamily.R
 import com.bandtec.finfamily.popups.PopAlterExpense
 import com.bandtec.finfamily.popups.PopListContributors
 import kotlinx.android.synthetic.main.fragment_account_items.*
-/**
- * A simple [Fragment] subclass.
- */
+
 class AccountItems : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_account_items, container, false)
     }
 
@@ -33,10 +29,9 @@ class AccountItems : Fragment() {
         val idCategory = arguments?.getInt("category", 0)
         val value = arguments?.getFloat("value", 0f).toString()
         val userId = arguments?.getInt("userId", 0)
-        Toast.makeText(activity, idCategory.toString(), Toast.LENGTH_SHORT).show()
+
         tvName.text = name
         val expensesTypes = resources.getStringArray(R.array.expenses)
-
         when (idCategory) {
             0 -> tvCategory.text = ""
             1 -> tvCategory.text = expensesTypes[0]

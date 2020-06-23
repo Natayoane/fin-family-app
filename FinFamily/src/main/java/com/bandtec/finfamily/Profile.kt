@@ -20,30 +20,24 @@ class Profile : AppCompatActivity() {
         val sp: SharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
         val btmAvatar = intent?.extras?.getParcelable<Bitmap>("avatar")
 
-
-        if(btmAvatar != null){
+        if (btmAvatar != null) {
             img.setImageBitmap(btmAvatar)
         }
 
-        etName.text = sp.getString("full_name", "Maria Antonia")
-        etNickname.text = sp.getString("nickname", "Mamãe")
-        etEmail.text = sp.getString("email", "mariaantonia@gmail.com")
-
+        etName.text = sp.getString("full_name", "")
+        etNickname.text = sp.getString("nickname", "")
+        etEmail.text = sp.getString("email", "")
 
         alterExpense.setOnClickListener {
-            val intent = Intent(this, ProfileEdit::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            // start your next activity
-            startActivity(intent)
+            val profileEdit = Intent(this, ProfileEdit::class.java)
+            profileEdit.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(profileEdit)
         }
 
         btnLogout.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            intent.putExtra("choose", 1)
-            // start your next activity
-            startActivity(intent)
-            finish()
+            val home = Intent(this, MainActivity::class.java)
+            home.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(home)
         }
     }
 }

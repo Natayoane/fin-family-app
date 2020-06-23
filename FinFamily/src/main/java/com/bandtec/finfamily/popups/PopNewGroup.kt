@@ -22,7 +22,7 @@ class PopNewGroup : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.pop_activity_new_group);
-        val intent = Intent(this, Group::class.java)
+        val groups = Intent(this, Group::class.java)
 
         val sp: SharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
 
@@ -43,11 +43,11 @@ class PopNewGroup : AppCompatActivity() {
             val groupName = inputNameGroup.text.toString()
 
             if (groupName.isEmpty()) {
-                inputNameGroup.error = "O grupo deve ter um nome!"
+                inputNameGroup.error = getString(R.string.group_name_input)
                 inputNameGroup.requestFocus()
                 return@setOnClickListener
-            } else if (groupName.length < 4) {
-                inputNameGroup.error = "O grupo deve ter pelo menos 4 caracteres!"
+            } else if (groupName.length < 4 || groupName.length > 45) {
+                inputNameGroup.error = getString(R.string.invalid_group_name)
                 inputNameGroup.requestFocus()
                 return@setOnClickListener
             }
@@ -57,7 +57,11 @@ class PopNewGroup : AppCompatActivity() {
             RetrofitClient.instance.createGroup(group)
                 .enqueue(object : Callback<GroupResponse> {
                     override fun onFailure(call: Call<GroupResponse>, t: Throwable) {
-                        Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                        Toast.makeText(
+                            applicationContext,
+                            getString(R.string.default_error),
+                            Toast.LENGTH_LONG
+                        ).show()
                     }
 
                     override fun onResponse(
@@ -67,15 +71,17 @@ class PopNewGroup : AppCompatActivity() {
                         if (response.code().toString() == "201") {
                             Toast.makeText(
                                 applicationContext,
-                                response.code().toString(),
+                                getString(R.string.group_created),
                                 Toast.LENGTH_LONG
                             ).show()
-                            startActivity(intent)
+                            startActivity(groups)
                         } else {
                             Toast.makeText(
-                                applicationContext, "O nome deste grupo não pode ser igual " +
-                                        "a de um grupo que você possua!", Toast.LENGTH_LONG
+                                applicationContext,
+                                getString(R.string.default_error),
+                                Toast.LENGTH_LONG
                             ).show()
+
                         }
                     }
                 })

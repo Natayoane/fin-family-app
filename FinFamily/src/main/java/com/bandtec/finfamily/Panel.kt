@@ -20,7 +20,6 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
 
-
 class Panel : AppCompatActivity() {
 
     var totalEntry = 0f
@@ -67,11 +66,14 @@ class Panel : AppCompatActivity() {
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>) {
-                    println("Something are wrong!")
+                    Toast.makeText(
+                        applicationContext,
+                        getString(R.string.default_error),
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
             }
         }
-
 
         panelRefresh.setOnRefreshListener {
             mes.setSelection(currentMonth)
@@ -101,10 +103,16 @@ class Panel : AppCompatActivity() {
             }
         } else {
             btnProfile.setOnClickListener {
+                val month = if (mes.selectedItemId + 1 < 10) {
+                    "0${mes.selectedItemId + 1}"
+                } else {
+                    "${mes.selectedItemId + 1}"
+                }
                 val members = Intent(this, MembersGroup::class.java)
                 members.putExtra("extId", extId)
                 members.putExtra("groupId", groupId)
                 members.putExtra("groupName", groupName)
+                members.putExtra("month", month)
 
                 startActivity(members)
             }
@@ -114,38 +122,36 @@ class Panel : AppCompatActivity() {
             val goals = Intent(this, Goals::class.java)
             goals.putExtra("groupId", groupId)
             goals.putExtra("userId", userId)
-            // start your next activity
             startActivity(goals)
         }
 
         buttonpnextract.setOnClickListener {
             if (groupType == 1) {
-                val intent = Intent(this, Extract::class.java)
-                intent.putExtra("groupId", groupId)
-                intent.putExtra("groupType", groupType)
-                intent.putExtra("groupName", groupName)
-                intent.putExtra("userId", userId)
-                if(mes.selectedItemId + 1 < 9){
-                    intent.putExtra("month", "0${mes.selectedItemId + 1}")
+                val extract = Intent(this, Extract::class.java)
+                extract.putExtra("groupId", groupId)
+                extract.putExtra("groupType", groupType)
+                extract.putExtra("groupName", groupName)
+                extract.putExtra("userId", userId)
+                if (mes.selectedItemId + 1 < 9) {
+                    extract.putExtra("month", "0${mes.selectedItemId + 1}")
                 } else {
-                    intent.putExtra("month", "${mes.selectedItemId + 1}")
+                    extract.putExtra("month", "${mes.selectedItemId + 1}")
                 }
-                startActivity(intent)
+                startActivity(extract)
 
             } else if (groupType == 2) {
-                val intent = Intent(this, GroupExtract::class.java)
-                intent.putExtra("groupId", groupId)
-                intent.putExtra("groupType", groupType)
-                intent.putExtra("groupName", groupName)
-                intent.putExtra("userId", userId)
-                if(mes.selectedItemId + 1 < 9){
-                    intent.putExtra("month", "0${mes.selectedItemId + 1}")
+                val groupExtract = Intent(this, GroupExtract::class.java)
+                groupExtract.putExtra("groupId", groupId)
+                groupExtract.putExtra("groupType", groupType)
+                groupExtract.putExtra("groupName", groupName)
+                groupExtract.putExtra("userId", userId)
+                if (mes.selectedItemId + 1 < 9) {
+                    groupExtract.putExtra("month", "0${mes.selectedItemId + 1}")
                 } else {
-                    intent.putExtra("month", "${mes.selectedItemId + 1}")
+                    groupExtract.putExtra("month", "${mes.selectedItemId + 1}")
                 }
-                startActivity(intent)
+                startActivity(groupExtract)
             }
-
         }
 
         btnadd.setOnClickListener {
@@ -161,7 +167,11 @@ class Panel : AppCompatActivity() {
         RetrofitClient.instance.getEntries(groupId, month)
             .enqueue(object : Callback<List<GroupTransResponse>> {
                 override fun onFailure(call: Call<List<GroupTransResponse>>, t: Throwable) {
-                    Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        applicationContext,
+                        getString(R.string.default_error),
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
 
                 override fun onResponse(
@@ -176,11 +186,14 @@ class Panel : AppCompatActivity() {
                         response.code().toString() == "204" -> {
                             totalEntry = 0f
                             Thread.sleep(1000L)
-                            tvTotalEntry.text = "0.00"
-                            println("No content!")
+                            tvTotalEntry.text = getString(R.string.cifrao, "0.00")
                         }
                         else -> {
-                            println("Something are wrong!")
+                            Toast.makeText(
+                                applicationContext,
+                                getString(R.string.default_error),
+                                Toast.LENGTH_LONG
+                            ).show()
                         }
                     }
                 }
@@ -192,7 +205,11 @@ class Panel : AppCompatActivity() {
             .enqueue(object : Callback<List<GroupTransResponse>> {
                 override fun onFailure(call: Call<List<GroupTransResponse>>, t: Throwable) {
                     panelRefresh.isRefreshing = false
-                    Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        applicationContext,
+                        getString(R.string.default_error),
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
 
                 override fun onResponse(
@@ -207,15 +224,17 @@ class Panel : AppCompatActivity() {
                             createChart(totalEntry.toDouble(), totalExpense.toDouble())
                         }
                         response.code().toString() == "204" -> {
-                            tvTotalExpense.text = "0.00"
+                            tvTotalExpense.text = getString(R.string.cifrao, "0.00")
                             totalExpense = 0f
                             Thread.sleep(1000L)
                             createChart(totalEntry.toDouble(), totalExpense.toDouble())
-                            println("No content!")
                         }
                         else -> {
-//                            setupPieChart()
-                            println("Something are wrong!")
+                            Toast.makeText(
+                                applicationContext,
+                                getString(R.string.default_error),
+                                Toast.LENGTH_LONG
+                            ).show()
                         }
                     }
                 }

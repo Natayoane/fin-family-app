@@ -10,14 +10,14 @@ import com.bandtec.finfamily.api.RetrofitClient
 import com.bandtec.finfamily.fragments.Members
 import com.bandtec.finfamily.fragments.MembersFamContribution
 import com.bandtec.finfamily.model.UserResponse
-import com.bandtec.finfamily.popups.PopAddNewMember
 import kotlinx.android.synthetic.main.activity_members_group.*
-import kotlinx.android.synthetic.main.activity_panel.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class MembersGroup : AppCompatActivity() {
+
+    var fragSize = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,25 +27,34 @@ class MembersGroup : AppCompatActivity() {
         val groupId = intent.extras?.get("groupId").toString().toInt()
         val groupName = intent.extras?.get("groupName").toString()
         val userId = sp.getInt("userId", 0)
+        val month = intent.extras?.get("month").toString()
 
+        getGroupMembers(extId, groupId, groupName, month)
 
-        getGroupMembers(extId, groupId, groupName)
+        groupMembersRefresh.setOnRefreshListener {
+            val frags = supportFragmentManager
+            var i = 0
+            while (i < fragSize) {
+                val groupMember = frags.findFragmentByTag("groupMember$i")
+                frags.beginTransaction().detach(groupMember!!).commit()
+                val groupContrib = frags.findFragmentByTag("memberContrib$i")
+                frags.beginTransaction().detach(groupContrib!!).commit()
+                i++
+            }
+            getGroupMembers(extId, groupId, groupName, month)
+        }
 
         btnGroup.setOnClickListener {
-
             val sharingIntent = Intent(Intent.ACTION_SEND)
             sharingIntent.type = "text/plain"
             sharingIntent.putExtra(
-                Intent.EXTRA_TEXT, """
-                Olá, estou usando o app Fin Family para marcar minhas despesas!
-                Venha fazer parte do meu grupo:
-                Nome do grupo: *$groupName*
-                Código do grupo: *$extId*
-            """.trimIndent()
+                Intent.EXTRA_TEXT, getString(R.string.invite_new_member_text, groupName, extId)
             )
-            sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Fin Family - Entre no meu grupo")
-            startActivity(Intent.createChooser(sharingIntent, "Compartilhe o ID do grupo"))
-
+            sharingIntent.putExtra(
+                Intent.EXTRA_SUBJECT,
+                getString(R.string.invite_new_member_title)
+            )
+            startActivity(Intent.createChooser(sharingIntent, getString(R.string.share_group_id)))
         }
 
         btLeaveGroup.setOnClickListener {
@@ -54,9 +63,7 @@ class MembersGroup : AppCompatActivity() {
             if (userId == 0) {
                 Toast.makeText(
                     this,
-                    """Ops, algo deu errado!
-                        Por favor, tente fazer o login novamente!
-                    """.trimMargin(),
+                    getString(R.string.default_error),
                     Toast.LENGTH_LONG
                 ).show()
                 startActivity(login)
@@ -73,9 +80,11 @@ class MembersGroup : AppCompatActivity() {
         RetrofitClient.instance.leaveGroup(userId, groupId)
             .enqueue(object : Callback<Any> {
                 override fun onFailure(call: Call<Any>, t: Throwable) {
-                    println("Passei 1")
-                    println(t.message)
-                    Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        applicationContext,
+                        getString(R.string.default_error),
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
 
                 override fun onResponse(
@@ -84,18 +93,15 @@ class MembersGroup : AppCompatActivity() {
                 ) {
                     when {
                         response.code().toString() == "200" -> {
-                            println("Passei 2")
-                            println("groupName")
-                            println(response.body().toString())
                             Toast.makeText(
                                 applicationContext,
-                                "Você saiu do $groupName!",
+                                getString(R.string.group_get_out, groupName),
                                 Toast.LENGTH_SHORT
                             ).show()
                         }
                         else -> {
                             val extract = Intent(applicationContext, Extract::class.java)
-                            println("Something are wrong!")
+                            getString(R.string.default_error)
                             startActivity(extract)
                             finish()
                         }
@@ -105,13 +111,19 @@ class MembersGroup : AppCompatActivity() {
     }
 
 
-    private fun getGroupMembers(extId: String, groupId: Int, groupName: String) {
+    private fun getGroupMembers(extId: String, groupId: Int, groupName: String, month: String) {
+        groupMembersRefresh.isRefreshing = true
+
         RetrofitClient.instance.getGroupMembers(extId)
             .enqueue(object : Callback<List<UserResponse>> {
                 var members: List<UserResponse>? = null
 
                 override fun onFailure(call: Call<List<UserResponse>>, t: Throwable) {
-                    Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        applicationContext,
+                        getString(R.string.default_error),
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
 
                 override fun onResponse(
@@ -123,15 +135,19 @@ class MembersGroup : AppCompatActivity() {
                             members = response.body()!!
                             val userIds = setMembers(members!!)
                             Thread.sleep(100L)
-                            getEntries(groupId, groupName, userIds)
+                            getEntries(groupId, groupName, userIds, month)
                         }
                         response.code().toString() == "204" -> {
-                            println("Something are wrong!!")
+                            Toast.makeText(
+                                applicationContext,
+                                getString(R.string.default_error),
+                                Toast.LENGTH_LONG
+                            ).show()
                         }
                         else -> {
                             Toast.makeText(
                                 applicationContext,
-                                "Erro interno no servidor!",
+                                getString(R.string.default_error),
                                 Toast.LENGTH_LONG
                             ).show()
                         }
@@ -140,39 +156,44 @@ class MembersGroup : AppCompatActivity() {
             })
     }
 
-    fun getEntries(groupId: Int, groupName: String, userId: IntArray) {
-//        extractRefreshLayout.isRefreshing = true
+    fun getEntries(groupId: Int, groupName: String, userId: IntArray, month: String) {
 
-        userId.forEach {
+        userId.forEachIndexed { i, it ->
             Thread.sleep(100L)
-            RetrofitClient.instance.getUserEntriesTotal(groupId, it)
+            RetrofitClient.instance.getUserEntriesTotal(groupId, it, month)
                 .enqueue(object : Callback<Float> {
                     override fun onFailure(call: Call<Float>, t: Throwable) {
-//                    extractRefreshLayout.isRefreshing = false
-                        Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                        groupMembersRefresh.isRefreshing = false
+                        Toast.makeText(
+                            applicationContext,
+                            getString(R.string.default_error),
+                            Toast.LENGTH_LONG
+                        ).show()
                     }
 
                     override fun onResponse(
                         call: Call<Float>,
                         response: Response<Float>
                     ) {
-//                    extractRefreshLayout.isRefreshing = false
+                        groupMembersRefresh.isRefreshing = false
                         when {
                             response.code().toString() == "200" -> {
-                                setTotal(response.body()!!, groupName)
+                                setTotal(response.body()!!, groupName, i)
                             }
                             response.code().toString() == "204" -> {
-                                setTotal(0f, groupName)
-                                println("No content!")
+                                setTotal(0f, groupName, i)
                             }
                             else -> {
-                                println("Something are wrong!")
+                                Toast.makeText(
+                                    applicationContext,
+                                    getString(R.string.default_error),
+                                    Toast.LENGTH_LONG
+                                ).show()
                             }
                         }
                     }
                 })
         }
-
     }
 
     fun setMembers(members: List<UserResponse>): IntArray {
@@ -186,22 +207,21 @@ class MembersGroup : AppCompatActivity() {
             val membersFragment = Members()
             membersFragment.arguments = parametros
 
-            transaction.add(R.id.personFrag, membersFragment)
-
+            transaction.add(R.id.personFrag, membersFragment, "groupMember$i")
         }
         transaction.commit()
-
+        fragSize = members.size
         return userIds
     }
 
-    fun setTotal(total: Float, groupName: String) {
+    fun setTotal(total: Float, groupName: String, fragItem: Int) {
         val transaction = supportFragmentManager.beginTransaction()
         val parametros = Bundle()
         parametros.putString("groupName", groupName)
         parametros.putFloat("groupTotal", total)
         val accountItensFrag = MembersFamContribution()
         accountItensFrag.arguments = parametros
-        transaction.add(R.id.totalFrag, accountItensFrag)
+        transaction.add(R.id.totalFrag, accountItensFrag, "memberContrib$fragItem")
         transaction.commit()
     }
 }

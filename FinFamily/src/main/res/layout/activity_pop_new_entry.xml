@@ -59,7 +59,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
-        android:hint="@string/deadline" />
+        android:hint="@string/pay_date_entry" />
 
     <Spinner
         android:id="@+id/spType"

@@ -1,21 +1,17 @@
 package com.bandtec.finfamily.fragments
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.bandtec.finfamily.R
 import com.bandtec.finfamily.api.RetrofitClient
-import com.bandtec.finfamily.model.GoalsResponse
 import com.bandtec.finfamily.model.GoalsTransResponse
 import com.bandtec.finfamily.popups.PopDeleteGoal
 import com.bandtec.finfamily.popups.PopEntryOutputGoal
-import kotlinx.android.synthetic.main.activity_goals.*
-import kotlinx.android.synthetic.main.activity_panel.*
 import kotlinx.android.synthetic.main.fragment_card_goal.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -28,7 +24,6 @@ class CardGoal : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_card_goal, container, false)
     }
 
@@ -66,11 +61,12 @@ class CardGoal : Fragment() {
         }
     }
 
-    fun getTotal(goalId : Int){
+    fun getTotal(goalId: Int) {
         RetrofitClient.instance.getGoalsTrans(goalId)
             .enqueue(object : Callback<List<GoalsTransResponse>> {
                 override fun onFailure(call: Call<List<GoalsTransResponse>>, t: Throwable) {
-                    Toast.makeText(activity, t.message, Toast.LENGTH_LONG).show()
+                    Toast.makeText(activity, getString(R.string.default_error), Toast.LENGTH_LONG)
+                        .show()
                 }
 
                 override fun onResponse(
@@ -84,27 +80,31 @@ class CardGoal : Fragment() {
                         response.code().toString() == "204" -> {
                             goalProgress.progress = 0
                             tvAvaibleNow.text = getString(R.string.cifrao, "0.00")
-                            tvPercentage.text = getString(R.string.percentage, "0%")
-                            println("No content!")
+                            tvPercentage.text = getString(R.string.goal_percentage, "0")
                         }
                         else -> {
                             goalProgress.progress = 0
                             tvAvaibleNow.text = getString(R.string.cifrao, "0.00")
-                            tvPercentage.text = getString(R.string.percentage, "0")
-                            println("Something are wrong!")
+                            tvPercentage.text = getString(R.string.goal_percentage, "0")
+                            Toast.makeText(
+                                activity,
+                                getString(R.string.default_error),
+                                Toast.LENGTH_LONG
+                            ).show()
                         }
                     }
                 }
             })
     }
-    fun setProgress(transactions : List<GoalsTransResponse>){
+
+    fun setProgress(transactions: List<GoalsTransResponse>) {
         var totalEntry = 0f
         var totalExpense = 0f
         val max = goalProgress.max
         transactions.forEach {
-            if(it.transactionTypeId == 1){
+            if (it.transactionTypeId == 1) {
                 totalEntry += it.value!!
-            } else if(it.transactionTypeId == 2){
+            } else if (it.transactionTypeId == 2) {
                 totalExpense += it.value!!
             }
         }
@@ -112,7 +112,7 @@ class CardGoal : Fragment() {
         val percentage = (total * 100) / max
         goalProgress.progress = total.toInt()
         tvAvaibleNow.text = getString(R.string.cifrao, String.format("%.2f", total))
-        tvPercentage.text = getString(R.string.percentage, String.format("%.2f", percentage)+"%")
+        tvPercentage.text = getString(R.string.goal_percentage, String.format("%.2f", percentage) + "%")
 
     }
 }

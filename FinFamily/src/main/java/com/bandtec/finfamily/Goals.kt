@@ -1,17 +1,14 @@
 package com.bandtec.finfamily
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.bandtec.finfamily.api.RetrofitClient
 import com.bandtec.finfamily.fragments.CardGoal
-import com.bandtec.finfamily.fragments.GroupFinance
 import com.bandtec.finfamily.model.GoalsResponse
-import com.bandtec.finfamily.model.GroupTransResponse
 import com.bandtec.finfamily.popups.PopNewGoal
 import kotlinx.android.synthetic.main.activity_goals.*
-import kotlinx.android.synthetic.main.activity_panel.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -25,7 +22,6 @@ class Goals : AppCompatActivity() {
         setContentView(R.layout.activity_goals)
         val groupId = intent.extras?.get("groupId").toString().toInt()
         val userId = intent.extras?.get("userId").toString().toInt()
-        println(groupId)
 
         getGoals(groupId, userId)
 
@@ -46,7 +42,6 @@ class Goals : AppCompatActivity() {
             newGoal.putExtra("groupId", groupId)
             startActivity(newGoal)
         }
-
     }
 
     fun getGoals(groupId: Int, userId: Int) {
@@ -55,7 +50,11 @@ class Goals : AppCompatActivity() {
             .enqueue(object : Callback<List<GoalsResponse>> {
                 override fun onFailure(call: Call<List<GoalsResponse>>, t: Throwable) {
                     goalsRefresh.isRefreshing = false
-                    Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        applicationContext,
+                        getString(R.string.default_error),
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
 
                 override fun onResponse(
@@ -70,21 +69,19 @@ class Goals : AppCompatActivity() {
                         response.code().toString() == "204" -> {
                             Toast.makeText(
                                 applicationContext,
-                                "Você ainda não possui metas! \n Que tal criar uma clicando no" +
-                                        " botão '+' logo abaixo para criar sua primeira meta? ;)",
+                                getString(R.string.goals_no_content),
                                 Toast.LENGTH_LONG
                             ).show()
-                            println("No content!")
                         }
                         else -> {
-                            println("Something are wrong!")
+                            getString(R.string.default_error)
                         }
                     }
                 }
             })
     }
 
-    fun setGoals(goals: List<GoalsResponse>, userId : Int) {
+    fun setGoals(goals: List<GoalsResponse>, userId: Int) {
         val goalsFrag = supportFragmentManager.beginTransaction()
 
         goals.forEachIndexed { i, g ->

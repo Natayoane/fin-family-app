@@ -26,25 +26,26 @@ class ProfileEdit : AppCompatActivity() {
         val sp: SharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
         val userId = sp.getInt("userId", 0)
         val btmAvatar = intent?.extras?.getParcelable<Bitmap>("avatar")
-        val profile =  Intent(this, Profile::class.java)
 
-        if(btmAvatar != null){
-         img.setImageBitmap(btmAvatar)
+        if (btmAvatar != null) {
+            img.setImageBitmap(btmAvatar)
         }
 
-        img.setOnClickListener(){
-            val avatar =  Intent(this, Avatar::class.java)
+        img.setOnClickListener {
+            val avatar = Intent(this, Avatar::class.java)
+            avatar.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(avatar)
-            finish()
         }
 
         etName.hint = sp.getString("full_name", "")
         etNickname.hint = sp.getString("nickname", "")
         etEmail.hint = sp.getString("email", "")
 
-        btnDeleteAccount.setOnClickListener(){
-            val delete = Intent(this,
-                PopConfirmAction::class.java)
+        btnDeleteAccount.setOnClickListener {
+            val delete = Intent(
+                this,
+                PopConfirmAction::class.java
+            )
 
             delete.putExtra("choose", 0)
 
@@ -61,27 +62,23 @@ class ProfileEdit : AppCompatActivity() {
 
             if (basePassword.isNotEmpty()) {
                 if (newPassword != passwordConfirm) {
-                    etNewPassword.error = "As senhas devem ser iguais!"
+                    etNewPassword.error = getString(R.string.invalid_password_confirmation)
                     etNewPassword.requestFocus()
                     return@setOnClickListener
                 } else {
                     if (newPassword.length < 8) {
-                        etNewPassword.error =
-                            "A senha deve conter entre 8 e 60 caracteres contendo ao " +
-                                    "menos uma letra maiúscula, um número e um caracter especial!"
+                        etNewPassword.error = getString(R.string.password_validation_input)
                         etNewPassword.requestFocus()
                         return@setOnClickListener
                     }
                     if (!MaskEditUtil.validatePassword(newPassword)) {
-                        etNewPassword.error =
-                            "A senha deve conter entre 8 e 60 caracteres contendo ao " +
-                                    "menos uma letra maiúscula, um número e um caracter especial!"
+                        etNewPassword.error = getString(R.string.password_validation_input)
                         etNewPassword.requestFocus()
                         return@setOnClickListener
                     }
                 }
             } else if (basePassword.isEmpty() && newPassword.isNotEmpty() || passwordConfirm.isNotEmpty()) {
-                etBasePassword.error = "É necessário digitar sua senha atual para alterar sua senha!"
+                etBasePassword.error = getString(R.string.change_password)
                 etBasePassword.requestFocus()
                 return@setOnClickListener
             }
@@ -91,7 +88,11 @@ class ProfileEdit : AppCompatActivity() {
             RetrofitClient.instance.updateUser(user, userId)
                 .enqueue(object : Callback<UserResponse> {
                     override fun onFailure(call: Call<UserResponse>, t: Throwable) {
-                        Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                        Toast.makeText(
+                            applicationContext,
+                            getString(R.string.default_error),
+                            Toast.LENGTH_LONG
+                        ).show()
                     }
 
                     override fun onResponse(
@@ -102,7 +103,7 @@ class ProfileEdit : AppCompatActivity() {
                             response.code().toString() == "200" -> {
                                 Toast.makeText(
                                     applicationContext,
-                                    "Dado(s) alterado(s) com sucesso!",
+                                    getString(R.string.successfully_changed_data),
                                     Toast.LENGTH_LONG
                                 ).show()
                                 sp.edit().putString("full_name", response.body()?.fullName).apply()
@@ -111,22 +112,21 @@ class ProfileEdit : AppCompatActivity() {
                                 finish()
                             }
                             response.code().toString() == "401" -> {
-                                etBasePassword.error = "A senha informada está incorreta"
+                                etBasePassword.error = getString(R.string.invalid_password_change)
                                 etBasePassword.requestFocus()
                             }
                             else -> {
                                 Toast.makeText(
                                     applicationContext,
-                                    "Erro interno no servidor! Por favor, tente novamente mais tarde!",
+                                    getString(R.string.default_error),
                                     Toast.LENGTH_LONG
                                 ).show()
-                                startActivity(intent)
-
+                                finish()
                             }
                         }
                     }
                 })
-            }
         }
     }
+}
 

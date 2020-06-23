@@ -54,14 +54,14 @@
             <LinearLayout
                 android:id="@+id/goals"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/tvDescription"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/textExample"
+                    android:text="@string/lore_ipsum_text"
                     android:textAlignment="textStart"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -73,35 +73,34 @@
             android:id="@+id/textView7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"
-            android:textStyle="bold"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
             android:text="@string/value"
             android:textColor="#000000"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/scroll" />
+            app:layout_constraintStart_toEndOf="@+id/tvPercentage"
+            app:layout_constraintTop_toBottomOf="@+id/tvAvaible" />
 
         <TextView
             android:id="@+id/goalValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:text=""
             android:textColor="#D5000000"
             app:layout_constraintStart_toEndOf="@+id/textView7"
-            app:layout_constraintTop_toBottomOf="@+id/scroll" />
+            app:layout_constraintTop_toBottomOf="@+id/tvAvaible" />
 
         <TextView
             android:id="@+id/tvAvaible"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:textStyle="bold"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="10dp"
             android:text="@string/current_value"
             android:textColor="#000000"
-            app:layout_constraintStart_toEndOf="@+id/goalValue"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/scroll" />
 
         <TextView
@@ -143,29 +142,30 @@
             android:id="@+id/tvPercentage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
-            android:text=""
+            android:layout_marginTop="5dp"
+            android:text="a"
             android:textColor="#000000"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView7" />
+            app:layout_constraintTop_toBottomOf="@+id/tvAvaible" />
 
         <ProgressBar
             android:id="@+id/goalProgress"
+            style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:progress="0"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:indeterminate="false"
             android:max="0"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
+            android:progress="0"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvPercentage"
-            style="?android:attr/progressBarStyleHorizontal" />
+            app:layout_constraintTop_toBottomOf="@+id/tvPercentage" />
 
         <ImageView
             android:id="@+id/btnNewEntry"

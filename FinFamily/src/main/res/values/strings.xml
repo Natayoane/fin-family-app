@@ -1,13 +1,12 @@
 <resources>
-    <string name="title_activity_login">Sign in</string>
+    <string name="title_activity_login">Sign In</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome !"</string>
-    <string name="invalid_username">Invalid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
+    <string name="action_sign_in">Sign In or Register</string>
+    <string name="action_sign_in_short">Sign In</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="invalid_username">Invalid Username</string>
+    <string name="login_failed">"Login Failed"</string>
     <string name="app_name">FinFamily</string>
     <string name="buttonLogin">Login</string>
     <string name="need_help_">"         <a href="http://clubedosgeeks.com.br/">Need help?</a>     "</string>
@@ -22,24 +21,24 @@
     <string name="string_api_here" translatable="false" />
     <string name="name">Name</string>
     <string name="cpf">CPF</string>
-    <string name="Date">Date of birth</string>
+    <string name="Date">Birthday</string>
     <string name="Next">Next</string>
     <string name="Finish">Finish</string>
-    <string name="country_prompt">Choose a category</string>
+    <string name="country_prompt">Choose a Category</string>
     <string name="CreateAccount">Create Account</string>
     <string name="PersonalInformation">Personal Information</string>
-    <string name="emailforacess">Email for acess</string>
-    <string name="Confirmpassword">Confirm password</string>
+    <string name="emailforacess">Email for Acess</string>
+    <string name="Confirmpassword">Confirm Password</string>
     <string name="Password">Password</string>
-    <string name="Access_Information">Access_Information</string>
+    <string name="Access_Information">Access Information</string>
     <string name="Nickname">Nickname</string>
-    <string name="Total_family">Total family</string>
+    <string name="Total_family">Total Family</string>
     <string name="Accounts">Accounts</string>
     <string name="Total">Total</string>
-    <string name="Expenditure_budget">Expenditure budget</string>
+    <string name="Expenditure_budget">Expenditure Budget</string>
     <string name="My_Finances">My Finances</string>
     <string name="Login">Login</string>
-    <string name="Leave_the_group">Leave the group</string>
+    <string name="Leave_the_group">Leave Group</string>
     <string name="Earnings">Earnings</string>
     <string name="Expenses">Expenses</string>
     <string name="Extract">Extract</string>
@@ -47,32 +46,31 @@
     <string name="Group">Group</string>
     <string name="Join_Group">Join Group</string>
     <string name="New_Group">New Group</string>
-    <string name="EnterGroupCode">#EnterGroupCode</string>
-    <string name="New_entry">New entry</string>
-    <string name="Insert_value">$ Insert value</string>
+    <string name="EnterGroupCode">#enter_group_code</string>
+    <string name="New_entry">New Entry</string>
+    <string name="Insert_value">$ Insert Value</string>
     <string name="Fixed">Fixed</string>
     <string name="New_expense">Expense</string>
     <string name="New_Invoice">New Invoice</string>
     <string name="New_Transaction">New Transaction</string>
     <string name="Administrador">Administrator</string>
-    <string name="Sair">Go out</string>
-    <string name="New_password">New password</string>
+    <string name="Sair">Go Out</string>
+    <string name="New_password">New Password</string>
     <string name="Confirm_new_password">Confirm new password</string>
-    <string name="Edit_Image">Edit avatar</string>
+    <string name="Edit_Image">Edit Avatar</string>
     <string name="Delete_Account">Delete Account</string>
     <string name="Add_Member">Add Member</string>
-    <string name="Invite_someone">Invite someone</string>
+    <string name="Invite_someone">Invite Aomeone</string>
     <string name="Send">Send</string>
     <string name="Name">Name</string>
-    <string name="CreateYourCode">#CreateYourCode</string>
-    <string name="upload_image">Choose avatar</string>
+    <string name="upload_image">Choose Avatar</string>
     <string name="cifrao">$%1$s</string>
-    <string name="txt_contribution">FamContribution expenses</string>
+    <string name="txt_contribution">FamContribution Expenses</string>
     <string name="txt_entry">Entry</string>
     <string name="delete_put">Are you sure you want to delete?</string>
     <string name="no">No</string>
     <string name="yes">Yes</string>
-    <string name="txt_alter_release">" Change invoice"</string>
+    <string name="txt_alter_release">" Change Invoice"</string>
     <string name="view_more">More</string>
     <string-array name="meses_array">
         <item>@string/Janeiro</item>
@@ -130,13 +128,12 @@
         <item>Transferência</item>
         <item>Metas</item>
     </string-array>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
-    <string name="title" translatable="false">title</string>
+    <string name="title" translatable="false">Title</string>
     <string name="FaltaContribuir">"Lack Contribute "</string>
     <string name="FamWallet">FamWallet</string>
     <string name="Cifrao">$</string>
-    <string name="Availabre">Availabre</string>
+    <string name="Avaible">Avaible</string>
     <string name="finfamily">FinFamily</string>
     <string name="titleinicio">FinFamily</string>
     <string name="Janeiro">January</string>
@@ -151,30 +148,82 @@
     <string name="Outubro">"October"</string>
     <string name="Novembro">"November"</string>
     <string name="Dezembro">"December"</string>
-    <string name="Insert_name">Insert name</string>
+    <string name="Insert_name">Insert Name</string>
     <string name="txt_contributors">Contributors</string>
     <string name="family">Family</string>
     <string name="spouse">Spouse</string>
     <string name="team">Team</string>
-    <string name="textExample">A certificação de metodologias que nos auxiliam a lidar
-        com o aumento do diálogo entre os diferentes setores
-        produtivos é uma das consequências do retorno esperado a longo prazo.
-        A certificação de metodologias que nos auxiliam a lidar
-        com o aumento do diálogo entre os diferentes setores
-        produtivos é uma das consequências do retorno esperado a longo prazo.</string>
-    <string name="value">Goal value:</string>
-    <string name="deadline">Deadline:</string>
+    <string name="lore_ipsum_text">Goal Description</string>
+    <string name="value">of</string>
+    <string name="deadline">Deadline</string>
     <string name="new_goal">New Goal</string>
     <string name="insert_description">Description</string>
-    <string name="new_entry_output">New entry/output</string>
+    <string name="new_entry_output">New Entry/Output</string>
     <string name="insert_reason">Reason</string>
     <string name="type_entry">Entry</string>
-    <string name="type_output">Out put</string>
+    <string name="type_output">Output</string>
     <string name="balance">Balance</string>
-    <string name="save_editions">Save editions</string>
+    <string name="save_editions">Save Editions</string>
     <string name="wallet">Wallet</string>
-    <string name="my_contribution">My contribution</string>
-    <string name="percentage">Goal %1$s completed</string>
+    <string name="my_contribution">My Contribution</string>
     <string name="goal_name">Goal Name</string>
-    <string name="current_value">Current value:</string>
+    <string name="current_value">Current Value</string>
+    <string name="pay_date">Pay Date</string>
+    <string name="pay_date_entry">Receipt Date</string>
+    <string name="fam_name_and_month">%1$s - %2$s</string>
+    <string name="name_validation_input">Full Name is required!</string>
+    <string name="invalid_full_name">Invalid Full Name!</string>
+    <string name="cpf_validation_input">CPF is required!</string>
+    <string name="invalid_cpf">CPF is not valid!</string>
+    <string name="birthday_validation_input">Birthday is required!</string>
+    <string name="invalid_birthday">Birthday is not valid!</string>
+    <string name="email_validation_input">Email is required!</string>
+    <string name="invalid_mail">Email is not valid!</string>
+    <string name="password_validation_input">Password is required!</string>
+    <string name="invalid_password">The password must contain between 8 and 60 characters containing at least one capital letter, a number and a special character! "</string>
+    <string name="password_confirmation_input">Confirm your password!</string>
+    <string name="invalid_password_confirmation">Passwords must be the same!</string>
+    <string name="nickname_validation_input">Nickname is required!</string>
+    <string name="code_validation_input">Area Code is required!</string>
+    <string name="phone_validation_input">Phone is required!</string>
+    <string name="default_error">Internal Sever Error!</string>
+    <string name="account_successful_created">Account successfully created!</string>
+    <string name="goals_no_content">You don\'t have goals yet! \n How about creating one by clicking the \'+\' button below to create your first goal?</string>
+    <string name="groups_no_content">You don\'t have groups yet! \n How about creating one by clicking the \'+\' button below to create your first group?</string>
+    <string name="invalid_credentials">Email and/or password are incorrect!</string>
+    <string name="invite_new_member_text">Hello, I\'m using the Fin Family app to note my expenses! \n Come and join my group: \n Group name: *%1$s* \n Group code: *%2$s*</string>
+    <string name="invite_new_member_title">FinFamily - Join my group!</string>
+    <string name="share_group_id">Share GroupID</string>
+    <string name="group_get_out">You left the group %1$s</string>
+    <string name="change_password">You must enter your current password to change your password!</string>
+    <string name="successfully_changed_data">Successfully changed data!</string>
+    <string name="invalid_password_change">The current password entered is not correct!</string>
+    <string name="entries_no_content">You don\'t have any entries yet!</string>
+    <string name="entries">Inputs</string>
+    <string name="expenses">Outputs</string>
+    <string name="total_help">Bring back your total balance! \n Calculation used: Balance = Inputs - Outputs</string>
+    <string name="transaction_changed">Transaction changed successfully!</string>
+    <string name="transaction_removed">Transaction removed successfully!</string>
+    <string name="transaction_added">Transaction added successfully!</string>
+    <string name="confirm_delete_account">Are you sure you want to delete your account?</string>
+    <string name="confirm_leave_group">Are you sure you want to leave the group?</string>
+    <string name="user_removed">User removed successfully!</string>
+    <string name="goal_removed">Goal removed successfully!</string>
+    <string name="group_id_input">The \'Group ID\' field must be filled in!</string>
+    <string name="group_joined">You joined the group!</string>
+    <string name="group_already_joined">You already belong to that group!</string>
+    <string name="error">Error!</string>
+    <string name="transaction_name">Entry Name is required!</string>
+    <string name="transaction_value">Value is required!</string>
+    <string name="transaction_pay_date">Pay Date is required!</string>
+    <string name="goal_description">Goal Description</string>
+    <string name="goal_value">Goal Value</string>
+    <string name="goal_deadline">Goal Deadline</string>
+    <string name="goal_created">Goal created successfully!</string>
+    <string name="group_name_input">Group Name is required!</string>
+    <string name="invalid_group_name">The Group Name must contain between 4 and 45 characters!</string>
+    <string name="group_created">Group created successfully!</string>
+    <string name="goal_percentage">%1$s</string>
+
+
 </resources>

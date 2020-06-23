@@ -22,8 +22,6 @@ class PopDeletePut : AppCompatActivity() {
         val transId = intent?.extras?.getInt("id", 0)
 
         btnClose.setOnClickListener {
-            val alter = Intent(this, PopAlterExpense::class.java)
-            startActivity(alter)
             finish()
         }
 
@@ -34,6 +32,7 @@ class PopDeletePut : AppCompatActivity() {
         btYes.setOnClickListener {
             val groups = Intent(this, Group::class.java)
             deleteExpense(transId!!)
+            groups.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(groups)
             finish()
         }
@@ -43,7 +42,11 @@ class PopDeletePut : AppCompatActivity() {
         RetrofitClient.instance.removeTransactions(transId)
             .enqueue(object : Callback<String> {
                 override fun onFailure(call: Call<String>, t: Throwable) {
-                    Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        applicationContext,
+                        getString(R.string.default_error),
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
 
                 override fun onResponse(
@@ -51,19 +54,19 @@ class PopDeletePut : AppCompatActivity() {
                     response: Response<String>
                 ) {
                     if (response.code().toString() == "200") {
-                        Toast.makeText(applicationContext, "Transação removida com sucesso!", Toast.LENGTH_LONG).show()
+                        Toast.makeText(
+                            applicationContext,
+                            getString(R.string.transaction_removed),
+                            Toast.LENGTH_LONG
+                        ).show()
                     } else {
                         Toast.makeText(
                             applicationContext,
-                            "Houve um erro ao remover a transação!\nTente novamente mais tarde!",
+                            getString(R.string.default_error),
                             Toast.LENGTH_LONG
                         ).show()
-                        println("Something are wrong!")
                     }
-
-
                 }
-
             })
     }
 }
