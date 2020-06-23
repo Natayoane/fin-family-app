@@ -112,5 +112,6 @@
     <string name="pay_date">Data de Pagamento</string>
     <string name="pay_date_entry">Data do Recebimento</string>
     <string name="fam_name_and_month">%1$s - %2$s</string>
+    <string name="save_email">Lembrar e-mail</string>
 
 </resources>
