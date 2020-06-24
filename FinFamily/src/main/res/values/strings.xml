@@ -171,6 +171,7 @@
     <string name="pay_date">Pay Date</string>
     <string name="pay_date_entry">Receipt Date</string>
     <string name="fam_name_and_month">%1$s - %2$s</string>
+    <string name="save_email">Remember email</string>
     <string name="name_validation_input">Full Name is required!</string>
     <string name="invalid_full_name">Invalid Full Name!</string>
     <string name="cpf_validation_input">CPF is required!</string>
@@ -224,6 +225,4 @@
     <string name="invalid_group_name">The Group Name must contain between 4 and 45 characters!</string>
     <string name="group_created">Group created successfully!</string>
     <string name="goal_percentage">%1$s</string>
-
-
 </resources>
