@@ -12,6 +12,7 @@ class Avatar : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_avatar)
     }
+    
 
     fun chooseAvatar(image: View) {
         val profileEdit = Intent(this, ProfileEdit::class.java)
