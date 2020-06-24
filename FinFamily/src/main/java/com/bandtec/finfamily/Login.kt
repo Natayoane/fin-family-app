@@ -1,19 +1,22 @@
 package com.bandtec.finfamily
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_login.*
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
+import android.os.Bundle
+import android.view.View
+import android.widget.CompoundButton
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.bandtec.finfamily.api.RetrofitClient
 import com.bandtec.finfamily.model.CredencialsModel
 import com.bandtec.finfamily.model.UserResponse
 import com.bandtec.finfamily.utils.MaskEditUtil
+import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+
 
 class Login : AppCompatActivity() {
 
@@ -26,6 +29,11 @@ class Login : AppCompatActivity() {
 
         val sp: SharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
 
+        switch1.isChecked = sp.getBoolean("saveMail", false)
+
+        if(switch1.isChecked){
+            inputemail.setText(sp.getString("email", ""))
+        }
         buttonlogin.setOnClickListener {
 
             val email = inputemail.text.toString()
@@ -82,5 +90,12 @@ class Login : AppCompatActivity() {
                     }
                 })
         }
+    }
+
+    fun salvarOuNao(v: View) {
+        val sp: SharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
+
+        sp.edit().putBoolean("saveMail", switch1.isChecked).apply()
+
     }
 }
