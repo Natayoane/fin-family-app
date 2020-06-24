@@ -23,5 +23,11 @@ pipeline {
       }
     }
 
+    stage('Send Email') {
+      steps {
+        mail(subject: 'finfamilyapp@gmail.com', body: 'oi')
+      }
+    }
+
   }
 }
