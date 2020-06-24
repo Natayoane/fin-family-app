@@ -25,7 +25,7 @@ pipeline {
 
     stage('Send Email') {
       steps {
-        emailext(subject: 'finfamilyapp@gmail.com', attachLog: true, compressLog: true, body: 'oi')
+        mail(subject: 'finfamilyapp@gmail.com', body: 'oi')
       }
     }
 
