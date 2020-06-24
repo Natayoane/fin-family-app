@@ -92,6 +92,7 @@
         android:layout_marginTop="10dp"
         android:switchPadding="10dp"
         android:text="@string/save_email"
+        android:onClick="salvarOuNao"
         android:textAlignment="viewEnd"
         android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
